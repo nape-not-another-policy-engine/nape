@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "apps/collection-cli",
+    "domain",
+    "kernel",
+    "test_framework/assertions",
+    "test_framework/filesystem",
+    "test_framework/tags",
+]

@@ -1,0 +1,27 @@
+[package]
+name = "nape_collection_cli"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "nape"
+path = "src/main.rs"
+
+[dependencies]
+nape_domain = { path = "../../domain" }
+nape_kernel = { path = "../../kernel" }
+clap = { version = "4.5.1", features = ["derive", "cargo"] }
+git2 = "0.18.2"
+reqwest = { version = "0.11.24", features = ["json"] }
+serde = { version = "1.0.196", features = ["derive"] }
+serde_json = "1.0.113"
+serde_yaml = "0.9.34+deprecated"
+sha2 = "0.10.8"
+hex = "0.4.3"
+
+[dev-dependencies]
+nape_testing_tags = { path = "../../test_framework/tags"}
+nape_testing_assertions = { path = "../../test_framework/assertions"}
+nape_testing_filesystem = { path = "../../test_framework/filesystem"}

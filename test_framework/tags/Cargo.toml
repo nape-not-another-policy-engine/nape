@@ -1,0 +1,7 @@
+[package]
+name = "nape_testing_tags"
+version = "1.0.0"
+edition = "2021"
+
+[lib]
+proc-macro = true

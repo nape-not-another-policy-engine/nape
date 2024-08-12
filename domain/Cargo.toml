@@ -1,0 +1,13 @@
+[package]
+name = "nape_domain"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+nape_kernel = { path = "../kernel" }
+
+[dev-dependencies]
+nape_testing_tags = { path = "../test_framework/tags" }
+nape_testing_assertions = { path = "../test_framework/assertions" }
