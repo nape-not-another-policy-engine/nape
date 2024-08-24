@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   source-code-integration:
     uses: nape-not-another-policy-engine/nape-build-deploy-release/.github/workflows/rust-standard-ci-workflow.yaml@main
