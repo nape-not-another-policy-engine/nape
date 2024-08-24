@@ -25,7 +25,7 @@ pub mod request {
     impl EvaluationFiles {
 
         // TODO - Test the EvaluationFiles::from method with the updates to the signature.
-        // TODO - look into changing this into a builder, then added a with_canonical_algorithm method to give the option of makeing the file path based upon something like hhome root, then look at adding this same algorithm to the AssurnaceReportBuilder for the evaluate_and_report usecase.
+        // TODO - look into changing this into a builder, then added a with_canonical_algorithm method to give the option of makeing the file path based upon something like hhome root, then look at adding this same algorithm to the AssuranceReportBuilder for the evaluate_and_report usecase.
         /// Create a new instance of the [`EvaluationFiles`] struct.
         ///
         /// # Arguments

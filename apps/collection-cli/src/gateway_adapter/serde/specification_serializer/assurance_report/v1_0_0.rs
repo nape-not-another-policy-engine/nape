@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
-use nape_kernel::values::specification::assurnace_report::action::Action;
-use nape_kernel::values::specification::assurnace_report::signed_file::SignedFile;
+use nape_kernel::values::specification::assurance_report::action::Action;
+use nape_kernel::values::specification::assurance_report::signed_file::SignedFile;
 use nape_kernel::values::specification::traits::{AssuranceReport};
-use nape_kernel::values::specification::v1_0_0::assurnace_report::AssuranceReportV1;
+use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 
 /// The [`AssuranceReportFileV1`] struct is a representation used to represent a file printout of an [`AssuranceReportV1`].  This struct contains the logic to convert an [`AssuranceReportV1`] to YAML.
 ///

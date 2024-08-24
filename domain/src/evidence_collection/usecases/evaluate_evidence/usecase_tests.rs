@@ -6,7 +6,7 @@ use nape_kernel::values::specification::assurance_procedure::action::Action;
 use nape_kernel::values::specification::assurance_procedure::activity::Activity;
 use nape_testing_assertions::is_ok;
 use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::response::{EvaluationResults, TestResult};
-use crate::evidence_collection::usecases::evaluate_evidence::usecase::AssurnaceReportBuilder;
+use crate::evidence_collection::usecases::evaluate_evidence::usecase::AssuranceReportBuilder;
 use crate::evidence_collection::usecases::evaluate_evidence::usecase_boundary::request::EvaluateEvidence;
 use nape_kernel::error::{Audience, Kind};
 use nape_kernel::values::specification::outcome::Outcome;
@@ -252,7 +252,7 @@ mod usecase {
 
 
 
-mod assurnace_report_builder {
+mod assurance_report_builder {
     use super::*;
     use nape_kernel::values::specification::traits::AssuranceReport;
 
@@ -264,7 +264,7 @@ mod assurnace_report_builder {
         let evaluation_results = generate_evaluation_results();
 
         let home_dir = &FilePath::from("/User/procedure-root");
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_home_dir(&home_dir)
             .with_request(&request)
             .with_definition(&procedure_definition)
@@ -321,7 +321,7 @@ mod assurnace_report_builder {
         let procedure_definition =generate_procedure_definition();
         let evaluation_results = generate_evaluation_results();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_definition(&procedure_definition)
             .with_results(&evaluation_results)
             .with_signature_algorithm(mock_sig_algo)
@@ -337,7 +337,7 @@ mod assurnace_report_builder {
         let request = generate_valid_request();
         let evaluation_results = generate_evaluation_results();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_request(&request)
             .with_results(&evaluation_results)
             .with_signature_algorithm(mock_sig_algo)
@@ -353,7 +353,7 @@ mod assurnace_report_builder {
         let request = generate_valid_request();
         let procedure_definition =generate_procedure_definition();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_request(&request)
             .with_definition(&procedure_definition)
             .with_signature_algorithm(mock_sig_algo)
@@ -370,7 +370,7 @@ mod assurnace_report_builder {
         let procedure_definition =generate_procedure_definition();
         let evaluation_results = generate_evaluation_results();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_request(&request)
             .with_definition(&procedure_definition)
             .with_results(&evaluation_results)
@@ -387,7 +387,7 @@ mod assurnace_report_builder {
         let procedure_definition =generate_procedure_definition();
         let evaluation_results = generate_evaluation_results();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_home_dir(&FilePath::from("/User/procedure-root"))
             .with_request(&request)
             .with_definition(&procedure_definition)
@@ -405,7 +405,7 @@ mod assurnace_report_builder {
         let procedure_definition =generate_procedure_definition();
         let evaluation_results = generate_evaluation_results();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_home_dir(&FilePath::from("/User/procedure-root"))
             .with_request(&request)
             .with_definition(&procedure_definition)
@@ -423,7 +423,7 @@ mod assurnace_report_builder {
         let procedure_definition =generate_procedure_definition();
         let evaluation_results = generate_evaluation_results();
 
-        let report_result = AssurnaceReportBuilder::new()
+        let report_result = AssuranceReportBuilder::new()
             .with_home_dir(&FilePath::from("/User/procedure-root"))
             .with_request(&request)
             .with_definition(&procedure_definition)

@@ -38,7 +38,7 @@ fn no_name_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. The name is required, but was not provided.");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. The name is required, but was not provided.");
 }
 #[test]
 fn bad_name_error() {
@@ -50,7 +50,7 @@ fn bad_name_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. There is an issue with the name ''. ");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. There is an issue with the name ''. ");
 }
 
 #[test]
@@ -62,7 +62,7 @@ fn no_short_description_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. The short description is required, but was not provided.");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. The short description is required, but was not provided.");
 
 }
 #[test]
@@ -75,7 +75,7 @@ fn bad_short_description_error() {
             .evidence_file_path("evidence")
             .try_build();
 
-        kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. There is an issue with the short description ''. ");
+        kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. There is an issue with the short description ''. ");
 }
 
 #[test]
@@ -87,7 +87,7 @@ fn no_long_description_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. The long description is required, but was not provided.");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. The long description is required, but was not provided.");
 
 }
 #[test]
@@ -100,7 +100,7 @@ fn bad_long_description_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. There is an issue with the long description ''. ");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. There is an issue with the long description ''. ");
 }
 
 #[test]
@@ -112,7 +112,7 @@ fn no_test_file_path_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. The test file path is required, but was not provided.");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. The test file path is required, but was not provided.");
 
 }
 #[test]
@@ -125,7 +125,7 @@ fn bad_test_file_path_error() {
         .evidence_file_path("evidence")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. There is an issue with the test file path ''. ");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. There is an issue with the test file path ''. ");
 }
 
 #[test]
@@ -137,7 +137,7 @@ fn no_evidence_file_path_error() {
         .test_file_path("test")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. The evidence file path is required, but was not provided.");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. The evidence file path is required, but was not provided.");
 
 }
 #[test]
@@ -150,5 +150,5 @@ fn bad_evidence_file_path_error() {
         .evidence_file_path("")
         .try_build();
 
-    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurnace Procedure could not be created. There is an issue with the evidence file path ''. ");
+    kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "The Action for an Assurance Procedure could not be created. There is an issue with the evidence file path ''. ");
 }

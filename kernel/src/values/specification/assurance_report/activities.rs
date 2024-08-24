@@ -1,6 +1,6 @@
 use crate::error::{Error, Kind};
-use crate::values::specification::assurnace_report::action::Action;
-use crate::values::specification::assurnace_report::activity::Activity;
+use crate::values::specification::assurance_report::action::Action;
+use crate::values::specification::assurance_report::activity::Activity;
 
 /// The [`Activities`] struct is a collection of [`Activity`] that can be used to represent and manage a list of activities.
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]

@@ -1,6 +1,6 @@
 use crate::algorithms::signature_algorithm::Signature;
 use crate::error::{Error, Kind};
-use crate::values::specification::assurnace_report::signed_file::SignedFile;
+use crate::values::specification::assurance_report::signed_file::SignedFile;
 use crate::values::specification::description::Description;
 use crate::values::specification::name::Name;
 use crate::values::specification::outcome::Outcome;

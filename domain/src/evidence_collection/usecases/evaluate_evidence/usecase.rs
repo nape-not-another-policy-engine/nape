@@ -2,10 +2,10 @@ use nape_kernel::algorithms::signature_algorithm::{SignatureAlgorithm};
 use nape_kernel::error::{Error, Kind};
 use nape_kernel::gateways::directory_list::RetrieveDirectoryPath;
 use nape_kernel::gateways::file_data_gateway::FileDataGateway;
-use nape_kernel::values::specification::{assurnace_report};
+use nape_kernel::values::specification::{assurance_report};
 use nape_kernel::values::specification::file_path::FilePath;
-use nape_kernel::values::specification::assurnace_report::signed_file::SignedFile;
-use nape_kernel::values::specification::v1_0_0::assurnace_report::AssuranceReportV1;
+use nape_kernel::values::specification::assurance_report::signed_file::SignedFile;
+use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 use nape_kernel::values::specification::v1_0_0::assurance_procedure::AssuranceProcedure;
 use crate::evidence_collection::usecases::evaluate_evidence::gateway::{EvaluateEvidenceGateway, PersistReportGateway, RetrieveAssuranceProcedure};
 use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::combine_paths;
@@ -78,7 +78,7 @@ pub fn evaluate_and_report(
         .map_err(|error| Error::for_system(Kind::GatewayError,
                                            format!("Failed to evaluate evidence files. {}", error.message)))?;
 
-    let report = AssurnaceReportBuilder::new()
+    let report = AssuranceReportBuilder::new()
         .with_home_dir(&home_root)
         .with_results(&evaluation_results)
         .with_definition(&procedure)
@@ -97,7 +97,7 @@ pub fn evaluate_and_report(
 
 }
 
-pub struct AssurnaceReportBuilder<'a> {
+pub struct AssuranceReportBuilder<'a> {
     home_dir: Option<FilePath>,
     request: Option<&'a EvaluateEvidence>,
     procedure_definition: Option<&'a AssuranceProcedure>,
@@ -106,7 +106,7 @@ pub struct AssurnaceReportBuilder<'a> {
     signature_algorithm: Option<SignatureAlgorithm>,
 }
 
-impl<'a> AssurnaceReportBuilder<'a> {
+impl<'a> AssuranceReportBuilder<'a> {
     pub fn new() -> Self {
         Self {
             home_dir: None,
@@ -195,12 +195,12 @@ fn try_create_report_activities(
     definition: &AssuranceProcedure,
     results: &EvaluationResults,
     file_data_gateway: FileDataGateway,
-    signature_algorithm: SignatureAlgorithm) -> Result< assurnace_report::activities::Activities, Error> {
+    signature_algorithm: SignatureAlgorithm) -> Result< assurance_report::activities::Activities, Error> {
 
-    let mut builder = assurnace_report::activities::Activities::builder();
+    let mut builder = assurance_report::activities::Activities::builder();
 
     for definition_activity in &definition.activities.list {
-        // TODO - Move home the combine_paths onto the try_get_test_result, and try_create_signed_file functions so you can combine to retrive the file data, but record in the assurnace report as the non-canonical path
+        // TODO - Move home the combine_paths onto the try_get_test_result, and try_create_signed_file functions so you can combine to retrive the file data, but record in the assurance report as the non-canonical path
         for definition_action in &definition_activity.actions {
             let test_result = try_get_test_result(results, home, &definition_action.evidence, &definition_action.test)?;
             let signed_evidence = try_create_signed_file(home, &definition_action.evidence, file_data_gateway, signature_algorithm)?;
@@ -209,7 +209,7 @@ fn try_create_report_activities(
             // let test_result = try_get_test_result(results, &definition_action.evidence, &definition_action.test)?;
             // let signed_evidence = try_create_signed_file(&definition_action.evidence, file_data_gateway, signature_algorithm)?;
             // let signed_test = try_create_signed_file(&definition_action.test, file_data_gateway, signature_algorithm)?;
-            let report_action = assurnace_report::action::Action::builder()
+            let report_action = assurance_report::action::Action::builder()
                 .use_name(&definition_action.name)
                 .use_outcome(&test_result.outcome)
                 .use_reason(&test_result.reason)
@@ -246,7 +246,7 @@ fn try_create_signed_file(home_root: &FilePath, file_path:  &FilePath, file_data
         .map_err(|error| Error::for_system(Kind::ProcessingFailure,
                                          format!("Failed to sign the file: {}. {}", file_path.as_str(), error)))?;
 
-    // use the non-canonical path to create the signed file because the non-canonical path is the path that is provided in the assurnace procedure
+    // use the non-canonical path to create the signed file because the non-canonical path is the path that is provided in the assurance procedure
     let signed_file = SignedFile::new(&file_path.as_str(), &signature_result)
         .map_err(|error| Error::for_system(Kind::ProcessingFailure,
                                          format!("Could not create a signed file for: {}. {}", file_path.as_str(), error)))?;

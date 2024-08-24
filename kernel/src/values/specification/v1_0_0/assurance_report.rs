@@ -2,11 +2,11 @@ use std::any::Any;
 use crate::error;
 use crate::error::{Error};
 use crate::values::specification::api_version::APIVersion;
-use crate::values::specification::assurnace_report::action::Action;
-use crate::values::specification::assurnace_report::additional_information::AdditionalInformation;
-use crate::values::specification::assurnace_report::activity::Activity;
-use crate::values::specification::assurnace_report::activities::Activities;
-use crate::values::specification::assurnace_report::summary::Summary;
+use crate::values::specification::assurance_report::action::Action;
+use crate::values::specification::assurance_report::additional_information::AdditionalInformation;
+use crate::values::specification::assurance_report::activity::Activity;
+use crate::values::specification::assurance_report::activities::Activities;
+use crate::values::specification::assurance_report::summary::Summary;
 use crate::values::specification::metadata::MetaData;
 use crate::values::specification::procedure::Procedure;
 use crate::values::specification::subject::Subject;
@@ -14,7 +14,7 @@ use crate::values::specification::traits::{AssuranceReport};
 
 /// # Overview
 ///
-/// The [`AssuranceReportV1`] is a data structure that represents the NAPE Assurnace Report specification v1.0.0.
+/// The [`AssuranceReportV1`] is a data structure that represents the NAPE Assurance Report specification v1.0.0.
 ///
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct AssuranceReportV1 {

@@ -1,4 +1,4 @@
-pub mod assurnace_report;
+pub mod assurance_report;
 pub mod assurance_procedure;
 pub mod traits;
 pub mod v1_0_0;

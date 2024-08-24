@@ -22,7 +22,7 @@ fn new_kind_enum_error_invalid_input_value() {
 }
 
 #[test]
-fn to_string_nape_assurnace_report() {
+fn to_string_nape_assurance_report() {
     let kind = Kind::AssuranceReport;
     assert_eq!(kind.to_string(), "AssuranceReport");
 }

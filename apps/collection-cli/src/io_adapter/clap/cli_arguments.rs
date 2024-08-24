@@ -5,7 +5,7 @@ pub fn subject() -> Arg {
         .short('s')
         .long("subject")
         .value_name("NAPE Resource Name")
-        .help("The subject is the NAPE Resource Name (NRN) that the assurnace procedure will be run against.")
+        .help("The subject is the NAPE Resource Name (NRN) that the assurance procedure will be run against.")
         .required(true)
 }
 
@@ -22,8 +22,8 @@ pub fn procedure_link() -> Arg {
     Arg::new("procedure-link")
         .short('l')
         .long("procedure-link")
-        .value_name("NAPE Assurnace Procedure Definition Link")
-        .help("The URL to the NAPE Repository containing the NAPE Assurnace Procedure Definition and all related NAPE Activity & Action Tests.")
+        .value_name("NAPE Assurance Procedure Definition Link")
+        .help("The URL to the NAPE Repository containing the NAPE Assurance Procedure Definition and all related NAPE Activity & Action Tests.")
         .required(true)
 }
 

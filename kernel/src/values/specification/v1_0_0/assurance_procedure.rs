@@ -18,13 +18,13 @@ pub struct AssuranceProcedure {
 }
 
 impl AssuranceProcedure {
-    pub fn builder() -> AssurnaceProcedureBuilder {
-        AssurnaceProcedureBuilder::new()
+    pub fn builder() -> AssuranceProcedureBuilder {
+        AssuranceProcedureBuilder::new()
     }
 
 }
 
- pub struct AssurnaceProcedureBuilder {
+ pub struct AssuranceProcedureBuilder {
     api_version: Option<String>,
     metadata: Vec<(String, String)>,
     procedure_nrn: Option<String>,
@@ -34,10 +34,10 @@ impl AssuranceProcedure {
     artifacts: Vec<Artifact>
 }
 
-impl AssurnaceProcedureBuilder {
+impl AssuranceProcedureBuilder {
 
     pub fn new() -> Self {
-            AssurnaceProcedureBuilder {
+            AssuranceProcedureBuilder {
                 api_version: None,
                 metadata: Vec::new(),
                 procedure_nrn: None,
@@ -135,5 +135,5 @@ impl AssurnaceProcedureBuilder {
 
 fn custom_error(message: &str) -> Error {
     Error::for_user(error::Kind::InvalidInput,
-                    format!("The AssurnaceProcedure could not be created: {}", message))
+                    format!("The AssuranceProcedure could not be created: {}", message))
 }

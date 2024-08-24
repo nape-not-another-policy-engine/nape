@@ -1,11 +1,11 @@
 use crate::algorithms::signature_algorithm::Signature;
 use crate::algorithms::signature_algorithm::SignatureType::SHA256;
-use crate::values::specification::assurnace_report::action::Action;
+use crate::values::specification::assurance_report::action::Action;
 use crate::values::specification::outcome::Outcome;
-use crate::values::specification::assurnace_report::activity::Activity;
-use crate::values::specification::assurnace_report::activities::Activities;
-use crate::values::specification::assurnace_report::signed_file::SignedFile;
-use crate::values::specification::assurnace_report::summary::Summary;
+use crate::values::specification::assurance_report::activity::Activity;
+use crate::values::specification::assurance_report::activities::Activities;
+use crate::values::specification::assurance_report::signed_file::SignedFile;
+use crate::values::specification::assurance_report::summary::Summary;
 
 
 #[test]

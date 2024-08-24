@@ -119,7 +119,7 @@ impl ActionBuilder {
 
 fn custom_error(message: &str) -> Error {
     Error::for_user(Kind::InvalidInput,
-                    format!("The Action for an Assurnace Procedure could not be created. {}", message))
+                    format!("The Action for an Assurance Procedure could not be created. {}", message))
 }
 
 

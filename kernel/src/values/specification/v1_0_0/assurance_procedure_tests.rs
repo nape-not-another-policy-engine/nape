@@ -32,7 +32,7 @@ fn builder_error_missing_api_version() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, error::Audience::User);
-    assert!(err.message.starts_with("The AssurnaceProcedure could not be created: The APIVersion is required, but was not provided."));
+    assert!(err.message.starts_with("The AssuranceProcedure could not be created: The APIVersion is required, but was not provided."));
 }
 #[test]
 fn builder_error_invalid_api_version() {
@@ -46,7 +46,7 @@ fn builder_error_invalid_api_version() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, error::Audience::User);
-    assert!(err.message.starts_with("The AssurnaceProcedure could not be created: The APIVersion has an issue: "));
+    assert!(err.message.starts_with("The AssuranceProcedure could not be created: The APIVersion has an issue: "));
 }
 
 /*** Procedure Sad Path Tests ***/
@@ -61,7 +61,7 @@ fn builder_error_missing_nrn() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, error::Audience::User);
-    assert_eq!("The AssurnaceProcedure could not be created: Check that you provided the procedure info. Either the procedure NRN, short description, or long description is missing.", err.message);
+    assert_eq!("The AssuranceProcedure could not be created: Check that you provided the procedure info. Either the procedure NRN, short description, or long description is missing.", err.message);
 }
 #[test]
 fn builder_error_invalid_procedure_nrn() {
@@ -75,7 +75,7 @@ fn builder_error_invalid_procedure_nrn() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, error::Audience::User);
-    assert!(err.message.starts_with("The AssurnaceProcedure could not be created: The procedure information has an issue: "));
+    assert!(err.message.starts_with("The AssuranceProcedure could not be created: The procedure information has an issue: "));
 }
 #[test]
 fn builder_error_invalid_procedure_short() {
@@ -89,7 +89,7 @@ fn builder_error_invalid_procedure_short() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, error::Audience::User);
-    assert!(err.message.starts_with("The AssurnaceProcedure could not be created: The procedure information has an issue: "));
+    assert!(err.message.starts_with("The AssuranceProcedure could not be created: The procedure information has an issue: "));
 }
 #[test]
 fn builder_error_invalid_procedure_description() {
@@ -103,10 +103,10 @@ fn builder_error_invalid_procedure_description() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, error::Audience::User);
-    assert!(err.message.starts_with("The AssurnaceProcedure could not be created: The procedure information has an issue: "));
+    assert!(err.message.starts_with("The AssuranceProcedure could not be created: The procedure information has an issue: "));
 }
 
-/*** Assurnace Procedure Definition - Sad Path Tests ***/
+/*** Assurance Procedure Definition - Sad Path Tests ***/
 /*** NOTE - There are no Procedure Definition Sad Paths in the current implementation ***/
 
 
@@ -126,5 +126,5 @@ fn builder_error_add_artifact_duplicate_artifact() {
     let err = result.unwrap_err();
     assert_eq!(err.kind, error::Kind::InvalidInput);
     assert_eq!(err.audience, Audience::User);
-    assert!(err.message.starts_with("The AssurnaceProcedure could not be created: The artifact 'artifact-1' has an issue: "));
+    assert!(err.message.starts_with("The AssuranceProcedure could not be created: The artifact 'artifact-1' has an issue: "));
 }

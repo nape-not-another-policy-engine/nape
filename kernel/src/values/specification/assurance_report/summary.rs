@@ -1,5 +1,5 @@
 use crate::values::specification::outcome::Outcome;
-use crate::values::specification::assurnace_report::activities::Activities;
+use crate::values::specification::assurance_report::activities::Activities;
 
 #[derive(Clone, Debug, Default, Eq, Hash, PartialEq)]
 pub struct Summary {

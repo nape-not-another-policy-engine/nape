@@ -34,7 +34,7 @@ pub fn from_yaml_on_filesystem(file_path: &str) -> Result<AssuranceProcedure, Er
             .map_err(|e| Error::for_system(Kind::ProcessingFailure, format!("Could not deserialize file content: {}", e)))?;
 
         let assurance_procedure = assurance_procedure_file.try_to()
-            .map_err(|e| Error::for_system(Kind::ProcessingFailure, format!("Failed to convert assurnace procedure file content to AssuranceProcedure: {}", e)))?;
+            .map_err(|e| Error::for_system(Kind::ProcessingFailure, format!("Failed to convert assurance procedure file content to AssuranceProcedure: {}", e)))?;
 
         Ok(assurance_procedure)
 

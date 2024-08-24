@@ -21,7 +21,7 @@ use nape_kernel::values::specification::repository_link::RepositoryLink;
 /// A [`DirectoryList`] which contains the paths to the procedure files and subdirectories, or an [`Error`].
 ///
 /// They [`DirectoryList`] contains only two entries:
-///  - *assurance-procedure-file* - a link to the Assurnace Procedure file that defines the assurnace procedure
+///  - *assurance-procedure-file* - a link to the Assurance Procedure file that defines the assurance procedure
 /// - *activity-dir* - a link to the activity test directory which contains all the test files for the activity actions in the procedure document
 ///
 /// # Errors

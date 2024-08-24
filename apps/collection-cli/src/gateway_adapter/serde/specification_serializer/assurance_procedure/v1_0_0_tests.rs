@@ -9,7 +9,7 @@ use crate::gateway_adapter::serde::specification_serializer::assurance_procedure
 
 #[test]
 fn from_success() {
-    let procedure = generate_valid_assurnace_procedure();
+    let procedure = generate_valid_assurance_procedure();
     let file = AssuranceProcedureFile::from(&procedure);
 
     assert_eq!(file.api_version, "1.0.0");
@@ -68,7 +68,7 @@ fn from_success() {
 
 #[test]
 fn try_to_success() {
-    let file = generate_valid_assurnace_procedure_file();
+    let file = generate_valid_assurance_procedure_file();
     let result = file.try_to();
 
     is_ok!(&result);
@@ -132,7 +132,7 @@ fn try_to_success() {
 
 #[test]
 fn try_to_handles_invalid_api_version_error() {
-    let file = generate_invalid_assurnace_procedure_file_bad_api_version();
+    let file = generate_invalid_assurance_procedure_file_bad_api_version();
     let result = file.try_to();
 
     kernel_error_starts_with!(result, Kind::ProcessingFailure, Audience::System, "Failed to extract the data from the Assurance Procedure File. " );
@@ -140,7 +140,7 @@ fn try_to_handles_invalid_api_version_error() {
 
 #[test]
 fn try_to_handles_invalid_procedure_error() {
-    let file = generate_invalid_assurnace_procedure_file_bad_procedure();
+    let file = generate_invalid_assurance_procedure_file_bad_procedure();
     let result = file.try_to();
 
     kernel_error_starts_with!(result, Kind::ProcessingFailure, Audience::System, "Failed to extract the data from the Assurance Procedure File. " );
@@ -148,7 +148,7 @@ fn try_to_handles_invalid_procedure_error() {
 
 #[test]
 fn try_to_handles_invalid_activity_error() {
-    let file = generate_invalid_assurnace_procedure_file_activity();
+    let file = generate_invalid_assurance_procedure_file_activity();
     let result = file.try_to();
 
     kernel_error_starts_with!(result, Kind::ProcessingFailure, Audience::System, "Failed to extract the data from the Assurance Procedure File. There is an issue with an Activity. " );
@@ -156,7 +156,7 @@ fn try_to_handles_invalid_activity_error() {
 
 #[test]
 fn try_to_handles_invalid_action_error() {
-    let file = generate_invalid_assurnace_procedure_file_bad_action();
+    let file = generate_invalid_assurance_procedure_file_bad_action();
     let result = file.try_to();
 
     kernel_error_starts_with!(result, Kind::ProcessingFailure, Audience::System, "Failed to extract the data from the Assurance Procedure File. There is an issue with an Action. " );
@@ -165,7 +165,7 @@ fn try_to_handles_invalid_action_error() {
 
 
 
-fn generate_valid_assurnace_procedure() -> AssuranceProcedure {
+fn generate_valid_assurance_procedure() -> AssuranceProcedure {
 
     let activity_1 = Activity::new("activity-1", "Short Desc - A1", "Long Desc - Activity 1").unwrap();
     let activity_1 = activity_1.add(Action::builder().name("action-1")
@@ -209,7 +209,7 @@ fn generate_valid_assurnace_procedure() -> AssuranceProcedure {
         .try_build().unwrap()
 }
 
-fn generate_valid_assurnace_procedure_file() -> AssuranceProcedureFile {
+fn generate_valid_assurance_procedure_file() -> AssuranceProcedureFile {
 
     let action1 = FileAction {  name: "action-1".to_string(),  short: "Short Desc - A1".to_string(),  description: "Long Desc - Action 1".to_string(),  test: "test/for/action_1.txt".to_string(),  evidence: "evidence/for/action_1.txt".to_string() };
     let action2 = FileAction {  name: "action-2".to_string(),  short: "Short Desc - A2".to_string(),  description: "Long Desc - Action 2".to_string(),  test: "test/for/action_2.txt".to_string(),  evidence: "evidence/for/action_2.txt".to_string() };
@@ -226,7 +226,7 @@ fn generate_valid_assurnace_procedure_file() -> AssuranceProcedureFile {
 }
 
 
-fn generate_invalid_assurnace_procedure_file_bad_api_version() -> AssuranceProcedureFile {
+fn generate_invalid_assurance_procedure_file_bad_api_version() -> AssuranceProcedureFile {
 
     // The action name that is bad is action1, everything else is ok.
     let action1 = FileAction {  name: "action-1".to_string(),  short: "Short Desc - A1".to_string(),  description: "Long Desc - Action 1".to_string(),  test: "test/for/action_1.txt".to_string(),  evidence: "evidence/for/action_1.txt".to_string() };
@@ -244,7 +244,7 @@ fn generate_invalid_assurnace_procedure_file_bad_api_version() -> AssuranceProce
 }
 
 
-fn generate_invalid_assurnace_procedure_file_bad_procedure() -> AssuranceProcedureFile {
+fn generate_invalid_assurance_procedure_file_bad_procedure() -> AssuranceProcedureFile {
 
     let action1 = FileAction {  name: "action-1".to_string(),  short: "Short Desc - A1".to_string(),  description: "Long Desc - Action 1".to_string(),  test: "test/for/action_1.txt".to_string(),  evidence: "evidence/for/action_1.txt".to_string() };
     let action2 = FileAction {  name: "action-2".to_string(),  short: "Short Desc - A2".to_string(),  description: "Long Desc - Action 2".to_string(),  test: "test/for/action_2.txt".to_string(),  evidence: "evidence/for/action_2.txt".to_string() };
@@ -260,7 +260,7 @@ fn generate_invalid_assurnace_procedure_file_bad_procedure() -> AssuranceProcedu
 
 }
 
-fn generate_invalid_assurnace_procedure_file_activity() -> AssuranceProcedureFile {
+fn generate_invalid_assurance_procedure_file_activity() -> AssuranceProcedureFile {
 
     let action1 = FileAction {  name: "action-1".to_string(),  short: "Short Desc - A1".to_string(),  description: "Long Desc - Action 1".to_string(),  test: "test/for/action_1.txt".to_string(),  evidence: "evidence/for/action_1.txt".to_string() };
     let action2 = FileAction {  name: "action-2".to_string(),  short: "Short Desc - A2".to_string(),  description: "Long Desc - Action 2".to_string(),  test: "test/for/action_2.txt".to_string(),  evidence: "evidence/for/action_2.txt".to_string() };
@@ -276,7 +276,7 @@ fn generate_invalid_assurnace_procedure_file_activity() -> AssuranceProcedureFil
 
 }
 
-fn generate_invalid_assurnace_procedure_file_bad_action() -> AssuranceProcedureFile {
+fn generate_invalid_assurance_procedure_file_bad_action() -> AssuranceProcedureFile {
 
     let action1 = FileAction {  name: "bad action".to_string(),  short: "Short Desc - A1".to_string(),  description: "Long Desc - Action 1".to_string(),  test: "test/for/action_1.txt".to_string(),  evidence: "evidence/for/action_1.txt".to_string() };
     let action2 = FileAction {  name: "action-2".to_string(),  short: "Short Desc - A2".to_string(),  description: "Long Desc - Action 2".to_string(),  test: "test/for/action_2.txt".to_string(),  evidence: "evidence/for/action_2.txt".to_string() };

@@ -1,7 +1,7 @@
 use nape_kernel::error::{Error, Kind};
 use nape_kernel::values::specification::api_version::APIVersion;
 use nape_kernel::values::specification::traits::AssuranceReport;
-use nape_kernel::values::specification::v1_0_0::assurnace_report::AssuranceReportV1;
+use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 use crate::gateway_adapter::serde::specification_serializer::assurance_report::v1_0_0::AssuranceReportFileV1;
 
 /// The [`create`] function is a factory function that creates a YAML string from an [`AssuranceReport`] by downcasting it to the proper concert implementation based upon the version.
@@ -18,10 +18,10 @@ pub fn create(report: &dyn AssuranceReport) -> Result<String, Error> {
                     Ok(yaml_string)
                 },
                 None => Err(Error::for_system(Kind::ProcessingFailure,
-                                              "Factory failed to create AssurnaceReportV1".to_string()))
+                                              "Factory failed to create AssuranceReportV1".to_string()))
             }
         },
         _ => Err(Error::for_system(Kind::ProcessingFailure,
-                                   format!("Factory failed to create an AssurnaceReportFile YAML stringn from an AssurnaceReport because the API Version '{}' is not recognized", report.api_version().as_string())))
+                                   format!("Factory failed to create an AssuranceReportFile YAML stringn from an AssuranceReport because the API Version '{}' is not recognized", report.api_version().as_string())))
     }
 }

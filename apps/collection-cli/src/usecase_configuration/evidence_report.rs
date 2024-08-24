@@ -7,7 +7,7 @@ use crate::gateway_adapter::serde::persist_report_gateway::save_report_as_yaml;
 use crate::gateway_adapter::sha2::signature_algorithm::sha256_signature;
 use crate::gateway_adapter::state_management::retrieve_directory_path::directory_path_from_app_state;
 use crate::gateway_adapter::std_fs::file_data_gateway::read_file_data;
-use crate::gateway_adapter::std_fs::retrieve_assurnace_procedure::from_yaml_on_filesystem;
+use crate::gateway_adapter::std_fs::retrieve_assurance_procedure::from_yaml_on_filesystem;
 
 pub fn std_fs_factory() -> EvaluateAndReportEvidenceUC {
     move |request: &EvaluateEvidence| -> Result<FilePath, Error> {

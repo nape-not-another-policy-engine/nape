@@ -263,7 +263,7 @@ fn start_collection_error_file_move_activity_dir() {
     assert_eq!(err.message, "We could not start the collection procedure. Could not move the downloaded activity test directory '/some/path/to/activity/' to 'nrn_sourcecode_example/1714646108364/activity': Move Activity Test Dir Failure");
 }
 
-/// Using the canned request, this test verifies that there is a file move request for the activity test directory, or procedure definition document, downloaded from the repository to the local 'activity-test' directory that will be used for execution of the assurnace procedure.
+/// Using the canned request, this test verifies that there is a file move request for the activity test directory, or procedure definition document, downloaded from the repository to the local 'activity-test' directory that will be used for execution of the assurance procedure.
 ///  It verifies that the source, generated from the request input, and target, give the standard protocol, are the expected values.
 ///
 #[test]

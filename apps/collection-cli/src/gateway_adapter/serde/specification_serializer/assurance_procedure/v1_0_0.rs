@@ -95,7 +95,7 @@ impl AssuranceProcedureFile {
     ///
     /// # Design Decisions
     ///
-    /// - the *try_* construct is used because the AssurnaceProcedureFile could be missing required fields or have invalid fields.
+    /// - the *try_* construct is used because the AssuranceProcedureFile could be missing required fields or have invalid fields.
     ///
     pub fn try_to(&self) -> Result<AssuranceProcedure, Error> {
 

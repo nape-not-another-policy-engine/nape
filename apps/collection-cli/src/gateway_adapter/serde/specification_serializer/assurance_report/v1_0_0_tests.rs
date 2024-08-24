@@ -1,6 +1,6 @@
-use nape_kernel::values::specification::assurnace_report::action::Action;
-use nape_kernel::values::specification::assurnace_report::activity::Activity;
-use nape_kernel::values::specification::v1_0_0::assurnace_report::AssuranceReportV1;
+use nape_kernel::values::specification::assurance_report::action::Action;
+use nape_kernel::values::specification::assurance_report::activity::Activity;
+use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 use crate::gateway_adapter::serde::specification_serializer::assurance_report::v1_0_0::AssuranceReportFileV1;
 
 

@@ -1,6 +1,6 @@
 use nape_testing_assertions::kernel_error_contains;
 use nape_testing_assertions::is_ok;
-use crate::values::specification::assurnace_report::additional_information::AdditionalInformation;
+use crate::values::specification::assurance_report::additional_information::AdditionalInformation;
 use crate::error::{Audience, Kind};
 
 #[test]

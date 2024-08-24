@@ -2,9 +2,9 @@ use nape_testing_assertions::kernel_error_starts_with;
 use crate::algorithms::signature_algorithm::Signature;
 use crate::algorithms::signature_algorithm::SignatureType::SHA256;
 use crate::error::{Audience, Kind};
-use crate::values::specification::assurnace_report::action::Action;
+use crate::values::specification::assurance_report::action::Action;
 use crate::values::specification::outcome::Outcome;
-use crate::values::specification::assurnace_report::signed_file::SignedFile;
+use crate::values::specification::assurance_report::signed_file::SignedFile;
 use crate::values::specification::description::Description;
 use crate::values::specification::name::Name;
 

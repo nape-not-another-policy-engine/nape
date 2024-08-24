@@ -4,7 +4,7 @@ use crate::values::specification::metadata::MetaData;
 use crate::values::specification::name::Name;
 
 
-/// The [`Artifact`] describes an expected artifact that is associated with a ['AssurnaceProcessDefinition'].
+/// The [`Artifact`] describes an expected artifact that is associated with a ['AssuranceProcessDefinition'].
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct Artifact {
     pub name: Name,

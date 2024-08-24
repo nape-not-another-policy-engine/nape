@@ -1,14 +1,14 @@
 use crate::gateway_adapter::serde::persist_report_gateway::save_report_as_yaml;
-use nape_kernel::values::specification::v1_0_0::assurnace_report::AssuranceReportV1;
+use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 use nape_testing_assertions::is_ok;
 use nape_testing_filesystem::{canonical_path, create, remove};
-use nape_kernel::values::specification::assurnace_report::action::Action;
-use nape_kernel::values::specification::assurnace_report::activity::Activity;
+use nape_kernel::values::specification::assurance_report::action::Action;
+use nape_kernel::values::specification::assurance_report::activity::Activity;
 
-// Each Assurnace Report version has it's won module as a way to keep the code organized.
+// Each Assurance Report version has it's won module as a way to keep the code organized.
 
 /// Verify [`AssuranceReportV1`] can be persisted as a YAML file, and is persisted successfully.
-mod persist_assurnace_report_v1 {
+mod persist_assurance_report_v1 {
     use std::fs;
     use super::*;
 
