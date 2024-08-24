@@ -6,8 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-url = "2.4.0"
-log = "0.4.21"
+url = "2.5.2"
+log = "0.4.22"
 
 [dev-dependencies]
 nape_testing_tags = { path = "../test_framework/tags" }
