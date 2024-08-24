@@ -10,6 +10,6 @@ on:
 
 jobs:
   source-code-integration:
-    uses: nape-not-another-policy-engine/nape-build-deploy-release/rust-standards/ci-workflow.yml@main
+    uses: nape-not-another-policy-engine/nape-build-deploy-release/.github/workflows/rust-standards/ci-workflow.yml@main
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
