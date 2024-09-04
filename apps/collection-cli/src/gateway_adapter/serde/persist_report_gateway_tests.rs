@@ -45,7 +45,7 @@ mod persist_assurance_report_v1 {
             .subject_nrn("nrn:sourcecode:nape:collection-cli")
             .subject_id("9f3f183a300501b53e2fa04f48acb4bd478d6414")
             .add_metadata("build-id", "1")
-            .procedure_repository("github.com/nape/processes")
+            .procedure_repository("github.com/nape/processes.git")
             .procedure_directory("rust_ci/sourcecode_integration")
             .add_activity(&activity1)
             .add_activity(&activity2)
@@ -82,7 +82,7 @@ subject:
   urn: nrn:sourcecode:nape:collection-cli
   id: 9f3f183a300501b53e2fa04f48acb4bd478d6414
 procedure:
-  repository: git://github.com/nape/processes
+  repository: https://github.com/nape/processes.git
   directory: rust_ci/sourcecode_integration
 summary:
   activity_count: 3

@@ -3,10 +3,10 @@ use crate::values::uri::url::URL;
 
 
 /// The default scheme for a [`RepositoryLink`] if one is not provided.
-const DEFAULT_REPOSITORY_LINK_SCHEME: &str = "git://";
+const DEFAULT_REPOSITORY_LINK_SCHEME: &str = "https://";
 
 /// The [`RepositoryLink`] schemes that are allowed with NAPE.
-const ALLOWED_REPOSITORY_LINK_SCHEMES: [&str; 2] = ["git", "https"];
+const ALLOWED_REPOSITORY_LINK_SCHEMES: [&str; 2] = ["local", "https"];
 
 /// The [`RepositoryLink`] value is an NAPE-specific value for capturing the URL for the location of a procedure specification.
 ///

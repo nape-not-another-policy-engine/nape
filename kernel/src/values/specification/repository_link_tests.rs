@@ -4,14 +4,14 @@ use crate::values::specification::repository_link::RepositoryLink;
 
 #[test]
 fn new_repository_link_without_scheme_in_url() {
-    let process_link_result = RepositoryLink::new("github.com/nape/processes/rust-ci");
+    let process_link_result = RepositoryLink::new("github.com/nape/processes.git");
     match process_link_result {
         Ok(process_link) => {
-            assert_eq!(process_link.value, "git://github.com/nape/processes/rust-ci");
-            assert_eq!(process_link.url.scheme, "git");
+            assert_eq!(process_link.value, "https://github.com/nape/processes.git");
+            assert_eq!(process_link.url.scheme, "https");
             assert_eq!(process_link.url.host, "github.com");
             assert_eq!(process_link.url.port, 0);
-            assert_eq!(process_link.url.path, "/nape/processes/rust-ci");
+            assert_eq!(process_link.url.path, "/nape/processes.git");
             assert_eq!(process_link.url.query_string, "");
             assert_eq!(process_link.url.queries.len(), 0);
             assert_eq!(process_link.url.fragment, "");
