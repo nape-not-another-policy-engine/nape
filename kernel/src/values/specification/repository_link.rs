@@ -11,7 +11,7 @@ const ALLOWED_REPOSITORY_LINK_SCHEMES: [&str; 2] = ["local", "https"];
 /// The [`RepositoryLink`] value is an NAPE-specific value for capturing the URL for the location of a procedure specification.
 ///
 /// # Assumptions
-///  * This defaults all schemes to **git://** if a scheme is not provided.
+///  * This defaults all schemes to **https://** if a scheme is not provided.
 ///  * This allows url inputs values such as **localhost** to be valid.
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct RepositoryLink {
