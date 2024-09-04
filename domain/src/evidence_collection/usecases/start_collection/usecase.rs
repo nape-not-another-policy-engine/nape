@@ -79,7 +79,7 @@ pub fn start_collection(
 
 fn download_files_from_repo(request: &StartProcedure, retrieve_procedure: ProcedureRetrievalGateway, temp_dir: &String) -> Result<(String, String), Error> {
 
-    let repo_link = RepositoryLink::new(&request.procedure.repository)?;  // TODO - Update the request procedure repository like with a Repository Link.
+    let repo_link = RepositoryLink::try_new(&request.procedure.repository)?;  // TODO - Update the request procedure repository like with a Repository Link.
     let procedure_dir = &request.procedure.directory; // TODO - update teh request procedure reposityr link with a struct that is a Direcotty which validates based upon a directory structure.  NOTE - maket he standard a unix directory and make a note that users of this object are requuired to convert it into an OS-Sepcfic directory.
     let download_dir = temp_dir.as_str();
 

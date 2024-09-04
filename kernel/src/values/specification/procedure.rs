@@ -40,7 +40,7 @@ impl Procedure {
 }
 
 fn validate_repository_link(link: &str) -> Result<RepositoryLink, Error> {
-    RepositoryLink::new(link).map_err(|e|
+    RepositoryLink::try_new(link).map_err(|e|
         Error::for_user( Kind::InvalidInput, format!("'{}' is not a valid procedure location: {}", link, e.message)))
 }
 

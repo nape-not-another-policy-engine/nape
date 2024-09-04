@@ -7,7 +7,7 @@ use crate::gateway_adapter::git2::process_retrieval_gateway::retrieve_procedure_
 #[test]
 /// This is a LARGE Test
 fn retrieve_procedure_from_git_success() {
-    let repo_link = RepositoryLink::new("https://github.com/nape-dev/catalog.git").unwrap();
+    let repo_link = RepositoryLink::try_new("https://github.com/nape-dev/catalog.git").unwrap();
     let process_directory = "rust_ci/sourcecode_integration";
     let download_directory = "retrieve_process_from_git_success";
 
