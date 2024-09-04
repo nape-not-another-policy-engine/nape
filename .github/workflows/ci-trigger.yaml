@@ -1,12 +1,7 @@
 name: NAPE - Continuous Integration (CI) Workflow
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 permissions:
   contents: write
