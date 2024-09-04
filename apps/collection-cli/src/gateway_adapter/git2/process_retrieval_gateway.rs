@@ -8,7 +8,7 @@ use nape_kernel::values::directory::directory_list::DirectoryList;
 use nape_kernel::values::specification::repository_link::RepositoryLink;
 
 /// # Overview
-/// The [`git2`] implementation of the Gateway [`domain::evidence_collection::usecase::for_process::start_collection_process::ProcessRetrievalGateway`] which retrieves the NAPE procedure data from a git repository and writes the procedure files to disk.
+/// The [`git2`] implementation of the Gateway [`domain::evidence_collection::usecase::for_process::start_collection_process::ProcedureRetrievalGateway`] which retrieves the NAPE procedure data from a git repository and writes the procedure files to disk.
 ///
 /// # Arguments
 ///
