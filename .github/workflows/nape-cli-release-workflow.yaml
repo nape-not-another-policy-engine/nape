@@ -61,7 +61,7 @@ jobs:
   compile-and-release:
     needs: version-check
     if: success() && ${{ steps.version_check.outcome != 'skipped' }}
-    uses: nape-not-another-policy-engine/nape-build-deploy-release/.github/workflows/rust-standard-multiarch-build.yaml
+    uses: nape-not-another-policy-engine/nape-build-deploy-release/.github/workflows/rust-standard-multiarch-build.yaml@main
     secrets: inherit
     with:
       rust-project: nape_cli
