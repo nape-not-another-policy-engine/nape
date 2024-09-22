@@ -66,4 +66,4 @@ jobs:
     with:
       rust-project: nape_cli
       binary-repo-name: nape-cli
-      version: ${{ steps.extract_current_version.outputs.CURRENT_VERSION }}
+      version: ${{ env.CURRENT_VERSION }}
