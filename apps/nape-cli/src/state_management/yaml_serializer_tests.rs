@@ -11,7 +11,7 @@ fn serialize_to_yaml_success() {
 
     /* ASSEMBLE */
 
-    let subject = Subject::try_new("nrn:sourcecode:nape/collection-cli", "1719326666").unwrap();
+    let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
     let procedure = Procedure::try_new("https://example.com", "some/dir/location").unwrap();
 
     let mut metadata = MetaData::default();
@@ -42,7 +42,7 @@ fn serialize_to_yaml_success() {
 
 #[test]
 fn deserialize_from_yaml_success() {
-    let yaml_contents = "---\nmetadata:\n  key-1: value 1\n  key-2: value 2\nsubject_id: \"1719326666\"\nsubject_nrn: nrn:sourcecode:nape/collection-cli\nprocedure_directory: some/dir/location\nprocedure_repository: https://example.com\ndirectories:\n  path-1: some/path/one\n  path-2: some/path/two\n  path-3: some/path/three/file.txt\n";
+    let yaml_contents = "---\nmetadata:\n  key-1: value 1\n  key-2: value 2\nsubject_id: \"1719326666\"\nsubject_nrn: nrn:sourcecode:nape/nape-cli\nprocedure_directory: some/dir/location\nprocedure_repository: https://example.com\ndirectories:\n  path-1: some/path/one\n  path-2: some/path/two\n  path-3: some/path/three/file.txt\n";
 
     let result = deserialize_from_yaml(&yaml_contents);
 
@@ -50,7 +50,7 @@ fn deserialize_from_yaml_success() {
 
     let deserialized_app_state = &result.unwrap();
 
-    let subject = Subject::try_new("nrn:sourcecode:nape/collection-cli", "1719326666").unwrap();
+    let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
     let procedure = Procedure::try_new("https://example.com", "some/dir/location").unwrap();
 
     let mut metadata = MetaData::default();

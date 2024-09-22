@@ -73,6 +73,12 @@ impl RepositoryLink {
                 format!("The procedure link is not valid - {}", error.message)))
         }
     }
+
+    /// Check if the scheme of the URL scheme is equal to the provided scheme.
+    pub fn is_scheme(&self, scheme: &RepositoryLinkScheme) -> bool {
+        self.url.scheme.eq(scheme.as_str())
+    }
+
 }
 
 fn check_for_empty(url: &str) -> Result<(), Error> {

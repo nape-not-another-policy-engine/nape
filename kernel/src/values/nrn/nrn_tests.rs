@@ -6,7 +6,7 @@ use crate::values::nrn::nrn::{NRN, NapeNID, NID, NSS};
 
 #[test]
 fn nrn_from_str_success() {
-    let result = NRN::new("nrn:sourcecode:nape:project/collection-cli");
+    let result = NRN::new("nrn:sourcecode:nape:project/nape-cli");
 
     assert!(result.is_ok());
 
@@ -14,7 +14,7 @@ fn nrn_from_str_success() {
     assert_eq!(nrn.scheme, "nrn");
     assert_eq!(nrn.nid, NapeNID::SourceCode);
     assert_eq!(nrn.nss[0], NSS::new("nape").unwrap());
-    assert_eq!(nrn.nss[1], NSS::new("project/collection-cli").unwrap());
+    assert_eq!(nrn.nss[1], NSS::new("project/nape-cli").unwrap());
 }
 #[test]
 fn nrn_from_str_error_empty() {
@@ -28,14 +28,14 @@ fn nrn_from_str_error_empty() {
 }
 #[test]
 fn nrn_from_str_error_wrong_scheme() {
-    let result = NRN::new("urn:sourecode:nape::project/collection-cli");
+    let result = NRN::new("urn:sourecode:nape::project/nape-cli");
 
     assert!(result.is_err());
-    assert_eq!(result.err().unwrap().message, "You provided 'urn:sourecode:nape::project/collection-cli' as an NRN and the scheme 'urn'  is not valid. Must be 'nrn'");
+    assert_eq!(result.err().unwrap().message, "You provided 'urn:sourecode:nape::project/nape-cli' as an NRN and the scheme 'urn'  is not valid. Must be 'nrn'");
 }
 #[test]
 fn nrn_from_str_error_wrong_nid() {
-    let result = NRN::new("nrn:somewrongnid:nape::project/collection-cli");
+    let result = NRN::new("nrn:somewrongnid:nape::project/nape-cli");
 
     assert!(result.is_err());
     let error = result.err().unwrap();
@@ -52,7 +52,7 @@ fn nrn_from_str_error_missing_nss() {
 }
 #[test]
 fn nrn_from_str_error_invalid_nss() {
-    let result = NRN::new("nrn:sourcecode:nape:project/collection-cli:invalid nss");
+    let result = NRN::new("nrn:sourcecode:nape:project/nape-cli:invalid nss");
     assert!(result.is_err());
     let error = result.err().unwrap();
     assert_eq!(error.kind, Kind::InvalidInput);

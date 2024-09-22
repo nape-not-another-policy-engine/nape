@@ -42,7 +42,7 @@ mod persist_assurance_report_v1 {
         let activity3 = Activity::builder().name("activity-3").add(&action5).add(&action6).add(&action7).try_build().unwrap();
 
         let report = AssuranceReportV1::builder()
-            .subject_nrn("nrn:sourcecode:nape:collection-cli")
+            .subject_nrn("nrn:sourcecode:nape:nape-cli")
             .subject_id("9f3f183a300501b53e2fa04f48acb4bd478d6414")
             .add_metadata("build-id", "1")
             .procedure_repository("github.com/nape/processes.git")
@@ -79,7 +79,7 @@ kind: AssuranceReport
 metadata:
   build-id: '1'
 subject:
-  urn: nrn:sourcecode:nape:collection-cli
+  urn: nrn:sourcecode:nape:nape-cli
   id: 9f3f183a300501b53e2fa04f48acb4bd478d6414
 procedure:
   repository: https://github.com/nape/processes.git

@@ -41,6 +41,12 @@ mod repository_link_tests {
         }
     }
     #[test]
+    fn is_scheme_success() {
+        let process_link = RepositoryLink::try_new("local://some/repo").unwrap();
+
+        assert!(process_link.is_scheme(&RepositoryLinkScheme::Local));
+    }
+    #[test]
     fn new_repository_link_error_empty_url() {
         let result = RepositoryLink::try_new("");
         match result {
@@ -78,6 +84,13 @@ mod repository_link_tests {
         assert_eq!(error.kind, Kind::InvalidInput);
         assert_eq!(error.audience, Audience::User);
         assert!(error.message.contains("The scheme 'not-supported' is not allowed. Allowed schemes are "));
+
+    }
+    #[test]
+    fn is_scheme_error() {
+        let process_link = RepositoryLink::try_new("local://some/repo").unwrap();
+
+        assert_eq!(false, process_link.is_scheme(&RepositoryLinkScheme::Https));
 
     }
 }
