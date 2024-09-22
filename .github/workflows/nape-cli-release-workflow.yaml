@@ -1,0 +1,69 @@
+name: NAPE - Compile & Release workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/nape-cli/Cargo.toml  # Only trigger if Cargo.toml for the nape-cli app is changed
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+
+  # Verify the Cargo.toml version has increased according to SemVer rules
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Extract Current Version from Cargo.toml
+        id: extract_current_version
+        run: |
+          current_version=$(grep '^version =' nape-cli/Cargo.toml | sed 's/version = "//' | sed 's/"//')
+          echo "CURRENT_VERSION=$current_version" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Extract Previous Version from Previous Commit
+        id: extract_previous_version
+        run: |
+          git show HEAD^:nape-cli/Cargo.toml | grep '^version =' | sed 's/version = "//' | sed 's/"//' > prev_version.txt
+          previous_version=$(cat prev_version.txt)
+          echo "PREVIOUS_VERSION=$previous_version" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Compare Versions and Validate
+        id: version_check
+        run: |
+          if [ "$CURRENT_VERSION" == "$PREVIOUS_VERSION" ]; then
+            echo "No version change, no need to Compile & Release."
+            exit 0
+          fi
+
+          # Semantic version validation
+          IFS='.' read -r -a curr_parts <<< "$CURRENT_VERSION"
+          IFS='.' read -r -a prev_parts <<< "$PREVIOUS_VERSION"
+
+          if (( ${curr_parts[0]} > ${prev_parts[0]} )) || \
+             (( ${curr_parts[0]} == ${prev_parts[0]} && ${curr_parts[1]} > ${prev_parts[1]} )) || \
+             (( ${curr_parts[0]} == ${prev_parts[0]} && ${curr_parts[1]} == ${prev_parts[1]} && ${curr_parts[2]} > ${prev_parts[2]} )); then
+            echo "Version increased according to SemVer rules."
+          else
+            echo "Version did not increase according to SemVer rules. Failing."
+            exit 1
+          fi
+        shell: bash
+
+  # Compile & Release if version-check is successful
+  compile-and-release:
+    needs: version-check
+    if: success() && ${{ steps.version_check.outcome != 'skipped' }}
+    uses: nape-not-another-policy-engine/nape-build-deploy-release/.github/workflows/rust-standard-multiarch-build.yaml
+    secrets: inherit
+    with:
+      rust-project: nape_cli
+      binary-repo-name: nape-cli
+      version: ${{ env.CURRENT_VERSION }}

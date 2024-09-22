@@ -20,7 +20,7 @@ mod request_tests {
         ];
         let builder = request::StartProcedureBuilder::default()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
@@ -37,7 +37,7 @@ mod request_tests {
         assert_eq!(start_procedure.api_version.as_string(), "1.0.0");
         assert_eq!(start_procedure.kind, specification::kind::Kind::AssuranceProcedure);
         assert_eq!(start_procedure.metadata.data.len(), 5);
-        assert_eq!(start_procedure.subject.nrn, NRN::new("nrn:sourcecode:nape/collection-cli").unwrap());
+        assert_eq!(start_procedure.subject.nrn, NRN::new("nrn:sourcecode:nape/nape-cli").unwrap());
         assert_eq!(start_procedure.subject.id, SubjectId::new("1234").unwrap());
         assert_eq!(start_procedure.procedure.repository, "https://example.com");
         assert_eq!(start_procedure.procedure.directory, "some/dir/location");
@@ -51,7 +51,7 @@ mod request_tests {
         ];
         let builder = request::StartProcedureBuilder::default()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
@@ -68,7 +68,7 @@ mod request_tests {
         assert_eq!(start_procedure.api_version.as_string(), "1.0.0");
         assert_eq!(start_procedure.kind, specification::kind::Kind::AssuranceProcedure);
         assert_eq!(start_procedure.metadata.data.len(), 5);
-        assert_eq!(start_procedure.subject.nrn, NRN::new("nrn:sourcecode:nape/collection-cli").unwrap());
+        assert_eq!(start_procedure.subject.nrn, NRN::new("nrn:sourcecode:nape/nape-cli").unwrap());
         assert_eq!(start_procedure.subject.id, SubjectId::new("1234").unwrap());
         assert_eq!(start_procedure.procedure.repository, "https://example.com");
         assert_eq!(start_procedure.procedure.directory, "some/dir/location");
@@ -78,7 +78,7 @@ mod request_tests {
     fn test_start_procedure_builder_missing_api_version() {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
@@ -115,7 +115,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
                                       .add_metadata("key1", "value1")
@@ -133,7 +133,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_directory("some/dir/location")
             .add_metadata("key1", "value1")
@@ -151,7 +151,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
                 .add_metadata("key1", "value1")
@@ -169,7 +169,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .api_version("1.0")
             .start_now()
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
@@ -185,7 +185,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
@@ -204,7 +204,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
             .api_version("1.0.0")
-            .subject_nrn("bad:subject:nape/collection-cli")
+            .subject_nrn("bad:subject:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("https://example.com")
             .procedure_directory("some/dir/location")
@@ -223,7 +223,7 @@ mod request_tests {
         let builder = request::StartProcedureBuilder::default()
             .start_now()
             .api_version("1.0.0")
-            .subject_nrn("nrn:sourcecode:nape/collection-cli")
+            .subject_nrn("nrn:sourcecode:nape/nape-cli")
             .subject_id("1234")
             .procedure_repository("bad procedure")
             .procedure_directory("some/dir/location")

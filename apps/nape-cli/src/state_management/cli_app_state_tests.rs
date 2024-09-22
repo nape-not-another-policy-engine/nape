@@ -14,7 +14,7 @@ fn builder_success() {
 
     /* ASSEMBLE */
 
-    let subject = Subject::try_new("nrn:sourcecode:nape/collection-cli", "1719326666").unwrap();
+    let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
     let procedure = Procedure::try_new("https://example.com", "some/dir/location").unwrap();
 
     let mut metadata = MetaData::default();
@@ -48,7 +48,7 @@ fn builder_success() {
     let state = builder.unwrap();
     assert_eq!(state.metadata, expeceted_metadata);
     assert_eq!(state.directories, expected_directories);
-    assert_eq!(state.subject_nrn, "nrn:sourcecode:nape/collection-cli".to_string());
+    assert_eq!(state.subject_nrn, "nrn:sourcecode:nape/nape-cli".to_string());
     assert_eq!(state.subject_id, "1719326666".to_string());
     assert_eq!(state.procedure_repository, "https://example.com".to_string());
     assert_eq!(state.procedure_directory, "some/dir/location".to_string());
@@ -83,7 +83,7 @@ fn no_procedure_error() {
 
     /* ASSEMBLE */
 
-    let subject = Subject::try_new("nrn:sourcecode:nape/collection-cli", "1719326666").unwrap();
+    let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
     let metadata = MetaData::default();
     let directory_list = DirectoryList::default();
 
@@ -105,7 +105,7 @@ fn no_metadata_error() {
 
     /* ASSEMBLE */
 
-    let subject = Subject::try_new("nrn:sourcecode:nape/collection-cli", "1719326666").unwrap();
+    let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
     let procedure = Procedure::try_new("https://example.com", "some/dir/location").unwrap();
     let directory_list = DirectoryList::default();
 
@@ -127,7 +127,7 @@ fn no_directory_list_error() {
 
     /* ASSEMBLE */
 
-    let subject = Subject::try_new("nrn:sourcecode:nape/collection-cli", "1719326666").unwrap();
+    let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
     let procedure = Procedure::try_new("https://example.com", "some/dir/location").unwrap();
     let metadata = MetaData::default();
 

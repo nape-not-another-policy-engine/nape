@@ -1,6 +1,16 @@
-.PHONY: test build-release clean clean-build clean-test-data update test-domain test-io test-kernel test-tfw install
+.PHONY: test ma-release-build build-release clean clean-build clean-test-data update test-domain test-io test-kernel test-tfw install
 PWD := $(shell pwd)
 BUILD_DIR := $(dir $(PWD))builds
+PROJECT := ''
+OS_ARCH_TARGET := ''
+
+
+ma-release-build:
+	@echo "\n\033[1;96m Starting the Multi-Architecture Process \033[0m\n"
+	make clean-build
+	@echo "\n\033[1;96m Executing the Cargo Build process. \033[0m\n"
+	cargo build --release -p $(PROJECT) --target $(OS_ARCH_TARGET)
+	@echo "\n\033[1;96m Build COMPLETE! \033[0m\n"
 
 build-release:
 	@echo "\n\033[1;96m Starting the Release Build \033[0m\n"
@@ -41,7 +51,7 @@ test:
 
 test-nape-cli:
 	@echo "\n\033[1;96m Running Tests - NAPE Collection CLI Only \033[0m\n"
-	RUSTFLAGS="-A dead_code -A unused_imports" cargo test -p nape_collection_cli --lib -- --test-threads=8
+	RUSTFLAGS="-A dead_code -A unused_imports" cargo test -p nape_cli --lib -- --test-threads=8
 
 test-domain:
 	@echo "\n\033[1;96m Running Tests - Domain Package  Only \033[0m\n"
