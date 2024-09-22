@@ -19,7 +19,7 @@ jobs:
     outputs: # Define the output that can be passed to other jobs
       current_version: ${{ steps.version_check.outputs.CURRENT_VERSION }}
     steps:
-      -
+
       - name: Check out code
         uses: actions/checkout@v3
 
