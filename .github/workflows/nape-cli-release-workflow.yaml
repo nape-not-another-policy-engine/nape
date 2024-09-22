@@ -19,6 +19,7 @@ jobs:
     outputs: # Define the output that can be passed to other jobs
       current_version: ${{ steps.version_check.outputs.CURRENT_VERSION }}
     steps:
+      -
       - name: Check out code
         uses: actions/checkout@v3
 
@@ -28,12 +29,14 @@ jobs:
           current_version=$(grep '^version =' nape-cli/Cargo.toml | sed 's/version = "//' | sed 's/"//')
           echo "CURRENT_VERSION=$current_version" >> $GITHUB_ENV
 
+
       - name: Extract Previous Version from Previous Commit
         id: extract_previous_version
         run: |
           git show HEAD^:nape-cli/Cargo.toml | grep '^version =' | sed 's/version = "//' | sed 's/"//' > prev_version.txt
           previous_version=$(cat prev_version.txt)
           echo "PREVIOUS_VERSION=$previous_version" >> $GITHUB_ENV
+
 
       - name: Compare Versions and Validate
         id: version_check

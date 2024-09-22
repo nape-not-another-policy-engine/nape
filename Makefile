@@ -9,7 +9,7 @@ ma-release-build:
 	@echo "\n\033[1;96m Starting the Multi-Architecture Process \033[0m\n"
 	make clean-build
 	@echo "\n\033[1;96m Executing the Cargo Build process. \033[0m\n"
-	cargo build --release -p $(PROJECT) --target $(OS_ARCH_TARGET)
+	cargo build --release --package $(PROJECT) --target $(OS_ARCH_TARGET)
 	@echo "\n\033[1;96m Build COMPLETE! \033[0m\n"
 
 build-release:
