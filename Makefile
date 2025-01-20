@@ -60,3 +60,15 @@ test-domain:
 test-kernel:
 	@echo "\n\033[1;96m Running Tests - Kernel Package Only \033[0m\n"
 	RUSTFLAGS="-A dead_code -A unused_imports" cargo test -p nape_kernel --lib  -- --test-threads=8
+
+
+# Serve rule (generic)
+.PHONY: % serve
+% serve:
+	@echo "Serving $(@: serve=)"
+	$(MAKE) -C $(@: serve=) serve
+
+.PHONY: % fmt
+% fmt:
+	@echo "Serving $(@: fmt=)"
+	$(MAKE) -C $(@: fmt=) fmt

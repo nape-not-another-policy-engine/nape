@@ -1,0 +1,21 @@
+[package]
+name = "nape-portal"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+console_error_panic_hook = "0.1.7"
+leptos = { version = "0.7.4", features = ["csr"] }
+leptos_router = {  version = "0.7.4"}
+reactive_stores = "0.1.3"
+send_wrapper = { version = "0.6", features = ["futures"] }
+
+[dev-dependencies]
+clippy = "*"
+
+
+[tool.clippy]
+deny = ["clippy::unwrap_used"]
+
+[tool.clippy.overrides.tests]
+allow = ["clippy::unwrap_used"]

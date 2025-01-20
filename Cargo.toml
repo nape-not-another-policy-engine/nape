@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
-    "apps/nape-cli",
+    "apps/nape-cli", "apps/nape-portal",
     "domain",
     "kernel",
     "test_framework/assertions",

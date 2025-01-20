@@ -1,6 +1,7 @@
 
 # Other root-level ignore rules
 # ...
+dist/
 .idea/
 debug/
 target/
