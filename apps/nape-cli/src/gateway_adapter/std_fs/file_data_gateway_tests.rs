@@ -1,7 +1,8 @@
 use crate::gateway_adapter::std_fs::file_data_gateway::read_file_data;
 use kernel_oss::error::{Audience, Kind};
-use test_framework_oss::{canonical_path, create_file, create_write_only_file, kernel_error_starts_with, remove};
-
+use test_framework_oss::{
+    canonical_path, create_file, create_write_only_file, kernel_error_starts_with, remove,
+};
 
 #[test]
 fn success() {

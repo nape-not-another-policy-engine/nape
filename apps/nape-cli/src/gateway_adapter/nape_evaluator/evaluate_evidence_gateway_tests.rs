@@ -1,9 +1,9 @@
 use crate::gateway_adapter::nape_evaluator::evaluate_evidence_gateway::nape_evidence_evaluator;
+use kernel_oss::values::specification::outcome::Outcome;
 use nape_domain::evidence_collection::usecases::evaluate_evidence::gateway_boundary::request::EvaluationFiles;
 use nape_domain::evidence_collection::usecases::evaluate_evidence::gateway_boundary::{
     EvidenceFilePath, TestFilePath,
 };
-use kernel_oss::values::specification::outcome::Outcome;
 use test_framework_oss::{canonical_path, create_file, is_ok};
 
 #[test]

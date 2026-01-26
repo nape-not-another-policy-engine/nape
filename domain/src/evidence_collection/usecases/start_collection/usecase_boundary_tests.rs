@@ -4,8 +4,8 @@ use kernel_oss::error;
 use kernel_oss::values::specification;
 
 mod request_tests {
-    use kernel_oss::values::datetime::start_time::StartTime;
     use super::*;
+    use kernel_oss::values::datetime::start_time::StartTime;
     use kernel_oss::values::nrn::nrn::NRN;
     use kernel_oss::values::specification::subject_id::SubjectId;
     use test_framework_oss::{is_ok, kernel_error_starts_with};

@@ -1,10 +1,10 @@
 use crate::gateway_adapter::state_management::retrieve_directory_path::directory_path_from_app_state;
 use crate::gateway_adapter::std_fs::copy_file_gateway::copy_file_to_filesystem;
 use crate::gateway_adapter::std_fs::retrieve_file_data_gateway::retrieve_file_data_from_filesystem;
+use kernel_oss::error::Error;
 use nape_domain::evidence_collection::usecases::collect_evidence::usecase::{
     collect_action_evidence, CollectEvidenceRequest, CollectedEvidence, UCCollectEvidenceFile,
 };
-use kernel_oss::error::Error;
 
 pub fn std_fs_factory() -> UCCollectEvidenceFile {
     move |request: &CollectEvidenceRequest| -> Result<CollectedEvidence, Error> {

@@ -1,10 +1,10 @@
 use crate::io_adapter::clap::command_handler_boundary::CommandHandlerBoundary;
 use clap::ArgMatches;
+use kernel_oss::error::Error;
 use nape_domain::evidence_collection::usecases::start_collection::usecase::UCStartCollectionProcedure;
 use nape_domain::evidence_collection::usecases::start_collection::usecase_boundary::request::{
     StartProcedure, StartProcedureBuilder,
 };
-use kernel_oss::error::Error;
 
 pub struct StartCollectionCommandHandler<'a> {
     pub command_name: &'a str,

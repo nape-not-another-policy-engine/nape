@@ -1,9 +1,9 @@
 use crate::gateway_adapter::state_management::retrieve_app_state::app_state_from_nape_config;
 use crate::io_adapter::clap::command_handler_boundary::CommandHandlerBoundary;
 use clap::ArgMatches;
+use kernel_oss::error::{Error, Kind};
 use nape_domain::evidence_collection::usecases::evaluate_evidence::usecase::EvaluateAndReportEvidenceUC;
 use nape_domain::evidence_collection::usecases::evaluate_evidence::usecase_boundary::request::EvaluateEvidence;
-use kernel_oss::error::{Error, Kind};
 
 pub struct EvaluateAndReportCommandHandler<'a> {
     pub command_name: &'a str,

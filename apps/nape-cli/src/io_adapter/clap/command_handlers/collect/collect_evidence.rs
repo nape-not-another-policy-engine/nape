@@ -1,9 +1,9 @@
 use crate::io_adapter::clap::command_handler_boundary::CommandHandlerBoundary;
 use clap::ArgMatches;
+use kernel_oss::error::{Error, Kind};
 use nape_domain::evidence_collection::usecases::collect_evidence::usecase::{
     CollectEvidenceRequest, UCCollectEvidenceFile,
 };
-use kernel_oss::error::{Error, Kind};
 
 pub struct CollectEvidenceCommandHandler<'a> {
     pub command_name: &'a str,
