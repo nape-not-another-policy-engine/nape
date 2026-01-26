@@ -1,4 +1,4 @@
-.PHONY: test ma-release-build build-release clean clean-build clean-test-data update test-domain test-io test-kernel test-tfw install
+.PHONY: ma-release-build build-release install clean clean-build clean-test-data update test test-nape-cli test-domain
 PWD := $(shell pwd)
 BUILD_DIR := $(dir $(PWD))builds
 PROJECT := ''
@@ -56,11 +56,6 @@ test-nape-cli:
 test-domain:
 	@echo "\n\033[1;96m Running Tests - Domain Package  Only \033[0m\n"
 	RUSTFLAGS="-A dead_code -A unused_imports" cargo test -p nape_domain --lib -- --test-threads=8
-
-test-kernel:
-	@echo "\n\033[1;96m Running Tests - Kernel Package Only \033[0m\n"
-	RUSTFLAGS="-A dead_code -A unused_imports" cargo test -p nape_kernel --lib  -- --test-threads=8
-
 
 # Serve rule (generic)
 .PHONY: % serve
