@@ -1,17 +1,15 @@
-use nape_testing_assertions::is_ok;
 use crate::evidence_collection::usecases::evaluate_evidence::usecase_boundary::request::EvaluateEvidence;
 
 mod request {
-    use nape_kernel::error::{Audience, Kind};
-    use nape_testing_assertions::{kernel_error_eq, kernel_error_starts_with};
     use super::*;
+    use kernel_oss::error::{Audience, Kind};
+    use test_framework_oss::{is_ok, kernel_error_eq, kernel_error_starts_with};
 
     #[test]
     fn success() {
-
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let evaluate_evidence = EvaluateEvidence::builder()
@@ -40,7 +38,7 @@ mod request {
     fn no_subject_nrn_error() {
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let result = EvaluateEvidence::builder()
@@ -51,14 +49,13 @@ mod request {
             .try_build();
 
         kernel_error_eq!(result, Kind::InvalidInput, Audience::User, "We are unable to create a valid Evaluate Evidence request. The NAPE Resource Name (NRN) of the Subject was not provided.");
-
     }
 
     #[test]
     fn no_subject_id_error() {
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let result = EvaluateEvidence::builder()
@@ -75,7 +72,7 @@ mod request {
     fn no_procedure_repository_error() {
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let result = EvaluateEvidence::builder()
@@ -92,7 +89,7 @@ mod request {
     fn no_procedure_directory_error() {
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let result = EvaluateEvidence::builder()
@@ -105,12 +102,11 @@ mod request {
         kernel_error_eq!(result, Kind::InvalidInput, Audience::User, "We are unable to create a valid Evaluate Evidence request. The directory path to the Procedure was not provided.");
     }
 
-
     #[test]
     fn invalid_subject_error() {
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let result = EvaluateEvidence::builder()
@@ -128,7 +124,7 @@ mod request {
     fn invalid_procedure_error() {
         let metadata = vec![
             ("key1".to_string(), "value1".to_string()),
-            ("key2".to_string(), "value2".to_string())
+            ("key2".to_string(), "value2".to_string()),
         ];
 
         let result = EvaluateEvidence::builder()
@@ -144,7 +140,7 @@ mod request {
 
     #[test]
     fn invalid_metadata_error() {
-        let metadata = vec![ ("key 1".to_string(), "value1".to_string()), ];
+        let metadata = vec![("key 1".to_string(), "value1".to_string())];
 
         let result = EvaluateEvidence::builder()
             .subject_id("1234567")
@@ -156,5 +152,4 @@ mod request {
 
         kernel_error_starts_with!(result, Kind::InvalidInput, Audience::User, "We are unable to create a valid Evaluate Evidence request. There is an issue with the Metadata you provided.");
     }
-
 }

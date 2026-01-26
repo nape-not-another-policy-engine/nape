@@ -1,6 +1,7 @@
 
 # Other root-level ignore rules
 # ...
+node_modules/
 dist/
 .idea/
 debug/
@@ -20,3 +21,4 @@ Cargo.lock
 *.pdb
 
 .DS_Store
+*.env

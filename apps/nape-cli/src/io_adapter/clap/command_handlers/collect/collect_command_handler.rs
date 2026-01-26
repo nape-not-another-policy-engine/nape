@@ -1,6 +1,6 @@
-use clap::ArgMatches;
-use nape_kernel::error::Error;
 use crate::io_adapter::clap::command_handler_boundary::CommandHandlerBoundary;
+use clap::ArgMatches;
+use kernel_oss::error::Error;
 
 pub struct CollectCommandHandler<'a> {
     command_name: &'a str,
@@ -11,7 +11,7 @@ impl<'a> CollectCommandHandler<'a> {
     pub fn new(subcommands: Vec<Box<dyn CommandHandlerBoundary>>) -> CollectCommandHandler<'a> {
         CollectCommandHandler {
             command_name: "collect",
-            subcommands
+            subcommands,
         }
     }
 }

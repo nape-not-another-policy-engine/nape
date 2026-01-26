@@ -1,5 +1,5 @@
 use clap::ArgMatches;
-use nape_kernel::error::Error;
+use kernel_oss::error::Error;
 
 // This was an idea for eac handler to give it this such that this can be passed into the cli
 pub trait CommandHandlerBoundary {

@@ -1,9 +1,9 @@
-use nape_kernel::error::Error;
-use nape_kernel::values::specification::file_path::FilePath;
-use nape_kernel::values::specification::traits::AssuranceReport;
-use nape_kernel::values::specification::v1_0_0::assurance_procedure::AssuranceProcedure;
 use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::request::EvaluationFiles;
 use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::response::EvaluationResults;
+use kernel_oss::error::Error;
+use kernel_oss::values::specification::file_path::FilePath;
+use kernel_oss::values::specification::traits::AssuranceReport;
+use kernel_oss::values::specification::v1_0_0::assurance_procedure::AssuranceProcedure;
 
 /// # Overview
 ///
@@ -38,7 +38,7 @@ pub type RetrieveAssuranceProcedure = fn(file_path: &str) -> Result<AssurancePro
 ///
 /// A [`Result`] of either an [`EvaluationResults`] containing the results of the evaluation, or an [`Error`].
 ///
-pub type EvaluateEvidenceGateway = fn (files: &EvaluationFiles) -> Result<EvaluationResults, Error>;
+pub type EvaluateEvidenceGateway = fn(files: &EvaluationFiles) -> Result<EvaluationResults, Error>;
 
 /// # Overview
 ///
@@ -57,4 +57,5 @@ pub type EvaluateEvidenceGateway = fn (files: &EvaluationFiles) -> Result<Evalua
 ///
 ///  * This gateway_adapter does not assume the format of the report, only that it will be persisted in the directory provided, given the file name.
 ///
-pub type PersistReportGateway = fn(report: &dyn AssuranceReport, report_directory: &str) -> Result<FilePath, Error>;
+pub type PersistReportGateway =
+    fn(report: &dyn AssuranceReport, report_directory: &str) -> Result<FilePath, Error>;

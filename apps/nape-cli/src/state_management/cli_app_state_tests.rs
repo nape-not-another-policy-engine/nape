@@ -1,17 +1,15 @@
-use std::collections::HashMap;
-use nape_kernel::error::{Audience, Kind};
-use nape_kernel::values::directory::directory_list::DirectoryList;
-use nape_kernel::values::specification::metadata::MetaData;
-use nape_kernel::values::specification::procedure::Procedure;
-use nape_kernel::values::specification::subject::Subject;
-use nape_testing_assertions::{is_ok, kernel_error_eq};
 use crate::state_management::cli_app_state::CLIAppStateBuilder;
-
+use kernel_oss::error::{Audience, Kind};
+use kernel_oss::values::directory::directory_list::DirectoryList;
+use kernel_oss::values::specification::metadata::MetaData;
+use kernel_oss::values::specification::procedure::Procedure;
+use kernel_oss::values::specification::subject::Subject;
+use std::collections::HashMap;
+use test_framework_oss::{is_ok, kernel_error_eq};
 /* Happy Path */
 
 #[test]
 fn builder_success() {
-
     /* ASSEMBLE */
 
     let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
@@ -23,7 +21,9 @@ fn builder_success() {
     let directory_list = DirectoryList::default();
     let directory_list = directory_list.try_add("path1", "some/path/one").unwrap();
     let directory_list = directory_list.try_add("path2", "some/path/two").unwrap();
-    let directory_list = directory_list.try_add("path3", "some/path/three/file.txt").unwrap();
+    let directory_list = directory_list
+        .try_add("path3", "some/path/three/file.txt")
+        .unwrap();
 
     /* ACT */
 
@@ -48,9 +48,15 @@ fn builder_success() {
     let state = builder.unwrap();
     assert_eq!(state.metadata, expeceted_metadata);
     assert_eq!(state.directories, expected_directories);
-    assert_eq!(state.subject_nrn, "nrn:sourcecode:nape/nape-cli".to_string());
+    assert_eq!(
+        state.subject_nrn,
+        "nrn:sourcecode:nape/nape-cli".to_string()
+    );
     assert_eq!(state.subject_id, "1719326666".to_string());
-    assert_eq!(state.procedure_repository, "https://example.com".to_string());
+    assert_eq!(
+        state.procedure_repository,
+        "https://example.com".to_string()
+    );
     assert_eq!(state.procedure_directory, "some/dir/location".to_string());
 }
 
@@ -58,7 +64,6 @@ fn builder_success() {
 
 #[test]
 fn no_subject_error() {
-
     /* ASSEMBLE */
 
     let procedure = Procedure::try_new("https://example.com", "some/dir/location").unwrap();
@@ -80,7 +85,6 @@ fn no_subject_error() {
 
 #[test]
 fn no_procedure_error() {
-
     /* ASSEMBLE */
 
     let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
@@ -102,7 +106,6 @@ fn no_procedure_error() {
 
 #[test]
 fn no_metadata_error() {
-
     /* ASSEMBLE */
 
     let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
@@ -124,7 +127,6 @@ fn no_metadata_error() {
 
 #[test]
 fn no_directory_list_error() {
-
     /* ASSEMBLE */
 
     let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
@@ -141,5 +143,5 @@ fn no_directory_list_error() {
 
     /* ASSERT */
 
-    kernel_error_eq!(builder, Kind::InvalidInput, Audience::System, "There is an issue establishing the CLI Application State. A Directory List is required, although one was note provided.");
+    kernel_error_eq!(builder, Kind::InvalidInput, Audience::System, "There is an issue establishing the CLI Application State. A directory List is required, although one was note provided.");
 }

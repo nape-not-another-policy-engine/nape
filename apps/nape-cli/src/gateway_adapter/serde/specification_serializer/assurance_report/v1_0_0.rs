@@ -1,9 +1,9 @@
-use std::collections::HashMap;
+use kernel_oss::values::specification::assurance_report::action::Action;
+use kernel_oss::values::specification::assurance_report::signed_file::SignedFile;
+use kernel_oss::values::specification::traits::AssuranceReport;
+use kernel_oss::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 use serde::{Deserialize, Serialize};
-use nape_kernel::values::specification::assurance_report::action::Action;
-use nape_kernel::values::specification::assurance_report::signed_file::SignedFile;
-use nape_kernel::values::specification::traits::{AssuranceReport};
-use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
+use std::collections::HashMap;
 
 /// The [`AssuranceReportFileV1`] struct is a representation used to represent a file printout of an [`AssuranceReportV1`].  This struct contains the logic to convert an [`AssuranceReportV1`] to YAML.
 ///
@@ -14,13 +14,13 @@ pub struct AssuranceReportFileV1 {
     pub kind: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub metadata: Option<HashMap<String, String>>,
-    pub  subject: ReportFileSubject,
+    pub subject: ReportFileSubject,
     pub procedure: ReportFileProcedure,
     pub summary: ReportFileSummary,
     #[serde(rename = "activity")]
     pub activities: Vec<ReportFileActivity>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub additional_information: Option<Vec<String>>
+    pub additional_information: Option<Vec<String>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -59,13 +59,13 @@ pub struct ReportFileAction {
     pub outcome: String,
     pub reason: String,
     pub test_file: ReportFileSignedFile,
-    pub evidence_file: ReportFileSignedFile
+    pub evidence_file: ReportFileSignedFile,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ReportFileSignedFile {
     pub file: String,
-    pub signature: String
+    pub signature: String,
 }
 
 impl From<&AssuranceReportV1> for AssuranceReportFileV1 {
@@ -75,13 +75,12 @@ impl From<&AssuranceReportV1> for AssuranceReportFileV1 {
             kind: report.kind().to_string(),
             metadata: extract_metadata(report),
             subject: extract_subject(report),
-            procedure:extract_procedure(report),
+            procedure: extract_procedure(report),
             summary: extract_summary(report),
             activities: extract_activities(report),
-            additional_information: extract_additional_information(report)
-        }
+            additional_information: extract_additional_information(report),
+        };
     }
-
 }
 
 fn extract_metadata(report: &AssuranceReportV1) -> Option<HashMap<String, String>> {
@@ -100,14 +99,14 @@ fn extract_metadata(report: &AssuranceReportV1) -> Option<HashMap<String, String
 fn extract_subject(report: &AssuranceReportV1) -> ReportFileSubject {
     ReportFileSubject {
         urn: report.subject().nrn.value.clone(),
-        id: report.subject().id.value.clone()
+        id: report.subject().id.value.clone(),
     }
 }
 
 fn extract_procedure(report: &AssuranceReportV1) -> ReportFileProcedure {
     ReportFileProcedure {
         repository: report.procedure().repository.clone(),
-        directory: report.procedure().directory.clone()
+        directory: report.procedure().directory.clone(),
     }
 }
 
@@ -119,16 +118,16 @@ fn extract_summary(report: &AssuranceReportV1) -> ReportFileSummary {
         pass: report.summary().pass.clone(),
         fail: report.summary().fail.clone(),
         inconclusive: report.summary().inconclusive.clone(),
-        outcome: report.summary().outcome.to_string()
+        outcome: report.summary().outcome.to_string(),
     }
 }
 
 fn extract_activities(report: &AssuranceReportV1) -> Vec<ReportFileActivity> {
     let mut activities = Vec::new();
     for activity in report.activities().list() {
-        let extracted_activity =     ReportFileActivity {
+        let extracted_activity = ReportFileActivity {
             name: activity.name.value.clone(),
-            actions: extract_actions(&activity.actions)
+            actions: extract_actions(&activity.actions),
         };
         activities.push(extracted_activity);
     }
@@ -143,7 +142,7 @@ fn extract_actions(actions: &Vec<Action>) -> Vec<ReportFileAction> {
             outcome: action.outcome().to_string(),
             reason: action.reason().value.clone(),
             test_file: extract_signed_file(&action.test_file()),
-            evidence_file: extract_signed_file(&action.evidence_file())
+            evidence_file: extract_signed_file(&action.evidence_file()),
         };
         report_actions.push(report_action);
     }
@@ -153,12 +152,11 @@ fn extract_actions(actions: &Vec<Action>) -> Vec<ReportFileAction> {
 fn extract_signed_file(file: &SignedFile) -> ReportFileSignedFile {
     ReportFileSignedFile {
         file: file.file().to_string(),
-        signature: file.signature().structure_signature()
+        signature: file.signature().structure_signature(),
     }
 }
 
 fn extract_additional_information(report: &AssuranceReportV1) -> Option<Vec<String>> {
-
     match report.additional_info().list().is_empty() {
         true => None,
         false => {

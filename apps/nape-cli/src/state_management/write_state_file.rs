@@ -1,7 +1,7 @@
+use crate::state_management::cli_app_state::CLIAppState;
+use kernel_oss::error::{Error, Kind};
 use std::fs;
 use std::path::PathBuf;
-use nape_kernel::error::{Error, Kind};
-use crate::state_management::cli_app_state::CLIAppState;
 
 /// Writes the CLIAppState to the filesystem.
 ///
@@ -18,22 +18,34 @@ use crate::state_management::cli_app_state::CLIAppState;
 pub fn write_to_filesystem(
     app_state: &CLIAppState,
     serialize: fn(&CLIAppState) -> Result<String, Error>,
-    file_location: &PathBuf) -> Result<(), Error> {
-
+    file_location: &PathBuf,
+) -> Result<(), Error> {
     // Create the parent directories if they do not exist
     if let Some(parent) = file_location.parent() {
-        fs::create_dir_all(parent)
-            .map_err(|e| Error::for_system(Kind::GatewayError,
-                                           format!("Could not create the parent directories for the App State file '{}'. {}", file_location.display(), e)))?;
+        fs::create_dir_all(parent).map_err(|e| {
+            Error::for_system(
+                Kind::GatewayError,
+                format!(
+                    "Could not create the parent directories for the App State file '{}'. {}",
+                    file_location.display(),
+                    e
+                ),
+            )
+        })?;
     }
 
     let file_contents = serialize(app_state)?;
 
     // Use fs::write to create or overwrite the existing file
-    fs::write(&file_location, &file_contents)
-        .map_err(|e| Error::for_system(Kind::GatewayError,
-                                       format!("Could not write the CLI App State File to the filesystem. {}", e)))?;
+    fs::write(&file_location, &file_contents).map_err(|e| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!(
+                "Could not write the CLI App State File to the filesystem. {}",
+                e
+            ),
+        )
+    })?;
 
     Ok(())
-
 }

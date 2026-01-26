@@ -1,6 +1,6 @@
+use kernel_oss::algorithms::os_home_directory;
+use kernel_oss::error::Error;
 use std::path::PathBuf;
-use nape_kernel::algorithms::os_home_directory;
-use nape_kernel::error::Error;
 
 const CONFIG_DIRECTORY: &str = "nape";
 const CONFIG_FILE_NAME: &str = ".nape_cli_config";

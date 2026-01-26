@@ -1,4 +1,4 @@
-use clap::{Arg, ArgAction, value_parser};
+use clap::{value_parser, Arg, ArgAction};
 
 pub fn subject() -> Arg {
     Arg::new("subject")
@@ -31,7 +31,7 @@ pub fn procedure_directory() -> Arg {
     Arg::new("procedure-directory")
         .short('d')
         .long("procedure-directory")
-        .value_name("NAPE Assurance Procedure Definition Directory")
+        .value_name("NAPE Assurance Procedure Definition directory")
         .help("The directory within the NAPE Repository which contains NAPE Assurance Procedure Definition and all related NAPE Activity & Action Tests for the assurance procedure you want to run.")
         .required(true)
 }

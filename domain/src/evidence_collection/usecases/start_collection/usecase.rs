@@ -1,12 +1,15 @@
-use nape_kernel::error::{Error, Kind};
-use nape_kernel::values::directory::directory_list::DirectoryList;
-use nape_kernel::values::specification::repository_link::RepositoryLink;
-use crate::evidence_collection::usecases::start_collection::gateway::{DirectoryCreationGateway, FileDeleteGateway, FileMoveGateway, ProcedureRetrievalGateway};
+use crate::evidence_collection::usecases::start_collection::gateway::{
+    DirectoryCreationGateway, FileDeleteGateway, FileMoveGateway, ProcedureRetrievalGateway,
+};
 use crate::evidence_collection::usecases::start_collection::usecase_boundary::request::StartProcedure;
 use crate::evidence_collection::usecases::start_collection::usecase_boundary::response::ProcedureStarted;
+use kernel_oss::error::{Error, Kind};
+use kernel_oss::values::directory::directory_list::DirectoryList;
+use kernel_oss::values::specification::repository_link::RepositoryLink;
 
 /// The [`UCStartCollectionProcedure`] is the function signature for the usecase_configuration to start a new evidence collection procedure for a business procedure. All implementations of this usecase_configuration must adhere to this signature.
-pub type UCStartCollectionProcedure = fn(request: StartProcedure) -> Result<ProcedureStarted, Error>;
+pub type UCStartCollectionProcedure =
+    fn(request: StartProcedure) -> Result<ProcedureStarted, Error>;
 
 /// The [`start_collection`] is the default implementation for the [`UCStartCollectionProcedure`].
 ///
@@ -23,8 +26,8 @@ pub fn start_collection(
     create_directories: DirectoryCreationGateway,
     retrieve_procedure: ProcedureRetrievalGateway,
     move_file: FileMoveGateway,
-    delete_file: FileDeleteGateway) -> Result<ProcedureStarted, Error> {
-
+    delete_file: FileDeleteGateway,
+) -> Result<ProcedureStarted, Error> {
     let created_directory_list = create_directories(&directory_list)
         .map_err(|error| Error::for_system(Kind::GatewayError,
                                            format!("We could not start the collection procedure. Could not create the directory structure for the evidence collection procedure: {}", error.message)))?;
@@ -35,7 +38,8 @@ pub fn start_collection(
                                              "We could not start the collection procedure. Could not locate the 'temp' directory in the provided directory list.".to_string()))
     };
 
-    let (downloaded_procedure_definition_doc, downloaded_activity_dir)  = download_files_from_repo(&request, retrieve_procedure, &temp_dir)?;
+    let (downloaded_procedure_definition_doc, downloaded_activity_dir) =
+        download_files_from_repo(&request, retrieve_procedure, &temp_dir)?;
 
     let home_dir = match directory_list.try_get("home") {
         Some(home_dir) => home_dir,
@@ -49,7 +53,7 @@ pub fn start_collection(
                                              "We could not start the collection procedure. Could not locate the 'activity-test' directory in the provided directory list.".to_string()))
     };
 
-   let procedure_definition_doc_path =  move_file(&downloaded_procedure_definition_doc, &home_dir).map_err(|error|
+    let procedure_definition_doc_path =  move_file(&downloaded_procedure_definition_doc, &home_dir).map_err(|error|
         Error::for_system(Kind::GatewayError,
                           format!("We could not start the collection procedure. Could not move the downloaded procedure document '{}' to '{}': {}", downloaded_procedure_definition_doc, home_dir, error.message)))?;
 
@@ -57,9 +61,12 @@ pub fn start_collection(
         Error::for_system(Kind::GatewayError,
                           format!("We could not start the collection procedure. Could not move the downloaded activity test directory '{}' to '{}': {}", downloaded_activity_dir, activity_dir, error.message)))?;
 
-    delete_file(&temp_dir).map_err(|error|
-        Error::for_system(Kind::GatewayError,
-                          format!("Could not delete the 'temp' directory: {}", error.message)))?;
+    delete_file(&temp_dir).map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!("Could not delete the 'temp' directory: {}", error.message),
+        )
+    })?;
 
     let all_directories = DirectoryList::from(created_directory_list)
         .try_add("assurance-procedure-file", &procedure_definition_doc_path.as_str())
@@ -72,14 +79,16 @@ pub fn start_collection(
         subject: request.subject.clone(),
         procedure: request.procedure.clone(),
         metadata: request.metadata.clone(),
-        directory_list: all_directories
+        directory_list: all_directories,
     })
-
 }
 
-fn download_files_from_repo(request: &StartProcedure, retrieve_procedure: ProcedureRetrievalGateway, temp_dir: &String) -> Result<(String, String), Error> {
-
-    let repo_link = RepositoryLink::new(&request.procedure.repository)?;  // TODO - Update the request procedure repository like with a Repository Link.
+fn download_files_from_repo(
+    request: &StartProcedure,
+    retrieve_procedure: ProcedureRetrievalGateway,
+    temp_dir: &String,
+) -> Result<(String, String), Error> {
+    let repo_link = RepositoryLink::new(&request.procedure.repository)?; // TODO - Update the request procedure repository like with a Repository Link.
     let procedure_dir = &request.procedure.directory; // TODO - update teh request procedure reposityr link with a struct that is a Direcotty which validates based upon a directory structure.  NOTE - maket he standard a unix directory and make a note that users of this object are requuired to convert it into an OS-Sepcfic directory.
     let download_dir = temp_dir.as_str();
 
@@ -103,5 +112,3 @@ fn download_files_from_repo(request: &StartProcedure, retrieve_procedure: Proced
 
     Ok((procedure_doc_source, activity_source))
 }
-
-

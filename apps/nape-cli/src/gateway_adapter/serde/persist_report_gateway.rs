@@ -1,33 +1,43 @@
+use crate::gateway_adapter::serde::specification_serializer::assurance_report;
+use kernel_oss::error::{Error, Kind};
+use kernel_oss::values::specification::file_path::FilePath;
+use kernel_oss::values::specification::traits::AssuranceReport;
 use std::fs;
 use std::fs::File;
-use std::io::{Write};
+use std::io::Write;
 use std::path::Path;
-use nape_kernel::error::{Error, Kind};
-use nape_kernel::values::specification::file_path::FilePath;
-use nape_kernel::values::specification::traits::AssuranceReport;
-use crate::gateway_adapter::serde::specification_serializer::assurance_report;
-
 
 const FILE_NAME: &str = "assurance_report.yaml";
 
 /// Implementation of the [`PersistReportGateway`] trait that saves an assurance report as a YAML file.
-pub fn save_report_as_yaml(report: &dyn AssuranceReport, report_directory: &str) -> Result<FilePath, Error> {
-        let directory_path = Path::new(report_directory);
-        verify_dir_exists(directory_path)?;
-        verify_dir_is_directory(directory_path)?;
-        verify_dir_is_writable(directory_path)?;
+pub fn save_report_as_yaml(
+    report: &dyn AssuranceReport,
+    report_directory: &str,
+) -> Result<FilePath, Error> {
+    let directory_path = Path::new(report_directory);
+    verify_dir_exists(directory_path)?;
+    verify_dir_is_directory(directory_path)?;
+    verify_dir_is_writable(directory_path)?;
 
-        let file_path = format!("{}/{}", report_directory, FILE_NAME);
+    let file_path = format!("{}/{}", report_directory, FILE_NAME);
 
-        let yaml = assurance_report::factory::create(report)?;
+    let yaml = assurance_report::factory::create(report)?;
 
-        let mut file = File::create(&file_path)
-            .map_err(|e| Error::for_system(Kind::ProcessingFailure, format!("Could not create file: {}", e)))?;
+    let mut file = File::create(&file_path).map_err(|e| {
+        Error::for_system(
+            Kind::ProcessingFailure,
+            format!("Could not create file: {}", e),
+        )
+    })?;
 
-        file.write_all(yaml.as_bytes())
-            .map_err(|e| Error::for_system(Kind::ProcessingFailure, format!("Could not write to file: {}", e)))?;
+    file.write_all(yaml.as_bytes()).map_err(|e| {
+        Error::for_system(
+            Kind::ProcessingFailure,
+            format!("Could not write to file: {}", e),
+        )
+    })?;
 
-        Ok(FilePath::from(&file_path))
+    Ok(FilePath::from(&file_path))
 }
 
 fn verify_dir_exists(directory_path: &Path) -> Result<(), Error> {

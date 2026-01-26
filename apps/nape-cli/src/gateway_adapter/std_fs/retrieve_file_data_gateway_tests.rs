@@ -1,6 +1,6 @@
+use crate::gateway_adapter::std_fs::retrieve_file_data_gateway::retrieve_file_data_from_filesystem;
 use std::fs;
 use std::path::Path;
-use crate::gateway_adapter::std_fs::retrieve_file_data_gateway::retrieve_file_data_from_filesystem;
 
 // Medium Test
 #[test]
@@ -24,8 +24,15 @@ fn retrieve_file_data_from_filesystem_success() {
     let retrieved_file_data = retrieved_file.1;
 
     // assert that the file data is the same as the data that was written to the file
-    assert_eq!(b"test data".to_vec(), retrieved_file_data, "The file data was not the same as the data that was written to the file.");
-    assert_eq!("evidence_file.txt", retrieved_file_name, "The file name was not the same as the file name that was retrieved.");
+    assert_eq!(
+        b"test data".to_vec(),
+        retrieved_file_data,
+        "The file data was not the same as the data that was written to the file."
+    );
+    assert_eq!(
+        "evidence_file.txt", retrieved_file_name,
+        "The file name was not the same as the file name that was retrieved."
+    );
 
     // delete the file and directory
     fs::remove_dir_all(target_directory)

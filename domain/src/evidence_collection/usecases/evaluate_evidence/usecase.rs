@@ -1,17 +1,21 @@
-use nape_kernel::algorithms::signature_algorithm::{SignatureAlgorithm};
-use nape_kernel::error::{Error, Kind};
-use nape_kernel::gateways::directory_list::RetrieveDirectoryPath;
-use nape_kernel::gateways::file_data_gateway::FileDataGateway;
-use nape_kernel::values::specification::{assurance_report};
-use nape_kernel::values::specification::file_path::FilePath;
-use nape_kernel::values::specification::assurance_report::signed_file::SignedFile;
-use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
-use nape_kernel::values::specification::v1_0_0::assurance_procedure::AssuranceProcedure;
-use crate::evidence_collection::usecases::evaluate_evidence::gateway::{EvaluateEvidenceGateway, PersistReportGateway, RetrieveAssuranceProcedure};
+use crate::evidence_collection::usecases::evaluate_evidence::gateway::{
+    EvaluateEvidenceGateway, PersistReportGateway, RetrieveAssuranceProcedure,
+};
 use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::combine_paths;
 use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::request::EvaluationFiles;
-use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::response::{EvaluationResults, TestResult};
+use crate::evidence_collection::usecases::evaluate_evidence::gateway_boundary::response::{
+    EvaluationResults, TestResult,
+};
 use crate::evidence_collection::usecases::evaluate_evidence::usecase_boundary::request::EvaluateEvidence;
+use kernel_oss::algorithms::signature_algorithm::SignatureAlgorithm;
+use kernel_oss::error::{Error, Kind};
+use kernel_oss::gateways::directory_list::RetrieveDirectoryPath;
+use kernel_oss::gateways::file_data_gateway::FileDataGateway;
+use kernel_oss::values::specification::assurance_report;
+use kernel_oss::values::specification::assurance_report::signed_file::SignedFile;
+use kernel_oss::values::specification::file_path::FilePath;
+use kernel_oss::values::specification::v1_0_0::assurance_procedure::AssuranceProcedure;
+use kernel_oss::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 
 ///  # Overview
 ///
@@ -26,7 +30,6 @@ use crate::evidence_collection::usecases::evaluate_evidence::usecase_boundary::r
 ///  A [`Result`] of either a [`FilePath`] containing a file path to the report, or an [`Error`].
 ///
 pub type EvaluateAndReportEvidenceUC = fn(request: &EvaluateEvidence) -> Result<FilePath, Error>;
-
 
 /// # Overview
 ///
@@ -55,28 +58,49 @@ pub fn evaluate_and_report(
     evaluate_evidence: EvaluateEvidenceGateway,
     signature_algorithm: SignatureAlgorithm,
     file_data_gateway: FileDataGateway,
-    persist_report: PersistReportGateway) -> Result<FilePath, Error> {
+    persist_report: PersistReportGateway,
+) -> Result<FilePath, Error> {
+    let definition_path = retrieve_path("assurance-procedure-file").map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!(
+                "Failed to retrieve the 'assurance-procedure-file' path. {}",
+                error.message
+            ),
+        )
+    })?;
 
-    let definition_path = retrieve_path("assurance-procedure-file")
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("Failed to retrieve the 'assurance-procedure-file' path. {}", error.message)))?;
+    let home_dir = retrieve_path("home").map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!(
+                "Failed to retrieve the 'home' directory path. {}",
+                error.message
+            ),
+        )
+    })?;
 
-    let home_dir = retrieve_path("home")
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("Failed to retrieve the 'home' directory path. {}", error.message)))?;
-
-    let procedure = retrieve_definition(&definition_path)
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("Failed to retrieve procedure definition. {}", error.message)))?;
+    let procedure = retrieve_definition(&definition_path).map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!("Failed to retrieve procedure definition. {}", error.message),
+        )
+    })?;
 
     let home_root = FilePath::from(&home_dir);
-    let evaluation_files = EvaluationFiles::from(&home_root, &procedure)
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("Failed to create evaluation files. {}", error.message)))?;
+    let evaluation_files = EvaluationFiles::from(&home_root, &procedure).map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!("Failed to create evaluation files. {}", error.message),
+        )
+    })?;
 
-    let evaluation_results = evaluate_evidence(&evaluation_files)
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("Failed to evaluate evidence files. {}", error.message)))?;
+    let evaluation_results = evaluate_evidence(&evaluation_files).map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!("Failed to evaluate evidence files. {}", error.message),
+        )
+    })?;
 
     let report = AssuranceReportBuilder::new()
         .with_home_dir(&home_root)
@@ -86,15 +110,24 @@ pub fn evaluate_and_report(
         .with_signature_algorithm(signature_algorithm)
         .with_file_data_gateway(file_data_gateway)
         .try_build()
-        .map_err(|error| Error::for_system(Kind::ProcessingFailure,
-                                           format!("Failed to generate assurance report. {}", error.message)))?;
+        .map_err(|error| {
+            Error::for_system(
+                Kind::ProcessingFailure,
+                format!("Failed to generate assurance report. {}", error.message),
+            )
+        })?;
 
-    let report_path = persist_report(&report, &home_dir).map_err(|error|
-        Error::for_system(Kind::GatewayError,
-                          format!("Failed to persist the assurance report document. {}", error.message)))?;
+    let report_path = persist_report(&report, &home_dir).map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!(
+                "Failed to persist the assurance report document. {}",
+                error.message
+            ),
+        )
+    })?;
 
     Ok(report_path)
-
 }
 
 pub struct AssuranceReportBuilder<'a> {
@@ -138,7 +171,10 @@ impl<'a> AssuranceReportBuilder<'a> {
         self
     }
 
-    pub fn with_signature_algorithm(&mut self, signature_algorithm: SignatureAlgorithm) -> &mut Self {
+    pub fn with_signature_algorithm(
+        &mut self,
+        signature_algorithm: SignatureAlgorithm,
+    ) -> &mut Self {
         self.signature_algorithm = Some(signature_algorithm);
         self
     }
@@ -149,17 +185,29 @@ impl<'a> AssuranceReportBuilder<'a> {
     }
 
     pub fn try_build(&self) -> Result<AssuranceReportV1, Error> {
-
         let definition = self.validate_definition()?;
         let request = self.validate_request()?;
         let results = self.validate_results()?;
-        let signer = self.signature_algorithm
-            .ok_or_else(|| Error::for_system(Kind::InvalidInput, String::from("A Signature Algorithm was not provided.")))?;
-        let file_data_gw = self.file_data_gateway
-            .ok_or_else(|| Error::for_system(Kind::InvalidInput, String::from("A File Data Gateway was not provided.")))?;
-        let home = self.home_dir.as_ref()
-            .ok_or_else(|| Error::for_system(Kind::InvalidInput, String::from("A Home Directory was not provided.")))?;
-        let activities = try_create_report_activities(home, &definition, &results, file_data_gw, signer)?;
+        let signer = self.signature_algorithm.ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                String::from("A Signature Algorithm was not provided."),
+            )
+        })?;
+        let file_data_gw = self.file_data_gateway.ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                String::from("A File Data Gateway was not provided."),
+            )
+        })?;
+        let home = self.home_dir.as_ref().ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                String::from("A Home directory was not provided."),
+            )
+        })?;
+        let activities =
+            try_create_report_activities(home, &definition, &results, file_data_gw, signer)?;
 
         let final_report = AssuranceReportV1::builder()
             .use_metadata(&request.metadata())
@@ -172,39 +220,63 @@ impl<'a> AssuranceReportBuilder<'a> {
     }
 
     fn validate_definition(&self) -> Result<&AssuranceProcedure, Error> {
-        self.procedure_definition.clone()
-            .ok_or_else(|| Error::for_system(Kind::InvalidInput, String::from("A Procedure Definition was not provided.")))
+        self.procedure_definition.clone().ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                String::from("A Procedure Definition was not provided."),
+            )
+        })
     }
 
     fn validate_request(&self) -> Result<&EvaluateEvidence, Error> {
-        self.request.clone()
-            .ok_or_else(|| Error::for_system(Kind::InvalidInput, String::from("An Evaluation Request was not provided.")))
+        self.request.clone().ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                String::from("An Evaluation Request was not provided."),
+            )
+        })
     }
 
     fn validate_results(&self) -> Result<&EvaluationResults, Error> {
-        self.evaluation_results.clone()
-            .ok_or_else(|| Error::for_system(Kind::InvalidInput, String::from("Evaluation Results were not provided.")))
+        self.evaluation_results.clone().ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                String::from("Evaluation Results were not provided."),
+            )
+        })
     }
-
 }
-
-
 
 fn try_create_report_activities(
     home: &FilePath,
     definition: &AssuranceProcedure,
     results: &EvaluationResults,
     file_data_gateway: FileDataGateway,
-    signature_algorithm: SignatureAlgorithm) -> Result< assurance_report::activities::Activities, Error> {
-
+    signature_algorithm: SignatureAlgorithm,
+) -> Result<assurance_report::activities::Activities, Error> {
     let mut builder = assurance_report::activities::Activities::builder();
 
     for definition_activity in &definition.activities.list {
         // TODO - Move home the combine_paths onto the try_get_test_result, and try_create_signed_file functions so you can combine to retrive the file data, but record in the assurance report as the non-canonical path
         for definition_action in &definition_activity.actions {
-            let test_result = try_get_test_result(results, home, &definition_action.evidence, &definition_action.test)?;
-            let signed_evidence = try_create_signed_file(home, &definition_action.evidence, file_data_gateway, signature_algorithm)?;
-            let signed_test = try_create_signed_file(home, &definition_action.test, file_data_gateway, signature_algorithm)?;
+            let test_result = try_get_test_result(
+                results,
+                home,
+                &definition_action.evidence,
+                &definition_action.test,
+            )?;
+            let signed_evidence = try_create_signed_file(
+                home,
+                &definition_action.evidence,
+                file_data_gateway,
+                signature_algorithm,
+            )?;
+            let signed_test = try_create_signed_file(
+                home,
+                &definition_action.test,
+                file_data_gateway,
+                signature_algorithm,
+            )?;
             // TODO - REMOVE ONCE - Testing of Canonical paths works
             // let test_result = try_get_test_result(results, &definition_action.evidence, &definition_action.test)?;
             // let signed_evidence = try_create_signed_file(&definition_action.evidence, file_data_gateway, signature_algorithm)?;
@@ -219,37 +291,71 @@ fn try_create_report_activities(
 
             builder.add_action(&definition_activity.name.value, &report_action);
         }
-
     }
 
     let report_activities = builder.try_build()?;
 
     Ok(report_activities)
 }
-fn try_get_test_result(results: &EvaluationResults, home_root: &FilePath, evidence: &FilePath, test: &FilePath) -> Result<TestResult, Error> {
+fn try_get_test_result(
+    results: &EvaluationResults,
+    home_root: &FilePath,
+    evidence: &FilePath,
+    test: &FilePath,
+) -> Result<TestResult, Error> {
     let canonical_test_path = combine_paths(home_root, test)?;
     let canonical_evidence_path = combine_paths(home_root, evidence)?;
-    results.result_for(&canonical_evidence_path, &canonical_test_path)
-        .ok_or_else(|| Error::for_system(Kind::InvalidInput, format!("No test result found for evidence: {:?} and test: {:?}", evidence, test)))
+    results
+        .result_for(&canonical_evidence_path, &canonical_test_path)
+        .ok_or_else(|| {
+            Error::for_system(
+                Kind::InvalidInput,
+                format!(
+                    "No test result found for evidence: {:?} and test: {:?}",
+                    evidence, test
+                ),
+            )
+        })
 }
 
-fn try_create_signed_file(home_root: &FilePath, file_path:  &FilePath, file_data_gateway: FileDataGateway, signature_algorithm: SignatureAlgorithm) -> Result<SignedFile, Error> {
-
+fn try_create_signed_file(
+    home_root: &FilePath,
+    file_path: &FilePath,
+    file_data_gateway: FileDataGateway,
+    signature_algorithm: SignatureAlgorithm,
+) -> Result<SignedFile, Error> {
     let canonical_path = combine_paths(home_root, file_path)?;
 
     // Use Canonical Path to get the file data
-    let file_data = file_data_gateway(&canonical_path.as_str())
-        .map_err(|error| Error::for_system(Kind::ProcessingFailure,
-                                         format!("Could not get file data for signing: {}. {}", file_path.as_str(), error)))?;
+    let file_data = file_data_gateway(&canonical_path.as_str()).map_err(|error| {
+        Error::for_system(
+            Kind::ProcessingFailure,
+            format!(
+                "Could not get file data for signing: {}. {}",
+                file_path.as_str(),
+                error
+            ),
+        )
+    })?;
 
-    let signature_result = signature_algorithm(&file_data)
-        .map_err(|error| Error::for_system(Kind::ProcessingFailure,
-                                         format!("Failed to sign the file: {}. {}", file_path.as_str(), error)))?;
+    let signature_result = signature_algorithm(&file_data).map_err(|error| {
+        Error::for_system(
+            Kind::ProcessingFailure,
+            format!("Failed to sign the file: {}. {}", file_path.as_str(), error),
+        )
+    })?;
 
     // use the non-canonical path to create the signed file because the non-canonical path is the path that is provided in the assurance procedure
-    let signed_file = SignedFile::new(&file_path.as_str(), &signature_result)
-        .map_err(|error| Error::for_system(Kind::ProcessingFailure,
-                                         format!("Could not create a signed file for: {}. {}", file_path.as_str(), error)))?;
+    let signed_file = SignedFile::new(&file_path.as_str(), &signature_result).map_err(|error| {
+        Error::for_system(
+            Kind::ProcessingFailure,
+            format!(
+                "Could not create a signed file for: {}. {}",
+                file_path.as_str(),
+                error
+            ),
+        )
+    })?;
 
     Ok(signed_file)
 }

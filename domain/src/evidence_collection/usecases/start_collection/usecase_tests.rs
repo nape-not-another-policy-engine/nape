@@ -1,10 +1,12 @@
-use nape_kernel::error::{Audience, Error, Kind};
-use nape_kernel::values::directory::directory_list::DirectoryList;
-use nape_kernel::values::specification::file_path::FilePath;
-use nape_kernel::values::specification::repository_link::RepositoryLink;
-use nape_testing_assertions::kernel_error_eq;
-use crate::evidence_collection::usecases::start_collection::usecase::{start_collection};
-use crate::evidence_collection::usecases::start_collection::usecase_boundary::request::{StartProcedureBuilder, StartProcedure};
+use crate::evidence_collection::usecases::start_collection::usecase::start_collection;
+use crate::evidence_collection::usecases::start_collection::usecase_boundary::request::{
+    StartProcedure, StartProcedureBuilder,
+};
+use kernel_oss::error::{Audience, Error, Kind};
+use kernel_oss::values::directory::directory_list::DirectoryList;
+use kernel_oss::values::specification::file_path::FilePath;
+use kernel_oss::values::specification::repository_link::RepositoryLink;
+use test_framework_oss::kernel_error_eq;
 
 #[test]
 fn start_collection_success() {
@@ -16,21 +18,37 @@ fn start_collection_success() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_success,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
-    assert!(result.is_ok(), "{}", format!("An error was returned when one was not expected: {:?}", result.err()));
+    assert!(
+        result.is_ok(),
+        "{}",
+        format!(
+            "An error was returned when one was not expected: {:?}",
+            result.err()
+        )
+    );
 }
 
-/* Directory List Test - Sad Path tests */
+/* directory List Test - Sad Path tests */
 
 #[test]
 fn start_collection_error_missing_home_dir() {
     let request = generate_valid_request();
     let directories = vec![
-        ("evidence".to_string(), "nrn_sourcecode_example/1714646108364/evidence".to_string()),
-        ("activity-test".to_string(), "nrn_sourcecode_example/1714646108364/activity".to_string()),
-        ("temp".to_string(), "nrn_sourcecode_example/1714646108364/temp".to_string())
+        (
+            "evidence".to_string(),
+            "nrn_sourcecode_example/1714646108364/evidence".to_string(),
+        ),
+        (
+            "activity-test".to_string(),
+            "nrn_sourcecode_example/1714646108364/activity".to_string(),
+        ),
+        (
+            "temp".to_string(),
+            "nrn_sourcecode_example/1714646108364/temp".to_string(),
+        ),
     ];
     let directory_list = DirectoryList::try_from_vec(directories).unwrap();
 
@@ -40,7 +58,7 @@ fn start_collection_error_missing_home_dir() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_success,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
     kernel_error_eq!(&result,
@@ -53,9 +71,18 @@ fn start_collection_error_missing_home_dir() {
 fn start_collection_error_missing_activity_dir() {
     let request = generate_valid_request();
     let directories = vec![
-        ("home".to_string(), "nrn_sourcecode_example/1714646108364".to_string()),
-        ("evidence".to_string(), "nrn_sourcecode_example/1714646108364/evidence".to_string()),
-        ("temp".to_string(), "nrn_sourcecode_example/1714646108364/temp".to_string())
+        (
+            "home".to_string(),
+            "nrn_sourcecode_example/1714646108364".to_string(),
+        ),
+        (
+            "evidence".to_string(),
+            "nrn_sourcecode_example/1714646108364/evidence".to_string(),
+        ),
+        (
+            "temp".to_string(),
+            "nrn_sourcecode_example/1714646108364/temp".to_string(),
+        ),
     ];
     let directory_list = DirectoryList::try_from_vec(directories).unwrap();
 
@@ -65,7 +92,7 @@ fn start_collection_error_missing_activity_dir() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_success,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
     kernel_error_eq!(&result,
@@ -73,15 +100,23 @@ fn start_collection_error_missing_activity_dir() {
         Audience::System,
         "We could not start the collection procedure. Could not locate the 'activity-test' directory in the provided directory list."
     );
-
 }
 #[test]
 fn start_collection_error_missing_temp_dir() {
     let request = generate_valid_request();
     let directories = vec![
-        ("home".to_string(), "nrn_sourcecode_example/1714646108364".to_string()),
-        ("activity-test".to_string(), "nrn_sourcecode_example/1714646108364/activity".to_string()),
-        ("evidence".to_string(), "nrn_sourcecode_example/1714646108364/evidence".to_string())
+        (
+            "home".to_string(),
+            "nrn_sourcecode_example/1714646108364".to_string(),
+        ),
+        (
+            "activity-test".to_string(),
+            "nrn_sourcecode_example/1714646108364/activity".to_string(),
+        ),
+        (
+            "evidence".to_string(),
+            "nrn_sourcecode_example/1714646108364/evidence".to_string(),
+        ),
     ];
     let directory_list = DirectoryList::try_from_vec(directories).unwrap();
 
@@ -91,7 +126,7 @@ fn start_collection_error_missing_temp_dir() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_success,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
     kernel_error_eq!(&result,
@@ -99,7 +134,6 @@ fn start_collection_error_missing_temp_dir() {
         Audience::System,
         "We could not start the collection procedure. Could not locate the 'temp' directory in the provided directory list."
     );
-
 }
 
 /*** User Audience Error Tests ***/
@@ -118,10 +152,17 @@ fn start_collection_error_move_file_missing_procedure_doc() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_missing_procedure_doc,
         file_move_gateway_success,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
-    assert!(result.is_err(), "{}", format!("An error was expected although none was returned: {:?}", result.err()));
+    assert!(
+        result.is_err(),
+        "{}",
+        format!(
+            "An error was expected although none was returned: {:?}",
+            result.err()
+        )
+    );
 
     let err = result.unwrap_err();
     assert_eq!(err.kind, Kind::NotFound);
@@ -141,17 +182,23 @@ fn start_collection_error_move_file_missing_activity_dir() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_missing_activity_dir,
         file_move_gateway_success,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
-    assert!(result.is_err(), "{}", format!("An error was expected although none was returned: {:?}", result.err()));
+    assert!(
+        result.is_err(),
+        "{}",
+        format!(
+            "An error was expected although none was returned: {:?}",
+            result.err()
+        )
+    );
 
     let err = result.unwrap_err();
     assert_eq!(err.kind, Kind::NotFound);
     assert_eq!(err.audience, Audience::User);
     assert_eq!(err.message, "We could not start the collection procedure. We could not find the activity test directory in the repository link you provided.  Please check the repository and make sure the appropriate activity test directory exists.");
 }
-
 
 /*** Gateway Error Tests ***/
 
@@ -191,7 +238,7 @@ fn start_collection_error_directory_creation_gateway_error() {
     kernel_error_eq!(result,
         Kind::GatewayError,
         Audience::System,
-        "We could not start the collection procedure. Could not create the directory structure for the evidence collection procedure: Directory Creation Gateway Failure"
+        "We could not start the collection procedure. Could not create the directory structure for the evidence collection procedure: directory Creation Gateway Failure"
     );
 }
 
@@ -208,14 +255,22 @@ fn start_collection_error_file_delete_gateway_error() {
         file_delete_gateway_error,
     );
 
-    assert!(result.is_err(), "{}", format!("An error was expected although none was returned: {:?}", result.err()));
+    assert!(
+        result.is_err(),
+        "{}",
+        format!(
+            "An error was expected although none was returned: {:?}",
+            result.err()
+        )
+    );
 
     let err = result.unwrap_err();
     assert_eq!(err.kind, Kind::GatewayError);
     assert_eq!(err.audience, Audience::System);
-    assert!(err.message.contains("Could not delete the 'temp' directory: File Delete Gateway Failure" ));
+    assert!(err
+        .message
+        .contains("Could not delete the 'temp' directory: File Delete Gateway Failure"));
 }
-
 
 /***  Medium Tests
     These test verify that the state the dependencies recieve when invoked is the expected state, and if it's not the expected state, that the proper error is returned.
@@ -231,10 +286,17 @@ fn start_collection_error_file_move_procedure_doc() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_error_for_procedure_doc,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
-    assert!(result.is_err(), "{}", format!("An error was expected although none was returned: {:?}", result.err()));
+    assert!(
+        result.is_err(),
+        "{}",
+        format!(
+            "An error was expected although none was returned: {:?}",
+            result.err()
+        )
+    );
 
     let err = result.unwrap_err();
     assert_eq!(err.kind, Kind::GatewayError);
@@ -252,10 +314,17 @@ fn start_collection_error_file_move_activity_dir() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_error_for_activity_dir,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
-    assert!(result.is_err(), "{}", format!("An error was expected although none was returned: {:?}", result.err()));
+    assert!(
+        result.is_err(),
+        "{}",
+        format!(
+            "An error was expected although none was returned: {:?}",
+            result.err()
+        )
+    );
 
     let err = result.unwrap_err();
     assert_eq!(err.kind, Kind::GatewayError);
@@ -276,11 +345,17 @@ fn success_activity_moved() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_assert_correct_move_targets,
-        file_delete_gateway_success
+        file_delete_gateway_success,
     );
 
-    assert!(result.is_ok(), "{}", format!("An error was returned when one was not expected: {:?}", result.err()));
-
+    assert!(
+        result.is_ok(),
+        "{}",
+        format!(
+            "An error was returned when one was not expected: {:?}",
+            result.err()
+        )
+    );
 }
 
 #[test]
@@ -293,11 +368,17 @@ fn temp_dir_deleted_success() {
         directory_creation_gateway_success,
         procedure_retrieval_gateway_success,
         file_move_gateway_success,
-        file_delete_gateway_assert_temp_dir_deleted
+        file_delete_gateway_assert_temp_dir_deleted,
     );
 
-    assert!(result.is_ok(), "{}", format!("An error was returned when one was not expected: {:?}", result.err()));
-
+    assert!(
+        result.is_ok(),
+        "{}",
+        format!(
+            "An error was returned when one was not expected: {:?}",
+            result.err()
+        )
+    );
 }
 
 /***
@@ -320,22 +401,41 @@ fn generate_valid_request() -> StartProcedure {
 /// Assumes canned start time of 1714646108364
 fn generate_valid_directory_list() -> DirectoryList {
     let directories: Vec<(String, String)> = [
-                ("home".to_string(), "nrn_sourcecode_example/1714646108364".to_string()),
-                ("evidence".to_string(), "nrn_sourcecode_example/1714646108364/evidence".to_string()),
-                ("activity-test".to_string(), "nrn_sourcecode_example/1714646108364/activity".to_string()),
-                ("temp".to_string(), "nrn_sourcecode_example/1714646108364/temp".to_string())
-    ].to_vec();
-  DirectoryList::try_from_vec(directories).unwrap()
-
+        (
+            "home".to_string(),
+            "nrn_sourcecode_example/1714646108364".to_string(),
+        ),
+        (
+            "evidence".to_string(),
+            "nrn_sourcecode_example/1714646108364/evidence".to_string(),
+        ),
+        (
+            "activity-test".to_string(),
+            "nrn_sourcecode_example/1714646108364/activity".to_string(),
+        ),
+        (
+            "temp".to_string(),
+            "nrn_sourcecode_example/1714646108364/temp".to_string(),
+        ),
+    ]
+    .to_vec();
+    DirectoryList::try_from_vec(directories).unwrap()
 }
 
 /* DirectoryCreationGateway Mocks */
 
-fn directory_creation_gateway_success(directory_list: &DirectoryList) -> Result<DirectoryList, Error> {
+fn directory_creation_gateway_success(
+    directory_list: &DirectoryList,
+) -> Result<DirectoryList, Error> {
     Ok(directory_list.clone())
 }
-fn directory_creation_gateway_error(_directory_list: &DirectoryList) -> Result<DirectoryList, Error> {
-    Err(Error::for_system(Kind::GatewayError, "Directory Creation Gateway Failure".to_string()))
+fn directory_creation_gateway_error(
+    _directory_list: &DirectoryList,
+) -> Result<DirectoryList, Error> {
+    Err(Error::for_system(
+        Kind::GatewayError,
+        "directory Creation Gateway Failure".to_string(),
+    ))
 }
 
 const ACTIVITY_DIR: &str = "/some/path/to/activity/";
@@ -347,52 +447,89 @@ const PROCEDURE_DOC: &str = "/some/path/to/assurance_procedure.yaml";
 ///     - activity-dir
 ///
 /// For a successful test, the value is arbitrary for each key
-fn procedure_retrieval_gateway_success(_repo_link: &RepositoryLink, _procedure_dir: &str, _download_dir: &str) -> Result<DirectoryList, Error> {
+fn procedure_retrieval_gateway_success(
+    _repo_link: &RepositoryLink,
+    _procedure_dir: &str,
+    _download_dir: &str,
+) -> Result<DirectoryList, Error> {
     Ok(DirectoryList::default()
         .try_add("assurance-procedure-file", PROCEDURE_DOC)?
         .try_add("activity-dir", ACTIVITY_DIR)?)
 }
-fn procedure_retrieval_gateway_error(_repo_link:  &RepositoryLink, _procedure_dir: &str, _download_dir: &str) -> Result<DirectoryList, Error> {
-    Err(Error::for_system(Kind::GatewayError, "Procedure Retrieval Gateway Failure".to_string()))
+fn procedure_retrieval_gateway_error(
+    _repo_link: &RepositoryLink,
+    _procedure_dir: &str,
+    _download_dir: &str,
+) -> Result<DirectoryList, Error> {
+    Err(Error::for_system(
+        Kind::GatewayError,
+        "Procedure Retrieval Gateway Failure".to_string(),
+    ))
 }
-fn procedure_retrieval_gateway_missing_procedure_doc(_repo_link:  &RepositoryLink, _procedure_dir: &str, _download_dir: &str) -> Result<DirectoryList, Error> {
-    Ok(DirectoryList::default()
-        .try_add("activity-dir", ACTIVITY_DIR)?)
+fn procedure_retrieval_gateway_missing_procedure_doc(
+    _repo_link: &RepositoryLink,
+    _procedure_dir: &str,
+    _download_dir: &str,
+) -> Result<DirectoryList, Error> {
+    Ok(DirectoryList::default().try_add("activity-dir", ACTIVITY_DIR)?)
 }
-fn procedure_retrieval_gateway_missing_activity_dir(_repo_link:  &RepositoryLink, _procedure_dir: &str, _download_dir: &str) -> Result<DirectoryList, Error> {
-    Ok(DirectoryList::default()
-        .try_add("assurance-procedure-file", PROCEDURE_DOC)?)
+fn procedure_retrieval_gateway_missing_activity_dir(
+    _repo_link: &RepositoryLink,
+    _procedure_dir: &str,
+    _download_dir: &str,
+) -> Result<DirectoryList, Error> {
+    Ok(DirectoryList::default().try_add("assurance-procedure-file", PROCEDURE_DOC)?)
 }
 
-
-fn file_move_gateway_success(_source: &str, _target: &str,) -> Result<FilePath, Error> {
+fn file_move_gateway_success(_source: &str, _target: &str) -> Result<FilePath, Error> {
     Ok(FilePath::from("some/path/to/moved_file/success.txt"))
 }
 
 /// This function will return an error if the source of the move is the procedure doc value.
-fn file_move_gateway_error_for_procedure_doc(source: &str, _target: &str,) -> Result<FilePath, Error> {
+fn file_move_gateway_error_for_procedure_doc(
+    source: &str,
+    _target: &str,
+) -> Result<FilePath, Error> {
     if source == PROCEDURE_DOC {
-        return Err(Error::for_system(Kind::GatewayError, "Move Procedure Doc Failure".to_string()));
+        return Err(Error::for_system(
+            Kind::GatewayError,
+            "Move Procedure Doc Failure".to_string(),
+        ));
     }
-    Ok(FilePath::from("some/path/to/moved_file/error_for_procedure_doc.txt"))
+    Ok(FilePath::from(
+        "some/path/to/moved_file/error_for_procedure_doc.txt",
+    ))
 }
 
 /// This function will return an error if the source of the move is the activity-test dir value.
-fn file_move_gateway_error_for_activity_dir(source: &str, _target: &str,) -> Result<FilePath, Error> {
+fn file_move_gateway_error_for_activity_dir(
+    source: &str,
+    _target: &str,
+) -> Result<FilePath, Error> {
     if source == ACTIVITY_DIR {
-        return Err(Error::for_system(Kind::GatewayError, "Move Activity Test Dir Failure".to_string()));
+        return Err(Error::for_system(
+            Kind::GatewayError,
+            "Move Activity Test Dir Failure".to_string(),
+        ));
     }
-    Ok(FilePath::from("some/path/to/moved_file/error_for_activity.txt"))
+    Ok(FilePath::from(
+        "some/path/to/moved_file/error_for_activity.txt",
+    ))
 }
 
-fn file_move_gateway_assert_correct_move_targets(source: &str, target: &str) -> Result<FilePath, Error> {
+fn file_move_gateway_assert_correct_move_targets(
+    source: &str,
+    target: &str,
+) -> Result<FilePath, Error> {
     if source == ACTIVITY_DIR {
         assert_eq!(target, "nrn_sourcecode_example/1714646108364/activity");
     };
     if source == PROCEDURE_DOC {
         assert_eq!(target, "nrn_sourcecode_example/1714646108364");
     };
-    Ok(FilePath::from("some/path/to/moved_file/assert_correct_move_targets.txt"))
+    Ok(FilePath::from(
+        "some/path/to/moved_file/assert_correct_move_targets.txt",
+    ))
 }
 
 fn file_delete_gateway_success(_source: &str) -> Result<(), Error> {
@@ -400,11 +537,13 @@ fn file_delete_gateway_success(_source: &str) -> Result<(), Error> {
 }
 
 fn file_delete_gateway_error(_source: &str) -> Result<(), Error> {
-    Err(Error::for_system(Kind::GatewayError, "File Delete Gateway Failure".to_string()))
+    Err(Error::for_system(
+        Kind::GatewayError,
+        "File Delete Gateway Failure".to_string(),
+    ))
 }
 
 fn file_delete_gateway_assert_temp_dir_deleted(source: &str) -> Result<(), Error> {
     assert_eq!(source, "nrn_sourcecode_example/1714646108364/temp");
     Ok(())
 }
-

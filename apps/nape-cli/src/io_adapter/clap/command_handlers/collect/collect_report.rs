@@ -1,9 +1,9 @@
+use crate::gateway_adapter::state_management::retrieve_app_state::app_state_from_nape_config;
+use crate::io_adapter::clap::command_handler_boundary::CommandHandlerBoundary;
 use clap::ArgMatches;
 use nape_domain::evidence_collection::usecases::evaluate_evidence::usecase::EvaluateAndReportEvidenceUC;
 use nape_domain::evidence_collection::usecases::evaluate_evidence::usecase_boundary::request::EvaluateEvidence;
-use nape_kernel::error::{Error, Kind};
-use crate::gateway_adapter::state_management::retrieve_app_state::app_state_from_nape_config;
-use crate::io_adapter::clap::command_handler_boundary::CommandHandlerBoundary;
+use kernel_oss::error::{Error, Kind};
 
 pub struct EvaluateAndReportCommandHandler<'a> {
     pub command_name: &'a str,
@@ -12,7 +12,10 @@ pub struct EvaluateAndReportCommandHandler<'a> {
 
 impl<'a> EvaluateAndReportCommandHandler<'a> {
     pub fn new(usecase: EvaluateAndReportEvidenceUC) -> EvaluateAndReportCommandHandler<'a> {
-        EvaluateAndReportCommandHandler { command_name: "report", usecase }
+        EvaluateAndReportCommandHandler {
+            command_name: "report",
+            usecase,
+        }
     }
 }
 
@@ -23,14 +26,13 @@ impl<'a> CommandHandlerBoundary for EvaluateAndReportCommandHandler<'a> {
     fn handle(&self, _args: &ArgMatches) -> Result<(), Error> {
         let request = create_request()?;
         match (self.usecase)(&request) {
-            Ok(_) => { Ok(()) },
-            Err(e) => Err(e)
+            Ok(_) => Ok(()),
+            Err(e) => Err(e),
         }
     }
 }
 
-fn create_request()  -> Result<EvaluateEvidence, Error> {
-
+fn create_request() -> Result<EvaluateEvidence, Error> {
     let app_state = app_state_from_nape_config()?;
 
     EvaluateEvidence::builder()

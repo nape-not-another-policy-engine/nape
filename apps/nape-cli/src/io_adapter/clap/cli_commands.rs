@@ -1,5 +1,8 @@
-use clap::{Command};
-use crate::io_adapter::clap::cli_arguments::{control_action_name, evidence_file_name, evidence_file_path, metadata, procedure_directory, procedure_link, subject, subject_id};
+use crate::io_adapter::clap::cli_arguments::{
+    control_action_name, evidence_file_name, evidence_file_path, metadata, procedure_directory,
+    procedure_link, subject, subject_id,
+};
+use clap::Command;
 
 pub fn collect() -> Command {
     Command::new("collect")
@@ -8,7 +11,6 @@ pub fn collect() -> Command {
         .subcommand(evidence())
         .subcommand(report())
 }
-
 
 pub fn start() -> Command {
     Command::new("start")
@@ -29,6 +31,5 @@ pub fn evidence() -> Command {
 }
 
 pub fn report() -> Command {
-    Command::new("report")
-        .about("Evaluate all of the collected evidence and generate a report.")
+    Command::new("report").about("Evaluate all of the collected evidence and generate a report.")
 }

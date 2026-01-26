@@ -1,11 +1,14 @@
-use sha2::{Sha256, Digest};
-use nape_kernel::algorithms::signature_algorithm::{Signature, SignatureType};
-use nape_kernel::error::{Error, Kind};
+use kernel_oss::algorithms::signature_algorithm::{Signature, SignatureType};
+use kernel_oss::error::{Error, Kind};
+use sha2::{Digest, Sha256};
 
 pub fn sha256_signature(data: &Vec<u8>) -> Result<Signature, Error> {
-
     if data.is_empty() {
-        return Err(Error::for_system(Kind::InvalidInput, "Failed to generate a SHA256 signature because the input data you provided is empty.".to_string()));
+        return Err(Error::for_system(
+            Kind::InvalidInput,
+            "Failed to generate a SHA256 signature because the input data you provided is empty."
+                .to_string(),
+        ));
     }
 
     let mut hasher = Sha256::new();

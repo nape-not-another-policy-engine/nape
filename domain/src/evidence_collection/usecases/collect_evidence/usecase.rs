@@ -1,8 +1,8 @@
-use std::fmt::{Debug};
-use nape_kernel::error::{Error, Kind};
-use nape_kernel::gateways::directory_list::RetrieveDirectoryPath;
-use nape_kernel::values::directory::name::DirectoryName;
-use nape_kernel::values::specification::name::Name;
+use kernel_oss::error::{Error, Kind};
+use kernel_oss::gateways::directory_list::RetrieveDirectoryPath;
+use kernel_oss::values::directory::name::DirectoryName;
+use kernel_oss::values::specification::name::Name;
+use std::fmt::Debug;
 
 /// `ActionEvidenceFile` is a trait that represents an evidence file associated with an action.
 ///
@@ -27,14 +27,13 @@ use nape_kernel::values::specification::name::Name;
 pub struct CollectEvidenceRequest<'a> {
     pub action_name: &'a str,
     pub file_path: &'a str,
-    pub file_name:  Option<&'a str>,
+    pub file_name: Option<&'a str>,
 }
 
 #[derive(Clone, Debug)]
 pub struct CollectedEvidence {
-    pub file_location: String
+    pub file_location: String,
 }
-
 
 /// `UCCollectEvidenceFile` is a function pointer type that represents a use case for collecting evidence files.
 ///
@@ -51,43 +50,71 @@ pub struct CollectedEvidence {
 /// # Returns
 ///
 /// This function returns a [`Result`] that contains an empty tuple `()` if the evidence file was successfully collected, or an [`Error`] if the evidence file could not be collected.
-pub type UCCollectEvidenceFile = fn(request: &CollectEvidenceRequest) -> Result<CollectedEvidence, Error>;
+pub type UCCollectEvidenceFile =
+    fn(request: &CollectEvidenceRequest) -> Result<CollectedEvidence, Error>;
 
-pub type CopyFileGateway = fn(file_name: &str, file_data: &Vec<u8>, target_directory: &str) -> Result<String, Error>;
+pub type CopyFileGateway =
+    fn(file_name: &str, file_data: &Vec<u8>, target_directory: &str) -> Result<String, Error>;
 
 pub type RetrieveFileDataGateway = fn(file_path: &str) -> Result<(String, Vec<u8>), Error>;
-
 
 pub fn collect_action_evidence(
     request: &CollectEvidenceRequest,
     retrieve_directory: RetrieveDirectoryPath,
     retrieve_file_data: RetrieveFileDataGateway,
-    copy_file: CopyFileGateway) -> Result<CollectedEvidence, Error> {
+    copy_file: CopyFileGateway,
+) -> Result<CollectedEvidence, Error> {
+    let valid_action_name = Name::try_from(request.action_name).map_err(|error| {
+        Error::for_user(
+            Kind::InvalidInput,
+            format!(
+                "There is an issue with the action name '{}'. {}",
+                request.action_name, error.message
+            ),
+        )
+    })?;
 
-    let valid_action_name = Name::try_from(request.action_name)
-        .map_err(|error| Error::for_user(Kind::InvalidInput,
-                                         format!("There is an issue with the action name '{}'. {}", request.action_name, error.message)))?;
-
-    let (current_file_name, file_data) = retrieve_file_data(request.file_path)
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("There was an issue retrieving the file '{}'. {}", request.file_path, error.message)))?;
+    let (current_file_name, file_data) =
+        retrieve_file_data(request.file_path).map_err(|error| {
+            Error::for_system(
+                Kind::GatewayError,
+                format!(
+                    "There was an issue retrieving the file '{}'. {}",
+                    request.file_path, error.message
+                ),
+            )
+        })?;
 
     let target_file_name = match request.file_name {
         Some(file_name) => file_name,
-        None => &current_file_name
+        None => &current_file_name,
     };
 
-    let evidence_root_directory = retrieve_directory("evidence")
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("There was an issue retrieving the evidence directory path. {}", error.message)))?;
+    let evidence_root_directory = retrieve_directory("evidence").map_err(|error| {
+        Error::for_system(
+            Kind::GatewayError,
+            format!(
+                "There was an issue retrieving the evidence directory path. {}",
+                error.message
+            ),
+        )
+    })?;
 
     let action_dir_name = DirectoryName::from(&valid_action_name);
-    let target_directory = format!("{}/{}",evidence_root_directory, action_dir_name.value);
+    let target_directory = format!("{}/{}", evidence_root_directory, action_dir_name.value);
 
     let copied_file_location = copy_file(&target_file_name, &file_data, &target_directory)
-        .map_err(|error| Error::for_system(Kind::GatewayError,
-                                           format!("There was an issue copying the file '{}' to '{}'. {}", request.file_path, target_directory, error.message)))?;
+        .map_err(|error| {
+            Error::for_system(
+                Kind::GatewayError,
+                format!(
+                    "There was an issue copying the file '{}' to '{}'. {}",
+                    request.file_path, target_directory, error.message
+                ),
+            )
+        })?;
 
-    Ok(CollectedEvidence { file_location: copied_file_location })
-
+    Ok(CollectedEvidence {
+        file_location: copied_file_location,
+    })
 }

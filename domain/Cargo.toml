@@ -5,9 +5,12 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+default = []
+medium_tests = []
+
 [dependencies]
-nape_kernel = { path = "../kernel" }
+kernel_oss = { git = "https://github.com/attestify/kernel-oss.git", tag="0.2.4" }
 
 [dev-dependencies]
-nape_testing_tags = { path = "../test_framework/tags" }
-nape_testing_assertions = { path = "../test_framework/assertions" }
+test_framework_oss = { git = "https://github.com/attestify/test-framework-oss.git", tag = "0.2.4", features = ["nape_filesystem"] }

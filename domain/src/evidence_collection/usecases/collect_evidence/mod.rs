@@ -1,2 +1,3 @@
 pub mod usecase;
-#[cfg(test)] mod usecase_tests;
+#[cfg(test)]
+mod usecase_tests;

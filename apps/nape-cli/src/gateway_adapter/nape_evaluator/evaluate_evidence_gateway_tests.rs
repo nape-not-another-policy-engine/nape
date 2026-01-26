@@ -1,15 +1,22 @@
-use nape_domain::evidence_collection::usecases::evaluate_evidence::gateway_boundary::{EvidenceFilePath, TestFilePath};
+use crate::gateway_adapter::nape_evaluator::evaluate_evidence_gateway::nape_evidence_evaluator;
 use nape_domain::evidence_collection::usecases::evaluate_evidence::gateway_boundary::request::EvaluationFiles;
-use nape_kernel::values::specification::outcome::Outcome;
-use nape_testing_assertions::is_ok;
-use crate::gateway_adapter::nape_evaluator::evaluate_evidence_gateway::{nape_evidence_evaluator};
-use nape_testing_filesystem::{canonical_path, create_file};
+use nape_domain::evidence_collection::usecases::evaluate_evidence::gateway_boundary::{
+    EvidenceFilePath, TestFilePath,
+};
+use kernel_oss::values::specification::outcome::Outcome;
+use test_framework_oss::{canonical_path, create_file, is_ok};
 
 #[test]
 fn success() {
     //
-    let evidence_file = create_file!("evaluate_evidence_gateway_nape_eval_success/evidence.json", &generate_author_evidence_file());
-    let test_file = create_file!("evaluate_evidence_gateway_nape_eval_success/test.py", &generate_author_test_file());
+    let evidence_file = create_file!(
+        "evaluate_evidence_gateway_nape_eval_success/evidence.json",
+        &generate_author_evidence_file()
+    );
+    let test_file = create_file!(
+        "evaluate_evidence_gateway_nape_eval_success/test.py",
+        &generate_author_test_file()
+    );
 
     let evidence_canonical = canonical_path!(evidence_file);
     let test_canonical = canonical_path!(test_file);
@@ -27,10 +34,11 @@ fn success() {
 
     let actual_result = eval_results.result_for(&evidence_path, &test_path).unwrap();
 
-    assert_eq!(actual_result.outcome,Outcome::PASS);
-    assert_eq!(actual_result.reason.value, "The author has achieved the status of complete.");
-
-
+    assert_eq!(actual_result.outcome, Outcome::PASS);
+    assert_eq!(
+        actual_result.reason.value,
+        "The author has achieved the status of complete."
+    );
 }
 
 fn generate_author_evidence_file() -> String {
@@ -39,7 +47,8 @@ fn generate_author_evidence_file() -> String {
   "author": "Bill Bensing",
   "status": "complete"
 }
-    "#.to_string()
+    "#
+    .to_string()
 }
 
 fn generate_author_test_file() -> String {

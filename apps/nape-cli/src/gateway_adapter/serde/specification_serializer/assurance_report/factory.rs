@@ -1,8 +1,8 @@
-use nape_kernel::error::{Error, Kind};
-use nape_kernel::values::specification::api_version::APIVersion;
-use nape_kernel::values::specification::traits::AssuranceReport;
-use nape_kernel::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 use crate::gateway_adapter::serde::specification_serializer::assurance_report::v1_0_0::AssuranceReportFileV1;
+use kernel_oss::error::{Error, Kind};
+use kernel_oss::values::specification::api_version::APIVersion;
+use kernel_oss::values::specification::traits::AssuranceReport;
+use kernel_oss::values::specification::v1_0_0::assurance_report::AssuranceReportV1;
 
 /// The [`create`] function is a factory function that creates a YAML string from an [`AssuranceReport`] by downcasting it to the proper concert implementation based upon the version.
 ///

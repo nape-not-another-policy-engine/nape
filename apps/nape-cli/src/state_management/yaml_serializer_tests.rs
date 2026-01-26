@@ -1,14 +1,13 @@
-use nape_kernel::values::directory::directory_list::DirectoryList;
-use nape_kernel::values::specification::metadata::MetaData;
-use nape_kernel::values::specification::procedure::Procedure;
-use nape_kernel::values::specification::subject::Subject;
-use nape_testing_assertions::is_ok;
-use crate::state_management::cli_app_state::{CLIAppStateBuilder};
+use crate::state_management::cli_app_state::CLIAppStateBuilder;
 use crate::state_management::yaml_serializer::{deserialize_from_yaml, serialize_to_yaml};
+use kernel_oss::values::directory::directory_list::DirectoryList;
+use kernel_oss::values::specification::metadata::MetaData;
+use kernel_oss::values::specification::procedure::Procedure;
+use kernel_oss::values::specification::subject::Subject;
+use test_framework_oss::is_ok;
 
 #[test]
 fn serialize_to_yaml_success() {
-
     /* ASSEMBLE */
 
     let subject = Subject::try_new("nrn:sourcecode:nape/nape-cli", "1719326666").unwrap();
@@ -21,14 +20,17 @@ fn serialize_to_yaml_success() {
     let directory_list = DirectoryList::default();
     let directory_list = directory_list.try_add("path-1", "some/path/one").unwrap();
     let directory_list = directory_list.try_add("path-2", "some/path/two").unwrap();
-    let directory_list = directory_list.try_add("path-3", "some/path/three/file.txt").unwrap();
+    let directory_list = directory_list
+        .try_add("path-3", "some/path/three/file.txt")
+        .unwrap();
 
     let state = CLIAppStateBuilder::default()
         .for_subject(&subject)
         .with_procedure(&procedure)
         .with_metadata(&metadata)
         .with_directory_list(&directory_list)
-        .try_build().unwrap();
+        .try_build()
+        .unwrap();
 
     /* ACT */
 
@@ -37,7 +39,6 @@ fn serialize_to_yaml_success() {
     /* ASSERT */
 
     is_ok!(&result);
-
 }
 
 #[test]
@@ -60,15 +61,17 @@ fn deserialize_from_yaml_success() {
     let directory_list = DirectoryList::default();
     let directory_list = directory_list.try_add("path-1", "some/path/one").unwrap();
     let directory_list = directory_list.try_add("path-2", "some/path/two").unwrap();
-    let directory_list = directory_list.try_add("path-3", "some/path/three/file.txt").unwrap();
+    let directory_list = directory_list
+        .try_add("path-3", "some/path/three/file.txt")
+        .unwrap();
 
     let expected_state = CLIAppStateBuilder::default()
         .for_subject(&subject)
         .with_procedure(&procedure)
         .with_metadata(&metadata)
         .with_directory_list(&directory_list)
-        .try_build().unwrap();
+        .try_build()
+        .unwrap();
 
     assert_eq!(expected_state.clone(), deserialized_app_state.clone());
-
 }

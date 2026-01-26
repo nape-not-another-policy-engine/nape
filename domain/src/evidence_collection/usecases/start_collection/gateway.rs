@@ -1,7 +1,7 @@
-use nape_kernel::error::{Error};
-use nape_kernel::values::directory::directory_list::DirectoryList;
-use nape_kernel::values::specification::file_path::FilePath;
-use nape_kernel::values::specification::repository_link::RepositoryLink;
+use kernel_oss::error::Error;
+use kernel_oss::values::directory::directory_list::DirectoryList;
+use kernel_oss::values::specification::file_path::FilePath;
+use kernel_oss::values::specification::repository_link::RepositoryLink;
 
 /// The [`ProcedureRetrievalGateway`] is the function signature for an implementation which downloads all the procedure files.
 ///
@@ -21,7 +21,11 @@ use nape_kernel::values::specification::repository_link::RepositoryLink;
 /// * `assurance-procedure-file` - a link to the procedure definition document
 /// * `activity-dir` - a link to the activity test directory which contains all the actions test outlined in the procedure definition document.
 ///
-pub type ProcedureRetrievalGateway = fn(repo_link: &RepositoryLink, procedure_directory: &str, download_dir: &str) -> Result<DirectoryList, Error>;
+pub type ProcedureRetrievalGateway = fn(
+    repo_link: &RepositoryLink,
+    procedure_directory: &str,
+    download_dir: &str,
+) -> Result<DirectoryList, Error>;
 
 ///  The [`DirectoryCreationGateway`] i creates the structure on a file system to store evidence and any other files.
 ///
@@ -34,7 +38,8 @@ pub type ProcedureRetrievalGateway = fn(repo_link: &RepositoryLink, procedure_di
 /// - If the directory structure cannot be created, an [`Error`] is returned for the [`Audience::System`] with a [`Kind::GatewayError`] and a message describing the error.
 /// - If the directory structure already exists, an [`Error`] is returned for the [`Audience::User`] with a [`Kind::AlreadyExists`] and a message indicating that the directory structure already exists.
 ///
-pub type DirectoryCreationGateway = fn(directory_list: &DirectoryList) -> Result<DirectoryList, Error>;
+pub type DirectoryCreationGateway =
+    fn(directory_list: &DirectoryList) -> Result<DirectoryList, Error>;
 
 /// The [`FileMoveGateway`] is a function that moves a directory from one location to another.
 ///
@@ -54,4 +59,3 @@ pub type FileMoveGateway = fn(source: &str, target: &str) -> Result<FilePath, Er
 ///
 /// * `source` - The source location of the file or directory to be deleted.
 pub type FileDeleteGateway = fn(source: &str) -> Result<(), Error>;
-
