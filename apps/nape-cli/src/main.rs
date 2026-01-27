@@ -49,4 +49,4 @@ fn configure_collect_command_handler() -> CollectCommandHandler<'static> {
         Box::new(evidence_collection_subcommand),
         Box::new(evidence_report_subcommand),
     ])
-}
+} 
