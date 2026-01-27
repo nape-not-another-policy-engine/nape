@@ -1,5 +1,4 @@
 use crate::filesystem_state_configuration::nape_cli_config_file_path;
-use crate::gateway_adapter::git2::process_retrieval_gateway::retrieve_procedure_from_git;
 use crate::gateway_adapter::std_fs::directory_creation_gateway::create_directories_on_filesystem;
 use crate::gateway_adapter::std_fs::file_delete_gateway::delete_file_on_filesystem;
 use crate::gateway_adapter::std_fs::file_move_gateway::move_file_on_filesystem;
@@ -15,6 +14,7 @@ use nape_domain::evidence_collection::usecases::start_collection::usecase_bounda
 use crate::state_management::cli_app_state::CLIAppState;
 use crate::state_management::write_state_file::write_to_filesystem;
 use crate::state_management::yaml_serializer::serialize_to_yaml;
+use crate::usecase_configuration::procedure_retrieval_gateway_factory::retrieve_procedure_factory;
 
 // TODO - REVIEW UNIT TESTS - Make sure to review the unit tests for this module given the changes made to the implementation.
 /// The [`UCStartCollectionProcedure`] implementation with its dependencies.
@@ -28,7 +28,7 @@ pub fn factory_std_fs_git2() -> UCStartCollectionProcedure {
             &request,
             &directory_list,
             create_directories_on_filesystem,
-            retrieve_procedure_from_git,
+            retrieve_procedure_factory,
             move_file_on_filesystem,
             delete_file_on_filesystem,
         )?;

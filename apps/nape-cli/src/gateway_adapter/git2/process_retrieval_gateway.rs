@@ -209,7 +209,16 @@ fn remove_clone_directory(dir_to_clone_to: &str) -> Result<(), Error> {
     }
 }
 
-// Design Decision - I did not make this dynamic by passing the directory names as arguments because the directory names are fixed and will not change.  Why?  This is per the protocol of the NAPE procedure repository, and instead I check to ensure the procedure doc and directory are present before returning the directory list.  If not, I return an error.
+/// # Design Decision
+///
+/// I did not make this dynamic by passing the directory names as arguments because the
+/// directory names are fixed and will not change.  
+///
+/// Why?  This is per the protocol of the NAPE procedure repository, and instead I
+/// check to ensure the procedure doc and directory are present before returning the directory list.  
+///
+/// If not, I return an error.
+///
 fn build_directory_list(download_directory: &str) -> Result<DirectoryList, Error> {
     let process_def_doc_yaml_path = format!("{}/assurance_procedure.yaml", download_directory);
     if !Path::new(&process_def_doc_yaml_path).exists() {
