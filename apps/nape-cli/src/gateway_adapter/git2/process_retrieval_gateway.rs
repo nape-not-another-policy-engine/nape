@@ -36,14 +36,16 @@ pub fn retrieve_procedure_from_git(
 ) -> Result<DirectoryList, Error> {
     let dir_to_clone_to = format!("{}/{}", &download_directory, "clone");
     let git_repo = clone_repo(repo_link, &dir_to_clone_to)?;
-    let repo_head = get_head_from_repo(&git_repo, &repo_link.value)?;
-    let head_commit = get_commit_from_head(&repo_head, &repo_link.value)?;
-    let commit_tree = get_tree_from_commit(&head_commit, &repo_link.value)?;
+    let repo_link_string_binding = repo_link.to_string();
+    let repo_link_as_str = repo_link_string_binding.as_str();
+    let repo_head = get_head_from_repo(&git_repo, repo_link_as_str)?;
+    let head_commit = get_commit_from_head(&repo_head, repo_link_as_str)?;
+    let commit_tree = get_tree_from_commit(&head_commit, repo_link_as_str)?;
     let process_directory_tree = get_tree_for_process_directory_only(
         &commit_tree,
         &git_repo,
         procedure_directory,
-        &repo_link.value,
+        repo_link_as_str,
     )?;
     write_process_directory_tree_files_to_disk(
         &process_directory_tree,
@@ -62,14 +64,14 @@ fn clone_repo(repo_link: &RepositoryLink, clone_directory: &str) -> Result<Repos
     let mut builder = RepoBuilder::new();
     builder.bare(true);
     builder.fetch_options(fetch_options);
-    let repo_link_value = repo_link.value.as_str();
-    match builder.clone(repo_link_value, &Path::new(&clone_directory)) {
+    match builder.clone(&repo_link.to_string(), &Path::new(&clone_directory)) {
         Ok(repo) => Ok(repo),
         Err(error) => Err(Error::for_system(
             Kind::GatewayError,
             format!(
                 "Could not clone the git repository '{}'. {}",
-                repo_link_value, error
+                repo_link.to_string(),
+                error
             ),
         )),
     }

@@ -6,7 +6,12 @@ use std::path::Path;
 #[test]
 /// This is a LARGE Test
 fn retrieve_procedure_from_git_success() {
-    let repo_link = RepositoryLink::new("https://github.com/nape-dev/catalog.git").unwrap();
+    let repo_link = RepositoryLink::builder()
+        .allowed_schema(["https".to_string()].to_vec())
+        .default_scheme("https")
+        .repo_link("https://github.com/nape-dev/catalog.git")
+        .build()
+        .expect("Failed to build RepositoryLink.");
     let process_directory = "rust_ci/sourcecode_integration";
     let download_directory = "retrieve_process_from_git_success";
 

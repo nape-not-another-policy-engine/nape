@@ -10,7 +10,7 @@ default = []
 medium_tests = []
 
 [dependencies]
-kernel_oss = { git = "https://github.com/attestify/kernel-oss.git", tag="0.2.4" }
+kernel_oss = { git = "https://github.com/attestify/kernel-oss.git", tag="0.2.5" }
 
 [dev-dependencies]
 test_framework_oss = { git = "https://github.com/attestify/test-framework-oss.git", tag = "0.2.4", features = ["nape_filesystem"] }

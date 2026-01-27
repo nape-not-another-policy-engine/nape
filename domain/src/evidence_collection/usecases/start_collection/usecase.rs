@@ -7,6 +7,8 @@ use kernel_oss::error::{Error, Kind};
 use kernel_oss::values::directory::directory_list::DirectoryList;
 use kernel_oss::values::specification::repository_link::RepositoryLink;
 
+pub const DEFAULT_SCHEMA: &str = "git";
+pub const ALLOWED_SCHEMA: [&str; 3] = ["file", "git", "https"];
 /// The [`UCStartCollectionProcedure`] is the function signature for the usecase_configuration to start a new evidence collection procedure for a business procedure. All implementations of this usecase_configuration must adhere to this signature.
 pub type UCStartCollectionProcedure =
     fn(request: StartProcedure) -> Result<ProcedureStarted, Error>;
@@ -19,7 +21,7 @@ pub type UCStartCollectionProcedure =
 // MAKE NOTES OF THE FOLLOWING - DESIGN QUESTION - Should this usecase_configuration care about persisting the directory list, or should it simply return it? What is the harm starting out with it persisting the directory structure?  What benfiit, if any, do I get if I retunr the DirList then have some wrapper function persist the directory strucutre?  One argument is that this is the single place that manages the complete initiation process, and that process requires the persistnace of directory strucutre.  LESSON LEARNED FROM THIS - I need to treat the usecase as if it does not have any infralogic because if.when I go to use these for either the agent, or a server, I generate a coupleoing for infra state mgt to the current state management and that may not work as, for esxampl the server, could be stateless, and the state for the agent may be stored differently than in a file. It's best just to inject those concersnas the stucts instead of the funcitons assuming this is infra state data.
 
 // MAKE NOTES OF THE FOLLOWING - Update this to remove the report creation logic and put that logic in the EvaluateAndReportUC.  With this one, what we need to do is pass back a result object of directories created, as well as all of the data in the StartCollectionRequestion.  There will then be an infracstucgture_UC_wrapper that will take the directory info and the resqutes into then save it into a .nape-cli file.  This will be the file that will be used to track the progress of the evidence collection procedure, and will be used to get the state as ncessary.  The usecase must not know about any infrastruutre state managent concerns .
-// MAKE NOTES OF TEH FOLLOWING - DESIGN DECISOIN - - all gateways are passed as value to prevent race conditions and other issues that may arise from shared state.
+// MAKE NOTES OF TEH FOLLOWING - DESIGN DECISION - - all gateways are passed as value to prevent race conditions and other issues that may arise from shared state.
 pub fn start_collection(
     request: &StartProcedure,
     directory_list: &DirectoryList,
@@ -88,8 +90,12 @@ fn download_files_from_repo(
     retrieve_procedure: ProcedureRetrievalGateway,
     temp_dir: &String,
 ) -> Result<(String, String), Error> {
-    let repo_link = RepositoryLink::new(&request.procedure.repository)?; // TODO - Update the request procedure repository like with a Repository Link.
-    let procedure_dir = &request.procedure.directory; // TODO - update teh request procedure reposityr link with a struct that is a Direcotty which validates based upon a directory structure.  NOTE - maket he standard a unix directory and make a note that users of this object are requuired to convert it into an OS-Sepcfic directory.
+    let repo_link = RepositoryLink::builder()
+        .default_scheme(DEFAULT_SCHEMA)
+        .allowed_schema(ALLOWED_SCHEMA.iter().map(|s| s.to_string()).collect())
+        .repo_link(&request.procedure.repository)
+        .build()?;
+    let procedure_dir = &request.procedure.directory;
     let download_dir = temp_dir.as_str();
 
     let downloaded_files =  match retrieve_procedure(&repo_link, procedure_dir, download_dir) {

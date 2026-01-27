@@ -11,7 +11,7 @@ path = "src/main.rs"
 
 [dependencies]
 nape_domain = { path = "../../domain" }
-kernel_oss = { git = "https://github.com/attestify/kernel-oss.git", tag="0.2.4" }
+kernel_oss = { git = "https://github.com/attestify/kernel-oss.git", tag="0.2.5" }
 
 clap = { version = "4.5.27", features = ["derive", "cargo"] }
 git2 = "0.20.3"
