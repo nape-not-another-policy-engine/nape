@@ -1,0 +1,31 @@
+apiVersion: 1.0.0
+kind: AssuranceReport
+metadata:
+  utc-start: '1782835421325'
+  system-owner: Bill Bensing
+subject:
+  urn: nrn:procedure:rover-medical/rover-medicine-system
+  id: localrelease1
+procedure:
+  repository: file:///private/tmp/rover-medical-catalog
+  directory: rover-mediical-system/release-1
+summary:
+  activity_count: 1
+  action_count: 1
+  actions_run: 1
+  pass: 0
+  fail: 0
+  inconclusive: 1
+  outcome: inconclusive
+activity:
+- name: pet-medicine-app
+  action:
+  - name: database-connection
+    outcome: inconclusive
+    reason: The test of detail for the Database Connection has not been implemented
+    test_file:
+      file: activity/pet-medicine-app/database-connection.py
+      signature: SHA256[62deaebf65275cd23ab3940d887994e451ab4ea536a28a0e92f4d328189e7aeb]
+    evidence_file:
+      file: evidence/pet-medicine-app/app-config.toml
+      signature: SHA256[0e7ef54e4afef8db2b2e8e6c3e4e73b86d37803a19a18f1ecc6449d69631c167]

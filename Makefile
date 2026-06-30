@@ -1,4 +1,4 @@
-.PHONY: ma-release-build build-release install clean clean-build clean-test-data update test test-nape-cli test-domain
+.PHONY: ma-release-build build-release install clean clean-build clean-test-data update test test-nape-cli test-domain docs-rover-smoke
 PWD := $(shell pwd)
 BUILD_DIR := $(dir $(PWD))builds
 PROJECT := ''
@@ -56,3 +56,7 @@ test-nape-cli:
 test-domain:
 	@echo "\n\033[1;96m Running Tests - Domain Package  Only \033[0m\n"
 	RUSTFLAGS="-A dead_code -A unused_imports" cargo test -p nape_domain --lib -- --test-threads=8
+
+docs-rover-smoke:
+	@echo "\n\033[1;96m Running Rover documentation smoke \033[0m\n"
+	scripts/docs-rover-smoke.sh

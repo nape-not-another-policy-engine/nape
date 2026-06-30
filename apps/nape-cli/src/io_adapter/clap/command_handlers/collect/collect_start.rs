@@ -38,7 +38,9 @@ fn extract_arguments(matches: &ArgMatches) -> Result<StartProcedure, Error> {
     let subject_id = matches.get_one::<String>("subject-id").unwrap();
     let procedure_link = matches.get_one::<String>("procedure-link").unwrap();
     let procedure_directory = matches.get_one::<String>("procedure-directory").unwrap();
+    // TODO - BUG FIX HERE - This will panic if Metadata is not provided, and metadata is optional so we need to fix this
     let metadata_arg: Vec<Vec<&String>> = matches
+        
         .get_occurrences("metadata")
         .unwrap()
         .map(Iterator::collect)

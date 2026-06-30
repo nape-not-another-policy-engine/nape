@@ -1,0 +1,14 @@
+---
+subject_nrn: nrn:procedure:rover-medical/rover-medicine-system
+subject_id: localrelease3
+procedure_repository: file:///private/tmp/rover-medical-catalog
+procedure_directory: rover-mediical-system/release-3
+metadata:
+  utc-start: '<utc-start-ms>'
+  system-owner: Bill Bensing
+directories:
+  home: <workspace>/rover-medical-system/nrn_procedure_rover-medical_-_rover-medicine-system/<utc-start-ms>
+  assurance-procedure-file: <workspace>/rover-medical-system/nrn_procedure_rover-medical_-_rover-medicine-system/<utc-start-ms>/assurance_procedure.yaml
+  evidence: <workspace>/rover-medical-system/nrn_procedure_rover-medical_-_rover-medicine-system/<utc-start-ms>/evidence
+  activity-test: <workspace>/rover-medical-system/nrn_procedure_rover-medical_-_rover-medicine-system/<utc-start-ms>/activity
+  temp: <workspace>/rover-medical-system/nrn_procedure_rover-medical_-_rover-medicine-system/<utc-start-ms>/temp

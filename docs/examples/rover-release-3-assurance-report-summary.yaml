@@ -1,0 +1,22 @@
+apiVersion: 1.0.0
+kind: AssuranceReport
+metadata:
+  utc-start: '1782835488890'
+  system-owner: Bill Bensing
+subject:
+  urn: nrn:procedure:rover-medical/rover-medicine-system
+  id: localrelease3
+procedure:
+  repository: file:///private/tmp/rover-medical-catalog
+  directory: rover-mediical-system/release-3
+summary:
+  activity_count: 5
+  action_count: 22
+  actions_run: 22
+  pass: 18
+  fail: 0
+  inconclusive: 4
+  outcome: inconclusive
+notes:
+  - This is a documentation excerpt, not the full generated report.
+  - The four inconclusive actions are the current Rover Cloud and Exa-Doo SOC1 checks.
