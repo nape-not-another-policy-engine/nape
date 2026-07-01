@@ -10,6 +10,7 @@ This folder is the documentation map for NAPE. Use it to choose the right path b
 - Running the Rover demo: read [Rover Medical example](user/rover-medical-example.md).
 - Understanding files: read [V1 contract matrix](reference/v1-contract-matrix.md), [V1 source traceability](reference/v1-source-traceability.md), [assurance procedure format](reference/assurance-procedure-format.md), [assurance report format](reference/assurance-report-format.md), [evaluation to report traceability](reference/evaluation-report-traceability.md), and [runtime state and output layout](reference/runtime-state-and-layout.md).
 - Maintaining code: read [architecture](maintainers/architecture.md), then [local development](maintainers/local-development.md).
+- Planning and handoff readers: start with [roadmap](1-plan/roadmap.md).
 - Comparing outputs: inspect [example outputs](examples/README.md).
 
 ## Folder Guide
@@ -38,6 +39,10 @@ Maintainer decision records live under `maintainers/decisions/`.
 
 Checked-in example outputs from validated local Rover Medical runs.
 
+`1-plan/`
+
+`nape`-specific roadmap, plan, and handoff material.
+
 ## Current Source Of Truth
 
 The docs describe current behavior from:
@@ -47,6 +52,7 @@ The docs describe current behavior from:
 - `kernel_oss` tag `0.2.5`, locked to commit `5410baccae23356f1bb59902e7f7afc452577db2`
 - Rover Medical example repositories listed in [Rover Medical example](user/rover-medical-example.md)
 
-## Temporary Planning Documents
+## Planning Rule
 
-Temporary planning or review documents may appear in this folder with a `TEMP-` prefix. They are not permanent product documentation and should be deleted after their findings are resolved or moved.
+Keep `nape` planning and handoff documents under `docs/1-plan/`.
+Do not create new `TEMP-` planning files at the root of `docs/`.
