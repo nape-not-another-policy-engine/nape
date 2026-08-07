@@ -25,7 +25,7 @@ static NEXT_RESOLUTION: AtomicU64 = AtomicU64::new(1);
 /// Resolves one exact root and every exact package named by its canonical Lock.
 pub struct AttestifyOciDefinitionPackageResolutionDriver {
     store: VerifiedPackageStore,
-    registry_map: attestify_oci::registry::RegistryMap,
+    registry_map: attestify_oci_oss::registry::RegistryMap,
     staging_root: PathBuf,
 }
 
@@ -33,7 +33,7 @@ impl AttestifyOciDefinitionPackageResolutionDriver {
     /// Creates a resolver with explicit mapping and private staging.
     pub fn new(
         store: VerifiedPackageStore,
-        registry_map: attestify_oci::registry::RegistryMap,
+        registry_map: attestify_oci_oss::registry::RegistryMap,
         staging_root: impl Into<PathBuf>,
     ) -> Self {
         Self {
@@ -55,7 +55,7 @@ impl AsyncGateway for AttestifyOciDefinitionPackageResolutionDriver {
                 std::process::id(),
                 NEXT_RESOLUTION.fetch_add(1, Ordering::Relaxed)
             ));
-            let resolved = match attestify_oci::registry::resolve_verified_package_closure(
+            let resolved = match attestify_oci_oss::registry::resolve_verified_package_closure(
                 definition_package_profile()?,
                 &self.registry_map,
                 request.purl().value(),

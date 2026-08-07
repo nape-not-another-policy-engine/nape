@@ -181,7 +181,7 @@ struct Fixture {
     state: CurrentRunStateStore,
     current: CurrentVerification,
     domain_closure: nape_domain::value::package::VerifiedPackageClosure,
-    raw: attestify_oci::VerifiedPackage,
+    raw: attestify_oci_oss::VerifiedPackage,
 }
 
 fn fixture(label: &str) -> Fixture {
@@ -232,7 +232,7 @@ spec:
     let profile =
         crate::gateway_driver::definition_package_profile_attestify_oci::definition_package_profile()
             .expect("profile");
-    attestify_oci::build_local_package(
+    attestify_oci_oss::build_local_package(
         profile.clone(),
         "VerificationProcedure",
         &source,
@@ -240,7 +240,7 @@ spec:
         &build,
     )
     .expect("build");
-    let raw = attestify_oci::admit_local_package(profile, &build, &root.join("admission"))
+    let raw = attestify_oci_oss::admit_local_package(profile, &build, &root.join("admission"))
         .expect("admit build");
     let domain_closure = project_closure(&raw, &[]).expect("Domain projection");
     let requirement = EvidenceRequirement::try_new(

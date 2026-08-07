@@ -17,3 +17,9 @@ command receipts, and current-run state. NAPE drivers call high-level library
 operations; they do not reproduce archive, manifest, Lock, mapping, or
 transport algorithms. NAPE does not embed or vendor either the library or a
 patched `oci-client` source tree.
+
+As an OSS consumer, NAPE uses the exact Cargo package identity
+`attestify-oci-oss` and Rust namespace `attestify_oci_oss`. It does not alias
+that dependency through the proprietary `attestify_oci` namespace. The module
+ontology beneath both roots remains aligned so the proprietary facade can
+proxy the OSS surface without changing conceptual placement.

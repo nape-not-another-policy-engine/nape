@@ -48,6 +48,9 @@ profile and adapter in NAPE and proving complete behavioral compatibility.
   `013bb352366fcad80db682984705911ca2108258`.
 - NAPE retains every Verification-specific profile, adapter, command,
   diagnostic, fixture, and Kernel error translation.
+- NAPE imports the released OSS package through the explicit
+  `attestify_oci_oss` namespace; `attestify_oci` is reserved for the
+  proprietary facade used by proprietary products.
 - The complete post-removal in-place suite and independent clean composite
   suite passed, including formatting, compilation, Clippy, rustdoc, all Rust
   and lifecycle tests, Engineering Standards, documentation, and Product

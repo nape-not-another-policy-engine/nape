@@ -11,7 +11,7 @@ path = "src/main.rs"
 
 [dependencies]
 nape_domain = { path = "../../domain" }
-attestify-oci = { package = "attestify-oci-oss", git = "ssh://git@github.com/attestify/attestify-oci-oss.git", tag = "0.1.0" }
+attestify-oci-oss = { git = "ssh://git@github.com/attestify/attestify-oci-oss.git", tag = "0.1.0" }
 kernel_oss = { path = "../../../../kernel/kernel-oss" }
 
 clap = { version = "4.5.27", features = ["derive", "cargo"] }

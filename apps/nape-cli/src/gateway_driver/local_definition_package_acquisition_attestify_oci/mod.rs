@@ -48,7 +48,7 @@ impl Gateway for AttestifyOciLocalPackageAcquisitionDriver {
             std::process::id(),
             NEXT_STAGE.fetch_add(1, Ordering::Relaxed)
         ));
-        let result = attestify_oci::admit_local_package(
+        let result = attestify_oci_oss::admit_local_package(
             definition_package_profile()?,
             Path::new(request.value()),
             &staging,

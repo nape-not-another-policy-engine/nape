@@ -2,7 +2,7 @@
 
 use std::path::Path;
 
-use attestify_oci::registry::{RegistryLocation, RegistryMap};
+use attestify_oci_oss::registry::{RegistryLocation, RegistryMap};
 use kernel_oss::error::{Error, Kind};
 use nape_domain::{diagnostic::NapeDiagnostic, value::package::PackageReleaseIdentity};
 
@@ -35,10 +35,10 @@ pub fn acquire_registry_map(
         RegistryConfigurationSource::Profile(path) => {
             let bytes = super::local_file::read_regular_stable(Path::new(path), 1_048_576)
                 .map_err(|_| registry_map_rejection("Registry Profile file could not be read"))?;
-            attestify_oci::registry::parse_registry_map(&bytes).map_err(registry_rejection)
+            attestify_oci_oss::registry::parse_registry_map(&bytes).map_err(registry_rejection)
         }
         RegistryConfigurationSource::Endpoint(endpoint) => {
-            attestify_oci::registry::registry_map_from_endpoint(endpoint, "attestify")
+            attestify_oci_oss::registry::registry_map_from_endpoint(endpoint, "attestify")
                 .map_err(registry_rejection)
         }
     }
@@ -50,7 +50,7 @@ pub fn project_registry_location(
     registry_map: &RegistryMap,
     identity: &PackageReleaseIdentity,
 ) -> Result<RegistryLocation, Error> {
-    attestify_oci::registry::map_package(
+    attestify_oci_oss::registry::map_package(
         registry_map,
         &definition_package_profile()?,
         identity.purl().value(),
@@ -59,7 +59,7 @@ pub fn project_registry_location(
     .map_err(oci_error)
 }
 
-fn oci_error(error: attestify_oci::registry::OciError) -> Error {
+fn oci_error(error: attestify_oci_oss::registry::OciError) -> Error {
     match translate_oci_error(error) {
         Ok(diagnostic) => Error::for_user(
             Kind::InvalidInput,
@@ -69,7 +69,9 @@ fn oci_error(error: attestify_oci::registry::OciError) -> Error {
     }
 }
 
-fn registry_rejection(error: attestify_oci::registry::OciError) -> RegistryConfigurationFailure {
+fn registry_rejection(
+    error: attestify_oci_oss::registry::OciError,
+) -> RegistryConfigurationFailure {
     match translate_oci_error(error) {
         Ok(value) => RegistryConfigurationFailure::Rejected(value),
         Err(error) => RegistryConfigurationFailure::Unexpected(error),

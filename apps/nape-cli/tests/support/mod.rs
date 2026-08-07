@@ -1,6 +1,6 @@
 #![cfg(unix)]
 
-use attestify_oci::{
+use attestify_oci_oss::{
     sha256_digest, stage_and_verify_local_package, ExactPackageDependencyRule,
     ExactPackageKindProfile, ExactPackageProfile,
 };

@@ -6,7 +6,7 @@ use std::{
     sync::atomic::{AtomicU64, Ordering},
 };
 
-use attestify_oci::custody::{
+use attestify_oci_oss::custody::{
     reopen_verified_closure, CustodiedPackage, CustodiedPackageClosure, PackageCustodyToken,
 };
 use kernel_oss::error::{Error, Kind};
@@ -368,7 +368,7 @@ impl CurrentVerificationWire {
 
 impl PackageWire {
     fn from_domain(value: &nape_domain::value::package::VerifiedPackage) -> Result<Self, Error> {
-        let identity = attestify_oci::PackageIdentity {
+        let identity = attestify_oci_oss::PackageIdentity {
             package: value.identity().purl().value().to_string(),
             manifest_digest: value.identity().manifest_digest().value().to_string(),
         };
@@ -381,7 +381,7 @@ impl PackageWire {
     }
 
     fn into_custody(self) -> Result<CustodiedPackage, Error> {
-        let identity = attestify_oci::PackageIdentity {
+        let identity = attestify_oci_oss::PackageIdentity {
             package: PackageReleasePurl::try_new(self.package)?
                 .value()
                 .to_string(),
@@ -396,7 +396,7 @@ impl PackageWire {
     }
 }
 
-fn package_state_error(_: attestify_oci::PackageError) -> Error {
+fn package_state_error(_: attestify_oci_oss::PackageError) -> Error {
     Error::for_user(
         Kind::InvalidInput,
         "current package reconstruction failed integrity verification",

@@ -55,7 +55,7 @@ pub async fn dispatch(matches: &ArgMatches) -> i32 {
 
 pub(super) fn resolve_plan_value(
     plan: &nape_domain::usecase::resolve_definition_package_plan::DefinitionPackagePlan,
-    map: &attestify_oci::registry::RegistryMap,
+    map: &attestify_oci_oss::registry::RegistryMap,
 ) -> Result<Value, Error> {
     let root = plan.closure.root();
     let location = project_registry_location(map, root.identity())?;
@@ -120,7 +120,7 @@ pub(super) fn location_observation(
 }
 
 fn digest_location_value(
-    value: &attestify_oci::registry::RegistryLocation,
+    value: &attestify_oci_oss::registry::RegistryLocation,
 ) -> Result<Value, Error> {
     if value.reference_class != "manifest-digest" {
         return Err(unsupported_reference_class());
@@ -161,7 +161,7 @@ pub(super) fn summary_value(
 
 pub(super) fn registry_map(
     arguments: &ArgMatches,
-) -> Result<attestify_oci::registry::RegistryMap, RegistryConfigurationFailure> {
+) -> Result<attestify_oci_oss::registry::RegistryMap, RegistryConfigurationFailure> {
     match (
         arguments.get_one::<String>("registry-profile"),
         arguments.get_one::<String>("registry-endpoint"),

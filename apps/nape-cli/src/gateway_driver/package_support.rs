@@ -5,7 +5,7 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use attestify_oci::VerifiedPackage as OciVerifiedPackage;
+use attestify_oci_oss::VerifiedPackage as OciVerifiedPackage;
 use kernel_oss::error::{Error, Kind};
 use nape_domain::value::{
     definition::DefinitionKind,
@@ -61,8 +61,8 @@ impl VerifiedPackageStore {
     pub(crate) fn get_closure(
         &self,
         closure: &VerifiedPackageClosure,
-    ) -> Result<attestify_oci::VerifiedPackageClosure, Error> {
-        Ok(attestify_oci::VerifiedPackageClosure {
+    ) -> Result<attestify_oci_oss::VerifiedPackageClosure, Error> {
+        Ok(attestify_oci_oss::VerifiedPackageClosure {
             root: self.get(closure.root().identity())?,
             dependencies: closure
                 .dependencies()
@@ -74,7 +74,7 @@ impl VerifiedPackageStore {
 
     pub(crate) fn insert_closure(
         &self,
-        closure: &attestify_oci::VerifiedPackageClosure,
+        closure: &attestify_oci_oss::VerifiedPackageClosure,
     ) -> Result<(), Error> {
         self.insert(closure.root.clone())?;
         for package in &closure.dependencies {
@@ -189,7 +189,7 @@ pub(crate) fn project_package(
 }
 
 pub(crate) fn translate_package_error(
-    error: attestify_oci::PackageError,
+    error: attestify_oci_oss::PackageError,
 ) -> Result<nape_domain::diagnostic::NapeDiagnostic, Error> {
     nape_domain::diagnostic::NapeDiagnostic::try_new(
         error.diagnostic_code,
@@ -200,7 +200,7 @@ pub(crate) fn translate_package_error(
 }
 
 pub(crate) fn translate_oci_error(
-    error: attestify_oci::registry::OciError,
+    error: attestify_oci_oss::registry::OciError,
 ) -> Result<nape_domain::diagnostic::NapeDiagnostic, Error> {
     nape_domain::diagnostic::NapeDiagnostic::try_new(
         error.diagnostic_code,

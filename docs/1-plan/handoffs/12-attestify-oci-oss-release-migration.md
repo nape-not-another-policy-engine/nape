@@ -13,6 +13,8 @@ Status: **complete; ready to return to Workflow Harness WPC-M1**
   commit;
 - the superseded embedded OCI library and patched OCI-client source are
   removed;
+- NAPE's Cargo dependency and Rust imports use the explicit OSS identity
+  `attestify-oci-oss` / `attestify_oci_oss`;
 - active architecture and structural gates require the exact external OSS
   release and prohibit restoration of the retired paths;
 - the complete post-removal in-place suite passed; and

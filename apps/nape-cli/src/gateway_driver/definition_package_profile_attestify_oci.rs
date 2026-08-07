@@ -1,6 +1,6 @@
 //! NAPE-owned Verification package meaning supplied to Attestify OCI OSS.
 
-use attestify_oci::{
+use attestify_oci_oss::{
     ExactPackageDependencyRule, ExactPackageKindProfile, ExactPackageProfile, PackageError,
 };
 use kernel_oss::error::{Error, Kind};

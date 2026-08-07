@@ -30,7 +30,7 @@ impl Gateway for LocalAuthoredDefinitionSourceDriver {
     fn execute(&self, request: Self::Request) -> Result<Self::Response, Error> {
         let profile = definition_package_profile()?;
         let kind = definition_kind_for_package(request.package().value())?;
-        match attestify_oci::seal_package_source(
+        match attestify_oci_oss::seal_package_source(
             profile,
             kind,
             Path::new(request.source().value()),

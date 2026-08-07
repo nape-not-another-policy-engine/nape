@@ -148,7 +148,7 @@ impl NapeApplication {
     pub async fn publish(
         &self,
         request: PublishDefinitionPackageRequest,
-        registry_map: attestify_oci::registry::RegistryMap,
+        registry_map: attestify_oci_oss::registry::RegistryMap,
     ) -> Result<PublishDefinitionPackageOutcome, Error> {
         AsyncUseCase::execute(
             &PublishDefinitionPackage::new(
@@ -172,7 +172,7 @@ impl NapeApplication {
     pub async fn resolve(
         &self,
         request: ResolveDefinitionPackagePlanRequest,
-        registry_map: attestify_oci::registry::RegistryMap,
+        registry_map: attestify_oci_oss::registry::RegistryMap,
     ) -> Result<ResolveDefinitionPackagePlanOutcome, Error> {
         AsyncUseCase::execute(
             &ResolveDefinitionPackagePlan::new(
@@ -192,7 +192,7 @@ impl NapeApplication {
     pub async fn start(
         &self,
         request: StartVerificationRequest,
-        registry_map: Option<attestify_oci::registry::RegistryMap>,
+        registry_map: Option<attestify_oci_oss::registry::RegistryMap>,
     ) -> Result<StartVerificationOutcome, Error> {
         let state = self.state();
         let oci: Arc<dyn OciDefinitionPackageResolutionGW> = match registry_map {

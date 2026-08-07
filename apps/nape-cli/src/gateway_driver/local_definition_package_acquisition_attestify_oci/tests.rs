@@ -36,7 +36,7 @@ spec:
     )
     .expect("test");
     let output = root.join("package");
-    attestify_oci::build_local_package(
+    attestify_oci_oss::build_local_package(
         crate::gateway_driver::definition_package_profile_attestify_oci::definition_package_profile()
             .expect("profile"),
         "VerificationAction",

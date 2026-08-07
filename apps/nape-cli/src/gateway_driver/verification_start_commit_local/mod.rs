@@ -9,7 +9,7 @@ use std::{
     sync::atomic::{AtomicU64, Ordering},
 };
 
-use attestify_oci::custody::materialize_verified_closure;
+use attestify_oci_oss::custody::materialize_verified_closure;
 use kernel_oss::{
     error::{Error, Kind},
     gateway::Gateway,
@@ -142,7 +142,7 @@ fn external_handle(path: &Path) -> Result<ExternalResourceHandle, Error> {
     )
 }
 
-fn package_error(_: attestify_oci::PackageError) -> Error {
+fn package_error(_: attestify_oci_oss::PackageError) -> Error {
     Error::for_user(
         Kind::InvalidInput,
         "verified package closure could not be placed in run custody",

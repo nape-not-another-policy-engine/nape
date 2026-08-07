@@ -1,4 +1,4 @@
-use attestify_oci::registry::RegistryLocation;
+use attestify_oci_oss::registry::RegistryLocation;
 use clap::{Arg, Command};
 use nape_domain::gateway::definition_package_publication::RegistryLocationObservation;
 use serde_json::{json, Value};

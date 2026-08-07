@@ -87,14 +87,15 @@ def main() -> None:
     cli_cargo = tomllib.loads(
         (ROOT / "apps/nape-cli/Cargo.toml").read_text(encoding="utf-8")
     )
-    oci_dependency = cli_cargo.get("dependencies", {}).get("attestify-oci")
+    oci_dependency = cli_cargo.get("dependencies", {}).get("attestify-oci-oss")
     expected_oci_dependency = {
-        "package": "attestify-oci-oss",
         "git": "ssh://git@github.com/attestify/attestify-oci-oss.git",
         "tag": "0.1.0",
     }
     if oci_dependency != expected_oci_dependency:
         failures.append("NAPE does not use the exact released attestify-oci-oss identity")
+    if "attestify-oci" in cli_cargo.get("dependencies", {}):
+        failures.append("NAPE aliases the OSS package through the proprietary namespace")
 
     lock = tomllib.loads((ROOT / "Cargo.lock").read_text(encoding="utf-8"))
     locked_oci = [
@@ -181,6 +182,10 @@ def main() -> None:
     for rust_root in rust_roots:
         for path in sorted(rust_root.rglob("*.rs")):
             source = path.read_text(encoding="utf-8")
+            if re.search(r"(?<![A-Za-z0-9_])attestify_oci::", source):
+                failures.append(
+                    f"proprietary OCI namespace remains in OSS consumer: {path.relative_to(ROOT)}"
+                )
             if ".unwrap()" in source or ".unwrap_err()" in source:
                 failures.append(f"test unwrap remains: {path.relative_to(ROOT)}")
             for name in test_pattern.findall(source):

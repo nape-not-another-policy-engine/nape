@@ -10,7 +10,7 @@ use super::{AttestifyOciDefinitionPackageResolutionDriver, VerifiedPackageStore}
 
 #[tokio::test]
 async fn non_local_transport_is_rejected_before_network_use_error_async() {
-    let map = attestify_oci::registry::parse_registry_map(b"profileVersion: attestify-oci-registry-map/1\npublishers:\n  acme.example:\n    scheme: https\n    registry: registry.example\n    repositoryPrefix: attestify\n").expect("map");
+    let map = attestify_oci_oss::registry::parse_registry_map(b"profileVersion: attestify-oci-registry-map/1\npublishers:\n  acme.example:\n    scheme: https\n    registry: registry.example\n    repositoryPrefix: attestify\n").expect("map");
     let driver = AttestifyOciDefinitionPackageResolutionDriver::new(
         VerifiedPackageStore::default(),
         map,

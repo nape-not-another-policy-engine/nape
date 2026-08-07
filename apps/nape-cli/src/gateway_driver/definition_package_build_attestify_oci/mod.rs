@@ -5,7 +5,7 @@ mod tests;
 
 use std::path::Path;
 
-use attestify_oci::LockEdge;
+use attestify_oci_oss::LockEdge;
 use kernel_oss::{
     error::{Error, Kind},
     gateway::Gateway,
@@ -76,7 +76,7 @@ impl AttestifyOciDefinitionPackageBuildDriver {
     ) -> Result<BuiltDefinitionPackage, BuildFailure> {
         let profile = definition_package_profile()?;
         let kind = definition_kind_for_package(request.package().value())?;
-        let source = match attestify_oci::SealedPackageSource::try_from_files(
+        let source = match attestify_oci_oss::SealedPackageSource::try_from_files(
             profile,
             kind,
             request.package().value(),
@@ -111,16 +111,17 @@ impl AttestifyOciDefinitionPackageBuildDriver {
                 raw_dependencies.push(raw);
             }
         }
-        let raw = match attestify_oci::build_verified_package_from_sealed_source_with_dependencies(
-            &source,
-            request.package().value(),
-            &raw_dependencies,
-            &direct_edges,
-            output,
-        ) {
-            Ok(value) => value,
-            Err(error) => return Err(BuildFailure::Rejected(translate_package_error(error)?)),
-        };
+        let raw =
+            match attestify_oci_oss::build_verified_package_from_sealed_source_with_dependencies(
+                &source,
+                request.package().value(),
+                &raw_dependencies,
+                &direct_edges,
+                output,
+            ) {
+                Ok(value) => value,
+                Err(error) => return Err(BuildFailure::Rejected(translate_package_error(error)?)),
+            };
         let projected = project_closure(&raw, &raw_dependencies)?;
         self.store.insert(raw.clone())?;
         let kind = DefinitionKind::try_from_product(&raw.kind)?;

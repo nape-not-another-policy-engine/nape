@@ -8,7 +8,7 @@ use std::{
     sync::atomic::{AtomicU64, Ordering},
 };
 
-use attestify_oci::registry::RegistryLocation;
+use attestify_oci_oss::registry::RegistryLocation;
 use kernel_oss::{
     error::{Error, Kind},
     gateway::AsyncGateway,
@@ -29,7 +29,7 @@ static NEXT_PUBLICATION: AtomicU64 = AtomicU64::new(1);
 /// Publishes exact verified bytes and proves a clean re-pull.
 pub struct AttestifyOciDefinitionPackagePublicationDriver {
     store: VerifiedPackageStore,
-    registry_map: attestify_oci::registry::RegistryMap,
+    registry_map: attestify_oci_oss::registry::RegistryMap,
     staging_root: PathBuf,
 }
 
@@ -37,7 +37,7 @@ impl AttestifyOciDefinitionPackagePublicationDriver {
     /// Creates a publication driver with explicit mapping and staging.
     pub fn new(
         store: VerifiedPackageStore,
-        registry_map: attestify_oci::registry::RegistryMap,
+        registry_map: attestify_oci_oss::registry::RegistryMap,
         staging_root: impl Into<PathBuf>,
     ) -> Self {
         Self {
@@ -60,7 +60,7 @@ impl AsyncGateway for AttestifyOciDefinitionPackagePublicationDriver {
                 std::process::id(),
                 NEXT_PUBLICATION.fetch_add(1, Ordering::Relaxed)
             ));
-            let published = match attestify_oci::registry::publish_verified_package(
+            let published = match attestify_oci_oss::registry::publish_verified_package(
                 &self.registry_map,
                 &raw,
                 &operation,

@@ -7,7 +7,7 @@ use nape_domain::value::{
     },
 };
 
-use attestify_oci::registry::RegistryLocation;
+use attestify_oci_oss::registry::RegistryLocation;
 
 use super::{
     publication_location, AttestifyOciDefinitionPackagePublicationDriver, VerifiedPackageStore,
@@ -70,8 +70,11 @@ async fn unavailable_exact_package_bytes_are_an_unexpected_custody_failure_error
     .expect("package");
     let driver = AttestifyOciDefinitionPackagePublicationDriver::new(
         VerifiedPackageStore::default(),
-        attestify_oci::registry::registry_map_from_endpoint("http://localhost:5001", "attestify")
-            .expect("map"),
+        attestify_oci_oss::registry::registry_map_from_endpoint(
+            "http://localhost:5001",
+            "attestify",
+        )
+        .expect("map"),
         &root,
     );
     let result =
