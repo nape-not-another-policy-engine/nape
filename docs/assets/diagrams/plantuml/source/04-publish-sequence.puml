@@ -1,0 +1,17 @@
+@startuml
+!include ../includes/attestify-theme.puml
+!include ../includes/sequence-conventions.puml
+title Publish Definition Package
+actor User
+participant "Publish adapter" as Adapter
+participant "PublishDefinitionPackageUC" as UC
+participant "Local acquisition driver" as Local
+participant "attestify-oci publication driver" as OCI
+User -> Adapter: nape package publish
+Adapter -> UC: local package handle
+UC -> Local: reopen and verify
+Local --> UC: verified package
+UC -> OCI: publish exact bytes
+OCI --> UC: clean re-pull equality
+UC --> Adapter: governed outcome
+@enduml

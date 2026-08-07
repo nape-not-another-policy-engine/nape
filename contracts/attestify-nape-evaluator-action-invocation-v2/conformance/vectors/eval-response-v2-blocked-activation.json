@@ -1,0 +1,26 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v2",
+  "disposition": "occurrence-result",
+  "execution": {
+    "executed": false,
+    "status": "blocked",
+    "phase": "realm-activation",
+    "evaluate_call_count": 0,
+    "automatic_retry_count": 0
+  },
+  "result_validation": {
+    "contract": "not-applicable",
+    "limit": "not-applicable"
+  },
+  "semantic_owner": "verification-engine",
+  "result": {
+    "conclusion": "inconclusive",
+    "facts": [],
+    "reason": "The Action produced the contained blocked outcome."
+  },
+  "diagnostic": {
+    "code": "runner_activation_failed",
+    "phase": "realm-activation",
+    "reason_template": "runner-activation-failed-v1"
+  }
+}

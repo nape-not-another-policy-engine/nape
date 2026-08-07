@@ -1,0 +1,22 @@
+apiVersion: 2.0.0
+kind: VerificationAction
+spec:
+  name: database-connection
+  label: Database Connection
+  claim: The approved database endpoint is configured.
+  evidence:
+    name: application-configuration
+    file: application-configuration.json
+    media_type: application/json
+  evaluations:
+    - name: approved-endpoint
+      label: Approved Database Endpoint
+      subject:
+        name: database_endpoint
+        label: Database Endpoint
+        data_type: text
+      criteria:
+        equals: postgresql://orders-db.prod.acme.example:5432/orders
+  test:
+    name: database-connection
+    file: database-connection.py

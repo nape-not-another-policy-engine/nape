@@ -1,0 +1,4891 @@
+{
+  "compatibility_proofs": [
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "three package forms remain accepted; Start and Evidence are added; Verify becomes argument-free and accepts only the current run; exit 0/1/2 rules remain exact; no separate Report or Execute command exists",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-01",
+      "proof": "command grammar and exit behavior",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace package_success_receipt_is_jcs_and_current_v2_qualified"
+      ],
+      "comparison_rule": "existing package and Verify projections retain the discriminator, strict JCS, one LF, 64-KiB ceiling, and failure diagnostic projection; successful Start and Evidence emit no Receipt",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-02",
+      "proof": "Command Receipt V2",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace authoritative_a0_build_is_byte_identical"
+      ],
+      "comparison_rule": "canonical config, archive, manifest, empty Lock, and manifest digest byte-identical",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-03",
+      "proof": "A0 package identity",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace authoritative_a3_pair_closes_as_one_exact_dependency"
+      ],
+      "comparison_rule": "exact Procedure/Action package bytes and one-edge Lock byte-identical",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-04",
+      "proof": "A3 package pair identity",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace i5_builds_action_activity_and_transitive_procedure_from_exact_candidates"
+      ],
+      "comparison_rule": "exact embedded, referenced Action, referenced Activity, and transitive Lock package outputs unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-05",
+      "proof": "I5 L0/L1/L2 identities",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace functional_local_package_executes_v3_and_emits_schema_valid_report"
+      ],
+      "comparison_rule": "final Action, Activity, and Procedure manifests remain exact",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-06",
+      "proof": "I6 feature-rich package identities",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace single_endpoint_maps_every_pkg_attestify_publisher_without_fallback"
+      ],
+      "comparison_rule": "exact publisher/repository mapping, no search/fallback, and localhost endpoint projection unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-07",
+      "proof": "Registry Map and endpoint mapping",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace exact_root_pull_converges_on_the_common_verifier"
+      ],
+      "comparison_rule": "both sources produce equal verified package closures and semantic graphs for equal packages",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-08",
+      "proof": "local/OCI verifier parity",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace all_ten_accepted_response_variants_validate"
+      ],
+      "comparison_rule": "contract, Runner profile, empty evaluations, framing, execution states, and diagnostics unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-09",
+      "proof": "Evaluator V2 request/response",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace admits_closed_functional_request"
+      ],
+      "comparison_rule": "contract, development-v2 profile, modules/evaluations, and fixed Test ABI unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-10",
+      "proof": "Evaluator V3 request/response",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace aggregate_evidence_limit_deduplicates_and_distinguishes_failure_owner"
+      ],
+      "comparison_rule": "stable read, unique digest storage, occurrence association, caps, and all-evidence-before-execution unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-11",
+      "proof": "evidence admission",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace functional_occurrence_limit_closes_at_4096"
+      ],
+      "comparison_rule": "package nodes, occurrence aliases, selectors, order, count ceilings, and origins unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-12",
+      "proof": "effective graph",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace functional_contained_outcomes_continue_and_terminal_loss_never_promotes_output"
+      ],
+      "comparison_rule": "contained versus terminal behavior, fixed continuation, counts, and conclusions unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-13",
+      "proof": "continuation and aggregation",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace functional_local_package_executes_v3_and_emits_schema_valid_report"
+      ],
+      "comparison_rule": "schema-valid structure, origins, criteria, execution observations, summary equality, and fresh ULID behavior unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-14",
+      "proof": "Verification Report",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace a0_local_package_executes_through_i1_and_commits_exact_result_tree"
+      ],
+      "comparison_rule": "report/subject equality, occurrence associations, unique payload relationships, and no physical paths unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-15",
+      "proof": "Evidence Set relationship",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace verify_runs_one_occurrence_and_commits_or_leaves_no_output"
+      ],
+      "comparison_rule": "exact three-part output family, digest-addressed evidence, sibling same-filesystem rename, and non-promotion unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-16",
+      "proof": "atomic result commitment",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace consumer_failures_map_to_frozen_registry_tokens"
+      ],
+      "comparison_rule": "code, phase, reason template, first-failure boundary, containment, and safe projection unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-17",
+      "proof": "Packet-4 diagnostics",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace common_verifier_rejects_mutation_and_extra_files"
+      ],
+      "comparison_rule": "mutation, path escape, symlink, extra/missing file, Lock conflict/cycle, digest, media, and ceiling rejections unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-18",
+      "proof": "hostile package and archive inputs",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace all_response_near_misses_are_rejected"
+      ],
+      "comparison_rule": "duplicate/noncanonical output, oversize streams, timeout, nonzero exit, build mismatch, and response near-misses unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-19",
+      "proof": "hostile Evaluator boundary",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace parser_admission_enforces_frozen_yaml_boundaries"
+      ],
+      "comparison_rule": "current NAPE Engine projection remains generated, read-only, and valid against its authoritative source",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-20",
+      "proof": "Product projection",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "cargo test --workspace --all-targets",
+        "cargo test --workspace package_success_receipt_is_jcs_and_current_v2_qualified"
+      ],
+      "comparison_rule": "current executable digest changes naturally with code, but Receipt value must equal the actual installed binary bytes",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "passed in the 80-test C0 baseline",
+      "evidence_mode": "current executable baseline",
+      "id": "CP-21",
+      "proof": "producer identity semantics",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make qualification-live"
+      ],
+      "comparison_rule": "current package identities agree; runtime ULIDs/timestamps/producer digest are validated rather than frozen to historical values",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "canonical clean-registry replay is mandatory in C6",
+      "evidence_mode": "current staged lifecycle qualification",
+      "id": "CP-22",
+      "proof": "two clean real-registry runs",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "one local-build Procedure closure and subject produce one exact atomic new current run and no Report",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-23",
+      "proof": "local Start",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "one exact OCI Procedure closure produces equivalent current-run semantics with exact OCI origins",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-24",
+      "proof": "OCI Start",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "package, subject, graph, state, or commitment failure creates no promoted run and leaves the prior current state unchanged",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-25",
+      "proof": "Start non-promotion",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "each invocation accepts exactly one source and one Action occurrence, then creates the definition-owned association and digest-addressed payload without Test execution",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-26",
+      "proof": "incremental evidence collection",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "identical repeat is idempotent; different repeat atomically substitutes only the selected association without another flag",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-27",
+      "proof": "collection idempotence and replacement",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "equal bytes collected for multiple occurrences produce one payload and distinct associations",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-28",
+      "proof": "shared-payload collection",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "Verify performs no package acquisition or remote resolution and uses exactly the closure, subject, metadata, and evidence frozen by Start/Evidence",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-29",
+      "proof": "current-run execution",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "each successful Start creates a distinct directory and atomically selects it without mutating prior completed runs",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-30",
+      "proof": "current-run selection",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "`nape collect`, Assurance documents, V1 evaluator wire, and Git/HTTPS/file repository semantics do not enter current execution",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-31",
+      "proof": "intentional V1 rejection",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "all 111 active V1 tests have exact successor or obsolete-mechanism dispositions with no lost business assertion",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-32",
+      "proof": "V1 assertion-successor closure",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "Start/Evidence are silent on success; Verify retains its Receipt V2 projection and obtains the result location from current-run state",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-33",
+      "proof": "staged command output",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "Engine-owned `utc-start` plus repeatable V1-compatible caller metadata survive Start, current state, and Report V2 emission while reserved and invalid keys reject deterministically",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-34",
+      "proof": "invocation metadata preservation",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    },
+    {
+      "commands": [
+        "make standards-check",
+        "make qualification-live"
+      ],
+      "comparison_rule": "evidence supplied under any safe source basename is admitted under the definition-owned target filename without requiring a caller rename override",
+      "controlled_inputs": "approved A0-A8 fixtures, Product projections, and immutable V1 successor evidence applicable to this proof",
+      "current_result": "not present in the transitional CLI; frozen as a C2-C6 acceptance target",
+      "evidence_mode": "approved staged V2 target with immutable V1 successor evidence",
+      "id": "CP-35",
+      "proof": "arbitrary source filename capability",
+      "result_location": "applications/nape target output, controlled temporary lifecycle root, or current-run result directory as applicable",
+      "runtime_comparison": "ULIDs, timestamps, and producer binary digests are validated semantically; governed package and contract bytes are exact"
+    }
+  ],
+  "contract": "attestify.nape.engineering-standards-c0-ledgers/v1",
+  "counts": {
+    "compatibility_proofs": 35,
+    "current_tests": 80,
+    "historical_v1_tests": 111,
+    "production_functions": 287
+  },
+  "current_test_migration": [
+    {
+      "assertion_count": 2,
+      "disposition": "Split: valid construction; non-local HTTP rejection",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "construction_is_fallible_and_http_is_localhost_only",
+      "id": "TM-001",
+      "line": 1361,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Retain error path",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "invalid_reference_classes_fail_before_library_use",
+      "id": "TM-002",
+      "line": 1375,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 6,
+      "disposition": "Split repository and media-type errors",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "repository_and_media_type_are_closed",
+      "id": "TM-003",
+      "line": 1389,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Retain success invariant",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "descriptor_media_type_does_not_select_blob_transport_media_type",
+      "id": "TM-004",
+      "line": 1399,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Retain error boundary",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "manifest_ceiling_cannot_be_widened",
+      "id": "TM-005",
+      "line": 1412,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Retain success/security invariant",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "safe_error_formatting_cannot_leak_vendor_detail",
+      "id": "TM-006",
+      "line": 1422,
+      "supplied_validation_points": [],
+      "target_owner": "`error/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split debug-redaction and drop-cleanup paths",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "staged_handle_debug_excludes_its_path_and_drop_removes_content",
+      "id": "TM-007",
+      "line": 1436,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Split digest, tag, and ambiguous-reference paths",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "exact_reference_builds_only_explicit_digest_or_tag",
+      "id": "TM-008",
+      "line": 1453,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Retain error/security path",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "upload_locations_are_confined_to_origin_and_repository",
+      "id": "TM-009",
+      "line": 1477,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Split timeout and ceiling invariants",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "frozen_timeouts_and_manifest_ceiling_are_exact",
+      "id": "TM-010",
+      "line": 1528,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Split or table-drive five async error paths with one behavior per generated case",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "every_operation_rejects_mismatched_explicit_transport_context",
+      "id": "TM-011",
+      "line": 1536,
+      "supplied_validation_points": [],
+      "target_owner": "`registry_client/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Split lowercase and exact-digest assertions if behaviorally distinct",
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "sha256_is_lowercase_and_exact",
+      "id": "TM-012",
+      "line": 1564,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Retain exact identity success proof",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "authoritative_a0_build_is_byte_identical",
+      "id": "TM-013",
+      "line": 1968,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split mutation and extra-file errors",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "common_verifier_rejects_mutation_and_extra_files",
+      "id": "TM-014",
+      "line": 2000,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 6,
+      "disposition": "Retain exact closure success proof",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "authoritative_a3_pair_closes_as_one_exact_dependency",
+      "id": "TM-015",
+      "line": 2021,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split Action, Activity, and transitive Procedure success paths",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "i5_builds_action_activity_and_transitive_procedure_from_exact_candidates",
+      "id": "TM-016",
+      "line": 2040,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split authored-Lock, missing, and extra-candidate errors",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "i5_build_rejects_authored_lock_missing_transitive_and_extra_candidates",
+      "id": "TM-017",
+      "line": 2132,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split noncanonical and conflict families",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "lock_admission_rejects_noncanonical_and_conflicting_graphs",
+      "id": "TM-018",
+      "line": 2193,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split non-overwrite and symlink errors",
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "build_is_non_overwriting_and_source_symlinks_are_rejected",
+      "id": "TM-019",
+      "line": 2218,
+      "supplied_validation_points": [],
+      "target_owner": "`package/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split localhost and nested-domain mapping successes",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "exact_localhost_map_and_nested_domain_mapping",
+      "id": "TM-020",
+      "line": 932,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split publisher and digest errors",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "missing_publisher_and_invalid_digest_fail_before_transport",
+      "id": "TM-021",
+      "line": 965,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Retain mapping/no-fallback success",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "single_endpoint_maps_every_pkg_attestify_publisher_without_fallback",
+      "id": "TM-022",
+      "line": 984,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Split extension, duplicate, and unknown-field errors",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "yaml_extensions_duplicates_and_unknown_fields_are_rejected",
+      "id": "TM-023",
+      "line": 1029,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain pre-network error path",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "i3_selected_transport_rejects_https_before_network",
+      "id": "TM-024",
+      "line": 1041,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Retain controlled integration success",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "exact_root_pull_converges_on_the_common_verifier",
+      "id": "TM-025",
+      "line": 1058,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Retain controlled integration error",
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "corrupt_manifest_transport_fails_before_package_handoff",
+      "id": "TM-026",
+      "line": 1142,
+      "supplied_validation_points": [],
+      "target_owner": "`registry/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split missing, endpoint success, and conflict paths",
+      "file": "apps/nape-cli/src/io_adapter/clap/cli_commands.rs",
+      "function": "package_registry_configuration_is_exactly_one_profile_or_endpoint",
+      "id": "TM-027",
+      "line": 78,
+      "supplied_validation_points": [],
+      "target_owner": "`io_adapter/clap/dispatch/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Split local success, OCI success, and missing-config error",
+      "file": "apps/nape-cli/src/io_adapter/clap/cli_commands.rs",
+      "function": "verify_registry_configuration_is_required_only_for_oci_source",
+      "id": "TM-028",
+      "line": 122,
+      "supplied_validation_points": [],
+      "target_owner": "`io_adapter/clap/dispatch/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 10,
+      "disposition": "Split minimal and feature-rich deterministic builds",
+      "file": "apps/nape-cli/tests/i2_commands.rs",
+      "function": "checked_current_v2_examples_build_directly_and_deterministically",
+      "id": "TM-029",
+      "line": 133,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/lifecycle_local.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 16,
+      "disposition": "Split exact build, non-overwrite, and Receipt paths",
+      "file": "apps/nape-cli/tests/i2_commands.rs",
+      "function": "package_build_is_exact_non_overwriting_and_receipted",
+      "id": "TM-030",
+      "line": 265,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/command_contract.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 29,
+      "disposition": "Split direct and transitive Lock paths",
+      "file": "apps/nape-cli/tests/i2_commands.rs",
+      "function": "package_build_constructs_exact_i5_direct_and_transitive_locks",
+      "id": "TM-031",
+      "line": 321,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/lifecycle_local.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 37,
+      "disposition": "Split completion and terminal non-promotion paths",
+      "file": "apps/nape-cli/tests/i2_commands.rs",
+      "function": "verify_runs_one_occurrence_and_commits_or_leaves_no_output",
+      "id": "TM-032",
+      "line": 507,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/lifecycle_local.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Retain local-source dependency error",
+      "file": "apps/nape-cli/tests/i2_commands.rs",
+      "function": "local_nonempty_lock_cannot_resolve_an_oci_dependency",
+      "id": "TM-033",
+      "line": 815,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/lifecycle_local.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain corpus-driven driver proof",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "restricted_schema_preflight_matches_product_corpus",
+      "id": "TM-034",
+      "line": 4038,
+      "supplied_validation_points": [],
+      "target_owner": "`gateway_driver/restricted_schema_validation/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 7,
+      "disposition": "Split JSON, YAML, TOML, and cross-format equality paths",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "controlled_json_yaml_and_toml_project_to_one_canonical_value",
+      "id": "TM-035",
+      "line": 4055,
+      "supplied_validation_points": [],
+      "target_owner": "`gateway_driver/controlled_document_projection/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 16,
+      "disposition": "Split deterministic graph and package-driver parity paths",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_builder_and_resolver_close_referenced_activity_and_reused_action",
+      "id": "TM-036",
+      "line": 4083,
+      "supplied_validation_points": [],
+      "target_owner": "Domain `effective_graph/tests.rs` plus package integration",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split three unrelated behaviors",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "ulid_uri_and_time_helpers_are_closed",
+      "id": "TM-037",
+      "line": 4409,
+      "supplied_validation_points": [],
+      "target_owner": "identity, time, and Receipt/output-location driver tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split JCS, framing, and qualification assertions where distinct",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "package_success_receipt_is_jcs_and_current_v2_qualified",
+      "id": "TM-038",
+      "line": 4422,
+      "supplied_validation_points": [],
+      "target_owner": "`io_adapter/clap/receipt/tests.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 6,
+      "disposition": "Table-drive exact diagnostic translation paths",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "consumer_failures_map_to_frozen_registry_tokens",
+      "id": "TM-039",
+      "line": 4442,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain error boundary",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "current_procedure_admission_preserves_i4_unsupported_boundary",
+      "id": "TM-040",
+      "line": 4476,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 8,
+      "disposition": "Integration; retain complete A0 success proof",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "a0_local_package_executes_through_i1_and_commits_exact_result_tree",
+      "id": "TM-041",
+      "line": 4495,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/lifecycle_local.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 7,
+      "disposition": "Integration; retain functional V3 success proof",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_local_package_executes_v3_and_emits_schema_valid_report",
+      "id": "TM-042",
+      "line": 4603,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/lifecycle_local.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 12,
+      "disposition": "Split contained continuation and terminal non-promotion",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_contained_outcomes_continue_and_terminal_loss_never_promotes_output",
+      "id": "TM-043",
+      "line": 4798,
+      "supplied_validation_points": [],
+      "target_owner": "Domain continuation tests plus lifecycle integration",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Split aggregate limit, deduplication, and failure ownership",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "aggregate_evidence_limit_deduplicates_and_distinguishes_failure_owner",
+      "id": "TM-044",
+      "line": 4968,
+      "supplied_validation_points": [],
+      "target_owner": "Domain evidence tests plus evidence driver tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Split at-limit success and over-limit error",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_occurrence_limit_closes_at_4096",
+      "id": "TM-045",
+      "line": 4998,
+      "supplied_validation_points": [],
+      "target_owner": "Domain effective-graph tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split reachability, cycle, and direct-closure paths",
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "module_preflight_requires_exact_reachable_acyclic_direct_closure",
+      "id": "TM-046",
+      "line": 5007,
+      "supplied_validation_points": [],
+      "target_owner": "Domain Test-preflight tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Retain feature-rich success",
+      "file": "domain/src/verification/functional.rs",
+      "function": "admits_schema_evaluation_module_and_resources_together",
+      "id": "TM-047",
+      "line": 926,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split occurrence-path and static-path invariants",
+      "file": "domain/src/verification/functional.rs",
+      "function": "contextual_alias_controls_edge_but_not_action_static_path",
+      "id": "TM-048",
+      "line": 977,
+      "supplied_validation_points": [],
+      "target_owner": "Domain effective-graph tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split name and explicit-path successes if distinct",
+      "file": "domain/src/verification/functional.rs",
+      "function": "admits_i6_digit_names_and_explicit_evidence_and_test_paths",
+      "id": "TM-049",
+      "line": 1006,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split schema-media and criterion errors",
+      "file": "domain/src/verification/functional.rs",
+      "function": "rejects_nonconstant_schema_media_type_and_incompatible_criterion",
+      "id": "TM-050",
+      "line": 1053,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition/evaluation tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain authority error",
+      "file": "domain/src/verification/functional.rs",
+      "function": "rejects_assignment_authority_on_embedded_action",
+      "id": "TM-051",
+      "line": 1106,
+      "supplied_validation_points": [],
+      "target_owner": "Domain evaluation-resolution tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split closed-request and empty-evaluation paths",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "request_is_closed_and_requires_empty_evaluations",
+      "id": "TM-052",
+      "line": 138,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V2 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split missing/multiple/relative/nonregular/symlink errors",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "executable_selection_requires_one_absolute_regular_non_symlink_executable",
+      "id": "TM-053",
+      "line": 149,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split digest, closed-record, and compatibility paths",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "installed_build_record_is_digest_verified_closed_and_compatible",
+      "id": "TM-054",
+      "line": 177,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 0,
+      "disposition": "Table-drive ten success paths",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "all_ten_accepted_response_variants_validate",
+      "id": "TM-055",
+      "line": 216,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V2 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Table-drive exact negative corpus",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "all_response_near_misses_are_rejected",
+      "id": "TM-056",
+      "line": 237,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V2 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain framing error",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "duplicate_response_member_is_rejected_by_strict_json",
+      "id": "TM-057",
+      "line": 268,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V2 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split multiple-frame and noncanonical errors",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "multiple_or_noncanonical_stdout_is_rejected",
+      "id": "TM-058",
+      "line": 277,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V2 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Integration; split valid response and bounded stderr behavior if distinct",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "process_adapter_returns_one_valid_response_and_ignores_bounded_stderr",
+      "id": "TM-059",
+      "line": 294,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/evaluator_process.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Integration error",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "nonzero_exit_never_promotes_valid_looking_stdout",
+      "id": "TM-060",
+      "line": 304,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/evaluator_process.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Integration error/non-promotion",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "timeout_is_terminal_and_creates_no_occurrence_result",
+      "id": "TM-061",
+      "line": 313,
+      "supplied_validation_points": [],
+      "target_owner": "`tests/evaluator_process.rs`",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split stdout and stderr ceilings",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v2_tests.rs",
+      "function": "stdout_and_stderr_are_incrementally_bounded",
+      "id": "TM-062",
+      "line": 330,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 0,
+      "disposition": "Retain success",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "admits_closed_functional_request",
+      "id": "TM-063",
+      "line": 55,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split module-order and incomplete-evaluation errors",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "rejects_unsorted_modules_and_incomplete_evaluations",
+      "id": "TM-064",
+      "line": 62,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 4,
+      "disposition": "Retain ABI invariant success",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "preserves_v2_test_abi_while_expanding_only_boundary_data",
+      "id": "TM-065",
+      "line": 82,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split names, criteria, and optional-prose paths",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "enforces_i6_names_typed_criteria_and_optional_prose",
+      "id": "TM-066",
+      "line": 91,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split namespace and path-collision errors",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "rejects_module_namespace_and_workspace_path_collisions",
+      "id": "TM-067",
+      "line": 113,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 0,
+      "disposition": "Table-drive contained/completed success corpus",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "all_contained_and_completed_v2_semantics_admit_under_v3_discriminator",
+      "id": "TM-068",
+      "line": 124,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain version-separation success",
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/action_invocation_v3_tests.rs",
+      "function": "admits_current_v3_runner_unsupported_phase_without_widening_v2",
+      "id": "TM-069",
+      "line": 148,
+      "supplied_validation_points": [],
+      "target_owner": "Action-evaluation driver V3 tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split admission and derived-path successes",
+      "file": "domain/src/verification/mod.rs",
+      "function": "admits_authoritative_a0_and_derives_exact_paths",
+      "id": "TM-070",
+      "line": 1400,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission and effective-graph tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split admission and ownership invariants",
+      "file": "domain/src/verification/mod.rs",
+      "function": "admits_authoritative_a3_and_separates_static_and_contextual_ownership",
+      "id": "TM-071",
+      "line": 1417,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition/effective-graph tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 8,
+      "disposition": "Table-drive five success profiles",
+      "file": "domain/src/verification/mod.rs",
+      "function": "i5_build_admission_closes_all_five_profiles",
+      "id": "TM-072",
+      "line": 1437,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split order and root-name errors",
+      "file": "domain/src/verification/mod.rs",
+      "function": "i5_build_admission_rejects_wrong_order_and_root_name_mismatch",
+      "id": "TM-073",
+      "line": 1486,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 7,
+      "disposition": "Split context and static-path invariants",
+      "file": "domain/src/verification/mod.rs",
+      "function": "i5_l2_expansion_preserves_context_and_package_owned_static_paths",
+      "id": "TM-074",
+      "line": 1506,
+      "supplied_validation_points": [],
+      "target_owner": "Domain effective-graph tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 1,
+      "disposition": "Retain shadow error",
+      "file": "domain/src/verification/mod.rs",
+      "function": "i4_reference_cannot_shadow_package_owned_action_fields",
+      "id": "TM-075",
+      "line": 1532,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 3,
+      "disposition": "Split absent/empty successes and nonempty error",
+      "file": "domain/src/verification/mod.rs",
+      "function": "i4_accepts_absent_or_explicit_empty_evaluations_only",
+      "id": "TM-076",
+      "line": 1546,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Table-drive unsupported forms",
+      "file": "domain/src/verification/mod.rs",
+      "function": "i4_reports_governed_later_profile_forms_as_unsupported",
+      "id": "TM-077",
+      "line": 1580,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split three error families",
+      "file": "domain/src/verification/mod.rs",
+      "function": "rejects_references_evaluations_and_more_than_one_action",
+      "id": "TM-078",
+      "line": 1611,
+      "supplied_validation_points": [],
+      "target_owner": "Domain definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 2,
+      "disposition": "Split closed-shape and ARN success paths",
+      "file": "domain/src/verification/mod.rs",
+      "function": "subject_is_closed_and_uses_risk_source_arn",
+      "id": "TM-079",
+      "line": 1633,
+      "supplied_validation_points": [],
+      "target_owner": "Domain subject tests",
+      "validation_point_disposition": "none supplied"
+    },
+    {
+      "assertion_count": 5,
+      "disposition": "Split parser negative families at their actual owner",
+      "file": "domain/src/verification/mod.rs",
+      "function": "parser_admission_enforces_frozen_yaml_boundaries",
+      "id": "TM-080",
+      "line": 1640,
+      "supplied_validation_points": [],
+      "target_owner": "controlled-document driver and definition-admission tests",
+      "validation_point_disposition": "none supplied"
+    }
+  ],
+  "generated_from": {
+    "plan_sha256": "dd734e87d4ced5fada23cf87d065cd80d005a150aad9f47a7c414b9391e5532f",
+    "v1_audit_sha256": "8a82f89de92118d1a3a03481c5e847880ff71edff37a34f626e6a08167a2afe7",
+    "v1_commit": "4c13c7413e55b5e77990ad511c782f109edd2951"
+  },
+  "historical_v1_assertion_successors": [
+    {
+      "assertion_count": 7,
+      "file": "apps/nape-cli/src/gateway_adapter/git2/process_retrieval_gateway_tests.rs",
+      "function": "retrieve_procedure_from_git_success",
+      "id": "V1-001",
+      "line": 8,
+      "material_assertion": "retrieve procedure from git success",
+      "obsolete_mechanism_rationale": "Git Procedure retrieval is replaced by exact local-build or OCI package acquisition.",
+      "successor_owner": "exact OCI/local package acquisition; Git mechanism retired",
+      "successor_proofs": [
+        "CP-07",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "apps/nape-cli/src/gateway_adapter/nape_evaluator/evaluate_evidence_gateway_tests.rs",
+      "function": "success",
+      "id": "V1-002",
+      "line": 10,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "Evaluator V2/V3 driver",
+      "successor_proofs": [
+        "CP-09",
+        "CP-10",
+        "CP-19",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/persist_report_gateway_tests.rs",
+      "function": "success",
+      "id": "V1-003",
+      "line": 20,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": "V1 AssuranceReport YAML persistence is replaced by atomic VerificationReport result-set commitment.",
+      "successor_owner": "Verification outcome commitment; YAML mechanism retired",
+      "successor_proofs": [
+        "CP-14",
+        "CP-16",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 34,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_procedure/v1_0_0_tests.rs",
+      "function": "from_success",
+      "id": "V1-004",
+      "line": 13,
+      "material_assertion": "from success",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 definition projection/admission; Assurance shape retired",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 36,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_procedure/v1_0_0_tests.rs",
+      "function": "try_to_success",
+      "id": "V1-005",
+      "line": 96,
+      "material_assertion": "try to success",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 definition projection/admission; Assurance shape retired",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_procedure/v1_0_0_tests.rs",
+      "function": "try_to_handles_invalid_api_version_error",
+      "id": "V1-006",
+      "line": 238,
+      "material_assertion": "try to handles invalid api version error",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 definition projection/admission; Assurance shape retired",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_procedure/v1_0_0_tests.rs",
+      "function": "try_to_handles_invalid_procedure_error",
+      "id": "V1-007",
+      "line": 251,
+      "material_assertion": "try to handles invalid procedure error",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 definition projection/admission; Assurance shape retired",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_procedure/v1_0_0_tests.rs",
+      "function": "try_to_handles_invalid_activity_error",
+      "id": "V1-008",
+      "line": 264,
+      "material_assertion": "try to handles invalid activity error",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 definition projection/admission; Assurance shape retired",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_procedure/v1_0_0_tests.rs",
+      "function": "try_to_handles_invalid_action_error",
+      "id": "V1-009",
+      "line": 272,
+      "material_assertion": "try to handles invalid action error",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 definition projection/admission; Assurance shape retired",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 45,
+      "file": "apps/nape-cli/src/gateway_adapter/serde/specification_serializer/assurance_report/v1_0_0_tests.rs",
+      "function": "success",
+      "id": "V1-010",
+      "line": 7,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": "The AssuranceReport V1 wire shape is replaced by VerificationReport V2.",
+      "successor_owner": "V2 Report construction/serialization; Assurance shape retired",
+      "successor_proofs": [
+        "CP-14",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "apps/nape-cli/src/gateway_adapter/sha2/signature_algorithm_tests.rs",
+      "function": "success",
+      "id": "V1-011",
+      "line": 7,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "digest and exact-byte provenance",
+      "successor_proofs": [
+        "CP-11",
+        "CP-14",
+        "CP-15"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/sha2/signature_algorithm_tests.rs",
+      "function": "no_data_error",
+      "id": "V1-012",
+      "line": 22,
+      "material_assertion": "no data error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "digest and exact-byte provenance",
+      "successor_proofs": [
+        "CP-11",
+        "CP-14",
+        "CP-15"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/copy_file_gateway_tests.rs",
+      "function": "copy_file_to_filesystem_success",
+      "id": "V1-013",
+      "line": 7,
+      "material_assertion": "copy file to filesystem success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "prepared evidence commitment",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/directory_creation_gateway_tests.rs",
+      "function": "create_directories_on_filesystem_success",
+      "id": "V1-014",
+      "line": 8,
+      "material_assertion": "create directories on filesystem success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "NAPE-managed run-directory commitment",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/directory_creation_gateway_tests.rs",
+      "function": "create_directories_on_filesystem_error_no_permissions_to_create_dir",
+      "id": "V1-015",
+      "line": 41,
+      "material_assertion": "create directories on filesystem error no permissions to create dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "NAPE-managed run-directory commitment",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_data_gateway_tests.rs",
+      "function": "success",
+      "id": "V1-016",
+      "line": 8,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "bounded evidence acquisition",
+      "successor_proofs": [
+        "CP-11",
+        "CP-26"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_data_gateway_tests.rs",
+      "function": "could_not_open_file_error",
+      "id": "V1-017",
+      "line": 30,
+      "material_assertion": "could not open file error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "bounded evidence acquisition",
+      "successor_proofs": [
+        "CP-11",
+        "CP-26"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_file_success",
+      "id": "V1-018",
+      "line": 8,
+      "material_assertion": "delete source file success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_directory_success",
+      "id": "V1-019",
+      "line": 34,
+      "material_assertion": "delete source directory success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_error_dir_cannot_be_accessed_not_found",
+      "id": "V1-020",
+      "line": 62,
+      "material_assertion": "delete source error dir cannot be accessed not found",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_error_file_cannot_be_accessed_not_found",
+      "id": "V1-021",
+      "line": 80,
+      "material_assertion": "delete source error file cannot be accessed not found",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 5,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_error_file_cannot_be_accessed_no_permissions",
+      "id": "V1-022",
+      "line": 98,
+      "material_assertion": "delete source error file cannot be accessed no permissions",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_error_failed_to_delete_dir",
+      "id": "V1-023",
+      "line": 145,
+      "material_assertion": "delete source error failed to delete dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_delete_gateway_tests.rs",
+      "function": "delete_source_error_not_file_or_dir",
+      "id": "V1-024",
+      "line": 179,
+      "material_assertion": "delete source error not file or dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic staging cleanup/non-promotion",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 5,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_move_gateway_tests.rs",
+      "function": "move_file_success",
+      "id": "V1-025",
+      "line": 6,
+      "material_assertion": "move file success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic prepared/result commitment",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 10,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/file_move_gateway_tests.rs",
+      "function": "move_directory_success",
+      "id": "V1-026",
+      "line": 48,
+      "material_assertion": "move directory success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic prepared/result commitment",
+      "successor_proofs": [
+        "CP-16",
+        "CP-25",
+        "CP-27"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/procedure_retrieval_gateway_tests.rs",
+      "function": "retrieve_procedure_from_fs_success",
+      "id": "V1-027",
+      "line": 9,
+      "material_assertion": "retrieve procedure from fs success",
+      "obsolete_mechanism_rationale": "Filesystem Procedure repository transport is replaced by verified local-build or OCI package acquisition.",
+      "successor_owner": "local package acquisition; file repository transport retired",
+      "successor_proofs": [
+        "CP-08",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 21,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/retrieve_assurance_procedure_tests.rs",
+      "function": "success",
+      "id": "V1-028",
+      "line": 7,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": "The AssuranceProcedure V1 wire shape is replaced by VerificationProcedure V2.",
+      "successor_owner": "V2 controlled definition projection",
+      "successor_proofs": [
+        "CP-20",
+        "CP-31"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/gateway_adapter/std_fs/retrieve_file_data_gateway_tests.rs",
+      "function": "retrieve_file_data_from_filesystem_success",
+      "id": "V1-029",
+      "line": 7,
+      "material_assertion": "retrieve file data from filesystem success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "bounded evidence acquisition",
+      "successor_proofs": [
+        "CP-11",
+        "CP-26"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/io_adapter/clap/command_handlers/collect/collect_command_handler_tests.rs",
+      "function": "collect_command_handle_success",
+      "id": "V1-030",
+      "line": 10,
+      "material_assertion": "collect command handle success",
+      "obsolete_mechanism_rationale": "The `nape collect` grammar is replaced by top-level Start, Evidence, and Verify commands.",
+      "successor_owner": "V2 staged-command dispatch; old grammar retired",
+      "successor_proofs": [
+        "CP-01",
+        "CP-31",
+        "CP-33"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/io_adapter/clap/command_handlers/collect/collect_command_handler_tests.rs",
+      "function": "no_subcommand_matches",
+      "id": "V1-031",
+      "line": 31,
+      "material_assertion": "no subcommand matches",
+      "obsolete_mechanism_rationale": "The `nape collect` grammar is replaced by top-level Start, Evidence, and Verify commands.",
+      "successor_owner": "V2 staged-command dispatch; old grammar retired",
+      "successor_proofs": [
+        "CP-01",
+        "CP-31",
+        "CP-33"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/io_adapter/clap/command_handlers/collect/collect_command_handler_tests.rs",
+      "function": "test_subcommand_handle_returns_error",
+      "id": "V1-032",
+      "line": 47,
+      "material_assertion": "test subcommand handle returns error",
+      "obsolete_mechanism_rationale": "The `nape collect` grammar is replaced by top-level Start, Evidence, and Verify commands.",
+      "successor_owner": "V2 staged-command dispatch; old grammar retired",
+      "successor_proofs": [
+        "CP-01",
+        "CP-31",
+        "CP-33"
+      ]
+    },
+    {
+      "assertion_count": 7,
+      "file": "apps/nape-cli/src/state_management/cli_app_state_tests.rs",
+      "function": "builder_success",
+      "id": "V1-033",
+      "line": 12,
+      "material_assertion": "builder success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "versioned current-run state builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/state_management/cli_app_state_tests.rs",
+      "function": "no_subject_error",
+      "id": "V1-034",
+      "line": 66,
+      "material_assertion": "no subject error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "versioned current-run state builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/state_management/cli_app_state_tests.rs",
+      "function": "no_procedure_error",
+      "id": "V1-035",
+      "line": 87,
+      "material_assertion": "no procedure error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "versioned current-run state builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/state_management/cli_app_state_tests.rs",
+      "function": "no_metadata_error",
+      "id": "V1-036",
+      "line": 108,
+      "material_assertion": "no metadata error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "versioned current-run state builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/state_management/cli_app_state_tests.rs",
+      "function": "no_directory_list_error",
+      "id": "V1-037",
+      "line": 129,
+      "material_assertion": "no directory list error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "versioned current-run state builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/state_management/retrieve_state_file_tests.rs",
+      "function": "retrieve_state_success",
+      "id": "V1-038",
+      "line": 12,
+      "material_assertion": "retrieve state success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "current-run state acquisition",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/state_management/write_state_file_tests.rs",
+      "function": "write_state_success",
+      "id": "V1-039",
+      "line": 11,
+      "material_assertion": "write state success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "atomic current-run state commitment",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "apps/nape-cli/src/state_management/yaml_serializer_tests.rs",
+      "function": "serialize_to_yaml_success",
+      "id": "V1-040",
+      "line": 10,
+      "material_assertion": "serialize to yaml success",
+      "obsolete_mechanism_rationale": "The V1 state wire is replaced by the complete versioned Verification V2 current-run state.",
+      "successor_owner": "versioned private current-run YAML projection",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "apps/nape-cli/src/state_management/yaml_serializer_tests.rs",
+      "function": "deserialize_from_yaml_success",
+      "id": "V1-041",
+      "line": 45,
+      "material_assertion": "deserialize from yaml success",
+      "obsolete_mechanism_rationale": "The V1 state wire is replaced by the complete versioned Verification V2 current-run state.",
+      "successor_owner": "versioned private current-run YAML projection",
+      "successor_proofs": [
+        "CP-23",
+        "CP-25",
+        "CP-29",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 14,
+      "file": "apps/nape-cli/src/usecase_configuration/start_collection_tests.rs",
+      "function": "factory_std_fs_git2_success",
+      "id": "V1-042",
+      "line": 8,
+      "material_assertion": "factory std fs git2 success",
+      "obsolete_mechanism_rationale": "V1 repository factories are replaced by explicit local-build/OCI driver composition.",
+      "successor_owner": "`StartVerificationUC` composition",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/collect_evidence/usecase_tests.rs",
+      "function": "collect_file_success",
+      "id": "V1-043",
+      "line": 10,
+      "material_assertion": "collect file success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`CollectVerificationEvidenceUC`",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27",
+        "CP-28",
+        "CP-35"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/collect_evidence/usecase_tests.rs",
+      "function": "collect_file_success_with_name_override",
+      "id": "V1-044",
+      "line": 39,
+      "material_assertion": "collect file success with name override",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`CollectVerificationEvidenceUC`",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27",
+        "CP-28",
+        "CP-35"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/collect_evidence/usecase_tests.rs",
+      "function": "collect_file_error_action_name_error",
+      "id": "V1-045",
+      "line": 71,
+      "material_assertion": "collect file error action name error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`CollectVerificationEvidenceUC`",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27",
+        "CP-28",
+        "CP-35"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/collect_evidence/usecase_tests.rs",
+      "function": "collect_file_error_retrieve_directory_gateway_error",
+      "id": "V1-046",
+      "line": 112,
+      "material_assertion": "collect file error retrieve directory gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`CollectVerificationEvidenceUC`",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27",
+        "CP-28",
+        "CP-35"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/collect_evidence/usecase_tests.rs",
+      "function": "collect_file_error_retrieve_file_data_gateway_error",
+      "id": "V1-047",
+      "line": 128,
+      "material_assertion": "collect file error retrieve file data gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`CollectVerificationEvidenceUC`",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27",
+        "CP-28",
+        "CP-35"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/collect_evidence/usecase_tests.rs",
+      "function": "collect_file_error_copy_evidence_file_gateway_error",
+      "id": "V1-048",
+      "line": 155,
+      "material_assertion": "collect file error copy evidence file gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`CollectVerificationEvidenceUC`",
+      "successor_proofs": [
+        "CP-26",
+        "CP-27",
+        "CP-28",
+        "CP-35"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_pass_success",
+      "id": "V1-049",
+      "line": 13,
+      "material_assertion": "try from pass success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_fail_success",
+      "id": "V1-050",
+      "line": 20,
+      "material_assertion": "try from fail success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_inconclusive_success",
+      "id": "V1-051",
+      "line": 27,
+      "material_assertion": "try from inconclusive success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_error_success",
+      "id": "V1-052",
+      "line": 34,
+      "material_assertion": "try from error success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_empty_outcome_error",
+      "id": "V1-053",
+      "line": 43,
+      "material_assertion": "try from empty outcome error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_invalid_outcome_error",
+      "id": "V1-054",
+      "line": 49,
+      "material_assertion": "try from invalid outcome error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "try_from_empty_reason_error",
+      "id": "V1-055",
+      "line": 55,
+      "material_assertion": "try from empty reason error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "from_procedure_many_activity_many_tests_success",
+      "id": "V1-056",
+      "line": 73,
+      "material_assertion": "from procedure many activity many tests success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "from_procedure_action_evidence_duplicates_action_test_unique_success",
+      "id": "V1-057",
+      "line": 257,
+      "material_assertion": "from procedure action evidence duplicates action test unique success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "from_procedure_many_activity_duplicate_evidence_many_tests_success",
+      "id": "V1-058",
+      "line": 411,
+      "material_assertion": "from procedure many activity duplicate evidence many tests success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "from_procedure_many_activity_duplicate_evidence_many_test_duplicate_tests_success",
+      "id": "V1-059",
+      "line": 564,
+      "material_assertion": "from procedure many activity duplicate evidence many test duplicate tests success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "add_success",
+      "id": "V1-060",
+      "line": 684,
+      "material_assertion": "add success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "default_success",
+      "id": "V1-061",
+      "line": 726,
+      "material_assertion": "default success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 8,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "add_result_success",
+      "id": "V1-062",
+      "line": 732,
+      "material_assertion": "add result success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/gateway_boundary_tests.rs",
+      "function": "result_for_not_found_error",
+      "id": "V1-063",
+      "line": 787,
+      "material_assertion": "result for not found error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "effective occurrence/evidence/Test mapping and result admission",
+      "successor_proofs": [
+        "CP-11",
+        "CP-12",
+        "CP-13",
+        "CP-19"
+      ]
+    },
+    {
+      "assertion_count": 10,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "success",
+      "id": "V1-064",
+      "line": 9,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "no_subject_nrn_error",
+      "id": "V1-065",
+      "line": 38,
+      "material_assertion": "no subject nrn error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "no_subject_id_error",
+      "id": "V1-066",
+      "line": 55,
+      "material_assertion": "no subject id error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "no_procedure_repository_error",
+      "id": "V1-067",
+      "line": 72,
+      "material_assertion": "no procedure repository error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "no_procedure_directory_error",
+      "id": "V1-068",
+      "line": 89,
+      "material_assertion": "no procedure directory error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "invalid_subject_error",
+      "id": "V1-069",
+      "line": 106,
+      "material_assertion": "invalid subject error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "invalid_procedure_error",
+      "id": "V1-070",
+      "line": 124,
+      "material_assertion": "invalid procedure error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_boundary_tests.rs",
+      "function": "invalid_metadata_error",
+      "id": "V1-071",
+      "line": 142,
+      "material_assertion": "invalid metadata error",
+      "obsolete_mechanism_rationale": "V1 Assurance request fields are replaced by argument-free Verify over current Verification state.",
+      "successor_owner": "current-run `VerifyProcedureUC` request and state-acquisition boundaries",
+      "successor_proofs": [
+        "CP-29",
+        "CP-31",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "success",
+      "id": "V1-072",
+      "line": 25,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_retrieve_procedure_definition_doc_path_error",
+      "id": "V1-073",
+      "line": 42,
+      "material_assertion": "no retrieve procedure definition doc path error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_retrieve_home_path_error",
+      "id": "V1-074",
+      "line": 73,
+      "material_assertion": "no retrieve home path error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "could_not_get_procedure_def_error",
+      "id": "V1-075",
+      "line": 104,
+      "material_assertion": "could not get procedure def error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "evaluate_evidence_gateway_error",
+      "id": "V1-076",
+      "line": 135,
+      "material_assertion": "evaluate evidence gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "sig_algo_error",
+      "id": "V1-077",
+      "line": 166,
+      "material_assertion": "sig algo error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "file_data_gateway_error",
+      "id": "V1-078",
+      "line": 197,
+      "material_assertion": "file data gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 2,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "persist_report_gateway_error",
+      "id": "V1-079",
+      "line": 224,
+      "material_assertion": "persist report gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 31,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "success",
+      "id": "V1-080",
+      "line": 346,
+      "material_assertion": "success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_request_error",
+      "id": "V1-081",
+      "line": 431,
+      "material_assertion": "no request error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_definition_error",
+      "id": "V1-082",
+      "line": 451,
+      "material_assertion": "no definition error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_results_error",
+      "id": "V1-083",
+      "line": 471,
+      "material_assertion": "no results error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_signature_algorithm_error",
+      "id": "V1-084",
+      "line": 491,
+      "material_assertion": "no signature algorithm error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "signature_algo_error",
+      "id": "V1-085",
+      "line": 512,
+      "material_assertion": "signature algo error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "no_file_data_gateway_error",
+      "id": "V1-086",
+      "line": 540,
+      "material_assertion": "no file data gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/evaluate_evidence/usecase_tests.rs",
+      "function": "file_data_gateway_error",
+      "id": "V1-087",
+      "line": 562,
+      "material_assertion": "file data gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`VerifyProcedureUC`, Report construction, and failure ownership",
+      "successor_proofs": [
+        "CP-13",
+        "CP-14",
+        "CP-15",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "assertion_count": 9,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "builder_success_start_now",
+      "id": "V1-088",
+      "line": 14,
+      "material_assertion": "builder success start now",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 9,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "builder_success_start_at",
+      "id": "V1-089",
+      "line": 51,
+      "material_assertion": "builder success start at",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_missing_api_version",
+      "id": "V1-090",
+      "line": 88,
+      "material_assertion": "test start procedure builder missing api version",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_missing_subject_nrn",
+      "id": "V1-091",
+      "line": 106,
+      "material_assertion": "test start procedure builder missing subject nrn",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_missing_subject_id",
+      "id": "V1-092",
+      "line": 124,
+      "material_assertion": "test start procedure builder missing subject id",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_missing_procedure_repository",
+      "id": "V1-093",
+      "line": 142,
+      "material_assertion": "test start procedure builder missing procedure repository",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_missing_procedure_directory",
+      "id": "V1-094",
+      "line": 160,
+      "material_assertion": "test start procedure builder missing procedure directory",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_invalid_api_version",
+      "id": "V1-095",
+      "line": 178,
+      "material_assertion": "test start procedure builder invalid api version",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_invalid_metadata",
+      "id": "V1-096",
+      "line": 199,
+      "material_assertion": "test start procedure builder invalid metadata",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_invalid_subject",
+      "id": "V1-097",
+      "line": 220,
+      "material_assertion": "test start procedure builder invalid subject",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 3,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_boundary_tests.rs",
+      "function": "test_start_procedure_builder_invalid_procedure",
+      "id": "V1-098",
+      "line": 239,
+      "material_assertion": "test start procedure builder invalid procedure",
+      "obsolete_mechanism_rationale": "V1 Assurance and repository fields are replaced by the StartVerification V2 request.",
+      "successor_owner": "`StartVerificationUC` request builder",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-34"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_success",
+      "id": "V1-099",
+      "line": 12,
+      "material_assertion": "start collection success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_missing_home_dir",
+      "id": "V1-100",
+      "line": 37,
+      "material_assertion": "start collection error missing home dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_missing_activity_dir",
+      "id": "V1-101",
+      "line": 71,
+      "material_assertion": "start collection error missing activity dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_missing_temp_dir",
+      "id": "V1-102",
+      "line": 105,
+      "material_assertion": "start collection error missing temp dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_move_file_missing_procedure_doc",
+      "id": "V1-103",
+      "line": 145,
+      "material_assertion": "start collection error move file missing procedure doc",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_move_file_missing_activity_dir",
+      "id": "V1-104",
+      "line": 176,
+      "material_assertion": "start collection error move file missing activity dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_procedure_retrieval_gateway_error",
+      "id": "V1-105",
+      "line": 206,
+      "material_assertion": "start collection error procedure retrieval gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_directory_creation_gateway_error",
+      "id": "V1-106",
+      "line": 226,
+      "material_assertion": "start collection error directory creation gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_file_delete_gateway_error",
+      "id": "V1-107",
+      "line": 246,
+      "material_assertion": "start collection error file delete gateway error",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_file_move_procedure_doc",
+      "id": "V1-108",
+      "line": 280,
+      "material_assertion": "start collection error file move procedure doc",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 4,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "start_collection_error_file_move_activity_dir",
+      "id": "V1-109",
+      "line": 308,
+      "material_assertion": "start collection error file move activity dir",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "success_activity_moved",
+      "id": "V1-110",
+      "line": 339,
+      "material_assertion": "success activity moved",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    },
+    {
+      "assertion_count": 1,
+      "file": "domain/src/evidence_collection/usecases/start_collection/usecase_tests.rs",
+      "function": "temp_dir_deleted_success",
+      "id": "V1-111",
+      "line": 362,
+      "material_assertion": "temp dir deleted success",
+      "obsolete_mechanism_rationale": null,
+      "successor_owner": "`StartVerificationUC`, preparation commitment, and non-promotion",
+      "successor_proofs": [
+        "CP-23",
+        "CP-24",
+        "CP-25",
+        "CP-30"
+      ]
+    }
+  ],
+  "metadata_amendment_freeze": {
+    "caller_members": {
+      "cardinality": "zero or more repeatable string pairs",
+      "duplicates": "last occurrence of the normalized key wins",
+      "key": "non-empty Unicode alphanumeric with optional interior dashes, normalized to Unicode lowercase, maximum 64 UTF-8 bytes",
+      "reserved": [
+        "generated_at",
+        "id",
+        "utc-start"
+      ],
+      "value": "trimmed non-empty string, maximum 256 UTF-8 bytes"
+    },
+    "excluded_new_limits": [
+      "entry count",
+      "aggregate bytes",
+      "Unicode scalar count",
+      "any additional caller-metadata ceiling"
+    ],
+    "generated_at": "canonical RFC 3339 UTC Report-construction timestamp",
+    "negative_vector_count": 11,
+    "plan": "04-plans/initiatives/tmp-verification-report-v2-invocation-metadata-amendment-plan.md",
+    "positive_vector_count": 6,
+    "required_engine_members": [
+      "generated_at",
+      "id",
+      "utc-start"
+    ],
+    "utc_start": "invocation-start Unix epoch milliseconds serialized as a decimal string"
+  },
+  "production_function_owners": [
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "new",
+      "line": 81,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "internal",
+      "line": 95,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "diagnostic",
+      "line": 104,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "from",
+      "line": 114,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "from",
+      "line": 125,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "from",
+      "line": 136,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "value",
+      "line": 181,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "run_package",
+      "line": 302,
+      "target_owner": "CLI command adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "package_publish",
+      "line": 389,
+      "target_owner": "attestify-oci Application gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "package_resolve_plan",
+      "line": 455,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_verified_i5_package",
+      "line": 526,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "validate_i5_definition_lock",
+      "line": 575,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_current_build_definition",
+      "line": 643,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_current_functional_definition",
+      "line": 652,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "ordered_lock_edges",
+      "line": 659,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_current_procedure",
+      "line": 692,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "exact_i4_projection",
+      "line": 705,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "receipt_location",
+      "line": 734,
+      "target_owner": "CLI receipt I/O adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "run_verify",
+      "line": 746,
+      "target_owner": "CLI command adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "verification_source",
+      "line": 811,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "package_build",
+      "line": 831,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "read_i5_source_root",
+      "line": 957,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "embedded_effective",
+      "line": 983,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "activity_embedded_effective",
+      "line": 1029,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "package_name_from_purl",
+      "line": 1075,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "embedded_activity_origin",
+      "line": 1084,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "referenced_effective",
+      "line": 1098,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "resolve_local_package",
+      "line": 1151,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "resolve_oci_package",
+      "line": 1189,
+      "target_owner": "attestify-oci Application gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "closure_uses_functional_capabilities",
+      "line": 1250,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_definition_is_advanced",
+      "line": 1265,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "legacy_name_compatible",
+      "line": 1311,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "semantic_root_path",
+      "line": 1318,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_package_definition",
+      "line": 1332,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "resolve_functional_closure",
+      "line": 1342,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_effective_occurrence_count",
+      "line": 1420,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "expand_functional_activity",
+      "line": 1433,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_occurrence",
+      "line": 1497,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "effective_evaluations",
+      "line": 1561,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "assignment_invalid",
+      "line": 1634,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "package_owner",
+      "line": 1643,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "dependency_by_identity",
+      "line": 1658,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "resolve_i4_action",
+      "line": 1671,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "resolve_i5_activity",
+      "line": 1760,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "acquire_i5_oci_closure",
+      "line": 1816,
+      "target_owner": "attestify-oci Application gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "dependency_acquisition_failure",
+      "line": 1860,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "dependency_package_failure",
+      "line": 1884,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "verify",
+      "line": 1893,
+      "target_owner": "VerifyProcedureUC"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "prepare_occurrences",
+      "line": 2077,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "evidence_aggregate_limit_failure",
+      "line": 2230,
+      "target_owner": "evidence admission Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_unique_evidence_size",
+      "line": 2248,
+      "target_owner": "evidence admission Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "preflight_module_closure",
+      "line": 2270,
+      "target_owner": "Test preflight Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "direct_source_imports",
+      "line": 2324,
+      "target_owner": "Test preflight Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "module_closure_failure",
+      "line": 2379,
+      "target_owner": "Test preflight Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "module_package_path",
+      "line": 2388,
+      "target_owner": "Test preflight Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "prepare_structured_evidence",
+      "line": 2393,
+      "target_owner": "evidence admission Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "parse_controlled_evidence",
+      "line": 2444,
+      "target_owner": "controlled-document projection gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "toml_to_json",
+      "line": 2466,
+      "target_owner": "controlled-document projection gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "validate_restricted_schema",
+      "line": 2492,
+      "target_owner": "restricted-schema Domain service or gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "format_failure",
+      "line": 2647,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "schema_failure",
+      "line": 2656,
+      "target_owner": "restricted-schema Domain service or gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "action_request",
+      "line": 2665,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "functional_action_request",
+      "line": 2698,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "verification_report",
+      "line": 2741,
+      "target_owner": "Report construction Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "verification_report_legacy",
+      "line": 2781,
+      "target_owner": "Report construction Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "verification_report_functional",
+      "line": 2990,
+      "target_owner": "Report construction Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "definition_owner_value",
+      "line": 3264,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "definition_origin_value",
+      "line": 3273,
+      "target_owner": "definition/package Domain service or package Use Case"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "validation_profile",
+      "line": 3292,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "evidence_set_relationship",
+      "line": 3303,
+      "target_owner": "Report construction Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "subject_value",
+      "line": 3340,
+      "target_owner": "Report construction Domain service"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "verify_result_stage",
+      "line": 3355,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "result_tree_inventory",
+      "line": 3439,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "select_evaluator",
+      "line": 3482,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "select_functional_evaluator",
+      "line": 3493,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "evaluator_unavailable",
+      "line": 3503,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "from",
+      "line": 3513,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "boundary_failure",
+      "line": 3543,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "boundary_failure_value",
+      "line": 3547,
+      "target_owner": "ActionEvaluationGW driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "producer",
+      "line": 3624,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "emit_receipt",
+      "line": 3641,
+      "target_owner": "CLI receipt I/O adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "unframed_failure",
+      "line": 3659,
+      "target_owner": "CLI receipt I/O adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "canonical_json",
+      "line": 3664,
+      "target_owner": "CLI receipt I/O adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "required_path",
+      "line": 3704,
+      "target_owner": "CLI command adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "required_registry_input",
+      "line": 3708,
+      "target_owner": "CLI command adapter"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "admit_registry_input",
+      "line": 3719,
+      "target_owner": "attestify-oci Application gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "fresh_sibling_path",
+      "line": 3738,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "path_entry_exists",
+      "line": 3760,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "fresh_sibling_directory",
+      "line": 3770,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "read_regular_bounded",
+      "line": 3805,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "write_new_file",
+      "line": 3855,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "write_json_document",
+      "line": 3871,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "sync_tree",
+      "line": 3878,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "sync_directory",
+      "line": 3903,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "path_text",
+      "line": 3909,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "lexical_normalize",
+      "line": 3926,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "file_uri",
+      "line": 3947,
+      "target_owner": "local acquisition or atomic-commit gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "new_ulid",
+      "line": 3965,
+      "target_owner": "Kernel identity/time gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "rfc3339_now",
+      "line": 3991,
+      "target_owner": "Kernel identity/time gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "civil_from_days",
+      "line": 4009,
+      "target_owner": "Kernel identity/time gateway driver"
+    },
+    {
+      "file": "apps/nape-cli/src/verification_v2.rs",
+      "function": "product_i6",
+      "line": 4031,
+      "target_owner": "bounded Domain service selected during C2 extraction"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "invalid",
+      "line": 26,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "unsupported",
+      "line": 35,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "subject_invalid",
+      "line": 44,
+      "target_owner": "subject Domain value/admission service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "fmt",
+      "line": 55,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i5_build_definition",
+      "line": 318,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i5_build_action",
+      "line": 381,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i5_build_activity",
+      "line": 405,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i5_build_referenced_activity_procedure",
+      "line": 461,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i5_referenced_activity_procedure",
+      "line": 501,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i5_activity",
+      "line": 539,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_independent_action_spec",
+      "line": 631,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_embedded_action",
+      "line": 651,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_root_package",
+      "line": 666,
+      "target_owner": "package/definition Domain value"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i2_procedure",
+      "line": 676,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i4_procedure",
+      "line": 768,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_i4_action",
+      "line": 819,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_subject",
+      "line": 881,
+      "target_owner": "subject Domain value/admission service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "evidence_media_type",
+      "line": 927,
+      "target_owner": "evidence Domain value/admission service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_evidence_and_test",
+      "line": 936,
+      "target_owner": "evidence Domain value/admission service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "reject_schema_selected_evidence",
+      "line": 964,
+      "target_owner": "evidence Domain value/admission service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "reject_i4_referenced_activity",
+      "line": 982,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_action_package_purl",
+      "line": 1006,
+      "target_owner": "package/definition Domain value"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_package_purl",
+      "line": 1010,
+      "target_owner": "package/definition Domain value"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "action_package_name",
+      "line": 1047,
+      "target_owner": "package/definition Domain value"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "package_name",
+      "line": 1051,
+      "target_owner": "package/definition Domain value"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "canonical_publisher_label",
+      "line": 1056,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "semver_subset",
+      "line": 1067,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "numeric_identifier",
+      "line": 1090,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_name",
+      "line": 1096,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_file_name",
+      "line": 1114,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_text",
+      "line": 1135,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "risk_source_arn",
+      "line": 1149,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "admit_yaml_document",
+      "line": 1169,
+      "target_owner": "ControlledDocumentProjectionGW driver"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_yaml_value",
+      "line": 1231,
+      "target_owner": "ControlledDocumentProjectionGW driver"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "validate_json_depth",
+      "line": 1271,
+      "target_owner": "ControlledDocumentProjectionGW driver"
+    },
+    {
+      "file": "domain/src/verification/mod.rs",
+      "function": "contains_plain_timestamp",
+      "line": 1296,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "controlled_yaml_value",
+      "line": 19,
+      "target_owner": "ControlledDocumentProjectionGW contract/driver"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "admit_build_definition",
+      "line": 222,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_procedure",
+      "line": 300,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_activity",
+      "line": 343,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_action",
+      "line": 385,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_evaluations",
+      "line": 515,
+      "target_owner": "evaluation-resolution Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_assignments",
+      "line": 591,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_criteria",
+      "line": 610,
+      "target_owner": "evaluation-resolution Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_criterion_types",
+      "line": 655,
+      "target_owner": "evaluation-resolution Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "authorized_values_are_canonical",
+      "line": 679,
+      "target_owner": "evaluation-resolution Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "value_matches_data_type",
+      "line": 702,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "procedure_projection",
+      "line": 715,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "activity_projection",
+      "line": 743,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "action_paths",
+      "line": 761,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "optional_text",
+      "line": 774,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_name",
+      "line": 785,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_functional_package_purl",
+      "line": 803,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_media_type",
+      "line": 850,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_relative_path",
+      "line": 866,
+      "target_owner": "effective-graph Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_module_name",
+      "line": 888,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "domain/src/verification/functional.rs",
+      "function": "validate_fact_name",
+      "line": 905,
+      "target_owner": "definition-admission Domain service"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "new",
+      "line": 69,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "fmt",
+      "line": 173,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "is_empty",
+      "line": 198,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "root_only",
+      "line": 253,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "close_one_dependency_package_graph",
+      "line": 270,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "close_package_graph",
+      "line": 297,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "validate_child_lock_projection",
+      "line": 349,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "sha256_digest",
+      "line": 462,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "package_manifest_descriptors",
+      "line": 467,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "canonical_digest",
+      "line": 514,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "build_local_package",
+      "line": 523,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "build_local_package_with_dependencies",
+      "line": 533,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "construct_lock",
+      "line": 672,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "stage_and_verify_local_package",
+      "line": 752,
+      "target_owner": "attestify-oci package verifier"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "verify_candidate_envelope",
+      "line": 837,
+      "target_owner": "attestify-oci package verifier"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "admit_package_lock",
+      "line": 966,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "verify_candidate",
+      "line": 990,
+      "target_owner": "attestify-oci package verifier"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "canonical_archive",
+      "line": 1000,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "canonical_config",
+      "line": 1021,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "canonical_manifest",
+      "line": 1036,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "read_source_tree",
+      "line": 1054,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "read_source_directory",
+      "line": 1067,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "validate_file_table",
+      "line": 1131,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "validate_archive_path",
+      "line": 1171,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "ustar_header",
+      "line": 1201,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "parse_canonical_archive",
+      "line": 1227,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "validate_lock",
+      "line": 1322,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "maximum_json_collection_depth",
+      "line": 1428,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "parse_lock_purl",
+      "line": 1463,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "lock_selector",
+      "line": 1510,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "permitted_lock_edge",
+      "line": 1521,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "validate_lock_graph",
+      "line": 1532,
+      "target_owner": "attestify-oci package lock"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "parse_package_purl",
+      "line": 1661,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "kind_root",
+      "line": 1705,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "kind_token",
+      "line": 1715,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "publisher_label",
+      "line": 1725,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "kebab_name",
+      "line": 1736,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "semver_subset",
+      "line": 1747,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "numeric_identifier",
+      "line": 1766,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "fresh_sibling",
+      "line": 1772,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "path_entry_exists",
+      "line": 1809,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "write_new_file",
+      "line": 1817,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "copy_regular_bounded",
+      "line": 1827,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "open_regular_nofollow",
+      "line": 1859,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "validate_stable_read",
+      "line": 1881,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "sync_directory",
+      "line": 1910,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "io_error",
+      "line": 1916,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "new",
+      "line": 1930,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "drop",
+      "line": 1942,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "product_root",
+      "line": 1947,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "i5_source_root",
+      "line": 1952,
+      "target_owner": "attestify-oci package archive/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/lib.rs",
+      "function": "generated_candidate",
+      "line": 1958,
+      "target_owner": "attestify-oci package model/build"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "as_str",
+      "line": 76,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "default_message",
+      "line": 92,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "reason_template",
+      "line": 120,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "phase",
+      "line": 136,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "new",
+      "line": 160,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "code",
+      "line": 165,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "fmt",
+      "line": 171,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "fmt",
+      "line": 180,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "initial_profile",
+      "line": 216,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "http_localhost",
+      "line": 239,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "digest",
+      "line": 377,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "byte_count",
+      "line": 382,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "read_verified_bytes",
+      "line": 387,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "file_path_for_test",
+      "line": 394,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "fmt",
+      "line": 400,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "drop",
+      "line": 410,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "try_new",
+      "line": 435,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "fetch_exact_manifest",
+      "line": 470,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "probe_exact_release_tag",
+      "line": 538,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "fetch_exact_blob",
+      "line": 608,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "publish_exact_blob",
+      "line": 673,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "publish_exact_manifest",
+      "line": 749,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "with_operation_deadline",
+      "line": 833,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_context",
+      "line": 848,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "stage_verified_response",
+      "line": 863,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_location",
+      "line": 898,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_location_value",
+      "line": 908,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "consume_verified_response",
+      "line": 989,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "validate_transport",
+      "line": 1042,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "validate_staging_root",
+      "line": 1069,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_repository",
+      "line": 1080,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_digest",
+      "line": 1109,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_tag",
+      "line": 1124,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_media_type",
+      "line": 1138,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_ceiling",
+      "line": 1162,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_expected_size",
+      "line": 1169,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "exact_reference",
+      "line": 1176,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_content_response",
+      "line": 1188,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_status",
+      "line": 1216,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "reject_encoding_or_redirect",
+      "line": 1235,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "admit_response_framing",
+      "line": 1261,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "required_digest_header",
+      "line": 1297,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "required_single_header",
+      "line": 1303,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "digest_bytes",
+      "line": 1316,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "sha256_digest_string",
+      "line": 1320,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "secure_new_file",
+      "line": 1331,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/oci_gateway.rs",
+      "function": "fresh_staging_root",
+      "line": 1348,
+      "target_owner": "attestify-oci registry_client"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "registry",
+      "line": 37,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "invalid_map",
+      "line": 51,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "invalid_purl",
+      "line": 60,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "fmt",
+      "line": 71,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "from",
+      "line": 79,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "from",
+      "line": 91,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "publish_package",
+      "line": 149,
+      "target_owner": "attestify-oci registry publication"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "acquire_verified_package",
+      "line": 183,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "deserialize",
+      "line": 215,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "parse_registry_map",
+      "line": 259,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "registry_map_from_endpoint",
+      "line": 328,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "map_package",
+      "line": 345,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "acquire_root_package",
+      "line": 404,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "acquire_package_envelope",
+      "line": 428,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "publish_root_package",
+      "line": 462,
+      "target_owner": "attestify-oci registry publication"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "publish_root_async",
+      "line": 478,
+      "target_owner": "attestify-oci registry publication"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "acquire_envelope_async",
+      "line": 594,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "admit_yaml_surface",
+      "line": 661,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "yaml_visible_prefix",
+      "line": 679,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "contains_yaml_control",
+      "line": 708,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "validate_mapping",
+      "line": 736,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "validate_registry",
+      "line": 756,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "valid_port",
+      "line": 780,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "validate_publisher",
+      "line": 787,
+      "target_owner": "attestify-oci registry mapping/location"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "dns_name",
+      "line": 796,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "parse_package_purl",
+      "line": 816,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "validate_digest",
+      "line": 860,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "kebab_name",
+      "line": 877,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "semver_subset",
+      "line": 888,
+      "target_owner": "attestify-oci registry acquisition"
+    },
+    {
+      "file": "libraries/attestify-oci/src/registry.rs",
+      "function": "numeric_identifier",
+      "line": 907,
+      "target_owner": "attestify-oci registry acquisition"
+    }
+  ]
+}

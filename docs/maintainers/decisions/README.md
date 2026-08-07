@@ -1,13 +1,11 @@
-# Maintainer Decisions
+# Current Decisions
 
-This folder contains lightweight architecture decision records for NAPE.
+Current Verification V2 decisions are normative in the Attestify Product
+Specification and recorded in central OCI planning. The four former V1 local
+decision records are historical and remain unchanged under
+[`../../history/v1/maintainers/decisions`](../../history/v1/maintainers/decisions/README.md).
 
-These records explain why important V1 design choices exist so V2 planning can decide what to preserve, change, or replace.
-
-Current records:
-
-- `0001-runtime-state-file.md`
-- `0002-procedure-retrieval-boundary.md`
-- `0003-external-nape-eval-boundary.md`
-- `0004-local-report-and-file-signatures.md`
-
+- [External NAPE Evaluator boundary](0003-external-nape-evaluator-boundary.md)
+- [Attestify OCI client-library boundary](0005-attestify-oci-client-library-boundary.md)
+- [Bounded diagnostic outcomes](0006-bounded-diagnostic-outcomes.md)
+- [NAPE-managed current Verification](0007-nape-managed-current-verification.md)

@@ -1,5 +1,12 @@
 # Plan 01: Evaluator Output Integration Into NAPE CLI
 
+Status: **paused legacy/current-public integration history**
+
+The versioned
+`attestify.nape-evaluator.action-invocation/v2` consumer is owned by Plan 04.
+Do not extend this plan to implement that boundary. Preserve this document as
+the historical/current-public seam it originally described.
+
 ## Goal
 
 Update `nape` so the Rust CLI can consume the updated `nape-evaluator` output contract and map it into the current report-building flow deliberately instead of relying on the older flat `outcome`/`reason` JSON object.

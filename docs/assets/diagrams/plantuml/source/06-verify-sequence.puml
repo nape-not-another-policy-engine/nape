@@ -1,0 +1,22 @@
+@startuml
+!include ../includes/attestify-theme.puml
+!include ../includes/sequence-conventions.puml
+title Verify Current Procedure
+actor User
+participant "Verify adapter" as Adapter
+participant "VerifyProcedureUC" as UC
+participant "Current-run store" as State
+participant "NAPE Evaluator" as Evaluator
+participant "Outcome commit" as Commit
+User -> Adapter: nape verify
+Adapter -> UC: empty request
+UC -> State: reopen frozen run
+State --> UC: closure + subject + evidence
+loop each effective Action occurrence
+  UC -> Evaluator: Test + evidence + evaluations + metadata
+  Evaluator --> UC: conclusion + facts + reason
+end
+UC -> Commit: Report + relationship + raw evidence
+Commit --> UC: atomic output observation
+UC --> Adapter: Verify Receipt projection
+@enduml

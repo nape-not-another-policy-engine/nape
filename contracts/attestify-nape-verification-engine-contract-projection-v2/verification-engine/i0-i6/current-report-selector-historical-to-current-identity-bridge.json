@@ -1,0 +1,264 @@
+{
+  "contract": "attestify.verification-report.current-selector-supersession/v1",
+  "change": "current-two-mode-report-and-evidence-set-selectors",
+  "historical_manifest": {
+    "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/history/pre-current-report-selector/artifact-manifest.json",
+    "bytes": 4292,
+    "sha256": "sha256:bbbad2cb5b4ca0415e888f51128e498234e19e993a2c46cbe81e9a5f3b0ebd02"
+  },
+  "historical": [
+    {
+      "bytes": 34315,
+      "path": "05-specs/products/verification-engine/04-verification-report-v2-specification.md",
+      "sha256": "sha256:ffec92d5c3cbd762824479d1213f07de368853bae90b18dded2d56c517d6d691"
+    },
+    {
+      "bytes": 42200,
+      "path": "05-specs/products/verification-engine/06-verification-engine-processing-requirements.md",
+      "sha256": "sha256:83a06868dfe0a959b7b829d15e0c98996fcaba5c5259ccfbb7e9e9d7387cef19"
+    },
+    {
+      "bytes": 1466,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/README.md",
+      "sha256": "sha256:28df976016c9f118baebf2f857d2494d531992cbd9639a619bde9697456d2a96"
+    },
+    {
+      "bytes": 125885,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/verification-engine-contracts.schema.json",
+      "sha256": "sha256:c84f9dc98687d34d001c8c4ba4d7b6de06372e9334e230867d0b1fb09821cbb3"
+    },
+    {
+      "bytes": 1859,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/verification-engine-contract-index.json",
+      "sha256": "sha256:161ad83f5d3eae9fd65b93dd03a09af7841792622c0817683f1183a9fa108365"
+    },
+    {
+      "bytes": 5505,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vector-manifest.json",
+      "sha256": "sha256:11877bc9cf72f3908eb848d80b0c5f2a97bc9f46d1e663543a8d6cb760b0545b"
+    },
+    {
+      "bytes": 58556,
+      "path": "scripts/generate-verification-engine-i6-contracts.py",
+      "sha256": "sha256:15b2e7959b11a8057ea66fa631ebbd3dc0b4eede17832abfc5db2fc49a23ef9d"
+    },
+    {
+      "bytes": 6833,
+      "path": "scripts/generate-verification-engine-i6-projections.py",
+      "sha256": "sha256:09828358632171ebc67ca2863a2c07f9f2133afc31be49207a7bf50b92f06615"
+    },
+    {
+      "bytes": 30436,
+      "path": "scripts/validate-verification-engine-i6-contracts.py",
+      "sha256": "sha256:4840199a606a6bdcc602526659a8e684d33ab729c56eeea831e4e08914255774"
+    },
+    {
+      "bytes": 1499,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-i5-extra-occurrence.json",
+      "sha256": "sha256:684924e9aac1d02770f1b7b94e5c26d2224d0546e45ff60c7ab9c49b90a1ff38"
+    },
+    {
+      "bytes": 1191,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-i5-l2.json",
+      "sha256": "sha256:676843aad4c603c2795dfed764f5f32278e1a98b51130e3c6c0abb38a6be793d"
+    },
+    {
+      "bytes": 1191,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-i6-feature-rich.json",
+      "sha256": "sha256:676843aad4c603c2795dfed764f5f32278e1a98b51130e3c6c0abb38a6be793d"
+    },
+    {
+      "bytes": 9999,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i5-l2.json",
+      "sha256": "sha256:3b7cc9180c4da717c25a8bac7eb4ad0e6a4b9856c7feb9655b41a97421804818"
+    },
+    {
+      "bytes": 9594,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i5-missing-activity-origin.json",
+      "sha256": "sha256:c47d064ac80bcb3ce0094a21bfc1d000e16a539a2b2782153cdba339c0e12428"
+    },
+    {
+      "bytes": 12544,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-feature-rich.json",
+      "sha256": "sha256:670ee8c2a87e378d079442407f0508bdabe6e5f8aa0d8eee50e907fe9b3a896f"
+    },
+    {
+      "bytes": 11823,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-missing-module-provenance.json",
+      "sha256": "sha256:bef638b7cdedbb3103e091cd6693f20d65f02d87f2eb0de2b4ec87c02d07e77d"
+    },
+    {
+      "bytes": 12609,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-mixed-execution.json",
+      "sha256": "sha256:6aed811489abb6980ade609cebf09e2ca5722ea3ff1b8587afb8c24d00f2b7c3"
+    },
+    {
+      "bytes": 12810,
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-opaque-with-schema.json",
+      "sha256": "sha256:dcdbad0354f769e5374cf73ad4ffca24177e724a95f5339380125d8fd870173d"
+    }
+  ],
+  "current": [
+    {
+      "path": "05-specs/products/verification-engine/04-verification-report-v2-specification.md",
+      "bytes": 36642,
+      "sha256": "sha256:a9d65bf603be37d6ef16c13f9dda178219aa4d8c86bbe3c097dd22518aef9b2f"
+    },
+    {
+      "path": "05-specs/products/verification-engine/06-verification-engine-processing-requirements.md",
+      "bytes": 43152,
+      "sha256": "sha256:97c195a6670f112bd490ff9aedcc424ec028ecd96d8315e162ad50f031eda0fa"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/README.md",
+      "bytes": 1539,
+      "sha256": "sha256:2e90f7f6736b54798e1403465cbe3bc983869dafe16ec2b2b34ab70926b5fe20"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/verification-engine-contracts.schema.json",
+      "bytes": 146482,
+      "sha256": "sha256:c8e4a407993a6cb82ff971778fbc15d38a508927ecb9a59b32a1c5fe3332368d"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/verification-engine-contract-index.json",
+      "bytes": 2003,
+      "sha256": "sha256:af17f684d4ee6041311e60d20601c0bd846dcb56e21b72453c1c20cc016df672"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vector-manifest.json",
+      "bytes": 7337,
+      "sha256": "sha256:ee5a68bcf7de71d4d1c017914d406dc27cb2ca755d9a321f398f0cd19f4d8497"
+    },
+    {
+      "path": "scripts/generate-verification-engine-i6-contracts.py",
+      "bytes": 71869,
+      "sha256": "sha256:ba2e53c2a5d9eef5fea0e8ef0fe43eaff55c81ef905ce7fac3be5b066a1a0869"
+    },
+    {
+      "path": "scripts/generate-verification-engine-i6-projections.py",
+      "bytes": 7067,
+      "sha256": "sha256:51a350a9f36999057a57dfe0d3e165a099033e82eeb819ff93456997829151ab"
+    },
+    {
+      "path": "scripts/validate-verification-engine-i6-contracts.py",
+      "bytes": 35314,
+      "sha256": "sha256:ca3a3507bcd3e954cf212ab28f19b68b790ab6fe747865d74bd9e858ee6d5790"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-i5-extra-occurrence.json",
+      "bytes": 1499,
+      "sha256": "sha256:684924e9aac1d02770f1b7b94e5c26d2224d0546e45ff60c7ab9c49b90a1ff38"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-i5-l2.json",
+      "bytes": 1191,
+      "sha256": "sha256:676843aad4c603c2795dfed764f5f32278e1a98b51130e3c6c0abb38a6be793d"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-i6-feature-rich.json",
+      "bytes": 1191,
+      "sha256": "sha256:676843aad4c603c2795dfed764f5f32278e1a98b51130e3c6c0abb38a6be793d"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i5-l2.json",
+      "bytes": 9999,
+      "sha256": "sha256:3b7cc9180c4da717c25a8bac7eb4ad0e6a4b9856c7feb9655b41a97421804818"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i5-missing-activity-origin.json",
+      "bytes": 9594,
+      "sha256": "sha256:c47d064ac80bcb3ce0094a21bfc1d000e16a539a2b2782153cdba339c0e12428"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-feature-rich.json",
+      "bytes": 12544,
+      "sha256": "sha256:670ee8c2a87e378d079442407f0508bdabe6e5f8aa0d8eee50e907fe9b3a896f"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-missing-module-provenance.json",
+      "bytes": 11823,
+      "sha256": "sha256:bef638b7cdedbb3103e091cd6693f20d65f02d87f2eb0de2b4ec87c02d07e77d"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-mixed-execution.json",
+      "bytes": 12609,
+      "sha256": "sha256:6aed811489abb6980ade609cebf09e2ca5722ea3ff1b8587afb8c24d00f2b7c3"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-i6-opaque-with-schema.json",
+      "bytes": 12810,
+      "sha256": "sha256:dcdbad0354f769e5374cf73ad4ffca24177e724a95f5339380125d8fd870173d"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-current-evaluator-v2.json",
+      "bytes": 10215,
+      "sha256": "sha256:b5f87f999e765c3cd979748dc91e82c0eb08841e3c54b2971d56d3cf2bdc965d"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-current-evaluator-v3.json",
+      "bytes": 12544,
+      "sha256": "sha256:942561361ac3f83a9464961ce4b9ab302fa1c956fbe34d46e8c111d8491e26c5"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-mixed-runner-modes.json",
+      "bytes": 10215,
+      "sha256": "sha256:58edb979590f450b1663c42569b187c0497ecb596eefba4772284fa6d767f316"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-evaluator-v2-with-evaluations.json",
+      "bytes": 11077,
+      "sha256": "sha256:d351e9159f97eecd3a52018e7bc1a3073f200a8329ac5d5417a68aad08adaf5b"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-evaluator-v2-with-schema.json",
+      "bytes": 10951,
+      "sha256": "sha256:a14c356874ce7d6b16a57f913d06ab81a0899c18b37499f4979b3b241581de5e"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-evaluator-v2-with-module.json",
+      "bytes": 10901,
+      "sha256": "sha256:e845aa1c2cff617cddf37a82a627b5938824dbd3fbe809e270048907771df4ae"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-evaluator-v2-with-authored-resource.json",
+      "bytes": 10215,
+      "sha256": "sha256:9ce92d0b4b713b2618fb725fb9125b32c900a683dd9d821cc54c5a9218d86ea5"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/report-v2-evaluator-v2-with-v3-implementation.json",
+      "bytes": 10215,
+      "sha256": "sha256:0a74478678c54ac10da79fe3f8744dd8822b5c372cd7b5254a32b4586a23727b"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vectors/relationship-v2-current.json",
+      "bytes": 1191,
+      "sha256": "sha256:676843aad4c603c2795dfed764f5f32278e1a98b51130e3c6c0abb38a6be793d"
+    }
+  ],
+  "selectors": {
+    "verification-report-v2": "#/$defs/verificationReportV2",
+    "verification-evidence-set-relationship-v2": "#/$defs/evidenceSetRelationshipI6"
+  },
+  "report_modes": [
+    {
+      "evaluator": "attestify.nape-evaluator.action-invocation/v2",
+      "evaluator_implementation": "nape-evaluator-v2",
+      "runner": "attestify-python-test-development-v1",
+      "runner_implementation": "attestify-python-runner-development-v1"
+    },
+    {
+      "evaluator": "attestify.nape-evaluator.action-invocation/v3",
+      "evaluator_implementation": "nape-evaluator-v3",
+      "runner": "attestify-python-test-development-v2",
+      "runner_implementation": "attestify-python-runner-development-v2"
+    }
+  ],
+  "preserved": [
+    "all-i0-i5-bytes",
+    "all-historical-i4-and-i5-selectors",
+    "verification-report-oci-functional-v2-semantics",
+    "evidence-set-relationship-i6-semantics",
+    "nape-execution-and-evaluator-abis",
+    "oci-package-and-lock-identities"
+  ]
+}

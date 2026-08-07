@@ -1,0 +1,18 @@
+apiVersion: 2.0.0
+kind: VerificationProcedure
+spec:
+  name: database-endpoint
+  label: Production Database Endpoint Verification
+  activity:
+    - name: release-readiness
+      label: Release Readiness
+      action:
+        - name: database-connection
+          label: Database Connection
+          claim: The approved database endpoint is configured.
+          evidence:
+            name: application-configuration
+            file: application-configuration.json
+          test:
+            name: database-connection
+            file: database-connection.py

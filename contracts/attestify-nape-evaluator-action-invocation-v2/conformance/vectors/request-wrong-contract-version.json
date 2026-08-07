@@ -1,0 +1,27 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v3",
+  "workspace_root": "/private/nape/invocation-0001",
+  "evidence": {
+    "file": "evidence/sha256/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "argument_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "argument_byte_count": 81,
+    "media_type": "application/json",
+    "representation": "opaque"
+  },
+  "test": {
+    "file": "package/activity/release-readiness/database-connection/database-connection.py",
+    "content_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "byte_count": 4665,
+    "runner_profile": "attestify-python-test-development-v1"
+  },
+  "evaluations": [],
+  "metadata": {
+    "evidence_media_type": "application/json",
+    "evidence_representation": "opaque",
+    "evaluator_contract_version": "2"
+  },
+  "limits": {
+    "maximum_execution_work_units": 25000000,
+    "maximum_result_bytes": 131072
+  }
+}

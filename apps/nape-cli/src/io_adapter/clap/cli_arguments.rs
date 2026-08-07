@@ -1,76 +1,126 @@
-use clap::{value_parser, Arg, ArgAction};
+use clap::{Arg, ArgAction};
 
-pub fn subject() -> Arg {
-    Arg::new("subject")
-        .short('s')
-        .long("subject")
-        .value_name("NAPE Resource Name")
-        .help("The subject is the NAPE Resource Name (NRN) that the assurance procedure will be run against.")
+pub fn source() -> Arg {
+    Arg::new("source")
+        .long("source")
+        .value_name("DIRECTORY")
         .required(true)
 }
 
-pub fn subject_id() -> Arg {
-    Arg::new("subject-id")
-        .short('i')
-        .long("subject-id")
-        .value_name("Subject Identifier")
-        .help("The string-based ID representing and instance of the procedure.")
+pub fn package_purl() -> Arg {
+    Arg::new("package")
+        .long("package")
+        .value_name("PURL")
         .required(true)
 }
 
-pub fn procedure_link() -> Arg {
-    Arg::new("procedure-link")
-        .short('l')
-        .long("procedure-link")
-        .value_name("NAPE Assurance Procedure Definition Link")
-        .help("The URL to the NAPE Repository containing the NAPE Assurance Procedure Definition and all related NAPE Activity & Action Tests.")
-        .required(true)
-}
-
-pub fn procedure_directory() -> Arg {
-    Arg::new("procedure-directory")
-        .short('d')
-        .long("procedure-directory")
-        .value_name("NAPE Assurance Procedure Definition directory")
-        .help("The directory within the NAPE Repository which contains NAPE Assurance Procedure Definition and all related NAPE Activity & Action Tests for the assurance procedure you want to run.")
-        .required(true)
-}
-
-pub fn metadata() -> Arg {
-    Arg::new("metadata")
+pub fn dependency_package() -> Arg {
+    Arg::new("dependency-package")
+        .long("dependency-package")
+        .value_name("BUILD_RESULT_DIRECTORY")
         .action(ArgAction::Append)
-        .short('m')
-        .long("meta")
-        .help("Metadata that provides additional context.")
-        .num_args(2)
-        .value_name("Metadata")
-        .value_parser(value_parser!(String))
-        .value_delimiter(' ')
+        .num_args(1)
 }
 
-pub fn control_action_name() -> Arg {
-    Arg::new("control-activity-name")
-        .short('a')
-        .long("control-activity")
-        .value_name("Control Activity Name")
-        .help("The name of the control activity that the evidence is associated with.")
+pub fn manifest_digest() -> Arg {
+    Arg::new("manifest-digest")
+        .long("manifest-digest")
+        .value_name("SHA256_DIGEST")
         .required(true)
 }
 
-pub fn evidence_file_path() -> Arg {
-    Arg::new("evidence-file-path")
-        .short('f')
-        .long("file-path")
-        .value_name("Evidence File Path")
-        .help("The path to the file that contains the evidence.")
+pub fn registry_profile() -> Arg {
+    Arg::new("registry-profile")
+        .long("registry-profile")
+        .value_name("REGISTRY_MAP_FILE")
+}
+
+pub fn registry_endpoint() -> Arg {
+    Arg::new("registry-endpoint")
+        .long("registry-endpoint")
+        .value_name("URL")
+}
+
+pub fn plan_only() -> Arg {
+    Arg::new("plan-only")
+        .long("plan-only")
+        .action(ArgAction::SetTrue)
+        .required(true)
+}
+
+pub fn output() -> Arg {
+    Arg::new("output")
+        .long("output")
+        .value_name("NEW_DIRECTORY")
+        .required(true)
+}
+
+pub fn local_package() -> Arg {
+    Arg::new("local-package")
+        .long("local-package")
+        .value_name("BUILD_RESULT_DIRECTORY")
+        .required(true)
+}
+
+pub fn verify_package_purl() -> Arg {
+    Arg::new("package")
+        .long("package")
+        .value_name("PURL")
+        .requires_all(["manifest-digest", "registry-configuration"])
+        .conflicts_with("local-package")
+}
+
+pub fn verify_manifest_digest() -> Arg {
+    Arg::new("manifest-digest")
+        .long("manifest-digest")
+        .value_name("SHA256_DIGEST")
+        .requires_all(["package", "registry-configuration"])
+        .conflicts_with("local-package")
+}
+
+pub fn verify_registry_profile() -> Arg {
+    registry_profile()
+        .requires_all(["package", "manifest-digest"])
+        .conflicts_with("local-package")
+}
+
+pub fn verify_registry_endpoint() -> Arg {
+    registry_endpoint()
+        .requires_all(["package", "manifest-digest"])
+        .conflicts_with("local-package")
+}
+
+pub fn action() -> Arg {
+    Arg::new("action")
+        .long("action")
+        .value_name("ACTIVITY.ACTION")
+        .required(true)
+}
+
+pub fn evidence_file() -> Arg {
+    Arg::new("file")
+        .long("file")
+        .value_name("SOURCE_FILE")
         .required(true)
 }
 
 pub fn evidence_file_name() -> Arg {
-    Arg::new("evidence-file-name")
-        .short('n')
+    Arg::new("file-name")
         .long("file-name")
-        .value_name("Evidence File Name")
-        .help("The a file name and type that you'd like to rename the evidence file to.  This is optional and usefule when the control activity expects a file by a specific name, although the file is currently stored as a different name.")
-        .required(false)
+        .value_name("DEFINITION_FILE_NAME")
+}
+
+pub fn metadata() -> Arg {
+    Arg::new("meta")
+        .long("meta")
+        .value_names(["KEY", "VALUE"])
+        .num_args(2)
+        .action(ArgAction::Append)
+}
+
+pub fn subject_file() -> Arg {
+    Arg::new("subject-file")
+        .long("subject-file")
+        .value_name("FILE")
+        .required(true)
 }

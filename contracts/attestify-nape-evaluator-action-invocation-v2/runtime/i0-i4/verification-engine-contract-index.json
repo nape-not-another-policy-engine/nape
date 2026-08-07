@@ -1,0 +1,11 @@
+{
+  "verification-procedure-v2": "#/$defs/verificationProcedureV2",
+  "verification-procedure-oci-development-mvp-i4": "#/$defs/verificationProcedureI4",
+  "verification-action-v2": "#/$defs/verificationActionV2",
+  "verification-action-oci-development-mvp-i4": "#/$defs/verificationActionI4",
+  "risk-source-subject-input-i4": "#/$defs/subjectInputI4",
+  "nape-evaluator-action-request-v2": "#/$defs/evaluatorRequestV2",
+  "nape-evaluator-action-response-v2": "#/$defs/evaluatorResponseV2",
+  "verification-report-oci-development-mvp-i4": "#/$defs/verificationReportI4",
+  "verification-evidence-set-relationship-i4": "#/$defs/evidenceSetRelationshipI4"
+}

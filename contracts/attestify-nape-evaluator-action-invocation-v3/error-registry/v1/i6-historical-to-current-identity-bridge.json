@@ -1,0 +1,45 @@
+{
+  "contract": "attestify.verification-engine.i6-error-registry-supersession/v1",
+  "historical": {
+    "registry_version": "1.1.0",
+    "bytes": 84694,
+    "sha256": "sha256:131630e01f80056789830430d3287c35d24aa99af6bb9e10a7af36a4d10f7cd0",
+    "path": "history/pre-i6-current-1.1.0/error-registry.json"
+  },
+  "current": {
+    "registry_version": "1.2.0",
+    "bytes": 94684,
+    "sha256": "sha256:3e7759e9ef06077279592ed2e520319d5c863259da1458a9ba3dc82f0628bf9f",
+    "path": "error-registry.json"
+  },
+  "historical_coverage": {
+    "bytes": 209503,
+    "sha256": "sha256:a0ab47e148867b16ca282663949c24862b80e33779ec693b7fe2ac34e4c5c9f9",
+    "path": "history/pre-i6-current-1.1.0/source-binding-coverage-matrix.json"
+  },
+  "current_coverage": {
+    "bytes": 238250,
+    "sha256": "sha256:dcc90d2440502c9eb67607d22f9d7712929d60af0956ff342df19ec660f81195",
+    "path": "source-binding-coverage-matrix.json"
+  },
+  "added_codes": [
+    "evidence_format_validation_failed",
+    "evidence_schema_validation_failed"
+  ],
+  "added_binding_owners": [
+    "engine_execution_integrity_failed",
+    "evaluator_request_invalid",
+    "evaluator_response_contract_invalid",
+    "invalid_metadata_contract",
+    "runner_profile_unsupported",
+    "test_digest_mismatch",
+    "verification_action_invalid",
+    "verification_procedure_invalid"
+  ],
+  "preserved": [
+    "all-1.1.0-codes",
+    "all-1.1.0-source-bindings",
+    "all-reason-templates",
+    "all-existing-outcomes-and-surfaces"
+  ]
+}

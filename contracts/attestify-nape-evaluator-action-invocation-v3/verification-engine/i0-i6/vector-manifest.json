@@ -1,0 +1,226 @@
+{
+  "profile": "attestify-verification-engine-functional-v2-i6",
+  "counts": {
+    "accepted": 19,
+    "rejected": 17,
+    "total": 36
+  },
+  "vectors": [
+    {
+      "id": "action-i5",
+      "selector": "verification-action-oci-full-lifecycle-i5",
+      "file": "vectors/action-i5.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "activity-i5",
+      "selector": "verification-activity-oci-full-lifecycle-i5",
+      "file": "vectors/activity-i5.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i5-l0",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l0",
+      "file": "vectors/procedure-i5-l0.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i5-l1",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l1",
+      "file": "vectors/procedure-i5-l1.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i5-l2",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l2",
+      "file": "vectors/procedure-i5-l2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-i5-l2",
+      "selector": "verification-report-oci-full-lifecycle-i5",
+      "file": "vectors/report-i5-l2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "relationship-i5-l2",
+      "selector": "verification-evidence-set-relationship-i5",
+      "file": "vectors/relationship-i5-l2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "activity-i5-wrong-order",
+      "selector": "verification-activity-oci-full-lifecycle-i5",
+      "file": "vectors/activity-i5-wrong-order.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "activity-i5-extra-action",
+      "selector": "verification-activity-oci-full-lifecycle-i5",
+      "file": "vectors/activity-i5-extra-action.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "procedure-i5-l2-reference-override",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l2",
+      "file": "vectors/procedure-i5-l2-reference-override.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-i5-missing-activity-origin",
+      "selector": "verification-report-oci-full-lifecycle-i5",
+      "file": "vectors/report-i5-missing-activity-origin.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "relationship-i5-extra-occurrence",
+      "selector": "verification-evidence-set-relationship-i5",
+      "file": "vectors/relationship-i5-extra-occurrence.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "action-i6-feature-rich",
+      "selector": "verification-action-oci-functional-v2",
+      "file": "vectors/action-i6-feature-rich.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "action-i6-invalid-module-name",
+      "selector": "verification-action-oci-functional-v2",
+      "file": "vectors/action-i6-invalid-module-name.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "activity-i6-feature-rich",
+      "selector": "verification-activity-oci-functional-v2",
+      "file": "vectors/activity-i6-feature-rich.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i6-referenced-activity",
+      "selector": "verification-procedure-oci-functional-v2",
+      "file": "vectors/procedure-i6-referenced-activity.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i6-reference-override",
+      "selector": "verification-procedure-oci-functional-v2",
+      "file": "vectors/procedure-i6-reference-override.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "request-v3-feature-rich",
+      "selector": "nape-evaluator-action-request-v3",
+      "file": "vectors/request-v3-feature-rich.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "request-v3-opaque",
+      "selector": "nape-evaluator-action-request-v3",
+      "file": "vectors/request-v3-opaque.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "request-v3-wrong-contract-metadata",
+      "selector": "nape-evaluator-action-request-v3",
+      "file": "vectors/request-v3-wrong-contract-metadata.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "request-v3-wrong-runner",
+      "selector": "nape-evaluator-action-request-v3",
+      "file": "vectors/request-v3-wrong-runner.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "response-v3-valid-true",
+      "selector": "nape-evaluator-action-response-v3",
+      "file": "vectors/response-v3-valid-true.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-i6-feature-rich",
+      "selector": "verification-report-oci-functional-v2",
+      "file": "vectors/report-i6-feature-rich.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-i6-mixed-execution",
+      "selector": "verification-report-oci-functional-v2",
+      "file": "vectors/report-i6-mixed-execution.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-i6-missing-module-provenance",
+      "selector": "verification-report-oci-functional-v2",
+      "file": "vectors/report-i6-missing-module-provenance.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-i6-opaque-with-schema",
+      "selector": "verification-report-oci-functional-v2",
+      "file": "vectors/report-i6-opaque-with-schema.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "relationship-i6-feature-rich",
+      "selector": "verification-evidence-set-relationship-functional-v2",
+      "file": "vectors/relationship-i6-feature-rich.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-v2-current-evaluator-v2",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-current-evaluator-v2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-v2-current-evaluator-v3",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-current-evaluator-v3.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-v2-mixed-runner-modes",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-mixed-runner-modes.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-v2-evaluator-v2-with-evaluations",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-evaluator-v2-with-evaluations.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-v2-evaluator-v2-with-schema",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-evaluator-v2-with-schema.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-v2-evaluator-v2-with-module",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-evaluator-v2-with-module.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-v2-evaluator-v2-with-authored-resource",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-evaluator-v2-with-authored-resource.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-v2-evaluator-v2-with-v3-implementation",
+      "selector": "verification-report-v2",
+      "file": "vectors/report-v2-evaluator-v2-with-v3-implementation.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "relationship-v2-current",
+      "selector": "verification-evidence-set-relationship-v2",
+      "file": "vectors/relationship-v2-current.json",
+      "expected": "accepted"
+    }
+  ]
+}

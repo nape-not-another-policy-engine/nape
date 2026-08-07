@@ -1,5 +1,12 @@
 # Handoff 01: Evaluator Output Integration Into NAPE CLI
 
+Status: **paused legacy/current-public integration history**
+
+Resume the versioned
+`attestify.nape-evaluator.action-invocation/v2` consumer from Plan 04/Handoff
+04. This handoff remains the historical record for the older flat-output
+integration seam.
+
 ## Purpose
 
 Resume `nape` work at the exact point where it paused while `nape-evaluator` input/output work advanced in the sibling repository.

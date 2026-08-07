@@ -1,0 +1,14 @@
+@startuml
+!include ../includes/attestify-theme.puml
+!include ../includes/sequence-conventions.puml
+title Resolve Definition Package Plan
+actor User
+participant "Resolve adapter" as Adapter
+participant "ResolveDefinitionPackagePlanUC" as UC
+participant "attestify-oci resolution driver" as OCI
+User -> Adapter: exact PURL + digest
+Adapter -> UC: resolution request
+UC -> OCI: acquire exact closure
+OCI --> UC: verified root + locked dependencies
+UC --> Adapter: deterministic plan
+@enduml

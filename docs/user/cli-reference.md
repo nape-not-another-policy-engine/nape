@@ -1,156 +1,107 @@
-# CLI Reference
-
-## `nape`
+# NAPE CLI 2.0 Reference
 
 ```text
-Usage: nape [COMMAND]
-```
+Usage: NAPE CLI <COMMAND>
 
 Commands:
+  package
+  start
+  evidence
+  verify
+  help
+```
 
-- `collect`
-- `help`
-
-## `nape collect`
+## `nape package build`
 
 ```text
-Usage: nape collect [COMMAND]
+nape package build --source <DIRECTORY> --package <PURL>
+  [--dependency-package <BUILD_RESULT_DIRECTORY>]...
+  --output <NEW_DIRECTORY>
 ```
 
-Commands:
+Builds one exact Verification Action, Activity, or Procedure package. Authored
+source cannot contain `attestify-lock.json`. NAPE generates the canonical Lock
+from the complete exact dependency-package set. Construction performs no
+network or neighboring-directory resolution.
 
-- `start`
-- `evidence`
-- `report`
-
-Current help text may mention uploading results to a repository. Current implemented behavior writes local run output, including `assurance_report.yaml`.
-
-## `nape collect start`
-
-Starts a new evidence collection procedure by retrieving a NAPE assurance procedure and creating local directories for evidence collection.
-
-```bash
-nape collect start \
-  --subject "nrn:procedure:rover-medical/rover-medicine-system" \
-  --subject-id "localrelease3" \
-  --procedure-link "file:///private/tmp/rover-medical-catalog" \
-  --procedure-directory "rover-mediical-system/release-3" \
-  --meta system-owner "Bill Bensing"
-```
-
-Arguments:
-
-| Argument | Short | Required | Description |
-| --- | --- | --- | --- |
-| `--subject` | `-s` | Yes | NAPE Resource Name for the subject being evaluated. |
-| `--subject-id` | `-i` | Yes | Alphanumeric identifier for this subject/run. |
-| `--procedure-link` | `-l` | Yes | Procedure repository URL. Supported schemes are `file`, `git`, and `https`. |
-| `--procedure-directory` | `-d` | Yes | Directory inside the procedure repository. |
-| `--meta` | `-m` | Practically yes | Metadata key/value pair. Current handler expects at least one. |
-
-Validation:
-
-- `--subject` must be a valid NRN.
-- `--subject-id` must be non-empty, alphanumeric, and at most 256 characters.
-- `--procedure-link` supports `file`, `git`, and `https`.
-- `--procedure-directory` cannot contain spaces or contiguous slashes.
-- `--meta` keys allow alphanumerics and dashes, with a max length of 64.
-- `--meta` values are non-empty after trimming, with a max length of 256.
-
-Outputs:
-
-- Creates `<encoded-subject-nrn>/<utc-start>/`.
-- Writes `$HOME/nape/.nape_cli_config`.
-- Copies `assurance_procedure.yaml` and `activity/` from the procedure repository into the run workspace.
-
-## `nape collect evidence`
-
-Collects one evidence file and associates it with a control activity.
-
-Important: pass an activity name, not an action name. The file is copied under `<run-home>/evidence/<control-activity>/`, and actions in the assurance procedure may reference evidence paths under that activity directory.
-
-```bash
-nape collect evidence \
-  --control-activity "pet-medicine-app" \
-  --file-path "pet-medicine-app/app-config.toml"
-```
-
-Arguments:
-
-| Argument | Short | Required | Description |
-| --- | --- | --- | --- |
-| `--control-activity` | `-a` | Yes | Activity name to associate with the evidence. |
-| `--file-path` | `-f` | Yes | Local source evidence file path. |
-| `--file-name` | `-n` | No | Optional target file name to use when copying evidence. |
-
-Validation:
-
-- `--control-activity` must be a NAPE name: alphanumeric and dashes only, no leading or trailing dash.
-- `--file-path` must point to a readable local file.
-- `--file-name` is not validated by a kernel value object in the current command path; use procedure-expected file names.
-
-Outputs:
+## `nape package publish`
 
 ```text
-<run-home>/evidence/<control-activity>/<file-name>
+nape package publish --local-package <BUILD_RESULT_DIRECTORY>
+  (--registry-endpoint <URL> | --registry-profile <REGISTRY_MAP_FILE>)
 ```
 
-If `--file-name` is omitted, NAPE keeps the source file name.
+Publishes an admitted build result without rebuilding it, then verifies a
+clean digest-selected re-pull.
 
-## `nape collect report`
-
-Evaluates all collected evidence and generates an assurance report.
-
-```bash
-nape collect report
-```
-
-Arguments:
-
-None.
-
-Dependencies:
-
-- Active state file at `$HOME/nape/.nape_cli_config`
-- Retrieved procedure at `<run-home>/assurance_procedure.yaml`
-- Collected evidence files under `<run-home>/evidence/`
-- Activity test files under `<run-home>/activity/`
-- `nape-eval` available on `PATH`
-
-Outputs:
+## `nape package resolve`
 
 ```text
-<run-home>/assurance_report.yaml
+nape package resolve --package <PURL> --manifest-digest <SHA256_DIGEST>
+  (--registry-endpoint <URL> | --registry-profile <REGISTRY_MAP_FILE>)
+  --plan-only
 ```
 
-## Valid Input Examples
+Maps and verifies the exact root release, then emits the canonical Lock plan.
+It does not admit evidence or execute a Procedure.
 
-```bash
---subject "nrn:procedure:rover-medical/rover-medicine-system"
---subject-id "localrelease3"
---procedure-link "file:///private/tmp/rover-medical-catalog"
---procedure-directory "rover-mediical-system/release-3"
---control-activity "pet-medicine-app"
---meta system-owner "Bill Bensing"
+## `nape start`
+
+Local source:
+
+```text
+nape start --local-package <BUILD_RESULT_DIRECTORY>
+  --subject-file <FILE> [--meta <KEY> <VALUE>]...
 ```
 
-## Invalid Input Examples
+OCI source:
 
-```bash
---subject-id "local-release-3"
---procedure-link "ssh://github.com/attestify/rover-medical-catalog.git"
---procedure-directory "/rover-mediical-system/release-3"
---control-activity "pet_medicine_app"
---meta "system owner" "Bill Bensing"
+```text
+nape start --package <PURL> --manifest-digest <SHA256_DIGEST>
+  (--registry-endpoint <URL> | --registry-profile <REGISTRY_MAP_FILE>)
+  --subject-file <FILE> [--meta <KEY> <VALUE>]...
 ```
 
-## Outcome Values
+The sources are mutually exclusive. Start freezes the verified closure,
+subject, metadata, effective graph, and NAPE-managed output location in one new
+current run. Success is silent.
 
-Generated reports use these action outcome values:
+## `nape evidence`
 
-- `pass`
-- `fail`
-- `inconclusive`
-- `error`
+```text
+nape evidence --action <ACTIVITY.ACTION> --file <SOURCE_FILE>
+  [--file-name <DEFINITION_FILE_NAME>]
+```
 
-The evaluator accepts outcome values case-insensitively, but reports serialize lowercase values.
+Adds or replaces one payload in the current collecting run. The source
+basename may differ from the definition-owned filename. `--file-name` asserts,
+but does not rename, that definition filename. Success is silent.
+
+## `nape verify`
+
+```text
+nape verify
+```
+
+Executes the current run without package re-resolution. Required evidence must
+be complete before Action one. Success atomically commits the Report, Evidence
+Set relationship, and digest-addressed raw evidence to the NAPE-managed result
+directory named in the Receipt.
+
+## Registry input
+
+`--registry-endpoint` currently accepts exact anonymous development endpoints
+of the form `http://localhost:<canonical-port>`. It supplies one command-local
+mapping for every `pkg:attestify` publisher and the fixed repository prefix
+`attestify`.
+
+`--registry-profile` admits the closed `attestify-oci-registry-map/1` file with
+explicit publisher rows. Exactly one form is required for OCI operations.
+
+## Receipts and exits
+
+Package and Verify dispatched success use exit `0` and one succeeded Receipt
+V2 line. Their dispatched failures use exit `1` and one failed Receipt when
+emission remains possible. Start and Evidence are silent on success and emit a
+bounded diagnostic on failure. Clap grammar failure uses exit `2` and no
+Receipt V2.

@@ -7,10 +7,9 @@ edition = "2021"
 
 [features]
 default = []
-medium_tests = []
 
 [dependencies]
-kernel_oss = { git = "https://github.com/attestify/kernel-oss.git", tag="0.2.5" }
+kernel_oss = { path = "../../../kernel/kernel-oss" }
 
 [dev-dependencies]
-test_framework_oss = { git = "https://github.com/attestify/test-framework-oss.git", tag = "0.2.4", features = ["nape_filesystem"] }
+test_framework_oss = { path = "../../../test-framework/test-framework-oss" }

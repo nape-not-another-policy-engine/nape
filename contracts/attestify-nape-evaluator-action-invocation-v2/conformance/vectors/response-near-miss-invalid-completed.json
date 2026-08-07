@@ -1,0 +1,26 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v2",
+  "disposition": "occurrence-result",
+  "execution": {
+    "executed": true,
+    "status": "completed",
+    "phase": "evaluate-call",
+    "evaluate_call_count": 1,
+    "automatic_retry_count": 0
+  },
+  "result_validation": {
+    "contract": "failed",
+    "limit": "not-evaluated"
+  },
+  "semantic_owner": "verification-engine",
+  "result": {
+    "conclusion": "inconclusive",
+    "facts": [],
+    "reason": "The Action produced the contained invalid outcome."
+  },
+  "diagnostic": {
+    "code": "completed_invalid_result_contract",
+    "phase": "result-validation",
+    "reason_template": "completed-invalid-result-contract-v1"
+  }
+}

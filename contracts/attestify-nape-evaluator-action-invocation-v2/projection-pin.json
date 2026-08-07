@@ -1,0 +1,7 @@
+{
+  "contract": "attestify.nape-evaluator.repository-contract-projection-pin/v1",
+  "projection_role": "nape-orchestrator-consumer",
+  "manifest_bytes": 20960,
+  "manifest_sha256": "sha256:a7991681f296fda9ec09e00e578d89a82f0130bea0f55af811d039273ac9ad9d",
+  "source_set_sha256": "sha256:6ac80bec8e158d38f321e4501d6cb749b39e518c823efcc45c86c2e4b7d2b20d"
+}

@@ -1,0 +1,621 @@
+{
+  "corpusVersion": "attestify.nape.command-receipt.conformance/v2",
+  "receiptContract": "attestify.nape.command-receipt/v2",
+  "accepted": [
+    {
+      "id": "package-build-failed",
+      "receipt": {
+        "command": "package-build",
+        "contract": "attestify.nape.command-receipt/v2",
+        "diagnostic": {
+          "code": "package_config_invalid",
+          "phase": "config-verification",
+          "reason_template": "package-config-invalid-v1"
+        },
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "status": "failed"
+      }
+    },
+    {
+      "id": "package-build-succeeded",
+      "receipt": {
+        "command": "package-build",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "integrity": "digest-verified",
+          "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "output": "file:///workspace/build/database-endpoint-1.0.0",
+          "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0",
+          "trust": "not-evaluated"
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "package-publish-failed",
+      "receipt": {
+        "command": "package-publish",
+        "contract": "attestify.nape.command-receipt/v2",
+        "diagnostic": {
+          "code": "oci_publication_tag_conflict",
+          "phase": "publication-verification",
+          "reason_template": "oci-publication-tag-conflict-v1"
+        },
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "status": "failed"
+      }
+    },
+    {
+      "id": "package-publish-succeeded",
+      "receipt": {
+        "command": "package-publish",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "disposition": "published",
+          "integrity": "digest-verified",
+          "location": {
+            "profileVersion": "attestify-oci-registry-map/1",
+            "publisher": "acme.example",
+            "reference": "1.0.0",
+            "referenceClass": "tag",
+            "registry": "localhost:5000",
+            "repository": "attestify/acme.example/verification-procedure/release-readiness/database-endpoint",
+            "scheme": "http"
+          },
+          "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0",
+          "trust": "not-evaluated"
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "package-resolve-plan-failed",
+      "receipt": {
+        "command": "package-resolve-plan",
+        "contract": "attestify.nape.command-receipt/v2",
+        "diagnostic": {
+          "code": "registry_map_invalid",
+          "phase": "registry-map-admission",
+          "reason_template": "registry-map-invalid-v1"
+        },
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "status": "failed"
+      }
+    },
+    {
+      "id": "package-resolve-plan-succeeded-one",
+      "receipt": {
+        "command": "package-resolve-plan",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "dependency": [
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-action/data/database-connection",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "package": "pkg:attestify/acme.example/verification-action/data/database-connection@2.1.0",
+              "use": "release-readiness.database-connection",
+              "from": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0"
+            }
+          ],
+          "lock": {
+            "lockVersion": "1",
+            "profileVersion": "attestify-oci-repository-profile/1",
+            "validation": "passed"
+          },
+          "root": {
+            "disposition": "verified",
+            "integrity": "digest-verified",
+            "location": {
+              "profileVersion": "attestify-oci-registry-map/1",
+              "publisher": "acme.example",
+              "reference": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "referenceClass": "digest",
+              "registry": "localhost:5000",
+              "repository": "attestify/acme.example/verification-procedure/release-readiness/database-endpoint",
+              "scheme": "http"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0",
+            "trust": "not-evaluated"
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "package-resolve-plan-succeeded-two",
+      "receipt": {
+        "command": "package-resolve-plan",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "dependency": [
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-activity/release-readiness/database-readiness",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+              "package": "pkg:attestify/acme.example/verification-activity/release-readiness/database-readiness@1.0.0",
+              "use": "infrastructure-readiness",
+              "from": "pkg:attestify/acme.example/verification-procedure/release-readiness/transitive-database-readiness@1.0.0"
+            },
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:040e5e99ba3c640af33aac02c8cf7ff256a52e7f515cd094389d2885d4668339",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-action/release-readiness/database-connection",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:040e5e99ba3c640af33aac02c8cf7ff256a52e7f515cd094389d2885d4668339",
+              "package": "pkg:attestify/acme.example/verification-action/release-readiness/database-connection@1.0.0",
+              "use": "primary-database",
+              "from": "pkg:attestify/acme.example/verification-activity/release-readiness/database-readiness@1.0.0"
+            }
+          ],
+          "lock": {
+            "lockVersion": "1",
+            "profileVersion": "attestify-oci-repository-profile/1",
+            "validation": "passed"
+          },
+          "root": {
+            "disposition": "verified",
+            "integrity": "digest-verified",
+            "location": {
+              "profileVersion": "attestify-oci-registry-map/1",
+              "publisher": "acme.example",
+              "reference": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "referenceClass": "digest",
+              "registry": "localhost:5000",
+              "repository": "attestify/acme.example/verification-procedure/release-readiness/database-endpoint",
+              "scheme": "http"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/transitive-database-readiness@1.0.0",
+            "trust": "not-evaluated"
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "package-resolve-plan-succeeded-zero",
+      "receipt": {
+        "command": "package-resolve-plan",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "dependency": [],
+          "lock": {
+            "lockVersion": "1",
+            "profileVersion": "attestify-oci-repository-profile/1",
+            "validation": "passed"
+          },
+          "root": {
+            "disposition": "verified",
+            "integrity": "digest-verified",
+            "location": {
+              "profileVersion": "attestify-oci-registry-map/1",
+              "publisher": "acme.example",
+              "reference": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "referenceClass": "digest",
+              "registry": "localhost:5000",
+              "repository": "attestify/acme.example/verification-procedure/release-readiness/database-endpoint",
+              "scheme": "http"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0",
+            "trust": "not-evaluated"
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "verify-failed-oci",
+      "receipt": {
+        "command": "verify",
+        "contract": "attestify.nape.command-receipt/v2",
+        "diagnostic": {
+          "code": "verification_procedure_invalid",
+          "phase": "invocation-admission",
+          "reason_template": "verification-procedure-invalid-v1"
+        },
+        "invocationId": "01KWJK2HQ4D4C83WMR2JY7YV4B",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "source": "oci-registry",
+        "status": "failed"
+      }
+    },
+    {
+      "id": "verify-succeeded-local",
+      "receipt": {
+        "command": "verify",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "output": "file:///workspace/runs/database-endpoint",
+          "procedure": {
+            "acquisition": {
+              "binding": "local-build-result",
+              "integrity": "digest-verified",
+              "source": "local-build",
+              "trust": "not-evaluated"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0"
+          },
+          "report": {
+            "id": "01KWJK2J5W0VYF6V72JYF6DTRQ",
+            "kind": "VerificationReport",
+            "summary": {
+              "activity_count": 1,
+              "action_count": 1,
+              "actions_completed": 1,
+              "actions_terminated": 0,
+              "actions_blocked": 0,
+              "conclusion_true": 1,
+              "conclusion_false": 0,
+              "conclusion_inconclusive": 0,
+              "diagnostic_count": 0
+            }
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "verify-succeeded-oci",
+      "receipt": {
+        "command": "verify",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "output": "file:///workspace/runs/database-endpoint",
+          "procedure": {
+            "acquisition": {
+              "binding": "invocation",
+              "integrity": "digest-verified",
+              "source": "oci-pull",
+              "trust": "not-evaluated"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0"
+          },
+          "report": {
+            "id": "01KWJK2J5W0VYF6V72JYF6DTRQ",
+            "kind": "VerificationReport",
+            "summary": {
+              "activity_count": 1,
+              "action_count": 1,
+              "actions_completed": 1,
+              "actions_terminated": 0,
+              "actions_blocked": 0,
+              "conclusion_true": 1,
+              "conclusion_false": 0,
+              "conclusion_inconclusive": 0,
+              "diagnostic_count": 0
+            }
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "verify-succeeded-oci-l2",
+      "receipt": {
+        "command": "verify",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "output": "file:///workspace/runs/database-endpoint",
+          "procedure": {
+            "acquisition": {
+              "binding": "invocation",
+              "integrity": "digest-verified",
+              "source": "oci-pull",
+              "trust": "not-evaluated"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/transitive-database-readiness@1.0.0"
+          },
+          "report": {
+            "id": "01KWJK2J5W0VYF6V72JYF6DTRQ",
+            "kind": "VerificationReport",
+            "summary": {
+              "activity_count": 1,
+              "action_count": 2,
+              "actions_completed": 2,
+              "actions_terminated": 0,
+              "actions_blocked": 0,
+              "conclusion_true": 2,
+              "conclusion_false": 0,
+              "conclusion_inconclusive": 0,
+              "diagnostic_count": 0
+            }
+          }
+        },
+        "status": "succeeded"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "receipt-v1-contract",
+      "receipt": {
+        "command": "package-build",
+        "contract": "attestify.nape.command-receipt/v1",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "integrity": "digest-verified",
+          "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "output": "file:///workspace/build/database-endpoint-1.0.0",
+          "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0",
+          "trust": "not-evaluated"
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "resolve-dependency-missing-from",
+      "receipt": {
+        "command": "package-resolve-plan",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "dependency": [
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-action/data/database-connection",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "package": "pkg:attestify/acme.example/verification-action/data/database-connection@2.1.0",
+              "use": "release-readiness.database-connection"
+            }
+          ],
+          "lock": {
+            "lockVersion": "1",
+            "profileVersion": "attestify-oci-repository-profile/1",
+            "validation": "passed"
+          },
+          "root": {
+            "disposition": "verified",
+            "integrity": "digest-verified",
+            "location": {
+              "profileVersion": "attestify-oci-registry-map/1",
+              "publisher": "acme.example",
+              "reference": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "referenceClass": "digest",
+              "registry": "localhost:5000",
+              "repository": "attestify/acme.example/verification-procedure/release-readiness/database-endpoint",
+              "scheme": "http"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0",
+            "trust": "not-evaluated"
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "resolve-three-dependencies",
+      "receipt": {
+        "command": "package-resolve-plan",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "dependency": [
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-activity/release-readiness/database-readiness",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+              "package": "pkg:attestify/acme.example/verification-activity/release-readiness/database-readiness@1.0.0",
+              "use": "infrastructure-readiness",
+              "from": "pkg:attestify/acme.example/verification-procedure/release-readiness/transitive-database-readiness@1.0.0"
+            },
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:040e5e99ba3c640af33aac02c8cf7ff256a52e7f515cd094389d2885d4668339",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-action/release-readiness/database-connection",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:040e5e99ba3c640af33aac02c8cf7ff256a52e7f515cd094389d2885d4668339",
+              "package": "pkg:attestify/acme.example/verification-action/release-readiness/database-connection@1.0.0",
+              "use": "primary-database",
+              "from": "pkg:attestify/acme.example/verification-activity/release-readiness/database-readiness@1.0.0"
+            },
+            {
+              "disposition": "planned-not-acquired",
+              "location": {
+                "profileVersion": "attestify-oci-registry-map/1",
+                "publisher": "acme.example",
+                "reference": "sha256:040e5e99ba3c640af33aac02c8cf7ff256a52e7f515cd094389d2885d4668339",
+                "referenceClass": "digest",
+                "registry": "localhost:5000",
+                "repository": "attestify/acme.example/verification-action/release-readiness/database-connection",
+                "scheme": "http"
+              },
+              "manifestDigest": "sha256:040e5e99ba3c640af33aac02c8cf7ff256a52e7f515cd094389d2885d4668339",
+              "package": "pkg:attestify/acme.example/verification-action/release-readiness/database-connection@1.0.0",
+              "use": "primary-database",
+              "from": "pkg:attestify/acme.example/verification-activity/release-readiness/database-readiness@1.0.0"
+            }
+          ],
+          "lock": {
+            "lockVersion": "1",
+            "profileVersion": "attestify-oci-repository-profile/1",
+            "validation": "passed"
+          },
+          "root": {
+            "disposition": "verified",
+            "integrity": "digest-verified",
+            "location": {
+              "profileVersion": "attestify-oci-registry-map/1",
+              "publisher": "acme.example",
+              "reference": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "referenceClass": "digest",
+              "registry": "localhost:5000",
+              "repository": "attestify/acme.example/verification-procedure/release-readiness/database-endpoint",
+              "scheme": "http"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/transitive-database-readiness@1.0.0",
+            "trust": "not-evaluated"
+          }
+        },
+        "status": "succeeded"
+      }
+    },
+    {
+      "id": "verify-sole-conclusion-projection",
+      "receipt": {
+        "command": "verify",
+        "contract": "attestify.nape.command-receipt/v2",
+        "producer": {
+          "buildDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "nape",
+          "qualification": "attestify-verification-engine-oci-development-mvp-i4",
+          "version": "2.0.0"
+        },
+        "result": {
+          "output": "file:///workspace/runs/database-endpoint",
+          "procedure": {
+            "acquisition": {
+              "binding": "local-build-result",
+              "integrity": "digest-verified",
+              "source": "local-build",
+              "trust": "not-evaluated"
+            },
+            "manifestDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "package": "pkg:attestify/acme.example/verification-procedure/release-readiness/database-endpoint@1.0.0"
+          },
+          "report": {
+            "id": "01KWJK2J5W0VYF6V72JYF6DTRQ",
+            "kind": "VerificationReport",
+            "conclusion": "true"
+          }
+        },
+        "status": "succeeded"
+      }
+    }
+  ]
+}

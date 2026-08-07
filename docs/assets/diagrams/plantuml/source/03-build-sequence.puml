@@ -1,0 +1,17 @@
+@startuml
+!include ../includes/attestify-theme.puml
+!include ../includes/sequence-conventions.puml
+title Build Definition Package
+actor User
+participant "Build adapter" as Adapter
+participant "BuildDefinitionPackageUC" as UC
+participant "Definition admission" as Admission
+participant "attestify-oci build driver" as Driver
+User -> Adapter: nape package build
+Adapter -> UC: admitted request
+UC -> Admission: controlled root + PURL
+Admission --> UC: paths + references
+UC -> Driver: sealed source + dependencies
+Driver --> UC: verified exact build
+UC --> Adapter: completed or rejected
+@enduml

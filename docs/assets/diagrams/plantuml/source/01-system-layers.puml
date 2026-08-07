@@ -1,0 +1,16 @@
+@startuml
+!include ../includes/attestify-theme.puml
+title NAPE Verification Layer Ownership
+package "I/O adapters" as IO
+package "Composition and Gateway drivers" as App
+package "NAPE Domain" as Domain
+package "Kernel" as Kernel
+package "attestify-oci" as OCI
+package "NAPE Evaluator" as Evaluator
+IO --> App
+App --> Domain
+Domain --> Kernel
+App --> OCI : package mechanics
+App --> Evaluator : one Action request
+OCI -[hidden]-> Evaluator
+@enduml

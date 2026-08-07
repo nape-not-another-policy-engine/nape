@@ -1,0 +1,84 @@
+{
+  "contract": "attestify.nape.command-receipt.i6-current-supersession/v1",
+  "receiptContract": "attestify.nape.command-receipt/v2",
+  "change": "current-i6-capacity-and-producer-qualification",
+  "producerQualification": {
+    "historical": "attestify-verification-engine-oci-development-mvp-i4",
+    "current": "attestify-verification-engine-v2-development"
+  },
+  "bounds": {
+    "dependencyEdges": "zero-or-more-from-one-admitted-lock",
+    "lockEdgeCeiling": 8192,
+    "framedReceiptByteCeiling": 65536,
+    "verifySummary": {
+      "activityCount": {
+        "minimum": 1,
+        "maximum": 256
+      },
+      "actionCount": {
+        "minimum": 1,
+        "maximum": 4096
+      },
+      "otherCounts": {
+        "minimum": 0,
+        "maximum": 4096
+      }
+    }
+  },
+  "a7PackageIdentityTransition": {
+    "reason": "approved-conceptual-to-current-runner-profile-source-translation",
+    "provisional": {
+      "action": "sha256:1d78c238b5aaabe8c209a8e2aae36cdb6809d3e96160f07380a24658daba965d",
+      "activity": "sha256:275423315fcdd6c8053e6e698e62e026c54168fbf484e8b22f17dc5bfc5e6689",
+      "procedure": "sha256:1061a40c6f4033eed5e3966d2697521b63ab63110777582574a6ffb92e3eb5a3"
+    },
+    "current": {
+      "action": "sha256:1d78c238b5aaabe8c209a8e2aae36cdb6809d3e96160f07380a24658daba965d",
+      "activity": "sha256:e1b4c875c0110482d0810bdba5ce543dcaf86a26213e095ce16af7c068b76b36",
+      "procedure": "sha256:e5ede5ecaf834a1be1c02dcb61b07202edba3807da88f7d3a21f2980b1cc3cd9"
+    }
+  },
+  "historical": {
+    "schema": {
+      "path": "../../nape-command-receipt-v2/nape-command-receipt.schema.json",
+      "bytes": 21120,
+      "sha256": "sha256:431d9bb1e5c2586528ee0edf992c78be665a4611c8ea90587ddb71bf0487e817"
+    },
+    "index": {
+      "path": "../../nape-command-receipt-v2/nape-command-receipt-contract-index.json",
+      "bytes": 74,
+      "sha256": "sha256:c2cc81c520a044d4eba6d7b67bcb2c9264bfeed71d86570d1ee67abf569bfb41"
+    },
+    "corpus": {
+      "path": "../../nape-command-receipt-v2/conformance/corpus-manifest.json",
+      "bytes": 26209,
+      "sha256": "sha256:c845f94e740af9b6c0749a2c54525fb1c525523aceed9b91f1908afeb5b37226"
+    }
+  },
+  "current": {
+    "schema": {
+      "path": "nape-command-receipt.schema.json",
+      "bytes": 21292,
+      "sha256": "sha256:d5d6510b66f498ecbe52f73abfc891db4e672d2a8f5465faeed4baab8539ec21"
+    },
+    "index": {
+      "path": "nape-command-receipt-contract-index.json",
+      "bytes": 74,
+      "sha256": "sha256:c2cc81c520a044d4eba6d7b67bcb2c9264bfeed71d86570d1ee67abf569bfb41"
+    },
+    "corpus": {
+      "path": "conformance/corpus-manifest.json",
+      "bytes": 33656,
+      "sha256": "sha256:15cf391c05a335bceeb4b745ff78ba2a26f8c0428d6a3303b183b89b2605e315"
+    }
+  },
+  "preserved": [
+    "contract-discriminator",
+    "envelope-and-four-command-variants",
+    "dependency-edge-row-shape-and-order",
+    "verify-summary-equals-committed-report-summary",
+    "jcs-line-feed-framing",
+    "65536-byte-receipt-ceiling",
+    "all-i5-receipt-bytes"
+  ]
+}

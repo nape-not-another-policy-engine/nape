@@ -1,0 +1,16 @@
+@startuml
+!include ../includes/attestify-theme.puml
+title Test Topology And Compatibility Proof Flow
+package "Unit" as Unit
+package "Gateway contract" as Gateway
+package "Driver" as Driver
+package "Command integration" as Command
+package "Controlled lifecycle" as Lifecycle
+package "Live qualification" as Live
+Unit --> Gateway
+Gateway --> Driver
+Driver --> Command
+Command --> Lifecycle
+Lifecycle --> Live
+note right of Live: Live registry and real Evaluator\nremain an explicit separate gate.
+@enduml

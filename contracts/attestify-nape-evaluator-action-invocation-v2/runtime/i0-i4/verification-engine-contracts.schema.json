@@ -1,0 +1,2911 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "not": {},
+  "$defs": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "factName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actionSelector": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 257,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "ulid": {
+      "type": "string",
+      "pattern": "^[0-7][0-9A-HJKMNP-TV-Z]{25}$"
+    },
+    "riskSourceArn": {
+      "type": "string",
+      "pattern": "^risk-source:[0-7][0-9A-HJKMNP-TV-Z]{25}$"
+    },
+    "utcTimestampCandidate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?Z$"
+    },
+    "relativePathCandidate": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*\\u0000).+$"
+    },
+    "absoluteWorkspacePathCandidate": {
+      "type": "string",
+      "minLength": 2,
+      "pattern": "^/(?!.*\\\\)(?!.*\\u0000).+$"
+    },
+    "mediaType": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 255,
+      "pattern": "^[a-z0-9][a-z0-9!#$&^_.+-]*/[a-z0-9][a-z0-9!#$&^_.+-]*$"
+    },
+    "attestifyPurlCandidate": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "^pkg:attestify/[^\\s@]+@[^\\s@]+$"
+    },
+    "definitionProseProperties": {
+      "type": "object",
+      "required": [
+        "label"
+      ],
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "criteria": {
+      "type": "object",
+      "properties": {
+        "minimum": {},
+        "maximum": {},
+        "equals": {},
+        "allowed_values": {
+          "type": "array",
+          "items": {},
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "disallowed_values": {
+          "type": "array",
+          "items": {},
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "minimum"
+          ]
+        },
+        {
+          "required": [
+            "maximum"
+          ]
+        },
+        {
+          "required": [
+            "equals"
+          ]
+        },
+        {
+          "required": [
+            "allowed_values"
+          ]
+        },
+        {
+          "required": [
+            "disallowed_values"
+          ]
+        },
+        {
+          "required": [
+            "required"
+          ]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "evaluationSubject": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "data_type"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/factName"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "data_type": {
+          "enum": [
+            "text",
+            "integer",
+            "number",
+            "boolean",
+            "date",
+            "datetime",
+            "duration",
+            "array",
+            "object",
+            "null"
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "criteriaAssignment": {
+      "type": "object",
+      "required": [
+        "name",
+        "authorized_values"
+      ],
+      "properties": {
+        "name": {
+          "enum": [
+            "minimum",
+            "maximum",
+            "equals",
+            "allowed_values",
+            "disallowed_values",
+            "required"
+          ]
+        },
+        "authorized_values": {
+          "type": "array",
+          "items": {},
+          "minItems": 2,
+          "maxItems": 64
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "ownedEvaluation": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "subject",
+        "criteria"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "subject": {
+          "$ref": "#/$defs/evaluationSubject"
+        },
+        "criteria": {
+          "$ref": "#/$defs/criteria"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "independentOwnedEvaluation": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "subject",
+        "criteria"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "subject": {
+          "$ref": "#/$defs/evaluationSubject"
+        },
+        "criteria": {
+          "$ref": "#/$defs/criteria"
+        },
+        "criteria_assignment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/criteriaAssignment"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "contextualEvaluation": {
+      "type": "object",
+      "required": [
+        "name",
+        "criteria"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "criteria": {
+          "$ref": "#/$defs/criteria"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidenceSchemaSelection": {
+      "type": "object",
+      "required": [
+        "media_type",
+        "file"
+      ],
+      "properties": {
+        "media_type": {
+          "const": "application/schema+json"
+        },
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidenceDeclarationV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "file"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "media_type": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "maximum_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        },
+        "schema": {
+          "$ref": "#/$defs/evidenceSchemaSelection"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "testResource": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "maximum_execution_work_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000
+        },
+        "maximum_result_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "testDeclaration": {
+      "type": "object",
+      "required": [
+        "name",
+        "file"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "resource": {
+          "$ref": "#/$defs/testResource"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "embeddedActionV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "claim",
+        "evidence",
+        "test"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "claim": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidenceDeclarationV2"
+        },
+        "test": {
+          "$ref": "#/$defs/testDeclaration"
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ownedEvaluation"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "independentActionSpecV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "claim",
+        "evidence",
+        "test"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "claim": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidenceDeclarationV2"
+        },
+        "test": {
+          "$ref": "#/$defs/testDeclaration"
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/independentOwnedEvaluation"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "actionReferenceV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "package"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "package": {
+          "$ref": "#/$defs/attestifyPurlCandidate"
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contextualEvaluation"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "embeddedActivityV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "action"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "action": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/embeddedActionV2"
+              },
+              {
+                "$ref": "#/$defs/actionReferenceV2"
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 4096
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "activityReferenceV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "package"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "package": {
+          "$ref": "#/$defs/attestifyPurlCandidate"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "procedureEvidenceLimit": {
+      "type": "object",
+      "required": [
+        "maximum_bytes"
+      ],
+      "properties": {
+        "maximum_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483648
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "procedureSpecV2": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "activity"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "evidence_limit": {
+          "$ref": "#/$defs/procedureEvidenceLimit"
+        },
+        "activity": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/embeddedActivityV2"
+              },
+              {
+                "$ref": "#/$defs/activityReferenceV2"
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 256
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "verificationProcedureV2": {
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "kind",
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": "2.0.0"
+        },
+        "kind": {
+          "const": "VerificationProcedure"
+        },
+        "spec": {
+          "$ref": "#/$defs/procedureSpecV2"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "verificationActionV2": {
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "kind",
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": "2.0.0"
+        },
+        "kind": {
+          "const": "VerificationAction"
+        },
+        "spec": {
+          "$ref": "#/$defs/independentActionSpecV2"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "embeddedActionI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/embeddedActionV2"
+        },
+        {
+          "properties": {
+            "evidence": {
+              "not": {
+                "required": [
+                  "schema"
+                ]
+              }
+            },
+            "evaluations": {
+              "maxItems": 0
+            }
+          }
+        }
+      ]
+    },
+    "actionReferenceI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/actionReferenceV2"
+        },
+        {
+          "properties": {
+            "evaluations": {
+              "maxItems": 0
+            }
+          }
+        }
+      ]
+    },
+    "embeddedActivityI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/embeddedActivityV2"
+        },
+        {
+          "properties": {
+            "action": {
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/embeddedActionI4"
+                  },
+                  {
+                    "$ref": "#/$defs/actionReferenceI4"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "procedureSpecI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/procedureSpecV2"
+        },
+        {
+          "properties": {
+            "activity": {
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "$ref": "#/$defs/embeddedActivityI4"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "verificationProcedureI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/verificationProcedureV2"
+        },
+        {
+          "properties": {
+            "spec": {
+              "$ref": "#/$defs/procedureSpecI4"
+            }
+          }
+        }
+      ]
+    },
+    "independentActionSpecI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/independentActionSpecV2"
+        },
+        {
+          "properties": {
+            "evidence": {
+              "not": {
+                "required": [
+                  "schema"
+                ]
+              }
+            },
+            "evaluations": {
+              "maxItems": 0
+            }
+          }
+        }
+      ]
+    },
+    "verificationActionI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/verificationActionV2"
+        },
+        {
+          "properties": {
+            "spec": {
+              "$ref": "#/$defs/independentActionSpecI4"
+            }
+          }
+        }
+      ]
+    },
+    "subjectInputI4": {
+      "type": "object",
+      "required": [
+        "arn"
+      ],
+      "properties": {
+        "arn": {
+          "$ref": "#/$defs/riskSourceArn"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorEvidenceDescriptor": {
+      "type": "object",
+      "required": [
+        "file",
+        "argument_digest",
+        "argument_byte_count",
+        "media_type",
+        "representation"
+      ],
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "argument_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "argument_byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        },
+        "media_type": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "representation": {
+          "const": "opaque"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorTestDescriptor": {
+      "type": "object",
+      "required": [
+        "file",
+        "content_digest",
+        "byte_count",
+        "runner_profile"
+      ],
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "content_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 33554432
+        },
+        "runner_profile": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorMetadata": {
+      "type": "object",
+      "required": [
+        "evidence_media_type",
+        "evidence_representation",
+        "evaluator_contract_version"
+      ],
+      "properties": {
+        "evidence_media_type": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "evidence_representation": {
+          "const": "opaque"
+        },
+        "evaluator_contract_version": {
+          "const": "2"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorLimits": {
+      "type": "object",
+      "required": [
+        "maximum_execution_work_units",
+        "maximum_result_bytes"
+      ],
+      "properties": {
+        "maximum_execution_work_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000
+        },
+        "maximum_result_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorRequestV2": {
+      "type": "object",
+      "required": [
+        "contract",
+        "workspace_root",
+        "evidence",
+        "test",
+        "evaluations",
+        "metadata",
+        "limits"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "workspace_root": {
+          "$ref": "#/$defs/absoluteWorkspacePathCandidate"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evaluatorEvidenceDescriptor"
+        },
+        "test": {
+          "$ref": "#/$defs/evaluatorTestDescriptor"
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {},
+          "minItems": 0,
+          "maxItems": 0
+        },
+        "metadata": {
+          "$ref": "#/$defs/evaluatorMetadata"
+        },
+        "limits": {
+          "$ref": "#/$defs/evaluatorLimits"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorDiagnostic": {
+      "type": "object",
+      "required": [
+        "code",
+        "reason_template"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "reason_template": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "factFound": {
+      "type": "object",
+      "required": [
+        "name",
+        "value",
+        "value_type",
+        "status"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/factName"
+        },
+        "value": {},
+        "value_type": {
+          "enum": [
+            "text",
+            "integer",
+            "number",
+            "boolean",
+            "date",
+            "datetime",
+            "duration",
+            "array",
+            "object"
+          ]
+        },
+        "status": {
+          "const": "found"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "factAbsent": {
+      "type": "object",
+      "required": [
+        "name",
+        "value",
+        "value_type",
+        "status"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/factName"
+        },
+        "value": {
+          "const": null
+        },
+        "value_type": {
+          "const": null
+        },
+        "status": {
+          "enum": [
+            "not_found",
+            "invalid"
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "fact": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/factFound"
+        },
+        {
+          "$ref": "#/$defs/factAbsent"
+        }
+      ]
+    },
+    "semanticResult": {
+      "type": "object",
+      "required": [
+        "conclusion",
+        "facts",
+        "reason"
+      ],
+      "properties": {
+        "conclusion": {
+          "enum": [
+            "true",
+            "false",
+            "inconclusive"
+          ]
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "engineSemanticResult": {
+      "type": "object",
+      "required": [
+        "conclusion",
+        "facts",
+        "reason"
+      ],
+      "properties": {
+        "conclusion": {
+          "const": "inconclusive"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          },
+          "minItems": 0,
+          "maxItems": 0
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorExecutionValid": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "completed"
+        },
+        "phase": {
+          "const": "evaluate-call"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorExecutionInvalid": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "completed"
+        },
+        "phase": {
+          "const": "result-validation"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorExecutionBlocked": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count"
+      ],
+      "properties": {
+        "executed": {
+          "const": false
+        },
+        "status": {
+          "const": "blocked"
+        },
+        "phase": {
+          "const": "realm-activation"
+        },
+        "evaluate_call_count": {
+          "const": 0
+        },
+        "automatic_retry_count": {
+          "const": 0
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorExecutionTerminatedInitialization": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "terminated"
+        },
+        "phase": {
+          "const": "module-initialization"
+        },
+        "evaluate_call_count": {
+          "const": 0
+        },
+        "automatic_retry_count": {
+          "const": 0
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorExecutionTerminatedEvaluate": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "terminated"
+        },
+        "phase": {
+          "const": "evaluate-call"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "resultValidationPassed": {
+      "type": "object",
+      "required": [
+        "contract",
+        "limit"
+      ],
+      "properties": {
+        "contract": {
+          "const": "passed"
+        },
+        "limit": {
+          "const": "passed"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "resultValidationInvalid": {
+      "type": "object",
+      "required": [
+        "contract",
+        "limit"
+      ],
+      "properties": {
+        "contract": {
+          "const": "failed"
+        },
+        "limit": {
+          "const": "not-evaluated"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "resultValidationOverLimit": {
+      "type": "object",
+      "required": [
+        "contract",
+        "limit"
+      ],
+      "properties": {
+        "contract": {
+          "const": "passed"
+        },
+        "limit": {
+          "const": "failed"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "resultValidationNotApplicable": {
+      "type": "object",
+      "required": [
+        "contract",
+        "limit"
+      ],
+      "properties": {
+        "contract": {
+          "const": "not-applicable"
+        },
+        "limit": {
+          "const": "not-applicable"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseValid": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "execution",
+        "result_validation",
+        "semantic_owner",
+        "result",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "occurrence-result"
+        },
+        "execution": {
+          "$ref": "#/$defs/evaluatorExecutionValid"
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationPassed"
+        },
+        "semantic_owner": {
+          "const": "test-of-detail"
+        },
+        "result": {
+          "$ref": "#/$defs/semanticResult"
+        },
+        "diagnostic": {
+          "const": null
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseInvalid": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "execution",
+        "result_validation",
+        "semantic_owner",
+        "result",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "occurrence-result"
+        },
+        "execution": {
+          "$ref": "#/$defs/evaluatorExecutionInvalid"
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationInvalid"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        },
+        "result": {
+          "$ref": "#/$defs/engineSemanticResult"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseOverLimit": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "execution",
+        "result_validation",
+        "semantic_owner",
+        "result",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "occurrence-result"
+        },
+        "execution": {
+          "$ref": "#/$defs/evaluatorExecutionInvalid"
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationOverLimit"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        },
+        "result": {
+          "$ref": "#/$defs/engineSemanticResult"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseBlocked": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "execution",
+        "result_validation",
+        "semantic_owner",
+        "result",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "occurrence-result"
+        },
+        "execution": {
+          "$ref": "#/$defs/evaluatorExecutionBlocked"
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationNotApplicable"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        },
+        "result": {
+          "$ref": "#/$defs/engineSemanticResult"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseTerminatedInitialization": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "execution",
+        "result_validation",
+        "semantic_owner",
+        "result",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "occurrence-result"
+        },
+        "execution": {
+          "$ref": "#/$defs/evaluatorExecutionTerminatedInitialization"
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationNotApplicable"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        },
+        "result": {
+          "$ref": "#/$defs/engineSemanticResult"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseTerminatedEvaluate": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "execution",
+        "result_validation",
+        "semantic_owner",
+        "result",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "occurrence-result"
+        },
+        "execution": {
+          "$ref": "#/$defs/evaluatorExecutionTerminatedEvaluate"
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationNotApplicable"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        },
+        "result": {
+          "$ref": "#/$defs/engineSemanticResult"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseRequestRejected": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "request-rejected"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseIntegrityFailed": {
+      "type": "object",
+      "required": [
+        "contract",
+        "disposition",
+        "diagnostic"
+      ],
+      "properties": {
+        "contract": {
+          "const": "attestify.nape-evaluator.action-invocation/v2"
+        },
+        "disposition": {
+          "const": "integrity-failed"
+        },
+        "diagnostic": {
+          "$ref": "#/$defs/evaluatorDiagnostic"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evaluatorResponseV2": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/evaluatorResponseValid"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseInvalid"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseOverLimit"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseBlocked"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseTerminatedInitialization"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseTerminatedEvaluate"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseRequestRejected"
+        },
+        {
+          "$ref": "#/$defs/evaluatorResponseIntegrityFailed"
+        }
+      ]
+    },
+    "reportMetadata": {
+      "type": "object",
+      "required": [
+        "id",
+        "generated_at"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ulid"
+        },
+        "generated_at": {
+          "$ref": "#/$defs/utcTimestampCandidate"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportInvocation": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ulid"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "acquisitionLocal": {
+      "type": "object",
+      "required": [
+        "source",
+        "binding",
+        "integrity",
+        "trust"
+      ],
+      "properties": {
+        "source": {
+          "const": "local-build"
+        },
+        "binding": {
+          "const": "local-build-result"
+        },
+        "integrity": {
+          "const": "digest-verified"
+        },
+        "trust": {
+          "const": "not-evaluated"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "acquisitionOci": {
+      "type": "object",
+      "required": [
+        "source",
+        "binding",
+        "integrity",
+        "trust"
+      ],
+      "properties": {
+        "source": {
+          "const": "oci-pull"
+        },
+        "binding": {
+          "const": "invocation"
+        },
+        "integrity": {
+          "const": "digest-verified"
+        },
+        "trust": {
+          "const": "not-evaluated"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportAcquisition": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/acquisitionLocal"
+        },
+        {
+          "$ref": "#/$defs/acquisitionOci"
+        }
+      ]
+    },
+    "reportProcedureOrigin": {
+      "type": "object",
+      "required": [
+        "package",
+        "manifestDigest",
+        "kind",
+        "name",
+        "label",
+        "acquisition"
+      ],
+      "properties": {
+        "package": {
+          "$ref": "#/$defs/attestifyPurlCandidate"
+        },
+        "manifestDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "kind": {
+          "const": "VerificationProcedure"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "acquisition": {
+          "$ref": "#/$defs/reportAcquisition"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportDefinitionOwner": {
+      "type": "object",
+      "required": [
+        "package",
+        "manifestDigest",
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "package": {
+          "$ref": "#/$defs/attestifyPurlCandidate"
+        },
+        "manifestDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "kind": {
+          "enum": [
+            "VerificationProcedure",
+            "VerificationAction"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportEmbeddedOwner": {
+      "type": "object",
+      "required": [
+        "package",
+        "manifestDigest",
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "package": {
+          "$ref": "#/$defs/attestifyPurlCandidate"
+        },
+        "manifestDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "kind": {
+          "const": "VerificationProcedure"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportEmbeddedOrigin": {
+      "type": "object",
+      "required": [
+        "type",
+        "owner",
+        "selector"
+      ],
+      "properties": {
+        "type": {
+          "const": "embedded"
+        },
+        "owner": {
+          "$ref": "#/$defs/reportEmbeddedOwner"
+        },
+        "selector": {
+          "$ref": "#/$defs/actionSelector"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportPackageOrigin": {
+      "type": "object",
+      "required": [
+        "type",
+        "package",
+        "manifestDigest",
+        "kind",
+        "name",
+        "selector"
+      ],
+      "properties": {
+        "type": {
+          "const": "package"
+        },
+        "package": {
+          "$ref": "#/$defs/attestifyPurlCandidate"
+        },
+        "manifestDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "kind": {
+          "const": "VerificationAction"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "selector": {
+          "$ref": "#/$defs/actionSelector"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportDefinitionOrigin": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/reportEmbeddedOrigin"
+        },
+        {
+          "$ref": "#/$defs/reportPackageOrigin"
+        }
+      ]
+    },
+    "reportEvidenceDeclaration": {
+      "type": "object",
+      "required": [
+        "name",
+        "file",
+        "media_type",
+        "media_type_origin",
+        "maximum_bytes",
+        "maximum_bytes_origin",
+        "representation",
+        "applied_constraints"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "media_type": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "media_type_origin": {
+          "enum": [
+            "registered-file-suffix",
+            "action-authored"
+          ]
+        },
+        "maximum_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        },
+        "maximum_bytes_origin": {
+          "enum": [
+            "profile-default",
+            "action-authored"
+          ]
+        },
+        "representation": {
+          "const": "opaque"
+        },
+        "applied_constraints": {
+          "type": "array",
+          "items": {},
+          "minItems": 0,
+          "maxItems": 0
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportEvidenceOccurrence": {
+      "type": "object",
+      "required": [
+        "canonical_path",
+        "content_digest",
+        "byte_count",
+        "admission"
+      ],
+      "properties": {
+        "canonical_path": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "content_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        },
+        "admission": {
+          "const": "passed"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportEvidence": {
+      "type": "object",
+      "required": [
+        "declaration",
+        "occurrence"
+      ],
+      "properties": {
+        "declaration": {
+          "$ref": "#/$defs/reportEvidenceDeclaration"
+        },
+        "occurrence": {
+          "$ref": "#/$defs/reportEvidenceOccurrence"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportAuthoredFile": {
+      "type": "object",
+      "required": [
+        "form",
+        "value"
+      ],
+      "properties": {
+        "form": {
+          "enum": [
+            "standard",
+            "explicit"
+          ]
+        },
+        "value": {
+          "$ref": "#/$defs/relativePathCandidate"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportResolvedFile": {
+      "type": "object",
+      "required": [
+        "path",
+        "content_digest",
+        "byte_count"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "content_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 33554432
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportRunnerProfile": {
+      "type": "object",
+      "required": [
+        "id",
+        "manifestDigest"
+      ],
+      "properties": {
+        "id": {
+          "const": "attestify-python-test-development-v1"
+        },
+        "manifestDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportResource": {
+      "type": "object",
+      "required": [
+        "maximum_execution_work_units",
+        "maximum_execution_work_units_origin",
+        "maximum_result_bytes",
+        "maximum_result_bytes_origin"
+      ],
+      "properties": {
+        "maximum_execution_work_units": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000
+        },
+        "maximum_execution_work_units_origin": {
+          "enum": [
+            "profile-default",
+            "action-authored"
+          ]
+        },
+        "maximum_result_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "maximum_result_bytes_origin": {
+          "enum": [
+            "profile-default",
+            "action-authored"
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportImplementationComponent": {
+      "type": "object",
+      "required": [
+        "id",
+        "digest"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "digest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportImplementation": {
+      "type": "object",
+      "required": [
+        "evaluator",
+        "runner",
+        "engine_build_digest",
+        "integrity",
+        "trust"
+      ],
+      "properties": {
+        "evaluator": {
+          "$ref": "#/$defs/reportImplementationComponent"
+        },
+        "runner": {
+          "$ref": "#/$defs/reportImplementationComponent"
+        },
+        "engine_build_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "integrity": {
+          "const": "digest-verified"
+        },
+        "trust": {
+          "const": "not-evaluated"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportTest": {
+      "type": "object",
+      "required": [
+        "name",
+        "owner",
+        "authored_file",
+        "resolved_file",
+        "runner_profile",
+        "resource",
+        "implementation"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "owner": {
+          "$ref": "#/$defs/reportDefinitionOwner"
+        },
+        "authored_file": {
+          "$ref": "#/$defs/reportAuthoredFile"
+        },
+        "resolved_file": {
+          "$ref": "#/$defs/reportResolvedFile"
+        },
+        "runner_profile": {
+          "$ref": "#/$defs/reportRunnerProfile"
+        },
+        "resource": {
+          "$ref": "#/$defs/reportResource"
+        },
+        "implementation": {
+          "$ref": "#/$defs/reportImplementation"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecutionValid": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count",
+        "result_validation",
+        "semantic_owner"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "completed"
+        },
+        "phase": {
+          "const": "evaluate-call"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationPassed"
+        },
+        "semantic_owner": {
+          "const": "test-of-detail"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecutionInvalid": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count",
+        "result_validation",
+        "semantic_owner"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "completed"
+        },
+        "phase": {
+          "const": "result-validation"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationInvalid"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecutionOverLimit": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count",
+        "result_validation",
+        "semantic_owner"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "completed"
+        },
+        "phase": {
+          "const": "result-validation"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationOverLimit"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecutionBlocked": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count",
+        "result_validation",
+        "semantic_owner"
+      ],
+      "properties": {
+        "executed": {
+          "const": false
+        },
+        "status": {
+          "const": "blocked"
+        },
+        "phase": {
+          "const": "realm-activation"
+        },
+        "evaluate_call_count": {
+          "const": 0
+        },
+        "automatic_retry_count": {
+          "const": 0
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationNotApplicable"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecutionTerminatedInitialization": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count",
+        "result_validation",
+        "semantic_owner"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "terminated"
+        },
+        "phase": {
+          "const": "module-initialization"
+        },
+        "evaluate_call_count": {
+          "const": 0
+        },
+        "automatic_retry_count": {
+          "const": 0
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationNotApplicable"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecutionTerminatedEvaluate": {
+      "type": "object",
+      "required": [
+        "executed",
+        "status",
+        "phase",
+        "evaluate_call_count",
+        "automatic_retry_count",
+        "result_validation",
+        "semantic_owner"
+      ],
+      "properties": {
+        "executed": {
+          "const": true
+        },
+        "status": {
+          "const": "terminated"
+        },
+        "phase": {
+          "const": "evaluate-call"
+        },
+        "evaluate_call_count": {
+          "const": 1
+        },
+        "automatic_retry_count": {
+          "const": 0
+        },
+        "result_validation": {
+          "$ref": "#/$defs/resultValidationNotApplicable"
+        },
+        "semantic_owner": {
+          "const": "verification-engine"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportExecution": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/reportExecutionValid"
+        },
+        {
+          "$ref": "#/$defs/reportExecutionInvalid"
+        },
+        {
+          "$ref": "#/$defs/reportExecutionOverLimit"
+        },
+        {
+          "$ref": "#/$defs/reportExecutionBlocked"
+        },
+        {
+          "$ref": "#/$defs/reportExecutionTerminatedInitialization"
+        },
+        {
+          "$ref": "#/$defs/reportExecutionTerminatedEvaluate"
+        }
+      ]
+    },
+    "reportActionRowBase": {
+      "type": "object",
+      "required": [
+        "name",
+        "action",
+        "label",
+        "claim",
+        "definition_origin",
+        "evaluations",
+        "evidence",
+        "test",
+        "execution",
+        "conclusion",
+        "facts",
+        "reason"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "action": {
+          "$ref": "#/$defs/actionSelector"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "claim": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "definition_origin": {
+          "$ref": "#/$defs/reportDefinitionOrigin"
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {},
+          "minItems": 0,
+          "maxItems": 0
+        },
+        "evidence": {
+          "$ref": "#/$defs/reportEvidence"
+        },
+        "test": {
+          "$ref": "#/$defs/reportTest"
+        },
+        "execution": {
+          "$ref": "#/$defs/reportExecution"
+        },
+        "conclusion": {
+          "enum": [
+            "true",
+            "false",
+            "inconclusive"
+          ]
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportActionRowI4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/reportActionRowBase"
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "execution": {
+                  "$ref": "#/$defs/reportExecutionValid"
+                }
+              }
+            },
+            {
+              "properties": {
+                "execution": {
+                  "$ref": "#/$defs/reportExecutionInvalid"
+                },
+                "conclusion": {
+                  "const": "inconclusive"
+                },
+                "facts": {
+                  "maxItems": 0
+                }
+              }
+            },
+            {
+              "properties": {
+                "execution": {
+                  "$ref": "#/$defs/reportExecutionOverLimit"
+                },
+                "conclusion": {
+                  "const": "inconclusive"
+                },
+                "facts": {
+                  "maxItems": 0
+                }
+              }
+            },
+            {
+              "properties": {
+                "execution": {
+                  "$ref": "#/$defs/reportExecutionBlocked"
+                },
+                "conclusion": {
+                  "const": "inconclusive"
+                },
+                "facts": {
+                  "maxItems": 0
+                }
+              }
+            },
+            {
+              "properties": {
+                "execution": {
+                  "$ref": "#/$defs/reportExecutionTerminatedInitialization"
+                },
+                "conclusion": {
+                  "const": "inconclusive"
+                },
+                "facts": {
+                  "maxItems": 0
+                }
+              }
+            },
+            {
+              "properties": {
+                "execution": {
+                  "$ref": "#/$defs/reportExecutionTerminatedEvaluate"
+                },
+                "conclusion": {
+                  "const": "inconclusive"
+                },
+                "facts": {
+                  "maxItems": 0
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "reportActivityRowI4": {
+      "type": "object",
+      "required": [
+        "name",
+        "label",
+        "action"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "label": {
+          "$ref": "#/$defs/prose"
+        },
+        "description": {
+          "$ref": "#/$defs/prose"
+        },
+        "example": {
+          "$ref": "#/$defs/prose"
+        },
+        "action": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reportActionRowI4"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportSummaryI4": {
+      "type": "object",
+      "required": [
+        "activity_count",
+        "action_count",
+        "actions_completed",
+        "actions_terminated",
+        "actions_blocked",
+        "conclusion_true",
+        "conclusion_false",
+        "conclusion_inconclusive",
+        "diagnostic_count"
+      ],
+      "properties": {
+        "activity_count": {
+          "const": 1
+        },
+        "action_count": {
+          "const": 1
+        },
+        "actions_completed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "actions_terminated": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "actions_blocked": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "conclusion_true": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "conclusion_false": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "conclusion_inconclusive": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "diagnostic_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportProcessingDiagnostic": {
+      "type": "object",
+      "required": [
+        "code",
+        "phase",
+        "reason_template"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "reason_template": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "action": {
+          "$ref": "#/$defs/actionSelector"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportProcessingDetailI4": {
+      "type": "object",
+      "required": [
+        "diagnostics"
+      ],
+      "properties": {
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reportProcessingDiagnostic"
+          },
+          "minItems": 0,
+          "maxItems": 1
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "verificationReportI4": {
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "kind",
+        "metadata",
+        "invocation",
+        "subject",
+        "procedure",
+        "activity",
+        "summary",
+        "processing_detail"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": "2.0.0"
+        },
+        "kind": {
+          "const": "VerificationReport"
+        },
+        "metadata": {
+          "$ref": "#/$defs/reportMetadata"
+        },
+        "invocation": {
+          "$ref": "#/$defs/reportInvocation"
+        },
+        "subject": {
+          "$ref": "#/$defs/subjectInputI4"
+        },
+        "procedure": {
+          "$ref": "#/$defs/reportProcedureOrigin"
+        },
+        "activity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reportActivityRowI4"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "summary": {
+          "$ref": "#/$defs/reportSummaryI4"
+        },
+        "processing_detail": {
+          "$ref": "#/$defs/reportProcessingDetailI4"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "reportIdentityRelationship": {
+      "type": "object",
+      "required": [
+        "kind",
+        "metadata"
+      ],
+      "properties": {
+        "kind": {
+          "const": "VerificationReport"
+        },
+        "metadata": {
+          "type": "object",
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/ulid"
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "relationshipSubject": {
+      "type": "object",
+      "required": [
+        "arn"
+      ],
+      "properties": {
+        "arn": {
+          "$ref": "#/$defs/riskSourceArn"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "relationshipOccurrenceI4": {
+      "type": "object",
+      "required": [
+        "action",
+        "canonical_path",
+        "content_digest",
+        "byte_count"
+      ],
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/actionSelector"
+        },
+        "canonical_path": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "content_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "relationshipPayloadI4": {
+      "type": "object",
+      "required": [
+        "content_digest",
+        "byte_count"
+      ],
+      "properties": {
+        "content_digest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 268435456
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "evidenceSetRelationshipI4": {
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "kind",
+        "report",
+        "subject",
+        "occurrence",
+        "payload"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": "2.0.0"
+        },
+        "kind": {
+          "const": "VerificationEvidenceSetRelationship"
+        },
+        "report": {
+          "$ref": "#/$defs/reportIdentityRelationship"
+        },
+        "subject": {
+          "$ref": "#/$defs/relationshipSubject"
+        },
+        "occurrence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationshipOccurrenceI4"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "payload": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relationshipPayloadI4"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "conformanceVectorRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "baseline",
+        "schema",
+        "serialization",
+        "file",
+        "expected",
+        "first_failing_layer",
+        "condition",
+        "diagnostic_family"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "schema": {
+          "enum": [
+            "verification-procedure-v2",
+            "verification-procedure-oci-development-mvp-i4",
+            "verification-action-v2",
+            "verification-action-oci-development-mvp-i4",
+            "risk-source-subject-input-i4",
+            "nape-evaluator-action-request-v2",
+            "nape-evaluator-action-response-v2",
+            "verification-report-oci-development-mvp-i4",
+            "verification-evidence-set-relationship-i4"
+          ]
+        },
+        "serialization": {
+          "enum": [
+            "json",
+            "yaml",
+            "binary"
+          ]
+        },
+        "file": {
+          "$ref": "#/$defs/relativePathCandidate"
+        },
+        "expected": {
+          "enum": [
+            "accepted",
+            "rejected"
+          ]
+        },
+        "first_failing_layer": {
+          "oneOf": [
+            {
+              "const": null
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            }
+          ]
+        },
+        "condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diagnostic_family": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-z][a-z0-9_]*$"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "conformanceVectorManifest": {
+      "type": "object",
+      "required": [
+        "profile",
+        "vectors"
+      ],
+      "properties": {
+        "profile": {
+          "const": "attestify-verification-engine-oci-development-mvp-i4-step-2"
+        },
+        "vectors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conformanceVectorRecord"
+          },
+          "minItems": 1
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "contractIndex": {
+      "type": "object",
+      "required": [
+        "verification-procedure-v2",
+        "verification-procedure-oci-development-mvp-i4",
+        "verification-action-v2",
+        "verification-action-oci-development-mvp-i4",
+        "risk-source-subject-input-i4",
+        "nape-evaluator-action-request-v2",
+        "nape-evaluator-action-response-v2",
+        "verification-report-oci-development-mvp-i4",
+        "verification-evidence-set-relationship-i4"
+      ],
+      "properties": {
+        "verification-procedure-v2": {
+          "const": "#/$defs/verificationProcedureV2"
+        },
+        "verification-procedure-oci-development-mvp-i4": {
+          "const": "#/$defs/verificationProcedureI4"
+        },
+        "verification-action-v2": {
+          "const": "#/$defs/verificationActionV2"
+        },
+        "verification-action-oci-development-mvp-i4": {
+          "const": "#/$defs/verificationActionI4"
+        },
+        "risk-source-subject-input-i4": {
+          "const": "#/$defs/subjectInputI4"
+        },
+        "nape-evaluator-action-request-v2": {
+          "const": "#/$defs/evaluatorRequestV2"
+        },
+        "nape-evaluator-action-response-v2": {
+          "const": "#/$defs/evaluatorResponseV2"
+        },
+        "verification-report-oci-development-mvp-i4": {
+          "const": "#/$defs/verificationReportI4"
+        },
+        "verification-evidence-set-relationship-i4": {
+          "const": "#/$defs/evidenceSetRelationshipI4"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

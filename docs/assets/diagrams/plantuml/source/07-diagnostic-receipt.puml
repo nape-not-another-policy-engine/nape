@@ -1,0 +1,17 @@
+@startuml
+!include ../includes/attestify-theme.puml
+!include ../includes/sequence-conventions.puml
+title Diagnostic Translation And Receipt Projection
+participant "Capability driver" as Driver
+participant "Use Case" as UC
+participant "Command adapter" as Adapter
+participant stdout
+Driver --> UC: Completed or Rejected(diagnostic)
+UC --> Adapter: preserve diagnostic fields
+alt package or Verify dispatched outcome
+  Adapter -> stdout: one Receipt V2 + LF
+else Start or Evidence
+  Adapter -> stdout: silent success
+end
+note over Driver,Adapter: Unexpected seam defects remain Kernel errors.
+@enduml

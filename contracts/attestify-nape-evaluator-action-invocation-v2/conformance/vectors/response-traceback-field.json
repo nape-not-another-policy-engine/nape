@@ -1,0 +1,27 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v2",
+  "disposition": "occurrence-result",
+  "execution": {
+    "executed": true,
+    "status": "terminated",
+    "phase": "evaluate-call",
+    "evaluate_call_count": 1,
+    "automatic_retry_count": 0
+  },
+  "result_validation": {
+    "contract": "not-applicable",
+    "limit": "not-applicable"
+  },
+  "semantic_owner": "verification-engine",
+  "result": {
+    "conclusion": "inconclusive",
+    "facts": [],
+    "reason": "The Action produced the contained evaluate outcome."
+  },
+  "diagnostic": {
+    "code": "test_exception",
+    "phase": "evaluate-call",
+    "reason_template": "test-exception-v1"
+  },
+  "traceback": "host path"
+}

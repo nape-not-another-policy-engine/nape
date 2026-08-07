@@ -1,0 +1,8 @@
+apiVersion: 2.0.0
+kind: VerificationProcedure
+spec:
+  name: release-readiness
+  label: Release Readiness
+  activity:
+    - name: infrastructure-release-readiness
+      package: pkg:attestify/acme.example/verification-activity/release-readiness/database-readiness@2.0.0

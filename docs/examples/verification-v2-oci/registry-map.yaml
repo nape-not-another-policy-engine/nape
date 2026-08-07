@@ -1,0 +1,6 @@
+profileVersion: attestify-oci-registry-map/1
+publishers:
+  acme.example:
+    scheme: http
+    registry: localhost:5001
+    repositoryPrefix: attestify

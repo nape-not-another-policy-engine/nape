@@ -1,0 +1,19 @@
+' Shared Attestify visual defaults.
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultTextAlignment left
+skinparam ArrowColor #1F3A5F
+skinparam PackageBorderColor #1F3A5F
+skinparam PackageBackgroundColor #F7FAFC
+skinparam ComponentBorderColor #1F3A5F
+skinparam ComponentBackgroundColor #F7FAFC
+skinparam ParticipantBorderColor #1F3A5F
+skinparam ParticipantBackgroundColor #E9F1F7
+skinparam ActorBorderColor #1F3A5F
+skinparam ActorBackgroundColor #E9F1F7
+skinparam NoteBackgroundColor #FFF8DB
+skinparam NoteBorderColor #B08900
+skinparam TitleFontColor #10243E
+skinparam TitleBorderColor #1F3A5F
+skinparam TitleBackgroundColor #E9F1F7

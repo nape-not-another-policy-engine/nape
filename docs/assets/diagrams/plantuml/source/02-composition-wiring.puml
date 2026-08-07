@@ -1,0 +1,17 @@
+@startuml
+!include ../includes/attestify-theme.puml
+title NAPE Composition And Driver Wiring
+component "Clap adapter" as Clap
+component "NapeApplication" as Composition
+component "Six Use Cases" as UC
+component "Fourteen NAPE Gateways" as GW
+component "attestify-oci drivers" as OCI
+component "Evaluator driver" as Eval
+component "Local state drivers" as Local
+Clap --> Composition
+Composition --> UC
+UC --> GW
+GW --> OCI
+GW --> Eval
+GW --> Local
+@enduml

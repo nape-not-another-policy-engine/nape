@@ -1,0 +1,526 @@
+{
+  "contract": "attestify.nape-evaluator.contract-source-set/v1",
+  "selector": [
+    "nape-evaluator-action-request-v2",
+    "nape-evaluator-action-response-v2"
+  ],
+  "payload_count": 47,
+  "vector_count": 46,
+  "request_vector_count": 18,
+  "response_vector_count": 28,
+  "accepted_vector_count": 11,
+  "rejected_vector_count": 35,
+  "payload": [
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vector-manifest.json",
+      "bytes": 76761,
+      "sha256": "sha256:30b89bf0b34efa2476be0db30e9eec077ab3440a3cc9c71a92643958af67b85f"
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-invalid-canonical-scalar.json",
+      "bytes": 933,
+      "sha256": "sha256:770a9c1e4ed6b407eb645976caf3c2b80a395a410406dfd24d46bb544c8423f6",
+      "vector": {
+        "id": "eval-request-v2-invalid-canonical-scalar",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-missing-required-field.json",
+      "bytes": 931,
+      "sha256": "sha256:f321f0ed6e6c6492a967ed088ea0fd279fdf48e6130b112300f882735147f95f",
+      "vector": {
+        "id": "eval-request-v2-missing-required-field",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-opaque-occurrence.json",
+      "bytes": 994,
+      "sha256": "sha256:8298f1d8794ed5a5af83aee944ecc46b604e8106007ad0441f3fd174363dfec3",
+      "vector": {
+        "id": "eval-request-v2-opaque-occurrence",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-out-of-vocabulary.json",
+      "bytes": 994,
+      "sha256": "sha256:7d0c01ce4d737873115b77624571851db2cbb29788de050acdc72d47efe227d2",
+      "vector": {
+        "id": "eval-request-v2-out-of-vocabulary",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-prohibited-identity-or-compatibility-field.json",
+      "bytes": 1072,
+      "sha256": "sha256:9d3748913e8b41bbd774289c78ef022cc8d15e4dcadf204b7b6a1b88536ddb47",
+      "vector": {
+        "id": "eval-request-v2-prohibited-identity-or-compatibility-field",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-unknown-field.json",
+      "bytes": 1028,
+      "sha256": "sha256:59fc7e32a56827c8524817b893b3ca7a67b392116de65587f864c7fb66c8adfe",
+      "vector": {
+        "id": "eval-request-v2-unknown-field",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-wrong-type.json",
+      "bytes": 697,
+      "sha256": "sha256:5d3c83b1d2ef58984cdc17543bbbb569690238658510b8c522d86aa0456acfdb",
+      "vector": {
+        "id": "eval-request-v2-wrong-type",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-blocked-activation.json",
+      "bytes": 691,
+      "sha256": "sha256:1463e95ac344fe67018b4e4449c3f9926695c7cb0faf2f5c9ea717cd9fec6d51",
+      "vector": {
+        "id": "eval-response-v2-blocked-activation",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-integrity-failed.json",
+      "bytes": 250,
+      "sha256": "sha256:ccd942a7a68cf909486e4baefea92e02a7a5644e7b6017d04dda5b95e798ec68",
+      "vector": {
+        "id": "eval-response-v2-integrity-failed",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-invalid-canonical-scalar.json",
+      "bytes": 536,
+      "sha256": "sha256:de070f08e29f9f2c1f9cb23c58dabd0b50470efd0ae20596479d99a11d20b0a3",
+      "vector": {
+        "id": "eval-response-v2-invalid-canonical-scalar",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-invalid-completed.json",
+      "bytes": 703,
+      "sha256": "sha256:01c4048968406e1ad9d0f5867090139e433fc3f93dac537597d0592607f23a21",
+      "vector": {
+        "id": "eval-response-v2-invalid-completed",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-missing-required-field.json",
+      "bytes": 498,
+      "sha256": "sha256:e734c02da0da9642b615283cac130552b675d345a9ff7883020ba999dfe1e424",
+      "vector": {
+        "id": "eval-response-v2-missing-required-field",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-out-of-vocabulary.json",
+      "bytes": 524,
+      "sha256": "sha256:c4966d7609c12eff9c745edd253fc64f150f900672fd9fef9d8c0ba0d1f80f6e",
+      "vector": {
+        "id": "eval-response-v2-out-of-vocabulary",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-over-limit.json",
+      "bytes": 694,
+      "sha256": "sha256:13ea92753d29186c79dc7352ef3d2321fef9408656005183d4f23b296a4083e9",
+      "vector": {
+        "id": "eval-response-v2-over-limit",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-prohibited-identity-or-compatibility-field.json",
+      "bytes": 581,
+      "sha256": "sha256:3aea1aff57dedc5f2a08444de902018839880e85f8e8218c33ab9bff7b78b0e2",
+      "vector": {
+        "id": "eval-response-v2-prohibited-identity-or-compatibility-field",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-request-rejected.json",
+      "bytes": 260,
+      "sha256": "sha256:46fa9a70d474bc0a1fd7d3f65defcea08c8fb14c8c0c0d88edc3c581fc7f2e9f",
+      "vector": {
+        "id": "eval-response-v2-request-rejected",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-terminated-evaluate.json",
+      "bytes": 668,
+      "sha256": "sha256:b2617dba13668e9ff89b890bbecea453d35bebc37ee9fbd2cc88f12f073dbb47",
+      "vector": {
+        "id": "eval-response-v2-terminated-evaluate",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-terminated-initialization.json",
+      "bytes": 680,
+      "sha256": "sha256:0fd341f7204ae231dee701ad2c27f76fa2d3381990335e9f052f24ee597510b0",
+      "vector": {
+        "id": "eval-response-v2-terminated-initialization",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-test-false.json",
+      "bytes": 731,
+      "sha256": "sha256:3abb8d55c90a0b0c76a2f1485d55e7da5ab64028b5bf46c6d08261bb434d3257",
+      "vector": {
+        "id": "eval-response-v2-test-false",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-test-inconclusive.json",
+      "bytes": 679,
+      "sha256": "sha256:fc391fa744c185c15743b9d73e4ede778984c5251dfb1c28bc7bbdecf9cb78c1",
+      "vector": {
+        "id": "eval-response-v2-test-inconclusive",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-test-true.json",
+      "bytes": 536,
+      "sha256": "sha256:38a9bbc710bb4554bf0098fde0eb23326caf7e5cbb1955b52c5ba177e33bd00c",
+      "vector": {
+        "id": "eval-response-v2-test-true",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "accepted",
+        "first_failing_layer": null
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-unknown-field.json",
+      "bytes": 570,
+      "sha256": "sha256:04959c4b7522532796665863e8259c2a5864c3f2e0cdd7786cd769eafaf33660",
+      "vector": {
+        "id": "eval-response-v2-unknown-field",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-wrong-type.json",
+      "bytes": 518,
+      "sha256": "sha256:20614d6d532e1af187cf2baba18645f300026188a568aff95358766a82a44f4a",
+      "vector": {
+        "id": "eval-response-v2-wrong-type",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-descriptor-metadata-mismatch.json",
+      "bytes": 988,
+      "sha256": "sha256:547eeec409cff64f64abe268e95876d3c05ed1ecc21e32657e428a4092d49bf8",
+      "vector": {
+        "id": "request-descriptor-metadata-mismatch",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 4
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-evidence-byte-count-mismatch.json",
+      "bytes": 994,
+      "sha256": "sha256:0639bfe1424cde49feff6ca7221b94efbe65bb4bd82eabccaafe4265329df58b",
+      "vector": {
+        "id": "request-evidence-byte-count-mismatch",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 4
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-evidence-digest-mismatch.json",
+      "bytes": 994,
+      "sha256": "sha256:a98d823c5523e0666c39e1d9fd67c1ed86cf0bf94f380beb07540dbdc417489e",
+      "vector": {
+        "id": "request-evidence-digest-mismatch",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 4
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-evidence-path-escape.json",
+      "bytes": 930,
+      "sha256": "sha256:668a13dd8161234b23a5dbcc0b33c6c659124541364b8fdd17c5bf2978203c3b",
+      "vector": {
+        "id": "request-evidence-path-escape",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 4
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-invalid-resource.json",
+      "bytes": 996,
+      "sha256": "sha256:50b3750cca7d324fa9f8708d807e793159c822f8c89d0d38808a4382d451cd4b",
+      "vector": {
+        "id": "request-invalid-resource",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-legacy-batch-field.json",
+      "bytes": 1009,
+      "sha256": "sha256:acca94719e1549e51c03266ae024de43fac6728293860db17336dac2afe29703",
+      "vector": {
+        "id": "request-legacy-batch-field",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-over-ceiling-resource.json",
+      "bytes": 995,
+      "sha256": "sha256:13ebdf987285861dd0f51c6a0d31688ac6b0c467844a1e08b9629fe315814b35",
+      "vector": {
+        "id": "request-over-ceiling-resource",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-product-identity-leakage.json",
+      "bytes": 1104,
+      "sha256": "sha256:b1ca06082ef1c0c33bbc042a2efb46e35440276d34daa545d51620b4c5fc6868",
+      "vector": {
+        "id": "request-product-identity-leakage",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-test-digest-mismatch.json",
+      "bytes": 994,
+      "sha256": "sha256:bd7a69175e191ee2dd77a9e05fffe0092016c4e8795fe809986799500e5bf162",
+      "vector": {
+        "id": "request-test-digest-mismatch",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 4
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-unsupported-runner-profile.json",
+      "bytes": 980,
+      "sha256": "sha256:95c0907df7faf20138be701f75af8dc4c3ffef48311b6cfd2b0143dcef0560cd",
+      "vector": {
+        "id": "request-unsupported-runner-profile",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 4
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-wrong-contract-version.json",
+      "bytes": 994,
+      "sha256": "sha256:7d0c01ce4d737873115b77624571851db2cbb29788de050acdc72d47efe227d2",
+      "vector": {
+        "id": "request-wrong-contract-version",
+        "selector": "nape-evaluator-action-request-v2",
+        "expected": "rejected",
+        "first_failing_layer": 1
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-boundary-extra-occurrence-result.json",
+      "bytes": 360,
+      "sha256": "sha256:a0f122135d0ba42244f8d03f4e44d5471096057d5a5d496ffb8ccb134911e6ee",
+      "vector": {
+        "id": "response-boundary-extra-occurrence-result",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-boundary-without-diagnostic.json",
+      "bytes": 103,
+      "sha256": "sha256:f43d16d524e8a515b248b3c569f52a1c476a4197c9789a216b5a5c1a83dd2db0",
+      "vector": {
+        "id": "response-boundary-without-diagnostic",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-missing-occurrence-result.json",
+      "bytes": 404,
+      "sha256": "sha256:0027ac545d85a4957cc7ae772b1e013a7b973ce0e9bcb9413aced50ad6d98174",
+      "vector": {
+        "id": "response-missing-occurrence-result",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-blocked-activation.json",
+      "bytes": 690,
+      "sha256": "sha256:32fe7fd13780d8ee6ad9c907e5264ee9df61fba3cc0e761edff2e1e2b5931c19",
+      "vector": {
+        "id": "response-near-miss-blocked-activation",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-invalid-completed.json",
+      "bytes": 699,
+      "sha256": "sha256:e8f16fda679278fa047bf6b784cd02eb15a687285596ff2b4310b6ae4f6e1166",
+      "vector": {
+        "id": "response-near-miss-invalid-completed",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-over-limit.json",
+      "bytes": 690,
+      "sha256": "sha256:625dc2a8b395a5b0342a82c05941d26febab363e55bbb0b6571a17bcb675384a",
+      "vector": {
+        "id": "response-near-miss-over-limit",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-terminated-evaluate.json",
+      "bytes": 668,
+      "sha256": "sha256:9c4611b51c5f35deb2cae180d67080480d8172f2302596b10c16296ee70ff541",
+      "vector": {
+        "id": "response-near-miss-terminated-evaluate",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-terminated-initialization.json",
+      "bytes": 680,
+      "sha256": "sha256:58672fbd09994de328345b7f4b3be2f92e1f337efab98a711e91cef926923b52",
+      "vector": {
+        "id": "response-near-miss-terminated-initialization",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-valid-completed.json",
+      "bytes": 537,
+      "sha256": "sha256:cb9749a65604fdab9c912f9a981c9ea30f806a385ad90970d53d0d28c107d6a0",
+      "vector": {
+        "id": "response-near-miss-valid-completed",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-raw-output-field.json",
+      "bytes": 738,
+      "sha256": "sha256:9d4d140fafae8504cb9a066e0cc71353a82effec9b3c4055dd5d88b6b84d63df",
+      "vector": {
+        "id": "response-raw-output-field",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-traceback-field.json",
+      "bytes": 696,
+      "sha256": "sha256:12ae2539cc3760547d2788d325e069f6885736ed5e9335c35a87ef1998d62b4d",
+      "vector": {
+        "id": "response-traceback-field",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    },
+    {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-wrong-semantic-owner-result.json",
+      "bytes": 541,
+      "sha256": "sha256:01b2c3f0e272f8fe098e930863c461cabb0cadbc65e66db899760dc33383c5b0",
+      "vector": {
+        "id": "response-wrong-semantic-owner-result",
+        "selector": "nape-evaluator-action-response-v2",
+        "expected": "rejected",
+        "first_failing_layer": 5
+      }
+    }
+  ]
+}

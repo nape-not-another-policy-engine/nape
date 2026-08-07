@@ -1,0 +1,90 @@
+{
+  "contract": "attestify.nape.verification-engine-contract-projection/v2",
+  "role": "nape-verification-engine-consumer",
+  "files": [
+    {
+      "path": "command-receipt/v2/corpus-manifest.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/command-receipt-v2/conformance/corpus-manifest.json",
+      "bytes": 33656,
+      "sha256": "sha256:15cf391c05a335bceeb4b745ff78ba2a26f8c0428d6a3303b183b89b2605e315"
+    },
+    {
+      "path": "command-receipt/v2/i6-historical-to-current-identity-bridge.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/command-receipt-v2/i6-historical-to-current-identity-bridge.json",
+      "bytes": 3037,
+      "sha256": "sha256:f072e185f86e25bb483b70793be4ead888e1a66e12071dada15a990a28b9a4d5"
+    },
+    {
+      "path": "command-receipt/v2/nape-command-receipt-contract-index.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/command-receipt-v2/nape-command-receipt-contract-index.json",
+      "bytes": 74,
+      "sha256": "sha256:c2cc81c520a044d4eba6d7b67bcb2c9264bfeed71d86570d1ee67abf569bfb41"
+    },
+    {
+      "path": "command-receipt/v2/nape-command-receipt.schema.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/command-receipt-v2/nape-command-receipt.schema.json",
+      "bytes": 21292,
+      "sha256": "sha256:d5d6510b66f498ecbe52f73abfc891db4e672d2a8f5465faeed4baab8539ec21"
+    },
+    {
+      "path": "error-registry/v1/error-registry-contract-index.json",
+      "source": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/error-registry-contract-index.json",
+      "bytes": 95,
+      "sha256": "sha256:48228122dc42858614e8e197a77c5cb2bad981b88780472524fe16c48abbd6cc"
+    },
+    {
+      "path": "error-registry/v1/error-registry.json",
+      "source": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/error-registry.json",
+      "bytes": 94684,
+      "sha256": "sha256:3e7759e9ef06077279592ed2e520319d5c863259da1458a9ba3dc82f0628bf9f"
+    },
+    {
+      "path": "error-registry/v1/error-registry.schema.json",
+      "source": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/error-registry.schema.json",
+      "bytes": 3489,
+      "sha256": "sha256:040d085343ee8afdf00fb054a398c995e47863320ebdbaf5785c86726cd762f8"
+    },
+    {
+      "path": "error-registry/v1/i6-historical-to-current-identity-bridge.json",
+      "source": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/conformance/i6-historical-to-current-identity-bridge.json",
+      "bytes": 1487,
+      "sha256": "sha256:edd6e0fc0453fdebfb98512b88223468247e0ad4ee28a6ad24d560d82206f8af"
+    },
+    {
+      "path": "runner/attestify-python-test-development-v2.md",
+      "source": "05-specs/products/verification-engine/10-attestify-python-test-development-v2-runner-profile.md",
+      "bytes": 4975,
+      "sha256": "sha256:6d9eec4fafc156446c46da571c56f50945735e39bebbad9ccb448f1dfa312771"
+    },
+    {
+      "path": "verification-engine/i0-i6/current-report-selector-historical-to-current-identity-bridge.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/conformance/current-report-selector-historical-to-current-identity-bridge.json",
+      "bytes": 12034,
+      "sha256": "sha256:ee23baec38419e6168cf9d32603731d37d3fc1f10800c7ff6c4806c4a74ec7d1"
+    },
+    {
+      "path": "verification-engine/i0-i6/evidence-schema-profile-vectors.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/conformance/evidence-schema-profile-vectors.json",
+      "bytes": 2453,
+      "sha256": "sha256:eba120766233f781877be7570c605eb7d669bbe81a6019f4e5bcec7ae9533989"
+    },
+    {
+      "path": "verification-engine/i0-i6/vector-manifest.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/conformance/vector-manifest.json",
+      "bytes": 7337,
+      "sha256": "sha256:ee5a68bcf7de71d4d1c017914d406dc27cb2ca755d9a321f398f0cd19f4d8497"
+    },
+    {
+      "path": "verification-engine/i0-i6/verification-engine-contract-index.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/verification-engine-contract-index.json",
+      "bytes": 2003,
+      "sha256": "sha256:af17f684d4ee6041311e60d20601c0bd846dcb56e21b72453c1c20cc016df672"
+    },
+    {
+      "path": "verification-engine/i0-i6/verification-engine-contracts.schema.json",
+      "source": "05-specs/products/verification-engine/schemas/i0-i6/verification-engine-contracts.schema.json",
+      "bytes": 146482,
+      "sha256": "sha256:c8e4a407993a6cb82ff971778fbc15d38a508927ecb9a59b32a1c5fe3332368d"
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "contract": "attestify.nape-evaluator.repository-contract-projection/v1",
+  "projection_role": "nape-orchestrator-consumer",
+  "generated_read_only": true,
+  "source_authority": "attestify-product-specification",
+  "source_contract": "attestify.nape-evaluator.action-invocation/v2",
+  "runtime_payload_count": 5,
+  "conformance_payload_count": 48,
+  "generated_control_count": 2,
+  "source_payload_count": 55,
+  "runtime_source_set_sha256": "sha256:40079c4dda0f2c5767841a32d60a475e4d2153b4fd3ef792988e9595df2c18ac",
+  "conformance_source_set_sha256": "sha256:376bb09ee0029fde3b1aeb4018df1ae0a6ea658a59b216a175e5b76a2e44a617",
+  "source_set_sha256": "sha256:6ac80bec8e158d38f321e4501d6cb749b39e518c823efcc45c86c2e4b7d2b20d",
+  "historical_bridge": {
+    "historical_step6_source_set": {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/step-6/evaluator-contract-source-set.json",
+      "bytes": 21437,
+      "sha256": "sha256:ee97c43fbcc3cb210d884a3b37493b80d767ba19433cc9ea40b2a40fe271f8bd"
+    },
+    "current_step7_source_set": {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/step-7/artifact-step-2/current-evaluator-contract-source-set.json",
+      "bytes": 21438,
+      "sha256": "sha256:5bc4d0cb32d367655b6c047525eaffbb29cab41cff5d07f714a81d6e4f2edab9"
+    },
+    "source_set_transition": {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/step-7/artifact-step-2/historical-to-current-source-set-bridge.json",
+      "bytes": 23807,
+      "sha256": "sha256:49d069d995e63f009f09460ad09142e0771a827bc51180b107dc75e6c20ce3ba",
+      "changed_payload_count": 17
+    },
+    "artifact_step_1_transition": {
+      "path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/step-7/artifact-step-1/historical-to-current-identity-bridge.json",
+      "bytes": 31717,
+      "sha256": "sha256:11236062d766059f97c3d223c79b3dca1505037d5a189df6e3863b4a64242cd2"
+    }
+  },
+  "runtime_payload": [
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/verification-engine-contract-index.json",
+      "projection_path": "runtime/i0-i4/verification-engine-contract-index.json",
+      "bytes": 657,
+      "sha256": "sha256:c7431d1ac625a07356447bab214854749e18c8751234549346268327e94992f9"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/verification-engine-contracts.schema.json",
+      "projection_path": "runtime/i0-i4/verification-engine-contracts.schema.json",
+      "bytes": 66434,
+      "sha256": "sha256:7ca7013d79b362d8f886420f33a649fb5dbda8d79826d4dbaf7485f6323e456b"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/error-registry-contract-index.json",
+      "projection_path": "runtime/machine-readable-error-registry-v1/error-registry-contract-index.json",
+      "bytes": 95,
+      "sha256": "sha256:48228122dc42858614e8e197a77c5cb2bad981b88780472524fe16c48abbd6cc"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/error-registry.json",
+      "projection_path": "runtime/machine-readable-error-registry-v1/error-registry.json",
+      "bytes": 84694,
+      "sha256": "sha256:131630e01f80056789830430d3287c35d24aa99af6bb9e10a7af36a4d10f7cd0"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/machine-readable-error-registry-v1/error-registry.schema.json",
+      "projection_path": "runtime/machine-readable-error-registry-v1/error-registry.schema.json",
+      "bytes": 3489,
+      "sha256": "sha256:040d085343ee8afdf00fb054a398c995e47863320ebdbaf5785c86726cd762f8"
+    }
+  ],
+  "conformance_payload": [
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/step-7/artifact-step-2/current-evaluator-contract-source-set.json",
+      "projection_path": "conformance/current-evaluator-contract-source-set.json",
+      "bytes": 21438,
+      "sha256": "sha256:5bc4d0cb32d367655b6c047525eaffbb29cab41cff5d07f714a81d6e4f2edab9"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vector-manifest.json",
+      "projection_path": "conformance/vector-manifest.json",
+      "bytes": 76761,
+      "sha256": "sha256:30b89bf0b34efa2476be0db30e9eec077ab3440a3cc9c71a92643958af67b85f"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-invalid-canonical-scalar.json",
+      "projection_path": "conformance/vectors/eval-request-v2-invalid-canonical-scalar.json",
+      "bytes": 933,
+      "sha256": "sha256:770a9c1e4ed6b407eb645976caf3c2b80a395a410406dfd24d46bb544c8423f6"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-missing-required-field.json",
+      "projection_path": "conformance/vectors/eval-request-v2-missing-required-field.json",
+      "bytes": 931,
+      "sha256": "sha256:f321f0ed6e6c6492a967ed088ea0fd279fdf48e6130b112300f882735147f95f"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-opaque-occurrence.json",
+      "projection_path": "conformance/vectors/eval-request-v2-opaque-occurrence.json",
+      "bytes": 994,
+      "sha256": "sha256:8298f1d8794ed5a5af83aee944ecc46b604e8106007ad0441f3fd174363dfec3"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-out-of-vocabulary.json",
+      "projection_path": "conformance/vectors/eval-request-v2-out-of-vocabulary.json",
+      "bytes": 994,
+      "sha256": "sha256:7d0c01ce4d737873115b77624571851db2cbb29788de050acdc72d47efe227d2"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-prohibited-identity-or-compatibility-field.json",
+      "projection_path": "conformance/vectors/eval-request-v2-prohibited-identity-or-compatibility-field.json",
+      "bytes": 1072,
+      "sha256": "sha256:9d3748913e8b41bbd774289c78ef022cc8d15e4dcadf204b7b6a1b88536ddb47"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-unknown-field.json",
+      "projection_path": "conformance/vectors/eval-request-v2-unknown-field.json",
+      "bytes": 1028,
+      "sha256": "sha256:59fc7e32a56827c8524817b893b3ca7a67b392116de65587f864c7fb66c8adfe"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-request-v2-wrong-type.json",
+      "projection_path": "conformance/vectors/eval-request-v2-wrong-type.json",
+      "bytes": 697,
+      "sha256": "sha256:5d3c83b1d2ef58984cdc17543bbbb569690238658510b8c522d86aa0456acfdb"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-blocked-activation.json",
+      "projection_path": "conformance/vectors/eval-response-v2-blocked-activation.json",
+      "bytes": 691,
+      "sha256": "sha256:1463e95ac344fe67018b4e4449c3f9926695c7cb0faf2f5c9ea717cd9fec6d51"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-integrity-failed.json",
+      "projection_path": "conformance/vectors/eval-response-v2-integrity-failed.json",
+      "bytes": 250,
+      "sha256": "sha256:ccd942a7a68cf909486e4baefea92e02a7a5644e7b6017d04dda5b95e798ec68"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-invalid-canonical-scalar.json",
+      "projection_path": "conformance/vectors/eval-response-v2-invalid-canonical-scalar.json",
+      "bytes": 536,
+      "sha256": "sha256:de070f08e29f9f2c1f9cb23c58dabd0b50470efd0ae20596479d99a11d20b0a3"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-invalid-completed.json",
+      "projection_path": "conformance/vectors/eval-response-v2-invalid-completed.json",
+      "bytes": 703,
+      "sha256": "sha256:01c4048968406e1ad9d0f5867090139e433fc3f93dac537597d0592607f23a21"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-missing-required-field.json",
+      "projection_path": "conformance/vectors/eval-response-v2-missing-required-field.json",
+      "bytes": 498,
+      "sha256": "sha256:e734c02da0da9642b615283cac130552b675d345a9ff7883020ba999dfe1e424"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-out-of-vocabulary.json",
+      "projection_path": "conformance/vectors/eval-response-v2-out-of-vocabulary.json",
+      "bytes": 524,
+      "sha256": "sha256:c4966d7609c12eff9c745edd253fc64f150f900672fd9fef9d8c0ba0d1f80f6e"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-over-limit.json",
+      "projection_path": "conformance/vectors/eval-response-v2-over-limit.json",
+      "bytes": 694,
+      "sha256": "sha256:13ea92753d29186c79dc7352ef3d2321fef9408656005183d4f23b296a4083e9"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-prohibited-identity-or-compatibility-field.json",
+      "projection_path": "conformance/vectors/eval-response-v2-prohibited-identity-or-compatibility-field.json",
+      "bytes": 581,
+      "sha256": "sha256:3aea1aff57dedc5f2a08444de902018839880e85f8e8218c33ab9bff7b78b0e2"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-request-rejected.json",
+      "projection_path": "conformance/vectors/eval-response-v2-request-rejected.json",
+      "bytes": 260,
+      "sha256": "sha256:46fa9a70d474bc0a1fd7d3f65defcea08c8fb14c8c0c0d88edc3c581fc7f2e9f"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-terminated-evaluate.json",
+      "projection_path": "conformance/vectors/eval-response-v2-terminated-evaluate.json",
+      "bytes": 668,
+      "sha256": "sha256:b2617dba13668e9ff89b890bbecea453d35bebc37ee9fbd2cc88f12f073dbb47"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-terminated-initialization.json",
+      "projection_path": "conformance/vectors/eval-response-v2-terminated-initialization.json",
+      "bytes": 680,
+      "sha256": "sha256:0fd341f7204ae231dee701ad2c27f76fa2d3381990335e9f052f24ee597510b0"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-test-false.json",
+      "projection_path": "conformance/vectors/eval-response-v2-test-false.json",
+      "bytes": 731,
+      "sha256": "sha256:3abb8d55c90a0b0c76a2f1485d55e7da5ab64028b5bf46c6d08261bb434d3257"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-test-inconclusive.json",
+      "projection_path": "conformance/vectors/eval-response-v2-test-inconclusive.json",
+      "bytes": 679,
+      "sha256": "sha256:fc391fa744c185c15743b9d73e4ede778984c5251dfb1c28bc7bbdecf9cb78c1"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-test-true.json",
+      "projection_path": "conformance/vectors/eval-response-v2-test-true.json",
+      "bytes": 536,
+      "sha256": "sha256:38a9bbc710bb4554bf0098fde0eb23326caf7e5cbb1955b52c5ba177e33bd00c"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-unknown-field.json",
+      "projection_path": "conformance/vectors/eval-response-v2-unknown-field.json",
+      "bytes": 570,
+      "sha256": "sha256:04959c4b7522532796665863e8259c2a5864c3f2e0cdd7786cd769eafaf33660"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/eval-response-v2-wrong-type.json",
+      "projection_path": "conformance/vectors/eval-response-v2-wrong-type.json",
+      "bytes": 518,
+      "sha256": "sha256:20614d6d532e1af187cf2baba18645f300026188a568aff95358766a82a44f4a"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-descriptor-metadata-mismatch.json",
+      "projection_path": "conformance/vectors/request-descriptor-metadata-mismatch.json",
+      "bytes": 988,
+      "sha256": "sha256:547eeec409cff64f64abe268e95876d3c05ed1ecc21e32657e428a4092d49bf8"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-evidence-byte-count-mismatch.json",
+      "projection_path": "conformance/vectors/request-evidence-byte-count-mismatch.json",
+      "bytes": 994,
+      "sha256": "sha256:0639bfe1424cde49feff6ca7221b94efbe65bb4bd82eabccaafe4265329df58b"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-evidence-digest-mismatch.json",
+      "projection_path": "conformance/vectors/request-evidence-digest-mismatch.json",
+      "bytes": 994,
+      "sha256": "sha256:a98d823c5523e0666c39e1d9fd67c1ed86cf0bf94f380beb07540dbdc417489e"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-evidence-path-escape.json",
+      "projection_path": "conformance/vectors/request-evidence-path-escape.json",
+      "bytes": 930,
+      "sha256": "sha256:668a13dd8161234b23a5dbcc0b33c6c659124541364b8fdd17c5bf2978203c3b"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-invalid-resource.json",
+      "projection_path": "conformance/vectors/request-invalid-resource.json",
+      "bytes": 996,
+      "sha256": "sha256:50b3750cca7d324fa9f8708d807e793159c822f8c89d0d38808a4382d451cd4b"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-legacy-batch-field.json",
+      "projection_path": "conformance/vectors/request-legacy-batch-field.json",
+      "bytes": 1009,
+      "sha256": "sha256:acca94719e1549e51c03266ae024de43fac6728293860db17336dac2afe29703"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-over-ceiling-resource.json",
+      "projection_path": "conformance/vectors/request-over-ceiling-resource.json",
+      "bytes": 995,
+      "sha256": "sha256:13ebdf987285861dd0f51c6a0d31688ac6b0c467844a1e08b9629fe315814b35"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-product-identity-leakage.json",
+      "projection_path": "conformance/vectors/request-product-identity-leakage.json",
+      "bytes": 1104,
+      "sha256": "sha256:b1ca06082ef1c0c33bbc042a2efb46e35440276d34daa545d51620b4c5fc6868"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-test-digest-mismatch.json",
+      "projection_path": "conformance/vectors/request-test-digest-mismatch.json",
+      "bytes": 994,
+      "sha256": "sha256:bd7a69175e191ee2dd77a9e05fffe0092016c4e8795fe809986799500e5bf162"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-unsupported-runner-profile.json",
+      "projection_path": "conformance/vectors/request-unsupported-runner-profile.json",
+      "bytes": 980,
+      "sha256": "sha256:95c0907df7faf20138be701f75af8dc4c3ffef48311b6cfd2b0143dcef0560cd"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/request-wrong-contract-version.json",
+      "projection_path": "conformance/vectors/request-wrong-contract-version.json",
+      "bytes": 994,
+      "sha256": "sha256:7d0c01ce4d737873115b77624571851db2cbb29788de050acdc72d47efe227d2"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-boundary-extra-occurrence-result.json",
+      "projection_path": "conformance/vectors/response-boundary-extra-occurrence-result.json",
+      "bytes": 360,
+      "sha256": "sha256:a0f122135d0ba42244f8d03f4e44d5471096057d5a5d496ffb8ccb134911e6ee"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-boundary-without-diagnostic.json",
+      "projection_path": "conformance/vectors/response-boundary-without-diagnostic.json",
+      "bytes": 103,
+      "sha256": "sha256:f43d16d524e8a515b248b3c569f52a1c476a4197c9789a216b5a5c1a83dd2db0"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-missing-occurrence-result.json",
+      "projection_path": "conformance/vectors/response-missing-occurrence-result.json",
+      "bytes": 404,
+      "sha256": "sha256:0027ac545d85a4957cc7ae772b1e013a7b973ce0e9bcb9413aced50ad6d98174"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-blocked-activation.json",
+      "projection_path": "conformance/vectors/response-near-miss-blocked-activation.json",
+      "bytes": 690,
+      "sha256": "sha256:32fe7fd13780d8ee6ad9c907e5264ee9df61fba3cc0e761edff2e1e2b5931c19"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-invalid-completed.json",
+      "projection_path": "conformance/vectors/response-near-miss-invalid-completed.json",
+      "bytes": 699,
+      "sha256": "sha256:e8f16fda679278fa047bf6b784cd02eb15a687285596ff2b4310b6ae4f6e1166"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-over-limit.json",
+      "projection_path": "conformance/vectors/response-near-miss-over-limit.json",
+      "bytes": 690,
+      "sha256": "sha256:625dc2a8b395a5b0342a82c05941d26febab363e55bbb0b6571a17bcb675384a"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-terminated-evaluate.json",
+      "projection_path": "conformance/vectors/response-near-miss-terminated-evaluate.json",
+      "bytes": 668,
+      "sha256": "sha256:9c4611b51c5f35deb2cae180d67080480d8172f2302596b10c16296ee70ff541"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-terminated-initialization.json",
+      "projection_path": "conformance/vectors/response-near-miss-terminated-initialization.json",
+      "bytes": 680,
+      "sha256": "sha256:58672fbd09994de328345b7f4b3be2f92e1f337efab98a711e91cef926923b52"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-near-miss-valid-completed.json",
+      "projection_path": "conformance/vectors/response-near-miss-valid-completed.json",
+      "bytes": 537,
+      "sha256": "sha256:cb9749a65604fdab9c912f9a981c9ea30f806a385ad90970d53d0d28c107d6a0"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-raw-output-field.json",
+      "projection_path": "conformance/vectors/response-raw-output-field.json",
+      "bytes": 738,
+      "sha256": "sha256:9d4d140fafae8504cb9a066e0cc71353a82effec9b3c4055dd5d88b6b84d63df"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-traceback-field.json",
+      "projection_path": "conformance/vectors/response-traceback-field.json",
+      "bytes": 696,
+      "sha256": "sha256:12ae2539cc3760547d2788d325e069f6885736ed5e9335c35a87ef1998d62b4d"
+    },
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/vectors/response-wrong-semantic-owner-result.json",
+      "projection_path": "conformance/vectors/response-wrong-semantic-owner-result.json",
+      "bytes": 541,
+      "sha256": "sha256:01b2c3f0e272f8fe098e930863c461cabb0cadbc65e66db899760dc33383c5b0"
+    }
+  ],
+  "generated_control": [
+    {
+      "source_path": "05-specs/products/verification-engine/schemas/i0-i4/conformance/step-7/artifact-step-2/GENERATED-READ-ONLY.md",
+      "projection_path": "GENERATED-READ-ONLY.md",
+      "bytes": 738,
+      "sha256": "sha256:ca3172bfac286af27bb8461072dad2df83004ee80bab23b7531030cbcee28418"
+    },
+    {
+      "source_path": "scripts/attestify_step7_contract_projection_verifier.py",
+      "projection_path": "tools/verify_projection.py",
+      "bytes": 15723,
+      "sha256": "sha256:2c16c4f3ea6ca9474011cbba185de1e40ec113fb61b8e15d50d5794cf6b7b174"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "profile": "attestify-restricted-evidence-schema-2020-12-v1",
+  "vectors": [
+    {
+      "id": "simple-object",
+      "expected": "accepted",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "database"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "same-document-ref",
+      "expected": "accepted",
+      "schema": {
+        "$defs": {
+          "endpoint": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "$ref": "#/$defs/endpoint"
+          }
+        },
+        "required": [
+          "endpoint"
+        ]
+      }
+    },
+    {
+      "id": "remote-ref",
+      "expected": "rejected",
+      "schema": {
+        "$ref": "https://example.invalid/schema.json"
+      }
+    },
+    {
+      "id": "additional-file-ref",
+      "expected": "rejected",
+      "schema": {
+        "$ref": "other.schema.json#/$defs/value"
+      }
+    },
+    {
+      "id": "dynamic-ref",
+      "expected": "rejected",
+      "schema": {
+        "$dynamicRef": "#node"
+      }
+    },
+    {
+      "id": "recursive-cycle",
+      "expected": "rejected",
+      "schema": {
+        "$defs": {
+          "node": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "$ref": "#/$defs/node"
+      }
+    },
+    {
+      "id": "pattern",
+      "expected": "rejected",
+      "schema": {
+        "type": "string",
+        "pattern": "^prod"
+      }
+    },
+    {
+      "id": "pattern-properties",
+      "expected": "rejected",
+      "schema": {
+        "type": "object",
+        "patternProperties": {
+          "^x": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "id": "default",
+      "expected": "rejected",
+      "schema": {
+        "type": "string",
+        "default": "prod"
+      }
+    },
+    {
+      "id": "format",
+      "expected": "rejected",
+      "schema": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    {
+      "id": "encoded-content",
+      "expected": "rejected",
+      "schema": {
+        "type": "string",
+        "contentEncoding": "base64"
+      }
+    },
+    {
+      "id": "unknown-keyword",
+      "expected": "rejected",
+      "schema": {
+        "type": "string",
+        "attestifyUnknown": true
+      }
+    }
+  ]
+}

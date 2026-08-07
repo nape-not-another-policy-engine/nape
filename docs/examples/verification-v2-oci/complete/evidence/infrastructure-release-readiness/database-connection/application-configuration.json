@@ -1,0 +1,5 @@
+{
+  "database": {
+    "endpoint": "postgresql://orders-db.prod.acme.example:5432/orders"
+  }
+}

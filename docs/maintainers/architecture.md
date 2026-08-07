@@ -1,256 +1,128 @@
-# Maintainer Architecture
+# NAPE CLI 2.0 Architecture
 
-This document maps the current NAPE CLI implementation to its domain use cases and gateway adapters.
-
-## Workspace Shape
-
-The Rust workspace has two members:
+## Ownership
 
 ```text
-apps/nape-cli
-domain
+NAPE CLI
+  owns command parsing, definition semantics, effective occurrence graphs,
+  evidence admission, Evaluator invocation, continuation, Report construction,
+  Evidence Set relationships, and atomic local result persistence
+
+attestify-oci-oss 0.1.0
+  is an exact external dependency that owns domain-neutral deterministic
+  package construction, PURL-to-registry mapping, OCI manifest/blob
+  operations, digest and size verification, safe materialization, package
+  envelope verification, custody, and Lock mechanics
+
+NAPE Evaluator
+  owns isolated execution of one prepared Test of Detail against one admitted
+  evidence argument and the supplied evaluations and metadata
 ```
 
-`apps/nape-cli` owns CLI parsing, command handlers, filesystem adapters, serializers, evaluator integration, and concrete use case wiring.
+The Evaluator never receives the Procedure, package PURL, OCI endpoint,
+manifest, Lock, package provenance, continuation policy, or Report identity.
+`attestify-oci` never admits evidence, invokes a Test, or constructs a Report.
 
-`domain` owns evidence collection use cases and use case boundaries.
-
-The shared value-object contracts come from `kernel_oss` tag `0.2.5`, locked to commit `5410baccae23356f1bb59902e7f7afc452577db2`.
-
-## Command Entry Point
-
-CLI execution starts in:
+## Workspace
 
 ```text
-apps/nape-cli/src/main.rs
+apps/nape-cli/             command surface and Verification orchestration
+apps/nape-cli/src/gateway_driver/definition_package_profile_attestify_oci.rs
+                           NAPE-owned Verification package profile
+domain/src/value/          transport-neutral bounded values
+domain/src/service/        deterministic Verification semantics
+domain/src/usecase/        six public orchestration seams
+contracts/                generated read-only Product projections
 ```
 
-Flow:
+The Domain's only production dependency beyond the Rust standard library is
+`kernel_oss`. Parsing, serialization, hashing, files, processes, environment,
+time, randomness, schemas, and OCI SDKs remain behind Application or Kernel
+Gateways.
 
-1. `main` calls `cli::run()`.
-2. Clap parses command arguments.
-3. `handle_command_results` dispatches the top-level `collect` command.
-4. `CollectCommandHandler` dispatches `start`, `evidence`, or `report`.
-
-## CLI Command Modules
-
-Command definitions:
+## Command flow
 
 ```text
-apps/nape-cli/src/io_adapter/clap/cli.rs
-apps/nape-cli/src/io_adapter/clap/cli_commands.rs
-apps/nape-cli/src/io_adapter/clap/cli_arguments.rs
+nape package build
+  -> NAPE definition admission
+  -> exact caller-supplied dependency build set
+  -> attestify-oci common verifier and canonical Lock construction
+  -> deterministic local package result
+
+nape package publish / resolve
+  -> endpoint or exact Registry Map admission
+  -> deterministic PURL mapping
+  -> anonymous localhost OCI operation
+  -> digest-selected common verification
+
+nape start
+  -> verified local or complete OCI Procedure closure
+  -> effective Activity/Action occurrence graph
+  -> subject and caller metadata admission
+  -> one atomically selected collecting run
+
+nape evidence (repeated one file at a time)
+  -> one stable evidence read
+  -> one definition-owned occurrence association
+  -> digest-addressed payload storage and atomic add/replace
+
+nape verify (argument-free)
+  -> reopen the exact frozen current run without network access
+  -> require and freeze all occurrence evidence
+  -> complete Test/module/schema/resource preflight
+  -> one internal Evaluator V2 or V3 call per occurrence
+  -> fixed contained-result continuation
+  -> Report and Evidence Set construction
+  -> one sibling same-filesystem atomic rename
 ```
 
-Command handlers:
+No Test executes until package resolution, semantic validation, and complete
+evidence readiness finish. Verify never resolves or pulls packages again.
+
+NAPE does not embed or vendor an OCI implementation. The CLI depends on exact
+signed release tag `attestify-oci-oss` `0.1.0`, locked to commit
+`013bb352366fcad80db682984705911ca2108258`. NAPE owns the concrete
+Verification Procedure, Activity, Action, PURL, member, and dependency rules
+that it supplies to the domain-neutral library.
+
+## Registry endpoint projection
+
+`--registry-endpoint http://localhost:<port>` is a command-local convenience
+projection. The library normalizes it into the same internal `RegistryMap`
+representation used by `--registry-profile`, with:
 
 ```text
-apps/nape-cli/src/io_adapter/clap/command_handlers/collect/collect_start.rs
-apps/nape-cli/src/io_adapter/clap/command_handlers/collect/collect_evidence.rs
-apps/nape-cli/src/io_adapter/clap/command_handlers/collect/collect_report.rs
+scheme: http
+registry: localhost:<port>
+repositoryPrefix: attestify
+publisher: the exact publisher parsed from each pkg:attestify PURL
 ```
 
-Handler responsibilities:
+It is not a serialized wildcard, package field, identity input, registry
+search, or fallback rule. Every package in one closure uses the one configured
+endpoint. The full map is required for different publisher locations.
 
-- Extract CLI arguments.
-- Build domain request objects.
-- Invoke configured use case functions.
-- Return `kernel_oss::error::Error` on failure.
+## Evaluator selection
 
-## Use Case Wiring
+Definitions needing only the minimal opaque path select internal
+`attestify.nape-evaluator.action-invocation/v2` and
+`attestify-python-test-development-v1`. Definitions using current functional
+capabilities select internal request V3 and development Runner V2. Both call:
 
-Concrete use case factories live in:
-
-```text
-apps/nape-cli/src/usecase_configuration/
+```python
+evaluate(evidence, evaluations, metadata)
 ```
 
-Current factories:
+These internal versions do not change the external Verification V2 definition
+or Report version.
 
-| Factory | Purpose |
-| --- | --- |
-| `start_collection::factory_std_fs_git2` | Starts a run using filesystem, Git, and state-file adapters. |
-| `collect_evidence::std_fs_factory` | Copies evidence into the active run workspace. |
-| `evidence_report::std_fs_factory` | Loads procedure/evidence, invokes evaluator, signs files, and writes report YAML. |
+## Current stop boundary
 
-## Domain Use Cases
+The current delivery is development-qualified. It excludes authentication,
+trust, package cache, Fact Finding, Risk Engine execution, outcome UI/storage,
+independent runtime libraries, enterprise Runner hardening, and OCI Report
+publication.
 
-Start collection:
+![System layers](../assets/diagrams/plantuml/rendered/01-system-layers.svg)
 
-```text
-domain/src/evidence_collection/usecases/start_collection/
-```
-
-Collect evidence:
-
-```text
-domain/src/evidence_collection/usecases/collect_evidence/
-```
-
-Evaluate evidence:
-
-```text
-domain/src/evidence_collection/usecases/evaluate_evidence/
-```
-
-The domain uses function pointer gateway boundaries. The CLI crate supplies concrete implementations.
-
-## Start Collection Flow
-
-Command:
-
-```bash
-nape collect start ...
-```
-
-Implementation flow:
-
-1. `StartCollectionCommandHandler` extracts args.
-2. It builds `StartProcedure` using `StartProcedureBuilder`.
-3. The builder validates values through `kernel_oss`.
-4. `factory_std_fs_git2` generates a directory list.
-5. `start_collection` creates directories.
-6. Procedure files are retrieved from Git or local filesystem.
-7. `assurance_procedure.yaml` is moved into the run home.
-8. `activity/` is moved into the run home.
-9. CLI app state is serialized to `$HOME/nape/.nape_cli_config`.
-
-Key adapters:
-
-```text
-apps/nape-cli/src/gateway_adapter/git2/process_retrieval_gateway.rs
-apps/nape-cli/src/gateway_adapter/std_fs/procedure_retrieval_gateway.rs
-apps/nape-cli/src/gateway_adapter/std_fs/directory_creation_gateway.rs
-apps/nape-cli/src/state_management/write_state_file.rs
-apps/nape-cli/src/state_management/yaml_serializer.rs
-```
-
-## Collect Evidence Flow
-
-Command:
-
-```bash
-nape collect evidence ...
-```
-
-Implementation flow:
-
-1. `CollectEvidenceCommandHandler` extracts args.
-2. `collect_action_evidence` validates the requested activity/control name as a `Name`.
-3. The source file is read.
-4. Active run state is used to locate the evidence root.
-5. The file is copied to `<evidence-root>/<activity-name>/`.
-
-The current domain request field is named `action_name`, but the CLI flag is `--control-activity` and the copy target is an activity directory. Treat this as user-facing activity terminology until the code names are cleaned up.
-
-Key adapters:
-
-```text
-apps/nape-cli/src/gateway_adapter/state_management/retrieve_directory_path.rs
-apps/nape-cli/src/gateway_adapter/std_fs/retrieve_file_data_gateway.rs
-apps/nape-cli/src/gateway_adapter/std_fs/copy_file_gateway.rs
-```
-
-## Report Flow
-
-Command:
-
-```bash
-nape collect report
-```
-
-Implementation flow:
-
-1. `EvaluateAndReportCommandHandler` reads active app state.
-2. It builds `EvaluateEvidence`.
-3. `evaluate_and_report` loads the retrieved assurance procedure.
-4. `EvaluationFiles::from` maps procedure actions to evidence/test paths.
-5. `nape_evidence_evaluator` invokes `nape-eval`.
-6. `AssuranceReportBuilder` builds report activities and signs files.
-7. `save_report_as_yaml` serializes and writes `assurance_report.yaml`.
-
-Key adapters:
-
-```text
-apps/nape-cli/src/gateway_adapter/nape_evaluator/evaluate_evidence_gateway.rs
-apps/nape-cli/src/gateway_adapter/sha2/signature_algorithm.rs
-apps/nape-cli/src/gateway_adapter/std_fs/retrieve_assurance_procedure.rs
-apps/nape-cli/src/gateway_adapter/serde/persist_report_gateway.rs
-apps/nape-cli/src/gateway_adapter/serde/specification_serializer/
-```
-
-## State Management
-
-Active run state is represented by:
-
-```text
-apps/nape-cli/src/state_management/cli_app_state.rs
-```
-
-State path:
-
-```text
-$HOME/nape/.nape_cli_config
-```
-
-The state file is YAML and is used by `collect evidence` and `collect report` to resolve the current run.
-
-Implication: the CLI currently tracks one active run per `HOME`.
-
-## Procedure Retrieval
-
-Procedure retrieval supports these schemes:
-
-- `file`
-- `git`
-- `https`
-
-The factory lives in:
-
-```text
-apps/nape-cli/src/usecase_configuration/procedure_retrieval_gateway_factory.rs
-```
-
-`file://` uses the local filesystem gateway.
-
-`git://` and `https://` use the `git2` gateway. The implementation shallow-clones the repository, extracts the requested procedure directory, writes the selected tree to disk, then removes the clone directory.
-
-## Evaluator Integration
-
-Report generation shells out to:
-
-```text
-nape-eval
-```
-
-Before evaluating files, the adapter runs:
-
-```bash
-nape-eval --check-install
-```
-
-For each action, it runs:
-
-```bash
-nape-eval --evidence <evidence-file> --test <test-file>
-```
-
-The evaluator output is expected to be JSON with:
-
-```json
-{
-  "outcome": "pass",
-  "reason": "Reason text"
-}
-```
-
-The outcome is converted into the kernel `Outcome` value.
-
-## Current Risks And Known Issues
-
-- `collect_start.rs` unwraps metadata occurrences even though `--meta` is presented as optional.
-- Successful CLI commands usually print no output, making file inspection the main confirmation path.
-- CLI help text currently mentions uploading results, but the current implementation writes reports locally.
-- `ssh://` procedure links are rejected by the kernel repository link contract.
-- The active state file means concurrent runs require isolated `HOME` values or careful sequencing.
-- Release 4 drift is described in the Rover README, but the inspected current evidence/tests do not prove a distinct drift outcome.
+Source: [01-system-layers.puml](../assets/diagrams/plantuml/source/01-system-layers.puml)

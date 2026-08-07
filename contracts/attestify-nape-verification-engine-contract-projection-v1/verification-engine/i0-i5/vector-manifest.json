@@ -1,0 +1,82 @@
+{
+  "profile": "attestify-verification-engine-full-developer-lifecycle-i5",
+  "counts": {
+    "accepted": 7,
+    "rejected": 5,
+    "total": 12
+  },
+  "vectors": [
+    {
+      "id": "action-i5",
+      "selector": "verification-action-oci-full-lifecycle-i5",
+      "file": "vectors/action-i5.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "activity-i5",
+      "selector": "verification-activity-oci-full-lifecycle-i5",
+      "file": "vectors/activity-i5.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i5-l0",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l0",
+      "file": "vectors/procedure-i5-l0.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i5-l1",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l1",
+      "file": "vectors/procedure-i5-l1.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "procedure-i5-l2",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l2",
+      "file": "vectors/procedure-i5-l2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "report-i5-l2",
+      "selector": "verification-report-oci-full-lifecycle-i5",
+      "file": "vectors/report-i5-l2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "relationship-i5-l2",
+      "selector": "verification-evidence-set-relationship-i5",
+      "file": "vectors/relationship-i5-l2.json",
+      "expected": "accepted"
+    },
+    {
+      "id": "activity-i5-wrong-order",
+      "selector": "verification-activity-oci-full-lifecycle-i5",
+      "file": "vectors/activity-i5-wrong-order.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "activity-i5-extra-action",
+      "selector": "verification-activity-oci-full-lifecycle-i5",
+      "file": "vectors/activity-i5-extra-action.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "procedure-i5-l2-reference-override",
+      "selector": "verification-procedure-oci-full-lifecycle-i5-l2",
+      "file": "vectors/procedure-i5-l2-reference-override.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "report-i5-missing-activity-origin",
+      "selector": "verification-report-oci-full-lifecycle-i5",
+      "file": "vectors/report-i5-missing-activity-origin.json",
+      "expected": "rejected"
+    },
+    {
+      "id": "relationship-i5-extra-occurrence",
+      "selector": "verification-evidence-set-relationship-i5",
+      "file": "vectors/relationship-i5-extra-occurrence.json",
+      "expected": "rejected"
+    }
+  ]
+}

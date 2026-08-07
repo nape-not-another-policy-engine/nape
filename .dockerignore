@@ -1,0 +1,5 @@
+.git
+target
+contracts
+docs
+apps/nape-cli/tests

@@ -1,0 +1,9 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v2",
+  "disposition": "request-rejected",
+  "diagnostic": {
+    "code": "invalid_metadata_contract",
+    "phase": "runner-call-validation",
+    "reason_template": "invalid-metadata-contract-v1"
+  }
+}

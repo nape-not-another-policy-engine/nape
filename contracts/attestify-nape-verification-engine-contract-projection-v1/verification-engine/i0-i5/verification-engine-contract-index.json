@@ -1,0 +1,19 @@
+{
+  "verification-procedure-v2": "#/$defs/verificationProcedureV2",
+  "verification-procedure-oci-development-mvp-i4": "#/$defs/verificationProcedureI4",
+  "verification-action-v2": "#/$defs/verificationActionV2",
+  "verification-action-oci-development-mvp-i4": "#/$defs/verificationActionI4",
+  "risk-source-subject-input-i4": "#/$defs/subjectInputI4",
+  "nape-evaluator-action-request-v2": "#/$defs/evaluatorRequestV2",
+  "nape-evaluator-action-response-v2": "#/$defs/evaluatorResponseV2",
+  "verification-report-oci-development-mvp-i4": "#/$defs/verificationReportI4",
+  "verification-evidence-set-relationship-i4": "#/$defs/evidenceSetRelationshipI4",
+  "verification-action-oci-full-lifecycle-i5": "#/$defs/verificationActionI5",
+  "verification-activity-v2": "#/$defs/verificationActivityV2",
+  "verification-activity-oci-full-lifecycle-i5": "#/$defs/verificationActivityI5",
+  "verification-procedure-oci-full-lifecycle-i5-l0": "#/$defs/verificationProcedureI5L0",
+  "verification-procedure-oci-full-lifecycle-i5-l1": "#/$defs/verificationProcedureI5L1",
+  "verification-procedure-oci-full-lifecycle-i5-l2": "#/$defs/verificationProcedureI5L2",
+  "verification-report-oci-full-lifecycle-i5": "#/$defs/verificationReportI5",
+  "verification-evidence-set-relationship-i5": "#/$defs/evidenceSetRelationshipI5"
+}

@@ -1,5 +1,11 @@
 pub mod cli;
 pub mod cli_arguments;
 pub mod cli_commands;
-pub mod command_handler_boundary;
-pub mod command_handlers;
+pub mod dispatch;
+mod evidence;
+mod package_build;
+mod package_publish;
+mod package_resolve_plan;
+pub mod receipt;
+mod start;
+mod verify;

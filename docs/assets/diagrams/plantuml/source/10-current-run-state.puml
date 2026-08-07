@@ -1,0 +1,11 @@
+@startuml
+!include ../includes/attestify-theme.puml
+title Current Run State And Atomic Transitions
+[*] --> Absent
+Absent --> Collecting : successful Start
+Collecting --> Collecting : Evidence add/replace
+Collecting --> Collecting : readiness rejection
+Collecting --> Completed : successful Verify + atomic commit
+Completed --> Completed : immutable
+Completed --> Collecting : successful new Start selects new directory
+@enduml

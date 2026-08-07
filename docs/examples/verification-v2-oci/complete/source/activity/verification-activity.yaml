@@ -1,0 +1,18 @@
+apiVersion: 2.0.0
+kind: VerificationActivity
+spec:
+  name: database-readiness
+  label: Database Readiness
+  action:
+    - name: configuration-format
+      label: Configuration Format
+      claim: The application configuration has the required structure.
+      evidence:
+        name: application-configuration
+        file: application-configuration.json
+        media_type: application/json
+      test:
+        name: configuration-format
+        file: configuration-format.py
+    - name: database-connection
+      package: pkg:attestify/acme.example/verification-action/release-readiness/database-connection@2.0.0

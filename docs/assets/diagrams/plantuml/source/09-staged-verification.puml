@@ -1,0 +1,19 @@
+@startuml
+!include ../includes/attestify-theme.puml
+!include ../includes/sequence-conventions.puml
+title Staged Verification Lifecycle
+actor User
+participant "nape start" as Start
+participant "Current run" as Run
+participant "nape evidence" as Evidence
+participant "nape verify" as Verify
+User -> Start: Procedure source + subject + metadata
+Start -> Run: atomically select new collecting run
+loop one file at a time
+  User -> Evidence: Action selector + source file
+  Evidence -> Run: stable read and atomic association
+end
+User -> Verify: no arguments
+Verify -> Run: freeze complete inputs
+Verify -> Run: atomically commit completed output
+@enduml

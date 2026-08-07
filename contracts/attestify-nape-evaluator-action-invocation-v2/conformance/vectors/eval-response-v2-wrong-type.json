@@ -1,0 +1,22 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v2",
+  "disposition": 7,
+  "execution": {
+    "executed": true,
+    "status": "completed",
+    "phase": "evaluate-call",
+    "evaluate_call_count": 1,
+    "automatic_retry_count": 0
+  },
+  "result_validation": {
+    "contract": "passed",
+    "limit": "passed"
+  },
+  "semantic_owner": "test-of-detail",
+  "result": {
+    "conclusion": "true",
+    "facts": [],
+    "reason": "The configured endpoint equals the expected endpoint."
+  },
+  "diagnostic": null
+}

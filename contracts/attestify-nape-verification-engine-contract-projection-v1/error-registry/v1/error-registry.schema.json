@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "not": {},
+  "$defs": {
+    "errorCode": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "reasonTemplate": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "defaultMessage": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[^\\u0000-\\u001F\\u007F-\\u009F{}]+$"
+    },
+    "sourceBindingToken": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "sourceBindingV1": {
+      "type": "object",
+      "required": [
+        "boundary",
+        "contract",
+        "family",
+        "phase",
+        "source"
+      ],
+      "properties": {
+        "boundary": {
+          "$ref": "#/$defs/sourceBindingToken"
+        },
+        "contract": {
+          "$ref": "#/$defs/sourceBindingToken"
+        },
+        "family": {
+          "$ref": "#/$defs/sourceBindingToken"
+        },
+        "phase": {
+          "$ref": "#/$defs/sourceBindingToken"
+        },
+        "source": {
+          "enum": [
+            "dependency-lock",
+            "nape-command",
+            "nape-evaluator",
+            "package-envelope",
+            "registry-and-oci-adapter",
+            "verification-engine"
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "errorRegistryEntryV1": {
+      "type": "object",
+      "required": [
+        "code",
+        "default_message",
+        "outcome",
+        "reason_template",
+        "source_bindings",
+        "surfaces"
+      ],
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/errorCode"
+        },
+        "default_message": {
+          "$ref": "#/$defs/defaultMessage"
+        },
+        "outcome": {
+          "enum": [
+            "command-failure",
+            "contained-occurrence",
+            "evaluator-boundary",
+            "invocation-terminal"
+          ]
+        },
+        "reason_template": {
+          "$ref": "#/$defs/reasonTemplate"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceBindingV1"
+          },
+          "minItems": 1,
+          "maxItems": 4096,
+          "uniqueItems": true
+        },
+        "surfaces": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "command-receipt",
+              "evaluator-response",
+              "invocation-failure",
+              "verification-report"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "machineReadableErrorRegistryV1": {
+      "type": "object",
+      "required": [
+        "errors",
+        "profile",
+        "registry_version"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/errorRegistryEntryV1"
+          },
+          "minItems": 1,
+          "maxItems": 1024,
+          "uniqueItems": true
+        },
+        "profile": {
+          "const": "attestify-machine-readable-error-registry-v1"
+        },
+        "registry_version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

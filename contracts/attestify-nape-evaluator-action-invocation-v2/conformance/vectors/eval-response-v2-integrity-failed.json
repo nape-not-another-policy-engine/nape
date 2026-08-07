@@ -1,0 +1,9 @@
+{
+  "contract": "attestify.nape-evaluator.action-invocation/v2",
+  "disposition": "integrity-failed",
+  "diagnostic": {
+    "code": "test_digest_mismatch",
+    "phase": "runner-call-validation",
+    "reason_template": "test-digest-mismatch-v1"
+  }
+}
