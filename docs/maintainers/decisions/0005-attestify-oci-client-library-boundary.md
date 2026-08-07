@@ -4,8 +4,8 @@ Status: accepted.
 
 `attestify-oci-oss` is an external, reusable, domain-neutral client-extension
 library for deterministic Attestify package and OCI mechanics. NAPE consumes
-exact signed release `0.1.0`, locked to commit
-`013bb352366fcad80db682984705911ca2108258`. The library owns stable source
+exact signed release `0.1.1`, locked to commit
+`64358b44b8a76b2abfd65f3ad1e043d615d4b6f6`. The library owns stable source
 sealing, canonical package construction, Lock mechanics, common verification,
 safe materialization, custody, PURL-to-Registry mapping, and its restricted
 five-operation OCI transport boundary. It is not a complete OCI client.

@@ -98,8 +98,8 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "attestify-oci-oss"
-version = "0.1.0"
-source = "git+ssh://git@github.com/attestify/attestify-oci-oss.git?tag=0.1.0#013bb352366fcad80db682984705911ca2108258"
+version = "0.1.1"
+source = "git+ssh://git@github.com/attestify/attestify-oci-oss.git?tag=0.1.1#64358b44b8a76b2abfd65f3ad1e043d615d4b6f6"
 dependencies = [
  "futures-util",
  "hex",

@@ -90,7 +90,7 @@ def main() -> None:
     oci_dependency = cli_cargo.get("dependencies", {}).get("attestify-oci-oss")
     expected_oci_dependency = {
         "git": "ssh://git@github.com/attestify/attestify-oci-oss.git",
-        "tag": "0.1.0",
+        "tag": "0.1.1",
     }
     if oci_dependency != expected_oci_dependency:
         failures.append("NAPE does not use the exact released attestify-oci-oss identity")
@@ -104,11 +104,11 @@ def main() -> None:
         if package.get("name") == "attestify-oci-oss"
     ]
     expected_source = (
-        "git+ssh://git@github.com/attestify/attestify-oci-oss.git?tag=0.1.0"
-        "#013bb352366fcad80db682984705911ca2108258"
+        "git+ssh://git@github.com/attestify/attestify-oci-oss.git?tag=0.1.1"
+        "#64358b44b8a76b2abfd65f3ad1e043d615d4b6f6"
     )
     if len(locked_oci) != 1 or locked_oci[0].get("source") != expected_source:
-        failures.append("Cargo.lock does not bind attestify-oci-oss 0.1.0 to its exact commit")
+        failures.append("Cargo.lock does not bind attestify-oci-oss 0.1.1 to its exact commit")
 
     retired_paths = (
         ROOT / "libraries/attestify-oci",

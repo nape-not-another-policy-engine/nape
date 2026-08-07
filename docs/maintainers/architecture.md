@@ -8,7 +8,7 @@ NAPE CLI
   evidence admission, Evaluator invocation, continuation, Report construction,
   Evidence Set relationships, and atomic local result persistence
 
-attestify-oci-oss 0.1.0
+attestify-oci-oss 0.1.1
   is an exact external dependency that owns domain-neutral deterministic
   package construction, PURL-to-registry mapping, OCI manifest/blob
   operations, digest and size verification, safe materialization, package
@@ -80,8 +80,8 @@ No Test executes until package resolution, semantic validation, and complete
 evidence readiness finish. Verify never resolves or pulls packages again.
 
 NAPE does not embed or vendor an OCI implementation. The CLI depends on exact
-signed release tag `attestify-oci-oss` `0.1.0`, locked to commit
-`013bb352366fcad80db682984705911ca2108258`. NAPE owns the concrete
+signed release tag `attestify-oci-oss` `0.1.1`, locked to commit
+`64358b44b8a76b2abfd65f3ad1e043d615d4b6f6`. NAPE owns the concrete
 Verification Procedure, Activity, Action, PURL, member, and dependency rules
 that it supplies to the domain-neutral library.
 

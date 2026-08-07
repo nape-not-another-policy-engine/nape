@@ -41,12 +41,23 @@ as current Verification V2 behavior, including staged Start, exactly-one-file-
 per-call Evidence collection, repeated-command evidence correction, invocation
 metadata, evaluation, and local reporting. Current execution replaces
 `AssuranceProcedure` and `AssuranceReport` with `VerificationProcedure` and
-`VerificationReport` V2. The exact domain-neutral `attestify-oci-oss` `0.1.0`
+`VerificationReport` V2. The exact domain-neutral `attestify-oci-oss` `0.1.1`
 release is now the sole NAPE OCI library dependency. The superseded embedded
 library and patched OCI-client source are retired after complete pre-removal
 and post-removal compatibility proofs.
 
 ## Active Workstreams
+
+### Current Attestify OCI OSS transport correction
+
+NAPE now consumes exact signed release `attestify-oci-oss` `0.1.1` at commit
+`64358b44b8a76b2abfd65f3ad1e043d615d4b6f6`. The release removes an
+OCI-unspecified blob-download response `Content-Type` restriction while
+preserving manifest media-type admission and all digest, size, encoding,
+redirect, destination, timeout, and byte-bound controls. NAPE retains every
+Verification-specific profile, command, translation, and test. The complete
+candidate and exact-release NAPE suites are required to pass before this
+bounded dependency migration closes.
 
 ### Completed Plan 12: Attestify OCI OSS Release Migration
 
